@@ -17,15 +17,23 @@
 
 	});
 	function formCommit() {
-	    var flag = document.getElementById("remPass").checked;
+/* 	    var flag = document.getElementById("remPass").checked;
 	    if(flag){
 			document.forms[0].action="system!register.html";
 			document.forms[0].submit();
 	    }
 	    else{
 	    	alert("接受协议才可注册");
-	    }
+	    } */
 	    
+	    var flag = document.getElementById("remPass").checked;
+	     if(flag){
+	       return true;
+	     }
+	     else{
+	      alert("接受协议才可注册");
+	      return false;
+	     }
 	}
     function reImg(){  
        $("#vertImg").attr("src","${pageContext.request.contextPath}/system!validateCode.html?time=" + new Date());
@@ -90,7 +98,7 @@
 
 				<div id="login_form">
 
-					<s:form id="register">
+					 <s:form action="system!register.html" id="register">
 						<ul>
 							<li><label for="memberID">会员ID:</label> <s:textfield
 									id="memberID" placeHolder="请输入6个以上的字符作为密码" name="userId" /> <span
@@ -105,14 +113,15 @@
 									id="passWord" placeHolder="请使用常用邮箱地址作为登录账号" name="email" /> <span
 								class="redStar">*</span></li>
 							<li><label for="vertCode">验证码:</label> <s:textfield
-									id="vertCode" name="vCode" /> <img id="vertImg"
+									id="vertCode" name="validateCode" /> <img id="vertImg"
 								src="${pageContext.request.contextPath}/system!validateCode.html"/>
 								<a class="chgVertImg" href="javascript:void(0);" onclick="reImg()">看不清，换一张</a></li>
 							<li><input id="remPass" type="checkbox"/> <label
 								id="lblAgree" for="remPass">我已阅读并同意 使用条款和隐私策略</label>
 								<div class="clear"></div></li>
 							<li>
-							<input id="btn_register" type="button" onclick="return formCommit();">
+							<!-- <input id="btn_register" type="button" onclick="return formCommit();"> -->
+							<s:submit id="btn_register" onclick="return formCommit();"  value=""/>
 							</li>
 						</ul>
 					</s:form>

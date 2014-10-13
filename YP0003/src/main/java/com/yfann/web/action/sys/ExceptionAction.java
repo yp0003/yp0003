@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.yfann.web.pojo.User;
 
 public class ExceptionAction extends CommonAction<User>{
+	@Autowired
 	private Exception exception;
 	final Logger logger = LoggerFactory.getLogger(ExceptionAction.class);
 	@Override
