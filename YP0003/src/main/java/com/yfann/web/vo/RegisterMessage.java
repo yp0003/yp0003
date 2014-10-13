@@ -46,12 +46,12 @@ public class RegisterMessage {
 	 */
 	public boolean isNotEmpty() {
 		if (StringUtils.isNotBlank(userIdMessage)
-				&& StringUtils.isNotBlank(passwordMessage)
-				&& StringUtils.isNotBlank(emailMessage)
-				&& StringUtils.isNotBlank(valiCodeMessage)) {
-			return true;
+				|| StringUtils.isNotBlank(passwordMessage)
+				|| StringUtils.isNotBlank(emailMessage)
+				|| StringUtils.isNotBlank(valiCodeMessage)) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 }
