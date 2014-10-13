@@ -3,8 +3,9 @@ package com.yfann.web.action.sys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@SuppressWarnings("rawtypes")
-public class ExceptionAction extends CommonAction{
+import com.opensymphony.xwork2.ActionSupport;
+
+public class ExceptionAction extends ActionSupport{
 	
 	private Exception exception;
 	final Logger logger = LoggerFactory.getLogger(ExceptionAction.class);

@@ -14,6 +14,7 @@ import com.opensymphony.xwork2.ModelDriven;
 public class CommonAction<T> extends ActionSupport implements ModelDriven<T> {
 	private static final long serialVersionUID = 826683513481606641L;
 	HttpSession session = ServletActionContext.getRequest().getSession();
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public CommonAction() {
 		ParameterizedType type = (ParameterizedType) this.getClass()
