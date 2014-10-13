@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
+import org.springframework.stereotype.Controller;
 
 import com.yfann.web.pojo.User;
 import com.yfann.web.vo.RegisterMessage;
@@ -20,6 +21,7 @@ import com.yfann.web.vo.RegisterMessage;
  * @author Tree
  * 
  */
+@Controller
 public class SystemAction extends CommonAction<User> {
 	private static final long serialVersionUID = -3588626533445197273L;
 	RegisterMessage registerMessage;
