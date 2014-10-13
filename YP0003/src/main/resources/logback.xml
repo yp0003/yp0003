@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+
+<!-- 生产环境配置 -->
+<configuration>
+	<property resource="config.properties" />
+
+	<contextName>${app.context.name.en}</contextName>
+	<property name="LOG_HOME" value="${catalina.base}/logs" />
+	<property name="MaxHistory" value="${log.max.history}" />
+	<property name="MaxFileSize" value="${log.max.file.size}" />
+
+	<!-- 控制台输出 -->
+	 <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date %-5level [${HOSTNAME} %thread] %caller{1}%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 按照每天生成日志文件 -->
+	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>%date %-5level [${HOSTNAME} %thread] %logger%n%msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 日志文件输出的文件名 -->
+			<FileNamePattern>
+				${LOG_HOME}/${CONTEXT_NAME}/%d{yyyy-MM-dd}/${CONTEXT_NAME}.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+			<!-- 保存30天的日志文件 -->
+			<MaxHistory>${MaxHistory}</MaxHistory>
+			<!-- 日志文件最大的大小 -->
+			<timeBasedFileNamingAndTriggeringPolicy	class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>${MaxFileSize}</MaxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+	
+	<!-- 按照每天生成错误日志文件 -->
+	<appender name="errorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>%date %-5level [${HOSTNAME} %thread] %logger%n%msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 日志文件输出的文件名 -->
+			<FileNamePattern>
+				${LOG_HOME}/${CONTEXT_NAME}/%d{yyyy-MM-dd}/${CONTEXT_NAME}.%d{yyyy-MM-dd}.%i.error.log
+			</FileNamePattern>
+			<!-- 保存30天的日志文件 -->
+			<MaxHistory>${MaxHistory}</MaxHistory>
+			<!-- 日志文件最大的大小 -->
+			<timeBasedFileNamingAndTriggeringPolicy	class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>${MaxFileSize}</MaxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+	
+	<logger name="com.yfann.web" level="DEBUG" />
+	<!-- mybatis SQL语句输出 -->
+	<logger name="com.yfann.web.dao" level="DEBUG" />
+	<!-- 操作日志 -->
+	<logger name="com.yfann.web.dao.OperationLogsMapper" level="ERROR" />
+
+	<logger name="java.sql" level="INFO" />
+	<logger name="org.apache.commons.dbcp" level="INFO" />
+	
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.springframework.jdbc" level="DEBUG" />
+	<logger name="org.springframework.cache" level="INFO" />
+	
+	<logger name="org.mybatis" level="INFO" />
+	<logger name="org.apache.ibatis" level="INFO" />
+
+	<logger name="net.sf.ehcache" level="INFO" />
+	
+	<logger name="org.activiti" level="DEBUG" />
+
+	<logger name="org.quartz.impl.jdbcjobstore" level="INFO" />
+	<logger name="org.springframework.scheduling.quartz" level="INFO" />
+
+	<!-- 日志输出级别 -->
+	<root level="INFO">
+		 <appender-ref ref="stdout" />
+	</root>
+</configuration>

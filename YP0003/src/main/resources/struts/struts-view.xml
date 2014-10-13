@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="sys" namespace="/sys" extends="yfann-default">
+		<!-- 系统 -->
+		<action name="system!*" method="{1}"
+			class="com.yfann.web.action.sys.SystemAction">
+			<!-- 转向登录页面 -->
+			<result name="forwardLogin">/WEB-INF/pages/login.jsp</result>
+			<!-- 转向注册页面 -->
+			<result name="forwardRegister">/WEB-INF/pages/register.jsp</result>
+			<!-- 注册成功 -->
+			<result name="register">/WEB-INF/pages/login.jsp</result>
+		</action>
+	</package>
+</struts>
