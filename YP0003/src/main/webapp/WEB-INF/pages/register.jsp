@@ -17,7 +17,8 @@
 
 	});
 	function formCommit() {
-		document.forms[0].submit();
+		alert($("#remPass").cheked());
+		//document.forms[0].submit();
 	}
 </script>
 </head>
@@ -99,7 +100,7 @@
 							<li><input id="remPass" type="checkbox" /> <label
 								id="lblAgree" for="remPass">我已阅读并同意 使用条款和隐私策略</label>
 								<div class="clear"></div></li>
-							<li><input id="btn_register" type="button" onclick="" /></li>
+							<li><input id="btn_register" type="button" onclick="return formCommit();" /></li>
 						</ul>
 					</s:form>
 
