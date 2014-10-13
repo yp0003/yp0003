@@ -22,7 +22,7 @@ import com.yfann.web.vo.RegisterMessage;
  */
 public class SystemAction extends CommonAction<User> {
 	private static final long serialVersionUID = -3588626533445197273L;
-	private RegisterMessage registerMessage;
+	private RegisterMessage registerMessage = new RegisterMessage();
 	/**
 	 * 注册页面验证码
 	 */
