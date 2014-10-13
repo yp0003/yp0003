@@ -17,9 +17,19 @@
 
 	});
 	function formCommit() {
-		alert($("#remPass").cheked());
-		//document.forms[0].submit();
+	    var flag = document.getElementById("remPass").checked;
+	    if(flag){
+			document.forms[0].action="system!register.html";
+			document.forms[0].submit();
+	    }
+	    else{
+	    	alert("接受协议才可注册");
+	    }
+	    
 	}
+    function reImg(){  
+       $("#vertImg").attr("src","${pageContext.request.contextPath}/system!validateCode.html?time=" + new Date());
+    }  
 </script>
 </head>
 <body>
@@ -79,9 +89,10 @@
 					alt="" />
 
 				<div id="login_form">
-					<s:form id="register" action="system!register.html" namespace="sys">
+
+					<s:form id="register">
 						<ul>
-							<li><label for="memberID">会员ID:</label> <s:textarea
+							<li><label for="memberID">会员ID:</label> <s:textfield
 									id="memberID" placeHolder="请输入6个以上的字符作为密码" name="userId" /> <span
 								class="redStar">*</span></li>
 							<li><label for="passWord">密码:</label> <s:password
@@ -90,20 +101,21 @@
 							<li><label for="passWord">确认密码:</label> <s:password
 									id="passWord" name="nowPassword" /> <span class="redStar">*</span>
 							</li>
-							<li><label for="passWord">电子邮箱:</label> <s:textarea
+							<li><label for="passWord">电子邮箱:</label> <s:textfield
 									id="passWord" placeHolder="请使用常用邮箱地址作为登录账号" name="email" /> <span
 								class="redStar">*</span></li>
-							<li><label for="vertCode">验证码:</label> <s:textarea
+							<li><label for="vertCode">验证码:</label> <s:textfield
 									id="vertCode" name="vCode" /> <img id="vertImg"
-								src="${pageContext.request.contextPath}/sys/system!validateCode.html" />
-								<a class="chgVertImg" href="#">看不清，换一张</a></li>
-							<li><input id="remPass" type="checkbox" /> <label
+								src="${pageContext.request.contextPath}/system!validateCode.html"/>
+								<a class="chgVertImg" href="javascript:void(0);" onclick="reImg()">看不清，换一张</a></li>
+							<li><input id="remPass" type="checkbox"/> <label
 								id="lblAgree" for="remPass">我已阅读并同意 使用条款和隐私策略</label>
 								<div class="clear"></div></li>
-							<li><input id="btn_register" type="button" onclick="return formCommit();" /></li>
+							<li>
+							<input id="btn_register" type="button" onclick="return formCommit();">
+							</li>
 						</ul>
 					</s:form>
-
 				</div>
 
 				<img id="split_LR"
@@ -178,5 +190,6 @@
 		<a id="connect_sevice" href="#">点击此处 &gt;</a>
 	</div>
 	<!--客服部分 end-->
+	<s:debug></s:debug>
 </body>
 </html>

@@ -6,6 +6,6 @@ response.sendRedirect("struts-global/welcome.do");
 %> --%>
 
 The project started success!!
-<a href="${pageContext.request.contextPath}/sys/system!forwardLogin.html">登录</a>
+<a href="${pageContext.request.contextPath}/system!forwardLogin.html">登录</a>
 <br>
-<a href="${pageContext.request.contextPath}/sys/system!forwardRegister.html">注册</a>
+<a href="${pageContext.request.contextPath}/system!forwardRegister.html">注册</a>

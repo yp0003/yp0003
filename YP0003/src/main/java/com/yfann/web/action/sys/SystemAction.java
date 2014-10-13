@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
-import org.springframework.stereotype.Controller;
 
 import com.yfann.web.pojo.User;
 import com.yfann.web.vo.RegisterMessage;
@@ -21,19 +20,18 @@ import com.yfann.web.vo.RegisterMessage;
  * @author Tree
  * 
  */
-@Controller
 public class SystemAction extends CommonAction<User> {
 	private static final long serialVersionUID = -3588626533445197273L;
-	RegisterMessage registerMessage;
+	private RegisterMessage registerMessage;
 	/**
 	 * 注册页面验证码
 	 */
-	private String vCode;
+	private String validateCode;
 	public String forwardLogin() {
 		return "forwardLogin";
 	}
 	
-	public String forwardRegister() {
+	public String forwardReogister() {
 		return "forwardRegister";
 	}
 	public String register() {
@@ -55,7 +53,7 @@ public class SystemAction extends CommonAction<User> {
 			if(StringUtils.isNotBlank(user.getUserId())){
 				//获取session中验证码
 				String valiCode = (String)session.getAttribute("valiCode");
-				if(!valiCode.equals(vCode)) {
+				if(!valiCode.equals(validateCode)) {
 					registerMessage.setValiCodeMessage("验证码不正确!");
 				}
 			}else if(StringUtils.isBlank(user.getUserId())) {
@@ -67,7 +65,7 @@ public class SystemAction extends CommonAction<User> {
 		}
 		//表单错误 转向注册页面并清除密码和验证码
 		getModel().setNowPassword("");
-		vCode = "";
+		validateCode = "";
 		return forwardLogin();
 	}
 
@@ -116,12 +114,14 @@ public class SystemAction extends CommonAction<User> {
 		ImageIO.write(image, "jpg", response.getOutputStream());
 	}
 
-	public String getvCode() {
-		return vCode;
+
+
+	public String getValidateCode() {
+		return validateCode;
 	}
 
-	public void setvCode(String vCode) {
-		this.vCode = vCode;
+	public void setValidateCode(String validateCode) {
+		this.validateCode = validateCode;
 	}
 
 	public RegisterMessage getRegisterMessage() {
