@@ -6,12 +6,15 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.ServletActionContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("hiding")
 public class CommonAction<T> extends ActionSupport implements ModelDriven<T> {
+	final Logger logger = LoggerFactory.getLogger(CommonAction.class);
 	private static final long serialVersionUID = 826683513481606641L;
 	HttpSession session = ServletActionContext.getRequest().getSession();
 	
