@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import com.yfann.web.pojo.User;
 
 public class ExceptionAction extends CommonAction<User>{
-	
 	private Exception exception;
 	final Logger logger = LoggerFactory.getLogger(ExceptionAction.class);
 	@Override
