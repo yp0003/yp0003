@@ -3,6 +3,7 @@ package com.yfann.web.action.sys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@SuppressWarnings("rawtypes")
 public class ExceptionAction extends CommonAction{
 	
 	private Exception exception;
