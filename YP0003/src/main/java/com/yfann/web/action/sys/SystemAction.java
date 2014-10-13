@@ -31,7 +31,7 @@ public class SystemAction extends CommonAction<User> {
 		return "forwardLogin";
 	}
 	
-	public String forwardReogister() {
+	public String forwardRegister() {
 		return "forwardRegister";
 	}
 	public String register() {
