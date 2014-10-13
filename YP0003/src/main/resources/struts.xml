@@ -15,7 +15,7 @@
     <!-- xslresult是否使用样式表缓存，开发阶段不使用 -->
     <constant name="struts.xslt.nocache" value="true" />
     <!-- 开发者模式 -->
-
+<constant name="struts.devMode" value="true" />
     <!-- 配置国际化信息 -->
     <constant name="struts.locale" value="zh_CN" />
     <constant name="struts.i18n.encoding" value="UTF-8" />

@@ -11,8 +11,6 @@
 			<result name="forwardLogin">/WEB-INF/pages/login.jsp</result>
 			<!-- 转向注册页面 -->
 			<result name="forwardRegister">/WEB-INF/pages/register.jsp</result>
-			<!-- 注册成功 -->
-			<result name="register">/WEB-INF/pages/login.jsp</result>
 		</action>
 	</package>
 </struts>
