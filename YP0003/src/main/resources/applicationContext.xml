@@ -26,7 +26,7 @@
 	<!-- 启动AspectJ支持 -->
 	<aop:aspectj-autoproxy />
 
-	<!-- 配置注解搜索的范围,该例子中spring会自动搜索cn.com.chinatelecom.下面的注解 -->
+	<!-- 配置注解搜索的范围,该例子中spring会自动搜索com.yfann.web下面的注解 -->
 	<context:component-scan base-package="com.yfann.web" />
 
 
