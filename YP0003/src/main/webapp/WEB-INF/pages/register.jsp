@@ -16,6 +16,9 @@
 	$(document).ready(function() {
 
 	});
+	function formCommit() {
+		document.forms[0].submit();
+	}
 </script>
 </head>
 <body>
