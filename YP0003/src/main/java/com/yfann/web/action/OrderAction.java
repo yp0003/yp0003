@@ -1,4 +1,4 @@
-package com.yfann.web.action.sys;
+package com.yfann.web.action;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

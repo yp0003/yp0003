@@ -1,4 +1,4 @@
-package com.yfann.web.action.sys;
+package com.yfann.web.action;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.common.UUIDCreate;
-import com.yfann.web.pojo.Employee;
+import com.yfann.web.pojo.User;
 import com.yfann.web.service.SystemService;
 import com.yfann.web.vo.RegisterMessage;
 
@@ -25,11 +25,11 @@ import com.yfann.web.vo.RegisterMessage;
  * @author Tree
  * 
  */
-public class SystemOAAction extends CommonAction {
-	private static final long serialVersionUID = -371379211951087793L;
+public class SystemAction extends CommonAction {
+	private static final long serialVersionUID = -3588626533445197273L;
 	private RegisterMessage registerMessage = new RegisterMessage();
-	final Logger logger = LoggerFactory.getLogger(SystemOAAction.class);
-	private Employee Employee;
+	final Logger logger = LoggerFactory.getLogger(SystemAction.class);
+	private User user;
 	@Autowired
 	private SystemService systemService;
 	/**
@@ -46,17 +46,17 @@ public class SystemOAAction extends CommonAction {
 	}
 
 	public String register() throws Exception {
-		if (Employee != null) {
+		if (user != null) {
 			// 验证用户ID
-			if (!(StringUtils.isNotBlank(Employee.getEmpId()) && Employee.getEmpId()
+			if (!(StringUtils.isNotBlank(user.getUserId()) && user.getUserId()
 					.length() > 5)) {
 				registerMessage.setUserIdMessage("用户名非法!");
 			}
 			// 验证密码
-			if (!(StringUtils.isNotBlank(Employee.getNowPassword()))) {
+			if (!(StringUtils.isNotBlank(user.getNowPassword()))) {
 				registerMessage.setPasswordMessage("密码为空!");
 			} else {
-				String[] passwords = Employee.getNowPassword().split(",");
+				String[] passwords = user.getNowPassword().split(",");
 				if (passwords.length != 2) {
 					registerMessage.setPasswordMessage("密码非法!");
 				} else if (passwords.length > 1) {
@@ -69,11 +69,11 @@ public class SystemOAAction extends CommonAction {
 				}
 			}
 			// 验证邮箱
-			if (!(StringUtils.isNotBlank(Employee.getEmail()))) {
+			if (!(StringUtils.isNotBlank(user.getEmail()))) {
 				registerMessage.setEmailMessage("邮箱非法!");
 			}
 			// 对比验证码
-			if (StringUtils.isNotBlank(Employee.getEmpId())) {
+			if (StringUtils.isNotBlank(user.getUserId())) {
 				// 获取session中验证码
 				String valiCode = "";
 				try {
@@ -85,25 +85,25 @@ public class SystemOAAction extends CommonAction {
 				if (!valiCode.equals(validateCode)) {
 					registerMessage.setValiCodeMessage("验证码不正确!");
 				}
-			} else if (StringUtils.isBlank(Employee.getEmpId())) {
+			} else if (StringUtils.isBlank(user.getUserId())) {
 				registerMessage.setValiCodeMessage("请填写验证码!");
 			}
 		}
 		if (registerMessage.isNotEmpty()) {
 			// 表单错误 转向注册页面并清除密码和验证码
-			Employee.setNowPassword("");
+			user.setNowPassword("");
 			validateCode = "";
 			return forwardRegister();
 		}
 		//保存用户
 		try{
-			if(Employee != null && StringUtils.isNotBlank(Employee.getNowPassword())) {
+			if(user != null && StringUtils.isNotBlank(user.getNowPassword())) {
 				//两次去人输入的密码去掉一个
-				Employee.setNowPassword(Employee.getNowPassword().split(",")[0].trim());
+				user.setNowPassword(user.getNowPassword().split(",")[0].trim());
 				//设置主键
-				Employee.setId(UUIDCreate.getUUID());
+				user.setId(UUIDCreate.getUUID());
 			}
-//			systemService.saveEmployee(Employee);
+			systemService.saveUser(user);
 		}catch (Exception e) {
 			logger.error("系统错误");
 			logger.error(e.getMessage());
@@ -175,12 +175,12 @@ public class SystemOAAction extends CommonAction {
 		this.registerMessage = registerMessage;
 	}
 
-	public Employee getEmployee() {
-		return Employee;
+	public User getUser() {
+		return user;
 	}
 
-	public void setEmployee(Employee Employee) {
-		this.Employee = Employee;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
