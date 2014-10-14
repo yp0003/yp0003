@@ -30,7 +30,7 @@
 		</global-exception-mappings>
 		
 		<!-- 异常 -->
-		<action name="errorAction" class="com.yfann.web.action.sys.ExceptionAction">
+		<action name="errorAction" class="com.yfann.web.action.ExceptionAction">
 			<interceptor-ref name="yfannDefaultStack" />
 			<result name="error" type="dispatcher">/WEB-INF/pages/error/globalError.jsp</result>
 			

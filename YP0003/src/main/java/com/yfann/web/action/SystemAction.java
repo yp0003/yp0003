@@ -1,4 +1,4 @@
-package com.yfann.web.action.sys;
+package com.yfann.web.action;
 
 import java.awt.Color;
 import java.awt.Font;

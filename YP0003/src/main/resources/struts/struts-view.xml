@@ -6,7 +6,7 @@
 	<package name="sys" namespace="/" extends="yfann-default">
 		<!-- 系统 -->
 		<action name="system!*" method="{1}"
-			class="com.yfann.web.action.sys.SystemAction">
+			class="com.yfann.web.action.SystemAction">
 			<!-- 转向登录页面 -->
 			<result name="forwardLogin">/WEB-INF/pages/login.jsp</result>
 			<!-- 转向注册页面 -->
