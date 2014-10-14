@@ -111,7 +111,7 @@
 								</s:if></li>
 							<li><label for="passWord">密码:</label> <s:password
 									id="passWord" placeHolder="英文、数字或字符，6-20位区分大小写"
-									name="user.nowPassword" /> <span class="redStar">*</span> <s:if
+									name="user.nowPassword" /> <span class="redStar">* </span> <s:if
 									test="registerMessage.passwordMessage != null">
 									<span class="redStar"><s:property
 											value="registerMessage.passwordMessage" /></span>
@@ -121,24 +121,20 @@
 							</li>
 							<li><label for="passWord">电子邮箱:</label> <s:textfield
 									id="passWord" placeHolder="请使用常用邮箱地址作为登录账号" name="user.email" />
-								<span class="redStar">*</span>
-								<s:if
+								<span class="redStar">*</span> <s:if
 									test="registerMessage.emailMessage != null">
 									<span class="redStar"><s:property
 											value="registerMessage.emailMessage" /></span>
-								</s:if>
-								</li>
+								</s:if></li>
 							<li><label for="vertCode">验证码:</label> <s:textfield
 									id="vertCode" name="validateCode" /> <img id="vertImg"
 								src="${pageContext.request.contextPath}/system!validateCode.html" />
 								<a class="chgVertImg" href="javascript:void(0);"
-								onclick="reImg()">看不清，换一张</a>
-								<s:if
+								onclick="reImg()">看不清，换一张</a> <s:if
 									test="registerMessage.valiCodeMessage != null">
 									<span class="redStar"><s:property
 											value="registerMessage.valiCodeMessage" /></span>
-								</s:if>
-								</li>
+								</s:if></li>
 							<li><input id="remPass" type="checkbox" /> <label
 								id="lblAgree" for="remPass">我已阅读并同意 使用条款和隐私策略</label>
 								<div class="clear"></div></li>
