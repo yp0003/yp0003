@@ -101,16 +101,16 @@
 					 <s:form action="system!register.html" id="register">
 						<ul>
 							<li><label for="memberID">会员ID:</label> <s:textfield
-									id="memberID" placeHolder="请输入6个以上的字符作为密码" name="userId" /> <span
+									id="memberID" placeHolder="请输入6个以上的字符作为密码" name="user.userId" /><span
 								class="redStar">*</span></li>
 							<li><label for="passWord">密码:</label> <s:password
 									id="passWord" placeHolder="英文、数字或字符，6-20位区分大小写"
-									name="nowPassword" /> <span class="redStar">*</span></li>
+									name="user.nowPassword" /> <span class="redStar">*</span></li>
 							<li><label for="passWord">确认密码:</label> <s:password
-									id="passWord" name="nowPassword" /> <span class="redStar">*</span>
+									id="passWord" name="user.nowPassword" /> <span class="redStar">*</span>
 							</li>
 							<li><label for="passWord">电子邮箱:</label> <s:textfield
-									id="passWord" placeHolder="请使用常用邮箱地址作为登录账号" name="email" /> <span
+									id="passWord" placeHolder="请使用常用邮箱地址作为登录账号" name="user.email" /> <span
 								class="redStar">*</span></li>
 							<li><label for="vertCode">验证码:</label> <s:textfield
 									id="vertCode" name="validateCode" /> <img id="vertImg"

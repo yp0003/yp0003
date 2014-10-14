@@ -20,9 +20,10 @@ import com.yfann.web.vo.RegisterMessage;
  * @author Tree
  * 
  */
-public class SystemAction extends CommonAction<User> {
+public class SystemAction extends CommonAction {
 	private static final long serialVersionUID = -3588626533445197273L;
 	private RegisterMessage registerMessage = new RegisterMessage();
+	private User user;
 	/**
 	 * 注册页面验证码
 	 */
@@ -37,7 +38,6 @@ public class SystemAction extends CommonAction<User> {
 	}
 
 	public String register() {
-		User user = getModel();
 		if (user != null) {
 			// 验证用户ID
 			if (!(StringUtils.isNotBlank(user.getUserId()) && user.getUserId()
@@ -85,7 +85,7 @@ public class SystemAction extends CommonAction<User> {
 			return forwardRegister();
 		}
 		// 表单错误 转向注册页面并清除密码和验证码
-		getModel().setNowPassword("");
+		user.setNowPassword("");
 		validateCode = "";
 		return forwardLogin();
 	}
@@ -151,6 +151,14 @@ public class SystemAction extends CommonAction<User> {
 
 	public void setRegisterMessage(RegisterMessage registerMessage) {
 		this.registerMessage = registerMessage;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
