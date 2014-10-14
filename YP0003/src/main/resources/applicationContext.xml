@@ -38,7 +38,9 @@
 	<!-- ****************************** 数据库定义 ****************************** -->
 	<bean id="mainDataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="#{config['jdbc.driverClass']}" />
+		<!-- <property name="driverClassName" value="#{config['jdbc.driverClass']}" /> -->
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		
 		<property name="url" value="#{config['jdbc.url']}" />
 		<property name="username" value="#{config['jdbc.username']}" />
 		<property name="password" value="#{config['jdbc.password']}" />
@@ -89,7 +91,7 @@
 	<!-- 事务设定方法以及运行模式的定义 transaction-manager="transactionManager" 的设定可以省略 -->
 	<tx:advice id="transactionInterceptor" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="add*" propagation="REQUIRED"/>
 			<tx:method name="save*" propagation="REQUIRED"
 				rollback-for="java.lang.Exception" />
 			<tx:method name="delete*" propagation="REQUIRED"

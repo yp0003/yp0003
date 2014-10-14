@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.SystemService;
 import com.yfann.web.vo.RegisterMessage;
@@ -44,7 +45,7 @@ public class SystemAction extends CommonAction {
 		return "forwardRegister";
 	}
 
-	public String register() {
+	public String register() throws Exception {
 		if (user != null) {
 			// 验证用户ID
 			if (!(StringUtils.isNotBlank(user.getUserId()) && user.getUserId()
@@ -97,12 +98,16 @@ public class SystemAction extends CommonAction {
 		//保存用户
 		try{
 			if(user != null && StringUtils.isNotBlank(user.getNowPassword())) {
+				//两次去人输入的密码去掉一个
 				user.setNowPassword(user.getNowPassword().split(",")[0].trim());
+				//设置主键
+				user.setId(UUIDCreate.getUUID());
 			}
 			systemService.saveUser(user);
 		}catch (Exception e) {
 			logger.error("系统错误");
 			logger.error(e.getMessage());
+			throw new Exception(e.getMessage());
 		}
 		return forwardLogin();
 	}
