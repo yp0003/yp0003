@@ -32,19 +32,30 @@ public class SystemAction extends CommonAction {
 	private User user;
 	@Autowired
 	private SystemService systemService;
-	/**
-	 * 注册页面验证码
-	 */
+	/**注册页面验证码*/
 	private String validateCode;
 
+	public String forwardIndex(){
+		return "forwardIndex";
+	}
+	/**
+	 * 跳转到登录界面
+	 * @return
+	 */
 	public String forwardLogin() {
 		return "forwardLogin";
 	}
-
+	/**
+	 * 跳转到注册界面
+	 * @return
+	 */
 	public String forwardRegister() {
 		return "forwardRegister";
 	}
-
+	/**
+	 * 注册功能
+	 * @return
+	 */
 	public String register() throws Exception {
 		if (user != null) {
 			// 验证用户ID
