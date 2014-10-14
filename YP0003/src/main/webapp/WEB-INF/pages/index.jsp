@@ -32,7 +32,38 @@
 	});
 </script>
 <style type="text/css">
-div#main_centers{
+div#main_centers {
+	
+}
+
+div.top_loop {
+	background-color: green;
+	height: 300px
+}
+
+div.top_nva {
+	background-color: black;
+	height: 50px
+}
+
+div#main_content {
+	
+}
+
+div#left_div {
+	background-color: yellow;
+	width:30%;
+	float: left;
+}
+div#center_div {
+	background-color: blue;
+	width:40%;
+	float: left;
+}
+div#right_div {
+	background-color: red;
+	width:30%;
+	float: left;
 }
 
 </style>
@@ -40,25 +71,22 @@ div#main_centers{
 <body>
 	<%@include file="common/common.jsp"%>
 	<div id="main_centers">
-		<div class="top_loop">轮播</div>
 		<div class="top_nva">导航</div>
+		<div class="top_loop">轮播</div>
+
 		<!-- 下层内容 -->
 		<div class="clear">
-		
-		<div>
-		<div>
-		左侧菜单
-		</div>
-		</div>
-		<div>
-		<div>
-		表格
-		</div>
-		</div>
-		<div>
-		<div>学员心声</div>
-		<div>学员动态</div>
-		</div>
+
+			<div id="left_div">
+				<div>左侧菜单</div>
+			</div>
+			<div id="center_div">
+				<div>表格</div>
+			</div>
+			<div id="right_div">
+				<div>学员心声</div>
+				<div>学员动态</div>
+			</div>
 		</div>
 	</div>
 	<div id="footer">我是底部（下）</div>
