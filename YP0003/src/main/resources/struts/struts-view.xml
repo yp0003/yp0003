@@ -12,5 +12,15 @@
 			<!-- 转向注册页面 -->
 			<result name="forwardRegister">/WEB-INF/pages/register.jsp</result>
 		</action>
+		
+		
+		<!-- OA员工 -->
+		<action name="employee!*" method="{1}"
+			class="com.yfann.web.action.EmployeeAction">
+			<!-- 转向登录页面 -->
+			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
+			<!-- 转向注册页面 -->
+			<result name="forwardRegister">/WEB-INF/pages/oa/register_oa.jsp</result>
+		</action>
 	</package>
 </struts>
