@@ -11,8 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.User;
+import com.yfann.web.service.SystemService;
 import com.yfann.web.vo.RegisterMessage;
 
 /**
@@ -20,9 +25,13 @@ import com.yfann.web.vo.RegisterMessage;
  * @author Tree
  * 
  */
-public class SystemAction extends CommonAction<User> {
+public class SystemAction extends CommonAction {
 	private static final long serialVersionUID = -3588626533445197273L;
 	private RegisterMessage registerMessage = new RegisterMessage();
+	final Logger logger = LoggerFactory.getLogger(SystemAction.class);
+	private User user;
+	@Autowired
+	private SystemService systemService;
 	/**
 	 * 注册页面验证码
 	 */
@@ -36,8 +45,7 @@ public class SystemAction extends CommonAction<User> {
 		return "forwardRegister";
 	}
 
-	public String register() {
-		User user = getModel();
+	public String register() throws Exception {
 		if (user != null) {
 			// 验证用户ID
 			if (!(StringUtils.isNotBlank(user.getUserId()) && user.getUserId()
@@ -82,11 +90,25 @@ public class SystemAction extends CommonAction<User> {
 			}
 		}
 		if (registerMessage.isNotEmpty()) {
+			// 表单错误 转向注册页面并清除密码和验证码
+			user.setNowPassword("");
+			validateCode = "";
 			return forwardRegister();
 		}
-		// 表单错误 转向注册页面并清除密码和验证码
-		getModel().setNowPassword("");
-		validateCode = "";
+		//保存用户
+		try{
+			if(user != null && StringUtils.isNotBlank(user.getNowPassword())) {
+				//两次去人输入的密码去掉一个
+				user.setNowPassword(user.getNowPassword().split(",")[0].trim());
+				//设置主键
+				user.setId(UUIDCreate.getUUID());
+			}
+			systemService.saveUser(user);
+		}catch (Exception e) {
+			logger.error("系统错误");
+			logger.error(e.getMessage());
+			throw new Exception(e.getMessage());
+		}
 		return forwardLogin();
 	}
 
@@ -151,6 +173,14 @@ public class SystemAction extends CommonAction<User> {
 
 	public void setRegisterMessage(RegisterMessage registerMessage) {
 		this.registerMessage = registerMessage;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

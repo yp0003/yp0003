@@ -19,19 +19,48 @@
 	rel="stylesheet">
 
 <!--scripts-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootjs/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootjs/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/bootjs/jquery-1.8.3.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/bootjs/jquery-ui-1.9.2.custom.min.js"></script>
 <!--init for this page-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootjs/demo.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/bootjs/demo.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 
 	});
 </script>
+<style type="text/css">
+div#main_centers{
+}
+
+</style>
 </head>
 <body>
-	<a href="${pageContext.request.contextPath}/system!forwardLogin.html">登录</a>
-	<br>
-	<a href="${pageContext.request.contextPath}/system!forwardRegister.html">注册</a>
+	<%@include file="common/common.jsp"%>
+	<div id="main_centers">
+		<div class="top_loop">轮播</div>
+		<div class="top_nva">导航</div>
+		<!-- 下层内容 -->
+		<div class="clear">
+		
+		<div>
+		<div>
+		左侧菜单
+		</div>
+		</div>
+		<div>
+		<div>
+		表格
+		</div>
+		</div>
+		<div>
+		<div>学员心声</div>
+		<div>学员动态</div>
+		</div>
+		</div>
+	</div>
+	<div id="footer">我是底部（下）</div>
 </body>
 </html>

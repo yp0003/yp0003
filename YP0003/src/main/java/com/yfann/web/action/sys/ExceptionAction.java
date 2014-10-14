@@ -4,9 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.yfann.web.pojo.User;
-
-public class ExceptionAction extends CommonAction<User>{
+public class ExceptionAction extends CommonAction{
 	@Autowired
 	private Exception exception;
 	final Logger logger = LoggerFactory.getLogger(ExceptionAction.class);
