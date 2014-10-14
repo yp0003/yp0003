@@ -11,8 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.pojo.User;
+import com.yfann.web.service.SystemService;
 import com.yfann.web.vo.RegisterMessage;
 
 /**
@@ -23,7 +27,10 @@ import com.yfann.web.vo.RegisterMessage;
 public class SystemAction extends CommonAction {
 	private static final long serialVersionUID = -3588626533445197273L;
 	private RegisterMessage registerMessage = new RegisterMessage();
+	final Logger logger = LoggerFactory.getLogger(SystemAction.class);
 	private User user;
+	@Autowired
+	private SystemService systemService;
 	/**
 	 * 注册页面验证码
 	 */
@@ -82,11 +89,21 @@ public class SystemAction extends CommonAction {
 			}
 		}
 		if (registerMessage.isNotEmpty()) {
+			// 表单错误 转向注册页面并清除密码和验证码
+			user.setNowPassword("");
+			validateCode = "";
 			return forwardRegister();
 		}
-		// 表单错误 转向注册页面并清除密码和验证码
-		user.setNowPassword("");
-		validateCode = "";
+		//保存用户
+		try{
+			if(user != null && StringUtils.isNotBlank(user.getNowPassword())) {
+				user.setNowPassword(user.getNowPassword().split(",")[0].trim());
+			}
+			systemService.saveUser(user);
+		}catch (Exception e) {
+			logger.error("系统错误");
+			logger.error(e.getMessage());
+		}
 		return forwardLogin();
 	}
 

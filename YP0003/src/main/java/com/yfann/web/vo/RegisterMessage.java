@@ -41,17 +41,17 @@ public class RegisterMessage {
 	}
 
 	/**
-	 * 如果无提示信息返回true;
+	 * 如果有提示信息返回true;
 	 * @return
 	 */
 	public boolean isNotEmpty() {
 		if (StringUtils.isNotBlank(userIdMessage)
-				&& StringUtils.isNotBlank(passwordMessage)
-				&& StringUtils.isNotBlank(emailMessage)
-				&& StringUtils.isNotBlank(valiCodeMessage)) {
-			return false;
+				|| StringUtils.isNotBlank(passwordMessage)
+				|| StringUtils.isNotBlank(emailMessage)
+				|| StringUtils.isNotBlank(valiCodeMessage)) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 }
