@@ -8,14 +8,13 @@
     <!-- 开发模式下使用，这样可以打印出更详细的错误信息 -->
     <constant name="struts.devMode" value="true" />
     <!-- 当struts的配置文件修改后，系统是否自定重新加载文件，默认值为false(生产环境下使用)，开发阶段最好打开 -->
-    <constant name="struts.i18n.reload" value="false" />
-    <constant name="struts.configuration.xml.reload" value="false" />
+    <constant name="struts.i18n.reload" value="true" />
+    <constant name="struts.configuration.xml.reload" value="true" />
     <!-- 设置浏览器是否缓存静态内容，默认值为true（生产环境下使用），开发阶段最好关闭 -->
-    <constant name="struts.serve.static.browserCache" value="true" />
+    <constant name="struts.serve.static.browserCache" value="false" />
     <!-- xslresult是否使用样式表缓存，开发阶段不使用 -->
-    <constant name="struts.xslt.nocache" value="true" />
-    <!-- 开发者模式 -->
-<constant name="struts.devMode" value="true" />
+    <constant name="struts.xslt.nocache" value="false" />
+    
     <!-- 配置国际化信息 -->
     <constant name="struts.locale" value="zh_CN" />
     <constant name="struts.i18n.encoding" value="UTF-8" />
