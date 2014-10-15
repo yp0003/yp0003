@@ -944,4 +944,10 @@
 		where ID =
 		#{id,jdbcType=VARCHAR}
 	</update>
+	<select id="selectUserByUserId"  parameterType="java.lang.String"  resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List" />
+		from t_sys_user
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</select>
 </mapper>

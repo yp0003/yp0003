@@ -7,7 +7,10 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
@@ -15,9 +18,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.yfann.web.common.CookieUtils;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.SystemService;
+import com.yfann.web.vo.LoginMessage;
 import com.yfann.web.vo.RegisterMessage;
 
 /**
@@ -28,6 +33,11 @@ import com.yfann.web.vo.RegisterMessage;
 public class SystemAction extends CommonAction {
 	private static final long serialVersionUID = -3588626533445197273L;
 	private RegisterMessage registerMessage = new RegisterMessage();
+	private LoginMessage  loginMessage = new LoginMessage();
+	private CookieUtils cookieUtils = new CookieUtils(); 
+	private HttpServletResponse response;  
+	private HttpServletRequest request; 
+	public static final String USER_SESSION = "user.session"; 
 	final Logger logger = LoggerFactory.getLogger(SystemAction.class);
 	private User user;
 	@Autowired
@@ -36,8 +46,46 @@ public class SystemAction extends CommonAction {
 	 * 注册页面验证码
 	 */
 	private String validateCode;
+	
+	private String remPass;
+	
+	public String validateLoginInfo(){
+		if("".equals(user.getUserId())){
+			loginMessage.setUserIdMessage("用户名不能为空！");
+		}
+		if("".equals(user.getNowPassword())){
+			loginMessage.setPasswordMessage("密码不能为空！");
+		}
+		
+		if(loginMessage.isNotEmpty())
+			return "forwardLogin";
+		User userTemp = systemService.validateUser(user);
+		if(null == userTemp){			//没有此用户
+			addActionError("用户不存在，请先注册！");
+			return "forwardLogin";
+		}else if(null != userTemp && !userTemp.getNowPassword().equals(user.getNowPassword())){//存在此用户，但是用户名密码对不上
+			addActionError("用户名输入有误！请输入正确的用户名密码！");
+			return "forwardLogin";
+		}else{//存在此用户并输入正确
+			
+			if(null != remPass && "on".equals(remPass)){//判断是否记住用户名密码
+				
+				Cookie cookie = cookieUtils.addCookie(user); 
+				response = ServletActionContext.getResponse();
+		        response.addCookie(cookie);// 添加cookie到response中
+ 
+			}
+	        
+	        HttpSession session = request.getSession();  
+	    	session.setAttribute(SystemAction.USER_SESSION, user);// 添加用户到session中	    	
+			return "loginSuccess";
+		}
+
+	}
 
 	public String forwardLogin() {
+		request = ServletActionContext.getRequest();
+		user = cookieUtils.getCookie(request);	 
 		return "forwardLogin";
 	}
 
@@ -175,6 +223,15 @@ public class SystemAction extends CommonAction {
 		this.registerMessage = registerMessage;
 	}
 
+	
+	public LoginMessage getLoginMessage() {
+		return loginMessage;
+	}
+
+	public void setLoginMessage(LoginMessage loginMessage) {
+		this.loginMessage = loginMessage;
+	}
+
 	public User getUser() {
 		return user;
 	}
@@ -183,4 +240,29 @@ public class SystemAction extends CommonAction {
 		this.user = user;
 	}
 
+	public String getRemPass() {
+		return remPass;
+	}
+
+	public void setRemPass(String remPass) {
+		this.remPass = remPass;
+	}
+
+	public HttpServletResponse getResponse() {
+		return response;
+	}
+
+	public void setResponse(HttpServletResponse response) {
+		this.response = response;
+	}
+
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	
 }

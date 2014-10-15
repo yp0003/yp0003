@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -77,15 +78,18 @@
  <img class="hr_conTitle" src="${pageContext.request.contextPath}/images/hr_content1.png" alt="" />
  
  <div id="login_form">
- <form id="login">
+<!--  <form id="login"> -->
+   <s:form id="login" action="system!validateLoginInfo.html">
    <ul>
     <li>
     <label for="memberID">用户名:</label>
-    <input id="memberID" type="text" />
+<!--     <input id="memberID" type="text" /> -->
+	<s:textarea id="memberID" name="user.userId"></s:textarea>
     </li>
     <li>
     <label for="passWord">密&nbsp;码:</label>
-    <input id="passWord" type="password" />
+<!--     <input id="passWord" type="password" /> -->
+	<s:password id="passWord"  name="user.nowPassword"></s:password>
     </li>
     <li>
     <input id="remPass" type="checkbox" />
@@ -98,8 +102,8 @@
     <div class="clear"></div>
     </li>
   </ul>
-  </form>
-  
+<!--   </form> -->
+  </s:form>
   <div id="commAccount">
   <span class="lbl_commAcc">合作账号登录：</span>
   <div id="accountList">

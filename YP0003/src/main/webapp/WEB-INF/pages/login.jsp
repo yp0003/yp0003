@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +9,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.9.0.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/itedu.js"></script>
 <link href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet" />
+
 </head>
 <body>
 <!---网页头部 start-->
@@ -77,28 +79,38 @@
  <img class="hr_conTitle" src="${pageContext.request.contextPath}/images/hr_content1.png" alt="" />
  
  <div id="login_form">
- <form id="login">
+<!--  <form id="login"> -->
+   <s:form id="login" action="system!validateLoginInfo">
    <ul>
     <li>
     <label for="memberID">用户名:</label>
-    <input id="memberID" type="text" />
+    <input id="memberID" type="text"  name="user.userId"/>
+	<s:if  test="loginMessage.userIdMessage != null">
+								<span class="redStar"><s:property
+											value="loginMessage.userIdMessage" /></span>
+	</s:if>
     </li>
     <li>
     <label for="passWord">密&nbsp;码:</label>
-    <input id="passWord" type="password" />
+	<s:password id="passWord"  name="user.nowPassword"></s:password>
+	<s:if  test="loginMessage.passwordMessage != null">
+								<span class="redStar"><s:property
+											value="loginMessage.passwordMessage" /></span>
+	</s:if>
     </li>
     <li>
-    <input id="remPass" type="checkbox" />
+    <input id="remPass" type="checkbox" name="remPass"/>
     <label id="lblRemPass" for="remPass">记住密码，两周内自动登录</label>
     <a id="forgetPW" href="#">忘记密码</a>
     <div class="clear"></div>
     </li>
     <li>
+	<s:actionerror cssStyle="color: red" id="errorInfo"/>
     <button id="btn_login" type="submit" value=""></button>
     <div class="clear"></div>
     </li>
   </ul>
-  </form>
+   </s:form>
   
   <div id="commAccount">
   <span class="lbl_commAcc">合作账号登录：</span>
@@ -119,7 +131,7 @@
  <div id="login_rightC">
    <img id="img_right" src="${pageContext.request.contextPath}/images/img_loginC1.jpg" />
    <span class="lblImgInfo">还没有学习账号？</span>
-   <a class="linkImgAction"  href="#">立即去免费注册 &gt;&gt;</a>
+   <a class="linkImgAction"  href="${pageContext.request.contextPath}/system!forwardRegister.html">立即去免费注册 &gt;&gt;</a>
  </div>
  <div class="clear"></div>
  </div>

@@ -4,4 +4,6 @@ import com.yfann.web.pojo.User;
 
 public interface SystemService {
 	public void saveUser(User user) throws Exception;
+	
+	public User validateUser(User user);
 }

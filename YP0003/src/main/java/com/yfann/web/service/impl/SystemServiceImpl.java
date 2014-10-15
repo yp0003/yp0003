@@ -1,5 +1,7 @@
 package com.yfann.web.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,4 +17,15 @@ public class SystemServiceImpl implements SystemService{
 	public void saveUser(User user) throws Exception {
 			userMapper.insertSelective(user);	
 	}
+
+	@Override
+	public User validateUser(User user) {
+		List<User> userList = userMapper.selectUserByUserId(user.getUserId());
+		if(userList != null && !userList.isEmpty())
+			return userList.get(0);
+		else
+		    return null;
+	}
+	
+	
 }
