@@ -15,6 +15,37 @@ public class OrderAction extends CommonAction {
 	private BuyCar buyCar;
 	@Autowired
 	private OrderService orderService;
+	
+	/**
+	 * 增加产品数量
+	 */
+	public String addCount() throws Exception{
+		orderService.addCount(buyCar);
+		return "addCount";
+	}
+	
+	/**
+	 * 单个删除购物车产品
+	 * @return
+	 */
+	public String deleteProductOnBuyCay() throws Exception{
+		try{
+		orderService.deleteProductOnBuyCay(buyCar.getProductId());
+		}catch(Exception e){
+			logger.error("系统异常---------------",e);
+			throw new Exception(e.getMessage());
+		}
+		return "deleteProduct";
+	}
+	
+	/**
+	 * 根据ID批量删除购物车产品
+	 * @return
+	 */
+	public String deleteProductOnBuyCayByAllIds() throws Exception{
+		orderService.deleteProductOnBuyCayByAllIds(buyCar.getIds());
+		return "deleteProductOnBuyCayByAllIds";
+	}
 
 	/**
 	 * 添加到购物车

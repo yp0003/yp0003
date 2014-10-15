@@ -1,79 +1,92 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>365ITEDU</title>
 <!-- Styles -->
-<link type="text/css"
-	href="${pageContext.request.contextPath}/bootcss/custom-theme/jquery-ui-1.9.2.custom.css"
-	rel="stylesheet" />
+<script src="//code.jquery.com/jquery-latest.min.js"></script>
+<script src="//unslider.com/unslider.js"></script>
 
-<link type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css"
-	rel="stylesheet">
-<link type="text/css"
-	href="${pageContext.request.contextPath}/bootcss/demo.css"
-	rel="stylesheet">
-
-<!--scripts-->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/bootjs/jquery-1.8.3.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/bootjs/jquery-ui-1.9.2.custom.min.js"></script>
-<!--init for this page-->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/bootjs/demo.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-
-	});
-</script>
 <style type="text/css">
-div#main_centers {
-	
-}
-
 div.top_loop {
-	background-color: green;
-	height: 300px
+	height: 500px
 }
 
 div.top_nva {
-	background-color: black;
 	height: 50px
-}
-
-div#main_content {
-	
 }
 
 div#left_div {
 	background-color: yellow;
-	width:30%;
+	width: 20%;
 	float: left;
-}
-div#center_div {
-	background-color: blue;
-	width:40%;
-	float: left;
-}
-div#right_div {
-	background-color: red;
-	width:30%;
-	float: left;
+	margin: 10px 0px 0px 10px;
 }
 
+div#center_div {
+	background-color: blue;
+	width: 40%;
+	float: left;
+	margin: 10px 0px 0px 10px;
+}
+
+div#right_div {
+	background-color: red;
+	width: 20%;
+	float: left;
+	margin: 10px 0px 0px 10px;
+}
+
+.banner {
+	position: relative;
+	overflow: auto;
+}
+
+.banner li {
+	list-style: none;
+}
+
+.banner ul li {
+	height: 415px;
+	float: left;
+	background-size:100% 100%;
+}
 </style>
+<script type="text/javascript">
+	$(function() {
+		$('.banner').unslider();
+	});
+</script>
 </head>
 <body>
 	<%@include file="common/common.jsp"%>
-	<div id="main_centers">
-		<div class="top_nva">导航</div>
-		<div class="top_loop">轮播</div>
 
+
+
+	<div id="main_centers">
+		<div class="top_nva">
+			<div id="header_nav">
+				<a class="nav_item selected" href="#">首页</a> <a class="nav_item "
+					href="#">精品课程</a> <a class="nav_item " href="#">名师简介</a> <a
+					class="nav_item " href="#">版权专利</a> <a class="nav_item " href="#">加入我们</a>
+				<a class="nav_item " href="#">联系我们</a>
+			</div>
+		</div>
+		<div class="top_loop">
+			<div class="banner"
+				style="width: 1474px; height: 500px; overflow: hidden;">
+				<ul>
+					<li
+						style="background-image: url('${pageContext.request.contextPath}/loopImage/lop1.jpg');">1111111111</li>
+					<li
+						style="background-image: url('${pageContext.request.contextPath}/loopImage/lop2.jpg');">22222222222</li>
+					<li
+						style="background-image: url('${pageContext.request.contextPath}/loopImage/lop3.jpg');">33333333333</li>
+				</ul>
+			</div>
+		</div>
 		<!-- 下层内容 -->
 		<div class="clear">
 

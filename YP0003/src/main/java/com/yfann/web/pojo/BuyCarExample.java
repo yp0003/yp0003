@@ -2,6 +2,7 @@ package com.yfann.web.pojo;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BuyCarExample {
@@ -545,53 +546,113 @@ public class BuyCarExample {
             return (Criteria) this;
         }
 
-        public Criteria andCountEqualTo(Long value) {
+        public Criteria andCountEqualTo(Integer value) {
             addCriterion("count =", value, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountNotEqualTo(Long value) {
+        public Criteria andCountNotEqualTo(Integer value) {
             addCriterion("count <>", value, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountGreaterThan(Long value) {
+        public Criteria andCountGreaterThan(Integer value) {
             addCriterion("count >", value, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountGreaterThanOrEqualTo(Long value) {
+        public Criteria andCountGreaterThanOrEqualTo(Integer value) {
             addCriterion("count >=", value, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountLessThan(Long value) {
+        public Criteria andCountLessThan(Integer value) {
             addCriterion("count <", value, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountLessThanOrEqualTo(Long value) {
+        public Criteria andCountLessThanOrEqualTo(Integer value) {
             addCriterion("count <=", value, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountIn(List<Long> values) {
+        public Criteria andCountIn(List<Integer> values) {
             addCriterion("count in", values, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountNotIn(List<Long> values) {
+        public Criteria andCountNotIn(List<Integer> values) {
             addCriterion("count not in", values, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountBetween(Long value1, Long value2) {
+        public Criteria andCountBetween(Integer value1, Integer value2) {
             addCriterion("count between", value1, value2, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountNotBetween(Long value1, Long value2) {
+        public Criteria andCountNotBetween(Integer value1, Integer value2) {
             addCriterion("count not between", value1, value2, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddTimeIsNull() {
+            addCriterion("add_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddTimeIsNotNull() {
+            addCriterion("add_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddTimeEqualTo(Date value) {
+            addCriterion("add_time =", value, "addTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddTimeNotEqualTo(Date value) {
+            addCriterion("add_time <>", value, "addTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddTimeGreaterThan(Date value) {
+            addCriterion("add_time >", value, "addTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("add_time >=", value, "addTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddTimeLessThan(Date value) {
+            addCriterion("add_time <", value, "addTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddTimeLessThanOrEqualTo(Date value) {
+            addCriterion("add_time <=", value, "addTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddTimeIn(List<Date> values) {
+            addCriterion("add_time in", values, "addTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddTimeNotIn(List<Date> values) {
+            addCriterion("add_time not in", values, "addTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddTimeBetween(Date value1, Date value2) {
+            addCriterion("add_time between", value1, value2, "addTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddTimeNotBetween(Date value1, Date value2) {
+            addCriterion("add_time not between", value1, value2, "addTime");
             return (Criteria) this;
         }
     }

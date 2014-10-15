@@ -19,4 +19,23 @@ public class OrderServiceImpl implements OrderService {
 	public void addBuyCar(BuyCar buyCar) throws Exception {
 		buyCarMapper.insertSelective(buyCar);
 	}
+
+	@Override
+	public void deleteProductOnBuyCay(String id) {
+		buyCarMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public void deleteProductOnBuyCayByAllIds(String[] ids) {
+		//TODO  耗费资源后期待优化
+		for(String id : ids) {
+			buyCarMapper.deleteByPrimaryKey(id);
+		}
+	}
+
+	@Override
+	public void addCount(BuyCar buyCar) {
+		buyCar.setCount(buyCar.getCount() + 1);
+		buyCarMapper.updateByPrimaryKeySelective(buyCar);
+	}
 }

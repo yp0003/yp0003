@@ -6,26 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>365ITEDU</title>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-1.9.0.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/itedu.js"></script>
-<link href="${pageContext.request.contextPath}/css/index.css"
-	type="text/css" rel="stylesheet" />
 <script type="text/javascript">
 	$(document).ready(function() {
 
 	});
 	function formCommit() {
-		/* 	    var flag = document.getElementById("remPass").checked;
-		 if(flag){
-		 document.forms[0].action="system!register.html";
-		 document.forms[0].submit();
-		 }
-		 else{
-		 alert("接受协议才可注册");
-		 } */
-
 		var flag = document.getElementById("remPass").checked;
 		if (flag) {
 			return true;
