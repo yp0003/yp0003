@@ -33,7 +33,12 @@
 	<a href="${pageContext.request.contextPath}/system!forwardLogin.html">登录</a>
 	<br>
 	<a href="${pageContext.request.contextPath}/system!forwardRegister.html">注册</a>
-	<a href="${pageContext.request.contextPath}/system!forwardIndex.html">主页</a>
 	
+	<p>OA</p> 
+	<a href="${pageContext.request.contextPath}/employee!forwardLogin.html">登录</a>
+	<br>
+	<a href="${pageContext.request.contextPath}/employee!forwardRegister.html">注册</a>
+	<br>
+	<a href="${pageContext.request.contextPath}/employee!forwardMypage.html">注册</a>
 </body>
 </html>
