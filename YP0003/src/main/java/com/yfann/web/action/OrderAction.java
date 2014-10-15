@@ -1,5 +1,7 @@
 package com.yfann.web.action;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,42 +9,63 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.BuyCar;
 import com.yfann.web.service.OrderService;
+import com.yfann.web.vo.PageInfo;
 
 public class OrderAction extends CommonAction {
+
 
 	final Logger logger = LoggerFactory.getLogger(OrderAction.class);
 	private static final long serialVersionUID = 5350272860785771007L;
 	private BuyCar buyCar;
+	private PageInfo pageInfo;
+	private List<BuyCar> buyCarList;
 	@Autowired
 	private OrderService orderService;
-	
+
+	public String buyCarList() throws Exception{
+		if(buyCar == null){
+			buyCar = new BuyCar();
+		}
+		try{
+		buyCarList = orderService.findBuyCarList(buyCar, pageInfo);
+		}catch(Exception e){
+			logger.error(e.getMessage());
+			logger.error(e.getLocalizedMessage());
+			throw new Exception(e.getMessage(),e);
+		}
+		return "buyCarList";
+	}
+
 	/**
 	 * 增加产品数量
 	 */
-	public String addCount() throws Exception{
+	public String addCount() throws Exception {
+
 		orderService.addCount(buyCar);
 		return "addCount";
 	}
-	
+
 	/**
 	 * 单个删除购物车产品
+	 * 
 	 * @return
 	 */
-	public String deleteProductOnBuyCay() throws Exception{
-		try{
-		orderService.deleteProductOnBuyCay(buyCar.getProductId());
-		}catch(Exception e){
-			logger.error("系统异常---------------",e);
+	public String deleteProductOnBuyCay() throws Exception {
+		try {
+			orderService.deleteProductOnBuyCay(buyCar.getProductId());
+		} catch (Exception e) {
+			logger.error("系统异常---------------", e);
 			throw new Exception(e.getMessage());
 		}
 		return "deleteProduct";
 	}
-	
+
 	/**
 	 * 根据ID批量删除购物车产品
+	 * 
 	 * @return
 	 */
-	public String deleteProductOnBuyCayByAllIds() throws Exception{
+	public String deleteProductOnBuyCayByAllIds() throws Exception {
 		orderService.deleteProductOnBuyCayByAllIds(buyCar.getIds());
 		return "deleteProductOnBuyCayByAllIds";
 	}
@@ -53,8 +76,12 @@ public class OrderAction extends CommonAction {
 	 * @return
 	 */
 	public String addBuyCar() throws Exception {
-		if (buyCar != null) {
+		for (int i = 0; i < 47; i++) {
+			BuyCar buyCar = new BuyCar();
 			buyCar.setId(UUIDCreate.getUUID());
+			buyCar.setProductId("egwhgiwohgiow" + i);
+			buyCar.setProductName("fwegwgwte" + i);
+			buyCar.setUserId("eetwetiiii" + i);
 			orderService.addBuyCar(buyCar);
 		}
 		return "addBuyCar";
@@ -75,6 +102,22 @@ public class OrderAction extends CommonAction {
 
 	public void setBuyCar(BuyCar buyCar) {
 		this.buyCar = buyCar;
+	}
+
+	public PageInfo getPageInfo() {
+		return pageInfo;
+	}
+
+	public void setPageInfo(PageInfo pageInfo) {
+		this.pageInfo = pageInfo;
+	}
+
+	public List<BuyCar> getBuyCarList() {
+		return buyCarList;
+	}
+
+	public void setBuyCarList(List<BuyCar> buyCarList) {
+		this.buyCarList = buyCarList;
 	}
 
 }

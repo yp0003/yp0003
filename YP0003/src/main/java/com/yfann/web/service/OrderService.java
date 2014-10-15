@@ -1,8 +1,17 @@
 package com.yfann.web.service;
 
+import java.util.List;
+
 import com.yfann.web.pojo.BuyCar;
+import com.yfann.web.vo.PageInfo;
 
 public interface OrderService {
+	/**
+	 * 根据条件查询购物车产品
+	 * @param buyCar
+	 * @return
+	 */
+	public List<BuyCar> findBuyCarList(BuyCar buyCar,PageInfo pageInfo) throws Exception;
 	/**
 	 * 产品增加到购物车
 	 * @param buyCar

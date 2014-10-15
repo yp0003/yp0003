@@ -87,6 +87,20 @@
     -->
     id, product_id, product_name, user_id, price, count, add_time
   </sql>
+  	<!-- 根据条件查询购物车商品 -->
+	<select id="selectBuyCarListByParamer" parameterType="map"
+		resultMap="BaseResultMap">
+
+		select
+		<include refid="Base_Column_List" />
+		from t_buy_car t where 1 = 1
+	</select>
+
+	<select id="selectBuyCarCountByParamer" parameterType="map"
+		resultType="java.lang.Integer">
+
+		select count(*) from t_buy_car t where 1 = 1
+	</select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yfann.web.pojo.BuyCarExample" >
     <!--
       WARNING - @mbggenerated

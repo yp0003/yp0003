@@ -1,5 +1,10 @@
 package com.yfann.web.service.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.yfann.web.dao.BuyCarMapper;
 import com.yfann.web.pojo.BuyCar;
 import com.yfann.web.service.OrderService;
+import com.yfann.web.vo.PageInfo;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -37,5 +43,17 @@ public class OrderServiceImpl implements OrderService {
 	public void addCount(BuyCar buyCar) {
 		buyCar.setCount(buyCar.getCount() + 1);
 		buyCarMapper.updateByPrimaryKeySelective(buyCar);
+	}
+	
+	private Map<String, Object> getBuyCarParamerMap(BuyCar buyCar){
+		Map<String, Object> parames = new HashMap<String, Object>();
+		return parames;
+}
+
+	@Override
+	public List<BuyCar> findBuyCarList(BuyCar buyCar, PageInfo pageInfo) throws Exception{
+		Map<String, Object> parames = getBuyCarParamerMap(buyCar);
+		pageInfo.setCount(buyCarMapper.selectBuyCarCountByParamer(parames));
+		return buyCarMapper.selectBuyCarListByParamer(parames, new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
 	}
 }
