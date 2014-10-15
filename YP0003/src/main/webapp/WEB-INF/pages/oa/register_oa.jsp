@@ -77,7 +77,7 @@
     <div class="clear"></div>
     </li>
     </ul>
-  </form>
+  </s:form>
  </div>
 </div>
 
