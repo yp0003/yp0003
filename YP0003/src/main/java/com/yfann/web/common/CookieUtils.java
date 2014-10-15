@@ -2,10 +2,6 @@ package com.yfann.web.common;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import com.yfann.web.action.sys.SystemAction;
-import com.yfann.web.dao.UserMapper;
 import com.yfann.web.pojo.User;
 
 
