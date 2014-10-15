@@ -35,8 +35,7 @@ public class SystemAction extends CommonAction {
 	private static final long serialVersionUID = -3588626533445197273L;
 	private RegisterMessage registerMessage = new RegisterMessage();
 	private LoginMessage  loginMessage = new LoginMessage();
-	private CookieUtils cookieUtils = new CookieUtils(); 
-	public static final String USER_SESSION = ApplicationValue.USER_KEY_ON_SESSION; 
+	private CookieUtils cookieUtils = new CookieUtils();  
 	private HttpServletResponse response;  
 	private HttpServletRequest request; 
 	final Logger logger = LoggerFactory.getLogger(SystemAction.class);
@@ -47,6 +46,18 @@ public class SystemAction extends CommonAction {
 	private String validateCode;
 	
 	private String remPass;
+	
+	
+	// 用户退出  
+    public String logout() {  
+        HttpSession session = request.getSession(false);  
+        if (session != null)  
+            session.removeAttribute( ApplicationValue.USER_KEY_ON_SESSION);  
+        Cookie cookie = cookieUtils.delCookie(request);  
+        if (cookie != null)  
+            response.addCookie(cookie);  
+        return "forwardLogin";
+    }  
 	
 	public String validateLoginInfo(){
 		if("".equals(user.getUserId())){
@@ -76,7 +87,7 @@ public class SystemAction extends CommonAction {
 			}
 	        
 	        HttpSession session = request.getSession();  
-	    	session.setAttribute(SystemAction.USER_SESSION, user);// 添加用户到session中	    	
+	    	session.setAttribute( ApplicationValue.USER_KEY_ON_SESSION, user);// 添加用户到session中	    	
 			return "loginSuccess";
 		}
 
