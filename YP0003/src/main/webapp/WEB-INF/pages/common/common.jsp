@@ -2,16 +2,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link href="${pageContext.request.contextPath}/css/skin.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.9.0.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/itedu.js"></script>
 <link href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/wysiwyg.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/wysiwyg-settings.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
-<script language="JavaScript" type="text/javascript" src="${pageContext.request.contextPath}/js/My97DatePicker/WdatePicker.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/MyTreeUtil.js"></script>
 </head>
 <body>
 <!---网页头部 start-->

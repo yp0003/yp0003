@@ -15,7 +15,7 @@ public class SystemServiceImpl implements SystemService{
 
 	@Override
 	public void saveUser(User user) throws Exception {
-			userMapper.insertSelective(user);	
+			userMapper.insertSelective(user);
 	}
 
 	@Override
