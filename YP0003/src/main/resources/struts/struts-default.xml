@@ -20,8 +20,8 @@
 		<default-interceptor-ref name="yfannDefaultStack" />
 		
 		<global-results>
-			<result name="errHandler" type="chain">errorAction</result>
-			<result name="error" type="dispatcher">/WEB-INF/pages/error/globalError.jsp</result>
+<!-- 			<result name="errHandler" type="chain">errorAction</result> -->
+			<result name="errHandler" type="dispatcher">/WEB-INF/pages/error/globalError.jsp</result>
 		</global-results>
 		
 		
@@ -31,10 +31,9 @@
 		
 		<!-- 异常 -->
 		<action name="errorAction" class="com.yfann.web.action.ExceptionAction">
-			<interceptor-ref name="yfannDefaultStack" />
 			<result name="error" type="dispatcher">/WEB-INF/pages/error/globalError.jsp</result>
 			
-			<exception-mapping result="error" exception="java.lang.Exception" />
+<!-- 			<exception-mapping result="error" exception="java.lang.Exception" /> -->
 		</action>
 	</package>
 
