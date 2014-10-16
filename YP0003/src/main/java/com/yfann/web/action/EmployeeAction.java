@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -22,6 +24,7 @@ import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.common.CookieUtils;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.Employee;
+import com.yfann.web.pojo.User;
 import com.yfann.web.service.EmployeeService;
 import com.yfann.web.vo.LoginMessage;
 import com.yfann.web.vo.RegisterMessage;
@@ -39,13 +42,76 @@ public class EmployeeAction extends CommonAction {
 	private CookieUtils cookieUtils = new CookieUtils();
 	final Logger logger = LoggerFactory.getLogger(EmployeeAction.class);
 	private Employee employee;
+	private String birthday;
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
 	@Autowired
 	private EmployeeService employeeService;
 	/** 注册页面验证码 */
 	private String validateCode;
 
 	private String remPass;
+	// 转向修改用户资料页面
+	public String updateInfoUI() {
+		employee = (Employee) session.getAttribute(ApplicationValue.EMPLOYEE_KEY_ON_SESSION);
+		if (employee == null) {
+			return "forwardLogin";
+		}
+		this.birthday = (new SimpleDateFormat("yyyy-MM-dd")).format(employee.getBirthday());
+		return "updateInfoUI";
+	}
 
+	// 修改用户资料
+	public String updateInfo() throws Exception {
+		Employee u = (Employee) session.getAttribute(ApplicationValue.EMPLOYEE_KEY_ON_SESSION);
+		if (u == null) {
+			return "forwardLogin";
+		}
+		if (employee.getNick() != null)
+			u.setNick(employee.getNick());
+		if (employee.getEmpName() != null)
+			u.setEmpName(employee.getEmpName());
+
+		if (birthday != null && !"".equals(birthday)) {
+			Date bir = (new SimpleDateFormat("yyyy-MM-dd")).parse(birthday);
+			u.setBirthday(bir);
+		}
+
+		if (employee.getSex() != null)
+			u.setSex(employee.getSex());
+		if (employee.getIdcardNumber() != null)
+			u.setIdcardNumber(employee.getIdcardNumber());
+		if (employee.getEducation() != null)
+			u.setEducation(employee.getEducation());
+		if (employee.getForeignCountrie() != null)
+			u.setForeignCountrie(employee.getForeignCountrie());
+		if (employee.getGraduateSchool() != null)
+			u.setGraduateSchool(employee.getGraduateSchool());
+		if (employee.getPhoneNumber() != null)
+			u.setPhoneNumber(employee.getPhoneNumber());
+		if (employee.getCountrie() != null)
+			u.setCountrie(employee.getCountrie());
+		if (employee.getProvinceAndCity() != null)
+			u.setProvinceAndCity(employee.getProvinceAndCity());
+		if (employee.getAddress() != null)
+			u.setAddress(employee.getAddress());
+		if (employee.getZipCode() != null)
+			u.setZipCode(employee.getZipCode());
+		if (employee.getEmail() != null)
+			u.setEmail(employee.getEmail());
+		if (employee.getQq() != null)
+			u.setQq(employee.getQq());
+
+		employeeService.updateEmployee(u);
+		return "updateInfo";
+	}
+	
 	// 转向修改密码页面
 	public String updatePasswordUI() {
 		return "updatePasswordUI";
