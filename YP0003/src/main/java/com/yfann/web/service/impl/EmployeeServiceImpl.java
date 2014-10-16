@@ -31,4 +31,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 			return null;
 		}
 	}
+
+	@Override
+	public void updateEmployee(Employee employee) throws Exception {
+		employeeMapper.updateByPrimaryKeySelective(employee);
+	}
 }

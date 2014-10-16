@@ -10,5 +10,18 @@ public interface EmployeeService {
 	 */
 	public void saveEmployee(Employee employee) throws Exception;
 	
+	/**
+	 * 更新员工
+	 * @param employee
+	 * @throws Exception
+	 */
+	public void updateEmployee(Employee employee) throws Exception;
+	
+	/**
+	 * 通过员工编号获取员工
+	 * @param employee
+	 * @return
+	 */
 	public Employee validateEmployee(Employee employee);
+	
 }

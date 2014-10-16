@@ -36,8 +36,6 @@ public class SystemAction extends CommonAction {
 	private RegisterMessage registerMessage = new RegisterMessage();
 	private LoginMessage  loginMessage = new LoginMessage();
 	private CookieUtils cookieUtils = new CookieUtils();  
-	private HttpServletResponse response;  
-	private HttpServletRequest request; 
 	final Logger logger = LoggerFactory.getLogger(SystemAction.class);
 	private User user;
 	@Autowired
@@ -47,7 +45,58 @@ public class SystemAction extends CommonAction {
 	
 	private String remPass;
 	
-	
+	// 转向修改密码页面
+	public String updatePasswordUI() {
+		return "updatePasswordUI";
+	}
+
+	// 修改密码
+	public String updatePassword() throws Exception {
+		//验证当前密码
+		if ("".equals(user.getOldPassword())) {
+			registerMessage.setPasswordMessage("当前密码不能为空！");
+			return "updatePasswordUI";
+		}
+		User u = (User) session.getAttribute(ApplicationValue.USER_KEY_ON_SESSION);
+		if(u==null){
+			return "forwardLogin";
+		}
+		if(!u.getNowPassword().equals(user.getOldPassword())){
+			registerMessage.setPasswordMessage("当前密码输入错误！");
+			return "updatePasswordUI";
+		}
+		String nowPD;
+		// 验证新密码
+		if (!(StringUtils.isNotBlank(user.getNowPassword()))) {
+			registerMessage.setPasswordMessage("密码为空!");
+			return "updatePasswordUI";
+		} else {
+			String[] passwords = user.getNowPassword().split(",");
+			nowPD = passwords[0];
+			if (passwords.length != 2) {
+				registerMessage.setPasswordMessage("密码非法!");
+				return "updatePasswordUI";
+			} else if (passwords.length > 1) {
+				if (passwords[0].trim().length() < 5
+						&& passwords[0].trim().length() > 20) {
+					registerMessage.setPasswordMessage("密码过长或过短!");
+					return "updatePasswordUI";
+				} else if (!passwords[0].trim().equals(passwords[1].trim())) {
+					registerMessage.setPasswordMessage("两次密码不一致!");
+					return "updatePasswordUI";
+				}
+			}
+		}
+		
+		if (u.getOldPassword() != null && !"".equals(u.getOldPassword())){
+			u.setThanOldPassword(u.getOldPassword());
+		}
+		u.setOldPassword(user.getOldPassword());
+		u.setNowPassword(nowPD);
+		systemService.updateUser(u);
+		return logout();
+	}
+
 	// 用户退出  
     public String logout() {  
         HttpSession session = request.getSession(false);  
@@ -86,8 +135,7 @@ public class SystemAction extends CommonAction {
  
 			}
 	        
-	        HttpSession session = request.getSession();  
-	    	session.setAttribute( ApplicationValue.USER_KEY_ON_SESSION, user);// 添加用户到session中	    	
+	    	session.setAttribute( ApplicationValue.USER_KEY_ON_SESSION, userTemp);// 添加用户到session中	    	
 			return "loginSuccess";
 		}
 

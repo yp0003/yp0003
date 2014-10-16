@@ -4,9 +4,18 @@ import org.apache.commons.lang3.StringUtils;
 
 public class RegisterMessage {
 	private String userIdMessage;
+	private String oldPasswordMessage;
 	private String passwordMessage;
 	private String emailMessage;
 	private String valiCodeMessage;
+
+	public String getOldPasswordMessage() {
+		return oldPasswordMessage;
+	}
+
+	public void setOldPasswordMessage(String oldPasswordMessage) {
+		this.oldPasswordMessage = oldPasswordMessage;
+	}
 
 	public String getUserIdMessage() {
 		return userIdMessage;
@@ -47,6 +56,7 @@ public class RegisterMessage {
 	 */
 	public boolean isNotEmpty() {
 		if (StringUtils.isNotBlank(userIdMessage)
+				|| StringUtils.isNotBlank(oldPasswordMessage)
 				|| StringUtils.isNotBlank(passwordMessage)
 				|| StringUtils.isNotBlank(emailMessage)
 				|| StringUtils.isNotBlank(valiCodeMessage)) {
