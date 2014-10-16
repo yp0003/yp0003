@@ -29,8 +29,7 @@
 </head>
 <body>
 	<%@include file="common/common.jsp"%>
-
-	<div id="headerC_wrap">
+<%-- 	<div id="headerC_wrap">
 
 		<div id="headerC">
 			<img id="img_world"
@@ -203,7 +202,6 @@
 	<div id="con_service">
 		<a id="connect_sevice" href="#">点击此处 &gt;</a>
 	</div>
-	<!--客服部分 end-->
-	<s:debug></s:debug>
+	<!--客服部分 end--> --%>
 </body>
 </html>
