@@ -5,6 +5,15 @@ import org.apache.commons.lang3.StringUtils;
 public class LoginMessage {
 	private String userIdMessage;
 	private String passwordMessage;
+	private String valiCodeMessage;
+
+	public String getValiCodeMessage() {
+		return valiCodeMessage;
+	}
+
+	public void setValiCodeMessage(String valiCodeMessage) {
+		this.valiCodeMessage = valiCodeMessage;
+	}
 
 	public String getUserIdMessage() {
 		return userIdMessage;
@@ -22,15 +31,15 @@ public class LoginMessage {
 		this.passwordMessage = passwordMessage;
 	}
 
-
-
 	/**
 	 * 如果有提示信息返回true;
+	 * 
 	 * @return
 	 */
 	public boolean isNotEmpty() {
 		if (StringUtils.isNotBlank(userIdMessage)
-				|| StringUtils.isNotBlank(passwordMessage)) {
+				|| StringUtils.isNotBlank(passwordMessage)
+				|| StringUtils.isNotBlank(valiCodeMessage)) {
 			return true;
 		}
 		return false;

@@ -9,4 +9,6 @@ public interface EmployeeService {
 	 * @throws Exception
 	 */
 	public void saveEmployee(Employee employee) throws Exception;
+	
+	public Employee validateEmployee(Employee employee);
 }

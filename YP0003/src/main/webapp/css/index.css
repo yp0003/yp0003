@@ -44,7 +44,7 @@ body#admin{background:#d6dee0;}
 #login a.chgVertImg{text-decoration:underline; color:#2a80cf; vertical-align:bottom;}
 #login input#remPass{margin-left:80px; float:left; margin-right:5px; margin-top:6px;}
 #login label#lblRemPass{display:inline-block; float:left; font-size:12px; color:#bbbbbb; width:60px; margin-top:5px; padding-left:0px;}
-#login #btn_login{display:inline-block; float:left; margin-top:5px; margin-left:75px; border:none; width:260px; height:44px; background:url(../../images/btn_login2.png) left top no-repeat;}
+#login #btn_login{display:inline-block; float:left; margin-top:5px; margin-left:75px; border:none; width:260px; height:44px; background:url(../images/btn_login2.png) left top no-repeat;}
 #login #btn_login:hover{background-image:url(../images/btn_login2_active.png); cursor:pointer;}
 #login a.chgForm{display:inline-block;  float:left; margin-top:20px; margin-left:10px;  font-family:"寰蒋闆呴粦"; font-size:14px; color:#ff6c00;}
 

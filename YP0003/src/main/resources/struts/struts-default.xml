@@ -19,22 +19,22 @@
 		
 		<default-interceptor-ref name="yfannDefaultStack" />
 		
-		<global-results>
+<!-- 		<global-results> -->
 <!-- 			<result name="errHandler" type="chain">errorAction</result> -->
-			<result name="errHandler" type="dispatcher">/WEB-INF/pages/error/globalError.jsp</result>
-		</global-results>
+<!-- 			<result name="errHandler" type="dispatcher">/WEB-INF/pages/error/globalError.jsp</result> -->
+<!-- 		</global-results> -->
 		
 		
-		<global-exception-mappings>
-			<exception-mapping result="errHandler" exception="java.lang.Exception" />
-		</global-exception-mappings>
+<!-- 		<global-exception-mappings> -->
+<!-- 			<exception-mapping result="errHandler" exception="java.lang.Exception" /> -->
+<!-- 		</global-exception-mappings> -->
 		
 		<!-- 异常 -->
-		<action name="errorAction" class="com.yfann.web.action.ExceptionAction">
-			<result name="error" type="dispatcher">/WEB-INF/pages/error/globalError.jsp</result>
+<!-- 		<action name="errorAction" class="com.yfann.web.action.ExceptionAction"> -->
+<!-- 			<result name="error" type="dispatcher">/WEB-INF/pages/error/globalError.jsp</result> -->
 			
 <!-- 			<exception-mapping result="error" exception="java.lang.Exception" /> -->
-		</action>
+<!-- 		</action> -->
 	</package>
 
 </struts>

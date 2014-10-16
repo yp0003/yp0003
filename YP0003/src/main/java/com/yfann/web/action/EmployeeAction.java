@@ -7,7 +7,10 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
@@ -15,9 +18,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.yfann.web.common.ApplicationValue;
+import com.yfann.web.common.CookieUtils;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.Employee;
 import com.yfann.web.service.EmployeeService;
+import com.yfann.web.vo.LoginMessage;
 import com.yfann.web.vo.RegisterMessage;
 
 /**
@@ -26,25 +32,102 @@ import com.yfann.web.vo.RegisterMessage;
  * 
  */
 public class EmployeeAction extends CommonAction {
-	private static final long serialVersionUID = -371379211951087793L;
+	private static final long serialVersionUID = 4598057907535359991L;
+	
 	private RegisterMessage registerMessage = new RegisterMessage();
+	private LoginMessage  loginMessage = new LoginMessage();
+	private CookieUtils cookieUtils = new CookieUtils();  
+	private HttpServletResponse response;  
+	private HttpServletRequest request; 
 	final Logger logger = LoggerFactory.getLogger(EmployeeAction.class);
 	private Employee employee;
 	@Autowired
 	private EmployeeService employeeService;
-	/**
-	 * 注册页面验证码
-	 */
+	/**注册页面验证码*/
 	private String validateCode;
+	
+	private String remPass;
+	
+	
+	// 用户退出  
+    public String logout() {  
+        HttpSession session = request.getSession(false);  
+        if (session != null)  
+            session.removeAttribute( ApplicationValue.EMPLOYEE_KEY_ON_SESSION);  
+        Cookie cookie = cookieUtils.delCookie(request);  
+        if (cookie != null)  
+            response.addCookie(cookie);  
+        return "forwardLogin";
+    }  
+	
+	public String validateLoginInfo(){
+		if("".equals(employee.getEmpId())){
+			loginMessage.setUserIdMessage("用户名不能为空！");
+		}
+		if("".equals(employee.getNowPassword())){
+			loginMessage.setPasswordMessage("密码不能为空！");
+		}
+		if("".equals(validateCode)){
+			loginMessage.setPasswordMessage("请填写验证码！");
+		}
+		// 对比验证码
+		String valiCode = (String) session.getAttribute("valiCode").toString();
+		if (!valiCode.equals(validateCode)) {
+			loginMessage.setValiCodeMessage("验证码不正确!");
+		}
+		// 有错误信息则返回登录
+		if(loginMessage.isNotEmpty()){
+			return "forwardLogin";
+		}
+		
+		Employee employeeTemp = employeeService.validateEmployee(employee);
+		if(null == employeeTemp){			//没有此用户
+			addActionError("用户不存在，请先注册！");
+			return "forwardLogin";
+		}else if(null != employeeTemp && !employeeTemp.getNowPassword().equals(employee.getNowPassword())){//存在此用户，但是用户名密码对不上
+			addActionError("用户名输入有误！请输入正确的用户名密码！");
+			return "forwardLogin";
+		}else{//存在此用户并输入正确
+			
+			if(null != remPass && "on".equals(remPass)){//判断是否记住用户名密码
+				
+				Cookie cookie = cookieUtils.addCookie(employee); 
+				response = ServletActionContext.getResponse();
+		        response.addCookie(cookie);// 添加cookie到response中
+ 
+			}
+	        
+	    	session.setAttribute( ApplicationValue.EMPLOYEE_KEY_ON_SESSION, employee);// 添加用户到session中	    	
+			return "loginSuccess";
+		}
 
+	}
+
+	
+	public String forwardIndex(){
+		return "forwardIndex";
+	}
+	/**
+	 * 跳转到登录界面
+	 * @return
+	 */
 	public String forwardLogin() {
+		request = ServletActionContext.getRequest();
+		employee = cookieUtils.getEmpCookie(request);	 
 		return "forwardLogin";
 	}
 
+	/**
+	 * 跳转到注册界面
+	 * @return
+	 */
 	public String forwardRegister() {
 		return "forwardRegister";
 	}
-
+	/**
+	 * 注册功能
+	 * @return
+	 */
 	public String register() throws Exception {
 		if (employee != null) {
 			// 验证用户ID
@@ -75,13 +158,7 @@ public class EmployeeAction extends CommonAction {
 			// 对比验证码
 			if (StringUtils.isNotBlank(employee.getEmpId())) {
 				// 获取session中验证码
-				String valiCode = "";
-				try {
-					valiCode = (String) session.getAttribute("valiCode").toString();
-				}
-				catch (Exception e){
-					e.getMessage();
-				}
+				String valiCode = (String) session.getAttribute("valiCode").toString();
 				if (!valiCode.equals(validateCode)) {
 					registerMessage.setValiCodeMessage("验证码不正确!");
 				}
@@ -179,8 +256,48 @@ public class EmployeeAction extends CommonAction {
 		return employee;
 	}
 
-	public void setEmployee(Employee Employee) {
-		this.employee = Employee;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+
+	public LoginMessage getLoginMessage() {
+		return loginMessage;
+	}
+
+
+	public void setLoginMessage(LoginMessage loginMessage) {
+		this.loginMessage = loginMessage;
+	}
+
+
+	public HttpServletResponse getResponse() {
+		return response;
+	}
+
+
+	public void setResponse(HttpServletResponse response) {
+		this.response = response;
+	}
+
+
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+
+
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+
+	public String getRemPass() {
+		return remPass;
+	}
+
+
+	public void setRemPass(String remPass) {
+		this.remPass = remPass;
 	}
 
 }

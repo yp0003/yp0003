@@ -22,8 +22,8 @@
                 </td>
             </tr>
         </table>
-        <div id="">
-            <input type="button" class="button gray1" value="返回登录页面" onclick="forwardLogin()" />
+        <div align="center" id="">
+            <a href="index.jsp">返回主页</a>
         </div>
     </form>
 </body>

@@ -39,6 +39,8 @@
   <div class="clear"></div>
  </div>
  <img src="${pageContext.request.contextPath}/images/hr_admin.png" alt="" />
+ 
+ <!-- 表单 -->
   <s:form action="employee!register.html" id="register">
     <ul>
     <li>
@@ -51,29 +53,38 @@
     </li>
     <li>
     <label for="passWord">密码:</label>
-    <input id="passWord" type="password" placeHolder="英文、数字或字符，6-20位区分大小写" />
+    <s:textfield id="passWord" placeHolder="英文、数字或字符，6-20位区分大小写" name="employee.nowPassword" />
     <span class="redStar">*</span>
+     <s:if test="registerMessage.passwordMessage != null">
+      <span class="redStar"><s:property	value="registerMessage.passwordMessage" /></span>
+     </s:if>
     </li>
     <li>
     <label for="passWord">确认密码:</label>
-    <input id="passWord" type="password" />
+    <s:textfield id="passWord" type="password" name="employee.nowPassword" />
     <span class="redStar">*</span>
     </li>
     <li>
     <label for="passWord">电子邮箱:</label>
-    <input id="passWord" type="password" placeHolder="请使用常用邮箱地址作为登录账号" />
+    <s:textfield id="passWord" placeHolder="请使用常用邮箱地址作为登录账号" name="employee.email" />
     <span class="redStar">*</span>
+     <s:if test="registerMessage.emailMessage != null">
+      <span class="redStar"><s:property	value="registerMessage.emailMessage" /></span>
+     </s:if>
     </li>
     <li>
     <label for="vertCode">验证码:</label>
-    <input id="vertCode" type="text" />
-    <img id="vertImg" src="${pageContext.request.contextPath}/images/vetiCode.jpg" />
-    <a class="chgVertImg" href="#" >看不清，换一张</a>
+    <s:textfield id="vertCode" name="validateCode" />
+    <img id="vertImg" src="${pageContext.request.contextPath}/employee!validateCode.html" />
+    <a class="chgVertImg" href="javascript:void(0);" onclick="reImg()">看不清，换一张</a>
+     <s:if test="registerMessage.valiCodeMessage != null">
+      <span class="redStar"><s:property	value="registerMessage.valiCodeMessage" /></span>
+     </s:if>
     </li>
    
     <li>
     <button id="btn_register" type="submit" value=""></button>
-    <a class="chgForm" href="#">登录</a>
+    <a class="chgForm" href="${pageContext.request.contextPath}/employee!forwardLogin.html">登录</a>
     <div class="clear"></div>
     </li>
     </ul>

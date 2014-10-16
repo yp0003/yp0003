@@ -39,6 +39,6 @@
 	<br>
 	<a href="${pageContext.request.contextPath}/employee!forwardRegister.html">注册</a>
 	<br>
-	<a href="${pageContext.request.contextPath}/employee!forwardMypage.html">注册</a>
+	<a href="${pageContext.request.contextPath}/employee!forwardMypage.html">页面</a>
 </body>
 </html>

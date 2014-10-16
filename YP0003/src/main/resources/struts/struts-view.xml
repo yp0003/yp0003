@@ -21,10 +21,9 @@
 			class="com.yfann.web.action.EmployeeAction">
 			<!-- 转向登录页面 -->
 			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
+			<result name="loginSuccess">/WEB-INF/pages/oa/mypage_oa.jsp</result>
 			<!-- 转向注册页面 -->
 			<result name="forwardRegister">/WEB-INF/pages/oa/register_oa.jsp</result>
-			<!-- 转向注册页面 -->
-			<result name="forwardMypage">/WEB-INF/pages/oa/mypage_oa.jsp</result>
 			<!-- 跳转到主页 -->
 			<result name="forwardIndex">/index.jsp</result>
 		</action>

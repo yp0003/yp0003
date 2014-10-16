@@ -42,6 +42,7 @@ public class RegisterMessage {
 
 	/**
 	 * 如果有提示信息返回true;
+	 * 
 	 * @return
 	 */
 	public boolean isNotEmpty() {
