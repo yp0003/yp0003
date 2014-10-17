@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="com.yfann.web.page" prefix="p"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,7 +30,7 @@
 </head>
 <body>
 	<%@include file="common/common.jsp"%>
-<%-- 	<div id="headerC_wrap">
+	<%-- 	<div id="headerC_wrap">
 
 		<div id="headerC">
 			<img id="img_world"
@@ -203,5 +204,35 @@
 		<a id="connect_sevice" href="#">点击此处 &gt;</a>
 	</div>
 	<!--客服部分 end--> --%>
+
+
+	<div class="row">
+		<div class="col-md-6">
+			<table border="1">
+				<tbody>
+					<s:iterator value="buyCarList" id="carList" status="status">
+						<tr align="center">
+							<td><s:property value="#carList.id" /></td>
+							<td align="left"><s:property value="#carList.productId" /></td>
+							<td align="left"><s:property value="#carList.productName" /></td>
+							<td><s:property value="#carList.userId" /></td>
+						</tr>
+					</s:iterator>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4"><s:if test="buyCarList.size > 0">
+								<div align="right">
+									<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
+										pageSize="pageInfo.pageSize" count="pageInfo.count"
+										includes="" />
+								</div>
+							</s:if></td>
+					</tr>
+				</tfoot>
+			</table>
+
+		</div>
+	</div>
 </body>
 </html>
