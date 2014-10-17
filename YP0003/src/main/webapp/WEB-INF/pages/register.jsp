@@ -205,7 +205,7 @@
 	</div>
 	<!--客服部分 end--> --%>
 
-
+  <div class="index_content container index_lr" id="index_picture">
 	<div class="row">
 		<div class="col-md-6">
 			<table border="1">
@@ -233,6 +233,7 @@
 			</table>
 
 		</div>
+	</div>
 	</div>
 </body>
 </html>
