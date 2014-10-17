@@ -15,7 +15,7 @@ public class SystemServiceImpl implements SystemService{
 
 	@Override
 	public void saveUser(User user) throws Exception {
-			userMapper.insertSelective(user);
+			userMapper.insert(user);
 	}
 
 	@Override
@@ -25,6 +25,11 @@ public class SystemServiceImpl implements SystemService{
 			return userList.get(0);
 		else
 		    return null;
+	}
+
+	@Override
+	public void updateUser(User user) throws Exception {
+		userMapper.updateByPrimaryKeySelective(user);
 	}
 	
 	

@@ -11,9 +11,15 @@
 			<result name="forwardLogin">/WEB-INF/pages/login.jsp</result>
 			<!-- 转向注册页面 -->
 			<result name="forwardRegister">/WEB-INF/pages/register.jsp</result>
-			<result name="loginSuccess">/WEB-INF/pages/myPage.jsp</result>
+			<result name="loginSuccess">/WEB-INF/pages/mypage.jsp</result>
 			<!-- 跳转到主页 -->
-			<result name="forwardIndex">/WEB-INF/pages/index.jsp</result>
+			<result name="forwardIndex">/index.jsp</result>
+			<!-- 修改密码 -->
+			<result name="updatePasswordUI">/WEB-INF/pages/updatePassword.jsp</result>
+			<result name="updatePasswordSuccess">/WEB-INF/pages/login.jsp</result>
+			<!-- 修改个人信息 -->
+			<result name="updateInfoUI">/WEB-INF/pages/updateInfo.jsp</result>
+			<result name="updateInfo">/index.jsp</result>
 		</action>
 		
 		<!-- OA -->
@@ -21,13 +27,20 @@
 			class="com.yfann.web.action.EmployeeAction">
 			<!-- 转向登录页面 -->
 			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
+			<result name="loginSuccess">/WEB-INF/pages/oa/mypage_oa.jsp</result>
 			<!-- 转向注册页面 -->
 			<result name="forwardRegister">/WEB-INF/pages/oa/register_oa.jsp</result>
-			<!-- 转向注册页面 -->
-			<result name="forwardMypage">/WEB-INF/pages/oa/mypage_oa.jsp</result>
 			<!-- 跳转到主页 -->
 			<result name="forwardIndex">/index.jsp</result>
+			<!-- 修改密码 -->
+			<result name="updatePasswordUI">/WEB-INF/pages/oa/updatePassword_oa.jsp</result>
+			<result name="updatePasswordSuccess">/WEB-INF/pages/oa/login_oa.jsp</result>
+			<!-- 修改个人信息 -->
+			<result name="updateInfoUI">/WEB-INF/pages/oa/updateInfo_oa.jsp</result>
+			<result name="updateInfo">/index.jsp</result>
 		</action>
+		
+		
 			<!-- 购买 -->
 		<action name="order!*" method="{1}"
 			class="com.yfann.web.action.OrderAction">

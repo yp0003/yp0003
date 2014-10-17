@@ -51,12 +51,18 @@
 	<a href="${pageContext.request.contextPath}/system!forwardLogin.html">登录</a>
 	<br>
 	<a href="${pageContext.request.contextPath}/system!forwardRegister.html">注册</a>
-	
-	<p>OA</p> 
+	<br>
+	<a href="${pageContext.request.contextPath}/system!updatePasswordUI.html">修改密码</a>
+	<br>
+	<a href="${pageContext.request.contextPath}/system!updateInfoUI.html">修改资料</a>
+	<br><br>
+	<p>OA</p>
 	<a href="${pageContext.request.contextPath}/employee!forwardLogin.html">登录</a>
 	<br>
 	<a href="${pageContext.request.contextPath}/employee!forwardRegister.html">注册</a>
 	<br>
-	<a href="${pageContext.request.contextPath}/employee!forwardMypage.html">注册</a>
+	<a href="${pageContext.request.contextPath}/employee!updatePasswordUI.html">修改密码</a>
+	<br>
+	<a href="${pageContext.request.contextPath}/employee!updateInfoUI.html">修改资料</a>
 </body>
 </html>

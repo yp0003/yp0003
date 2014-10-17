@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -34,88 +36,208 @@ import com.yfann.web.vo.RegisterMessage;
 public class SystemAction extends CommonAction {
 	private static final long serialVersionUID = -3588626533445197273L;
 	private RegisterMessage registerMessage = new RegisterMessage();
-	private LoginMessage  loginMessage = new LoginMessage();
-	private CookieUtils cookieUtils = new CookieUtils();  
-	private HttpServletResponse response;  
-	private HttpServletRequest request; 
+	private LoginMessage loginMessage = new LoginMessage();
+	private CookieUtils cookieUtils = new CookieUtils();
 	final Logger logger = LoggerFactory.getLogger(SystemAction.class);
 	private User user;
+	private String birthday;
+	
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
 	@Autowired
 	private SystemService systemService;
-	/**注册页面验证码*/
+	/** 注册页面验证码 */
 	private String validateCode;
-	
 	private String remPass;
-	
-	
-	// 用户退出  
-    public String logout() {  
-        HttpSession session = request.getSession(false);  
-        if (session != null)  
-            session.removeAttribute( ApplicationValue.USER_KEY_ON_SESSION);  
-        Cookie cookie = cookieUtils.delCookie(request);  
-        if (cookie != null)  
-            response.addCookie(cookie);  
-        return "forwardLogin";
-    }  
-	
-	public String validateLoginInfo(){
-		if("".equals(user.getUserId())){
+
+
+	// 转向修改用户资料页面
+	public String updateInfoUI() {
+		user = (User) session.getAttribute(ApplicationValue.USER_KEY_ON_SESSION);
+		if (user == null) {
+			return "forwardLogin";
+		}
+		this.birthday = (new SimpleDateFormat("yyyy-MM-dd")).format(user.getBirthday());
+		return "updateInfoUI";
+	}
+
+	// 修改用户资料
+	public String updateInfo() throws Exception {
+		User u = (User) session
+				.getAttribute(ApplicationValue.USER_KEY_ON_SESSION);
+		if (u == null) {
+			return "forwardLogin";
+		}
+		if (user.getNick() != null)
+			u.setNick(user.getNick());
+		if (user.getUserName() != null)
+			u.setUserName(user.getUserName());
+
+		if (birthday != null && !"".equals(birthday)) {
+			Date bir = (new SimpleDateFormat("yyyy-MM-dd")).parse(birthday);
+			u.setBirthday(bir);
+		}
+
+		if (user.getSex() != null)
+			u.setSex(user.getSex());
+		if (user.getIdcardNumber() != null)
+			u.setIdcardNumber(user.getIdcardNumber());
+		if (user.getEducation() != null)
+			u.setEducation(user.getEducation());
+		if (user.getForeignCountrie() != null)
+			u.setForeignCountrie(user.getForeignCountrie());
+		if (user.getGraduateSchool() != null)
+			u.setGraduateSchool(user.getGraduateSchool());
+		if (user.getPhoneNumber() != null)
+			u.setPhoneNumber(user.getPhoneNumber());
+		if (user.getCountrie() != null)
+			u.setCountrie(user.getCountrie());
+		if (user.getProvinceAndCity() != null)
+			u.setProvinceAndCity(user.getProvinceAndCity());
+		if (user.getAddress() != null)
+			u.setAddress(user.getAddress());
+		if (user.getZipCode() != null)
+			u.setZipCode(user.getZipCode());
+		if (user.getEmail() != null)
+			u.setEmail(user.getEmail());
+		if (user.getQq() != null)
+			u.setQq(user.getQq());
+
+		systemService.updateUser(u);
+		return "updateInfo";
+	}
+
+	// 转向修改密码页面
+	public String updatePasswordUI() {
+		return "updatePasswordUI";
+	}
+
+	// 修改密码
+	public String updatePassword() throws Exception {
+		// 验证当前密码
+		if ("".equals(user.getOldPassword())) {
+			registerMessage.setPasswordMessage("当前密码不能为空！");
+			return "updatePasswordUI";
+		}
+		User u = (User) session
+				.getAttribute(ApplicationValue.USER_KEY_ON_SESSION);
+		if (u == null) {
+			return "forwardLogin";
+		}
+		if (!u.getNowPassword().equals(user.getOldPassword())) {
+			registerMessage.setPasswordMessage("当前密码输入错误！");
+			return "updatePasswordUI";
+		}
+		String nowPD;
+		// 验证新密码
+		if (!(StringUtils.isNotBlank(user.getNowPassword()))) {
+			registerMessage.setPasswordMessage("密码为空!");
+			return "updatePasswordUI";
+		} else {
+			String[] passwords = user.getNowPassword().split(",");
+			nowPD = passwords[0];
+			if (passwords.length != 2) {
+				registerMessage.setPasswordMessage("密码非法!");
+				return "updatePasswordUI";
+			} else if (passwords.length > 1) {
+				if (passwords[0].trim().length() < 5
+						&& passwords[0].trim().length() > 20) {
+					registerMessage.setPasswordMessage("密码过长或过短!");
+					return "updatePasswordUI";
+				} else if (!passwords[0].trim().equals(passwords[1].trim())) {
+					registerMessage.setPasswordMessage("两次密码不一致!");
+					return "updatePasswordUI";
+				}
+			}
+		}
+
+		if (u.getOldPassword() != null && !"".equals(u.getOldPassword())) {
+			u.setThanOldPassword(u.getOldPassword());
+		}
+		u.setOldPassword(user.getOldPassword());
+		u.setNowPassword(nowPD);
+		systemService.updateUser(u);
+		return logout();
+	}
+
+	// 用户退出
+	public String logout() {
+		HttpSession session = request.getSession(false);
+		if (session != null)
+			session.removeAttribute(ApplicationValue.USER_KEY_ON_SESSION);
+		Cookie cookie = cookieUtils.delCookie(request);
+		if (cookie != null)
+			response.addCookie(cookie);
+		return "forwardLogin";
+	}
+
+	public String validateLoginInfo() {
+		if ("".equals(user.getUserId())) {
 			loginMessage.setUserIdMessage("用户名不能为空！");
 		}
-		if("".equals(user.getNowPassword())){
+		if ("".equals(user.getNowPassword())) {
 			loginMessage.setPasswordMessage("密码不能为空！");
 		}
-		
-		if(loginMessage.isNotEmpty())
+
+		if (loginMessage.isNotEmpty())
 			return "forwardLogin";
 		User userTemp = systemService.validateUser(user);
-		if(null == userTemp){			//没有此用户
+		if (null == userTemp) { // 没有此用户
 			addActionError("用户不存在，请先注册！");
 			return "forwardLogin";
-		}else if(null != userTemp && !userTemp.getNowPassword().equals(user.getNowPassword())){//存在此用户，但是用户名密码对不上
+		} else if (null != userTemp
+				&& !userTemp.getNowPassword().equals(user.getNowPassword())) {// 存在此用户，但是用户名密码对不上
 			addActionError("用户名输入有误！请输入正确的用户名密码！");
 			return "forwardLogin";
-		}else{//存在此用户并输入正确
-			
-			if(null != remPass && "on".equals(remPass)){//判断是否记住用户名密码
-				
-				Cookie cookie = cookieUtils.addCookie(user); 
+		} else {// 存在此用户并输入正确
+
+			if (null != remPass && "on".equals(remPass)) {// 判断是否记住用户名密码
+
+				Cookie cookie = cookieUtils.addCookie(user);
 				response = ServletActionContext.getResponse();
-		        response.addCookie(cookie);// 添加cookie到response中
- 
+				response.addCookie(cookie);// 添加cookie到response中
+
 			}
-	        
-	        HttpSession session = request.getSession();  
-	    	session.setAttribute( ApplicationValue.USER_KEY_ON_SESSION, user);// 添加用户到session中	    	
+
+			session.setAttribute(ApplicationValue.USER_KEY_ON_SESSION, userTemp);// 添加用户到session中
 			return "loginSuccess";
 		}
 
 	}
 
-	
-	public String forwardIndex(){
+	public String forwardIndex() {
 		return "forwardIndex";
 	}
+
 	/**
 	 * 跳转到登录界面
+	 * 
 	 * @return
 	 */
 	public String forwardLogin() {
 		request = ServletActionContext.getRequest();
-		user = cookieUtils.getCookie(request);	 
+		user = cookieUtils.getCookie(request);
 		return "forwardLogin";
 	}
 
 	/**
 	 * 跳转到注册界面
+	 * 
 	 * @return
 	 */
 	public String forwardRegister() {
 		return "forwardRegister";
 	}
+
 	/**
 	 * 注册功能
+	 * 
 	 * @return
 	 */
 	public String register() throws Exception {
@@ -133,10 +255,10 @@ public class SystemAction extends CommonAction {
 				if (passwords.length != 2) {
 					registerMessage.setPasswordMessage("密码非法!");
 				} else if (passwords.length > 1) {
-					if (passwords[0].trim().length() < 5 && passwords[0].trim().length() > 20) {
+					if (passwords[0].trim().length() < 5
+							&& passwords[0].trim().length() > 20) {
 						registerMessage.setPasswordMessage("密码过长或过短!");
-					}
-					else if(!passwords[0].trim().equals(passwords[1].trim())){
+					} else if (!passwords[0].trim().equals(passwords[1].trim())) {
 						registerMessage.setPasswordMessage("两次密码不一致!");
 					}
 				}
@@ -150,9 +272,9 @@ public class SystemAction extends CommonAction {
 				// 获取session中验证码
 				String valiCode = "";
 				try {
-					valiCode = (String) session.getAttribute("valiCode").toString();
-				}
-				catch (Exception e){
+					valiCode = (String) session.getAttribute("valiCode")
+							.toString();
+				} catch (Exception e) {
 					e.getMessage();
 				}
 				if (!valiCode.equals(validateCode)) {
@@ -168,16 +290,16 @@ public class SystemAction extends CommonAction {
 			validateCode = "";
 			return forwardRegister();
 		}
-		//保存用户
-		try{
-			if(user != null && StringUtils.isNotBlank(user.getNowPassword())) {
-				//两次去人输入的密码去掉一个
+		// 保存用户
+		try {
+			if (user != null && StringUtils.isNotBlank(user.getNowPassword())) {
+				// 两次去人输入的密码去掉一个
 				user.setNowPassword(user.getNowPassword().split(",")[0].trim());
-				//设置主键
+				// 设置主键
 				user.setId(UUIDCreate.getUUID());
 			}
 			systemService.saveUser(user);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			logger.error("系统错误");
 			logger.error(e.getMessage());
 			throw new Exception(e.getMessage());
@@ -256,41 +378,33 @@ public class SystemAction extends CommonAction {
 		this.user = user;
 	}
 
-
 	public LoginMessage getLoginMessage() {
 		return loginMessage;
 	}
-
 
 	public void setLoginMessage(LoginMessage loginMessage) {
 		this.loginMessage = loginMessage;
 	}
 
-
 	public HttpServletResponse getResponse() {
 		return response;
 	}
-
 
 	public void setResponse(HttpServletResponse response) {
 		this.response = response;
 	}
 
-
 	public HttpServletRequest getRequest() {
 		return request;
 	}
-
 
 	public void setRequest(HttpServletRequest request) {
 		this.request = request;
 	}
 
-
 	public String getRemPass() {
 		return remPass;
 	}
-
 
 	public void setRemPass(String remPass) {
 		this.remPass = remPass;
