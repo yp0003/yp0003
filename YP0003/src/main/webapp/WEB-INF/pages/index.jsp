@@ -34,7 +34,6 @@
 <%@include file="common/common.jsp"%>
 
 
-
   <div class="jumbotron masthead">
   <div class="container">
     <h1>365IT学院</h1>

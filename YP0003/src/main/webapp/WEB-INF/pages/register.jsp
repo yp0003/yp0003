@@ -29,7 +29,7 @@
 </script>
 </head>
 <body>
-	<%@include file="common/common.jsp"%>
+	
 	<%-- 	<div id="headerC_wrap">
 
 		<div id="headerC">
@@ -204,8 +204,28 @@
 		<a id="connect_sevice" href="#">点击此处 &gt;</a>
 	</div>
 	<!--客服部分 end--> --%>
+  <%@include file="common/common.jsp"%>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
-  <div class="index_content container index_lr" id="index_picture">
+  <%-- <div class="index_content container index_lr" id="index_picture">
+<div class="container">
 	<div class="row">
 		<div class="col-md-6">
 			<table border="1">
@@ -235,5 +255,6 @@
 		</div>
 	</div>
 	</div>
+	</div> --%>
 </body>
 </html>
