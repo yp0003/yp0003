@@ -32,7 +32,7 @@
 				<div class="form-group">
 					<input type="text" class="form-control" name="user.userName" /> <input
 						type="password" class="form-control" name="user.nowPassword" />
-					<button type="submit" class="btn btn-default">登录</button>
+					<button type="submit" class="btn btn-primary">Primary</button>
 				</div>
 			</form>
 			<ul class="nav navbar-nav">

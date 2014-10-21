@@ -20,6 +20,8 @@
 			<!-- 修改个人信息 -->
 			<result name="updateInfoUI">/WEB-INF/pages/updateInfo.jsp</result>
 			<result name="updateInfo">/index.jsp</result>
+			<!-- 跳转到我的主页 -->
+			<result name="forwardMyPage">/WEB-INF/pages/mypage.jsp</result>
 		</action>
 		
 		<!-- OA -->

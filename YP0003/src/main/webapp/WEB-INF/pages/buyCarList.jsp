@@ -5,21 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>购物车</title>
-<script type="text/javascript">
-$(document).ready(function() {
-	
-	$("#allSelect").click(function() {
-		var flag = $("#allSelect").is(':checked');
-		if(!flag){
-			$("checkbox").not($("#allSelect")).attr('checked',true);
-		} else{
-			$("checkbox").not($("#allSelect")).attr('checked',true);
-		}
-
-	});
-});
-
-</script>
 </head>
 <body>
 	<%@include file="common/common.jsp"%>
@@ -45,13 +30,12 @@ $(document).ready(function() {
 						</tr>
 					</thead>
 					<tbody>
-						<s:iterator value="ddzflist" id="order" status="status">
+						<s:iterator value="buyCarList" id="bcList" status="status">
 							<tr onmouseover="this.bgColor='#EAF2FF'"
 								onmouseout="this.bgColor='#FFFFFF'" align="center">
 								<th>
 									<div class="checkbox">
-										<label><input type="checkbox"/>
-										</label>
+										<input type="checkbox" />
 									</div>
 								</th>
 						</s:iterator>
@@ -69,5 +53,18 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#allSelect").bind("click", function() {
+				var flag = $('#allSelect').is(':checked');
+				if(!flag){
+			    $("[name='checkbox']").attr("checked",'true');//全选
+				} else {
+					$("[name='checkbox']").attr("checked",'flase');//全不选
+				}
+			});
+		});
+	</script>
 </body>
+
 </html>
