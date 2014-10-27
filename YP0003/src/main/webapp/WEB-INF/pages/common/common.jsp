@@ -26,29 +26,6 @@
 		<ul class="nav navbar-nav">
 			<li><a href="#">365IT学院</a></li>
 		</ul>
-
-		<s:if test="${sessionScope.userInfo} == null">
-			<form action="" class="navbar-form navbar-right">
-				<div class="form-group">
-					<input type="text" class="form-control" name="user.userName" /> <input
-						type="password" class="form-control" name="user.nowPassword" />
-					<button type="submit" class="btn btn-primary">Primary</button>
-				</div>
-			</form>
-			<ul class="nav navbar-nav">
-				<li><a href="#">免费注册</a></li>
-			</ul>
-
-		</s:if>
-
-		<s:if test="${sessionScope.userInfo} != null">
-			<ul class="nav navbar-nav">
-				<li><a href="#">尊敬的客户欢迎您</a></li>
-				<li><a href="#">个人中心</a></li>
-				<li><a href="#">购物车</a></li>
-				<li><a href="#">安全退出</a></li>
-			</ul>
-		</s:if>
 	</div>
 </body>
 </html>

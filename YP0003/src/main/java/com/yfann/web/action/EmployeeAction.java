@@ -24,7 +24,6 @@ import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.common.CookieUtils;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.Employee;
-import com.yfann.web.pojo.User;
 import com.yfann.web.service.EmployeeService;
 import com.yfann.web.vo.LoginMessage;
 import com.yfann.web.vo.RegisterMessage;
