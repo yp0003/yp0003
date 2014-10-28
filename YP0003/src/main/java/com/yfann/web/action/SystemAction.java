@@ -41,14 +41,6 @@ public class SystemAction extends CommonAction {
 	final Logger logger = LoggerFactory.getLogger(SystemAction.class);
 	private User user;
 	private String birthday;
-	
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
 
 	@Autowired
 	private SystemService systemService;
@@ -234,84 +226,16 @@ public class SystemAction extends CommonAction {
 	}
 
 	/**
-	 * 跳转到注册界面
-	 * 
-	 * @return
-	 */
-	public String forwardRegister() {
-		return "forwardRegister";
-	}
-
-	/**
 	 * 注册功能
 	 * 
 	 * @return
 	 */
 	public String register() throws Exception {
 		if (user != null) {
-			// 验证用户ID
-			if (!(StringUtils.isNotBlank(user.getUserId()) && user.getUserId()
-					.length() > 5)) {
-				registerMessage.setUserIdMessage("用户名非法!");
-			}
-			// 验证密码
-			if (!(StringUtils.isNotBlank(user.getNowPassword()))) {
-				registerMessage.setPasswordMessage("密码为空!");
-			} else {
-				String[] passwords = user.getNowPassword().split(",");
-				if (passwords.length != 2) {
-					registerMessage.setPasswordMessage("密码非法!");
-				} else if (passwords.length > 1) {
-					if (passwords[0].trim().length() < 5
-							&& passwords[0].trim().length() > 20) {
-						registerMessage.setPasswordMessage("密码过长或过短!");
-					} else if (!passwords[0].trim().equals(passwords[1].trim())) {
-						registerMessage.setPasswordMessage("两次密码不一致!");
-					}
-				}
-			}
-			// 验证邮箱
-			if (!(StringUtils.isNotBlank(user.getEmail()))) {
-				registerMessage.setEmailMessage("邮箱非法!");
-			}
-			// 对比验证码
-			if (StringUtils.isNotBlank(user.getUserId())) {
-				// 获取session中验证码
-				String valiCode = "";
-				try {
-					valiCode = (String) session.getAttribute("valiCode")
-							.toString();
-				} catch (Exception e) {
-					e.getMessage();
-				}
-				if (!valiCode.equals(validateCode)) {
-					registerMessage.setValiCodeMessage("验证码不正确!");
-				}
-			} else if (StringUtils.isBlank(user.getUserId())) {
-				registerMessage.setValiCodeMessage("请填写验证码!");
-			}
-		}
-		if (registerMessage.isNotEmpty()) {
-			// 表单错误 转向注册页面并清除密码和验证码
-			user.setNowPassword("");
-			validateCode = "";
-			return forwardRegister();
-		}
-		// 保存用户
-		try {
-			if (user != null && StringUtils.isNotBlank(user.getNowPassword())) {
-				// 两次去人输入的密码去掉一个
-				user.setNowPassword(user.getNowPassword().split(",")[0].trim());
-				// 设置主键
-				user.setId(UUIDCreate.getUUID());
-			}
+			user.setId(UUIDCreate.getUUID());
 			systemService.saveUser(user);
-		} catch (Exception e) {
-			logger.error("系统错误");
-			logger.error(e.getMessage());
-			throw new Exception(e.getMessage());
 		}
-		return forwardLogin();
+		return "register";
 	}
 
 	public void validateCode() throws Exception {
@@ -416,5 +340,11 @@ public class SystemAction extends CommonAction {
 	public void setRemPass(String remPass) {
 		this.remPass = remPass;
 	}
+	public String getBirthday() {
+		return birthday;
+	}
 
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
 }

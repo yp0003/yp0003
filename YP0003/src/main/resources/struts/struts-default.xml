@@ -4,37 +4,38 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-<package name="yfann-default" extends="struts-default" abstract="true" namespace="/">
+	<package name="yfann-default" extends="json-default" abstract="true"
+		namespace="/">
 
 		<interceptors>
 			<interceptor-stack name="yfannDefaultStack">
-			<!-- 基于paramsPrepareParamsStack,增加store interceptor保证actionMessage在redirect后不会丢失 -->
-<!-- 			<interceptor-ref name="store">
-				<param name="operationMode">AUTOMATIC</param>
-			</interceptor-ref> -->
-			<interceptor-ref name="paramsPrepareParamsStack" />
-			<interceptor-ref name="defaultStack" />
-		</interceptor-stack>
+				<!-- 基于paramsPrepareParamsStack,增加store interceptor保证actionMessage在redirect后不会丢失 -->
+				<!-- <interceptor-ref name="store"> <param name="operationMode">AUTOMATIC</param> 
+					</interceptor-ref> -->
+				<interceptor-ref name="paramsPrepareParamsStack" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
 		</interceptors>
-		
-		<default-interceptor-ref name="yfannDefaultStack" />
-		
-<!-- 		<global-results> -->
-<!-- 			<result name="errHandler" type="chain">errorAction</result> -->
-<!-- 			<result name="errHandler" type="dispatcher">/WEB-INF/pages/error/globalError.jsp</result> -->
-<!-- 		</global-results> -->
-		
-		
-<!-- 		<global-exception-mappings> -->
-<!-- 			<exception-mapping result="errHandler" exception="java.lang.Exception" /> -->
-<!-- 		</global-exception-mappings> -->
-		
-		<!-- 异常 -->
-<!-- 		<action name="errorAction" class="com.yfann.web.action.ExceptionAction"> -->
-<!-- 			<result name="error" type="dispatcher">/WEB-INF/pages/error/globalError.jsp</result> -->
-			
-<!-- 			<exception-mapping result="error" exception="java.lang.Exception" /> -->
-<!-- 		</action> -->
-	</package>
 
+		<default-interceptor-ref name="yfannDefaultStack" />
+
+		<global-results>
+			<result name="errHandler" type="chain">errorAction</result>
+			<result name="errHandler" type="dispatcher">/WEB-INF/pages/error/globalError.jsp
+			</result>
+		</global-results>
+
+
+		<global-exception-mappings>
+			<exception-mapping result="errHandler" exception="java.lang.Exception" />
+		</global-exception-mappings>
+
+
+		<action name="errorAction" class="com.yfann.web.action.ExceptionAction">
+			<result name="error" type="dispatcher">/WEB-INF/pages/error/globalError.jsp
+			</result>
+
+			<exception-mapping result="error" exception="java.lang.Exception" />
+		</action>
+	</package>
 </struts>

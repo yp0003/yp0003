@@ -7,10 +7,6 @@
 		<!-- 系统 -->
 		<action name="system!*" method="{1}"
 			class="com.yfann.web.action.SystemAction">
-			<!-- 转向登录页面 -->
-			<result name="forwardLogin">/WEB-INF/pages/login.jsp</result>
-			<!-- 转向注册页面 -->
-			<result name="forwardRegister">/WEB-INF/pages/register.jsp</result>
 			<result name="loginSuccess">/WEB-INF/pages/mypage.jsp</result>
 			<!-- 跳转到主页 -->
 			<result name="forwardIndex">/WEB-INF/pages/index.jsp</result>
@@ -22,6 +18,7 @@
 			<result name="updateInfo">/index.jsp</result>
 			<!-- 跳转到课程列表 -->
 			<result name="forwardCourseList">/WEB-INF/pages/courseList.jsp</result>
+			<result name="register" type="json"></result>
 		</action>
 		
 		<!-- OA -->
