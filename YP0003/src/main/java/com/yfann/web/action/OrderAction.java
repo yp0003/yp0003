@@ -71,7 +71,8 @@ public class OrderAction extends CommonAction {
 	}
 
 	/**
-	 * 添加到购物车
+	 * 添加到购
+	 * 物车
 	 * 
 	 * @return
 	 */
@@ -79,9 +80,6 @@ public class OrderAction extends CommonAction {
 		for (int i = 0; i < 47; i++) {
 			BuyCar buyCar = new BuyCar();
 			buyCar.setId(UUIDCreate.getUUID());
-			buyCar.setProductId("egwhgiwohgiow" + i);
-			buyCar.setProductName("fwegwgwte" + i);
-			buyCar.setUserId("eetwetiiii" + i);
 			orderService.addBuyCar(buyCar);
 		}
 		return "addBuyCar";
