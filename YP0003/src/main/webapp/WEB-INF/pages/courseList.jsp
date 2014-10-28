@@ -2,17 +2,19 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="com.yfann.web.page" prefix="p"%>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Bootstrap</title>
+<!-- Le styles -->
 <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet"/>
 <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
 <link href="${pageContext.request.contextPath}/bootstrap/css/docs.css" rel="stylesheet"/>
-
-<link href="${pageContext.request.contextPath}/bootstrap/js/google-code-prettify/prettify.css"rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/bootstrap/js/google-code-prettify/prettify.css" rel="stylesheet"/>
 <link href="${pageContext.request.contextPath}/css/list.css" rel="stylesheet"/>
-<title>365ITEDU</title>
 </head>
+
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
 	<!-- Navbar
@@ -151,7 +153,7 @@
 						<li>
 							<a href="info.html">
 							<div class="course-list-img">
-								<img width="280" height="160" src="image/53ec5a590001d85606000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
+								<img width="280" height="160" src="${pageContext.request.contextPath}/image/53ec5a590001d85606000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
 							</div>
 							<h5>
 								<span class="topicon">
@@ -172,7 +174,7 @@
 						<li>
 							<a href="info.html">
 							<div class="course-list-img">
-								<img width="280" height="160" src="image/54125edc0001ce6306000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
+								<img width="280" height="160" src="${pageContext.request.contextPath}/image/54125edc0001ce6306000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
 							</div>
 							<h5>
 								<span class="topicon">
@@ -193,7 +195,7 @@
 						<li>
 							<a href="info.html">
 							<div class="course-list-img">
-								<img width="280" height="160" src="image/541943720001c89206000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
+								<img width="280" height="160" src="${pageContext.request.contextPath}/image/541943720001c89206000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
 							</div>
 							<h5>
 								<span class="topicon">
@@ -214,7 +216,7 @@
 						<li>
 							<a href="info.html">
 							<div class="course-list-img">
-								<img width="280" height="160" src="image/542376b20001374c06000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
+								<img width="280" height="160" src="${pageContext.request.contextPath}/image/542376b20001374c06000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
 							</div>
 							<h5>
 								<span class="topicon">
@@ -235,7 +237,7 @@
 						<li>
 							<a href="info.html">
 							<div class="course-list-img">
-								<img width="280" height="160" src="image/543f682600012d1406000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
+								<img width="280" height="160" src="${pageContext.request.contextPath}/image/543f682600012d1406000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
 							</div>
 							<h5>
 								<span class="topicon">
@@ -256,7 +258,7 @@
 						<li>
 							<a href="info.html">
 							<div class="course-list-img">
-								<img width="280" height="160" src="image/5444a3280001f1fe06000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
+								<img width="280" height="160" src="${pageContext.request.contextPath}/image/5444a3280001f1fe06000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
 							</div>
 							<h5>
 								<span class="topicon">
@@ -277,7 +279,7 @@
 						<li>
 							<a href="info.html">
 							<div class="course-list-img">
-								<img width="280" height="160" src="image/53e4ba4c0001f2d206000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
+								<img width="280" height="160" src="${pageContext.request.contextPath}/image/53e4ba4c0001f2d206000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
 							</div>
 							<h5>
 								<span class="topicon">

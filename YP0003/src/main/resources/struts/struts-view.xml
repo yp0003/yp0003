@@ -21,7 +21,7 @@
 			<result name="updateInfoUI">/WEB-INF/pages/updateInfo.jsp</result>
 			<result name="updateInfo">/index.jsp</result>
 			<!-- 跳转到课程列表 -->
-			<result name="forwardCourseList">/WEB-INF/pages/mypage.jsp</result>
+			<result name="forwardCourseList">/WEB-INF/pages/courseList.jsp</result>
 		</action>
 		
 		<!-- OA -->
