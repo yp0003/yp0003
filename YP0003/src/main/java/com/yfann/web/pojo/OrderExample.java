@@ -1,5 +1,6 @@
 package com.yfann.web.pojo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -662,6 +663,66 @@ public class OrderExample {
 
         public Criteria andPayTimeNotBetween(Date value1, Date value2) {
             addCriterion("pay_time not between", value1, value2, "payTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountPriceIsNull() {
+            addCriterion("count_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountPriceIsNotNull() {
+            addCriterion("count_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountPriceEqualTo(BigDecimal value) {
+            addCriterion("count_price =", value, "countPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountPriceNotEqualTo(BigDecimal value) {
+            addCriterion("count_price <>", value, "countPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountPriceGreaterThan(BigDecimal value) {
+            addCriterion("count_price >", value, "countPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountPriceGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("count_price >=", value, "countPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountPriceLessThan(BigDecimal value) {
+            addCriterion("count_price <", value, "countPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountPriceLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("count_price <=", value, "countPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountPriceIn(List<BigDecimal> values) {
+            addCriterion("count_price in", values, "countPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountPriceNotIn(List<BigDecimal> values) {
+            addCriterion("count_price not in", values, "countPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountPriceBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("count_price between", value1, value2, "countPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountPriceNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("count_price not between", value1, value2, "countPrice");
             return (Criteria) this;
         }
     }
