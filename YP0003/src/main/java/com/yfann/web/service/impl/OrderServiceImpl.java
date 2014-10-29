@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +40,6 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public void addCount(BuyCar buyCar) {
-		buyCar.setCount(buyCar.getCount() + 1);
 		buyCarMapper.updateByPrimaryKeySelective(buyCar);
 	}
 	
@@ -53,7 +51,8 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<BuyCar> findBuyCarList(BuyCar buyCar, PageInfo pageInfo) throws Exception{
 		Map<String, Object> parames = getBuyCarParamerMap(buyCar);
-		pageInfo.setCount(buyCarMapper.selectBuyCarCountByParamer(parames));
-		return buyCarMapper.selectBuyCarListByParamer(parames, new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
+/*		pageInfo.setCount(buyCarMapper.selectBuyCarCountByParamer(parames));
+		return buyCarMapper.selectBuyCarListByParamer(parames, new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));*/
+		return null;
 	}
 }

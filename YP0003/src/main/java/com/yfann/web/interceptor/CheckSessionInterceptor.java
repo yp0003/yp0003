@@ -16,9 +16,9 @@ public class CheckSessionInterceptor extends MethodFilterInterceptor{
 	protected String doIntercept(ActionInvocation invocation) throws Exception {
 		User userInfo = (User)ServletActionContext.getRequest().getSession().getAttribute(ApplicationValue.USER_KEY_ON_SESSION);
 		if(userInfo != null){
-			invocation.invoke();
+			return invocation.invoke();
 		}
-		return "login";
+		return "forwardIndex";
 	}
 
 }

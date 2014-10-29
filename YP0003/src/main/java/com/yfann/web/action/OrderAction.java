@@ -66,7 +66,7 @@ public class OrderAction extends CommonAction {
 	 * @return
 	 */
 	public String deleteProductOnBuyCayByAllIds() throws Exception {
-		orderService.deleteProductOnBuyCayByAllIds(buyCar.getIds());
+		//orderService.deleteProductOnBuyCayByAllIds(buyCar.getIds());
 		return "deleteProductOnBuyCayByAllIds";
 	}
 
