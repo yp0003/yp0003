@@ -15,6 +15,16 @@
     <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
     <result column="count_price" property="countPrice" jdbcType="DECIMAL" />
   </resultMap>
+  
+  <!-- 根据列表查询订单列表 -->
+  <select id="selectOrderListByParams" parameterType="map" resultMap="BaseResultMap">
+  select <include refid="Base_Column_List"/> from t_order t where 1 = 1 
+  </select>
+  
+    <!-- 根据列表查询订单数量 -->
+  <select id="selectOrderListCountByParams" parameterType="map" resultType="int">
+  select count(*s) from t_order t where 1 = 1 
+  </select>
   <sql id="Example_Where_Clause" >
     <!--
       WARNING - @mbggenerated

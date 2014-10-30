@@ -21,6 +21,12 @@ public class OrderAction extends CommonAction {
 	private List<BuyCar> buyCarList;
 	@Autowired
 	private OrderService orderService;
+	
+	
+	
+	public String orderList(){
+		return "orderList";
+	}
 
 	public String buyCarList() throws Exception{
 		if(buyCar == null){
@@ -34,15 +40,6 @@ public class OrderAction extends CommonAction {
 			throw new Exception(e.getMessage(),e);
 		}
 		return "buyCarList";
-	}
-
-	/**
-	 * 增加产品数量
-	 */
-	public String addCount() throws Exception {
-
-		orderService.addCount(buyCar);
-		return "addCount";
 	}
 
 	/**

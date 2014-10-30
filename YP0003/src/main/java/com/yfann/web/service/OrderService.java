@@ -3,6 +3,8 @@ package com.yfann.web.service;
 import java.util.List;
 
 import com.yfann.web.pojo.BuyCar;
+import com.yfann.web.pojo.Order;
+import com.yfann.web.pojo.User;
 import com.yfann.web.vo.PageInfo;
 
 public interface OrderService {
@@ -30,10 +32,15 @@ public interface OrderService {
 	 * @param id
 	 */
 	public void deleteProductOnBuyCayByAllIds(String[] ids);
+	
+
 	/**
-	 * 增加产品数量
-	 * @param buyCar
+	 * 查询订单列表
+	 * @param user
+	 * @param order
+	 * @param pageInfo
+	 * @return
 	 */
-	public void addCount(BuyCar buyCar);
+	public List<Order> findOrderList(User user,Order order,PageInfo pageInfo);
 
 }
