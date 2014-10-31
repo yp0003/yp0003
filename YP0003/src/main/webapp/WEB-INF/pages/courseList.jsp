@@ -87,9 +87,6 @@
                                           
                     </ul>
 					<div style="clear:both"></div>
-					<div class="shopping">
-						<button class="btn btn-primary" type="button">加入购物车</button>
-                	</div>
 				</div>
                 <dl class="course-sidebar-level js-sidebar-level">
                     <dt>难度</dt>
@@ -130,156 +127,10 @@
             <div class="course-list">
                 <div class="js-course-list">
 					<ul>
+					
 						<li>
 							<div class="course-list-img">
 								<img width="280" height="160" src="image/53e4ba4c0001f2d206000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
-							</div>
-							<h5>
-								<span class="topicon">
-									案例：文件传输基础——Java I..
-								</span>
-							</h5>
-							<div class="intro">
-								<p>通过大量的案例为您介绍JAVA中的IO流的使用。</p>
-								<span class="l">更新至6-3</span>
-								<span class="r">课程时长：2小时0分</span>
-							</div>
-							<div class="tips">
-								<span class="l">2014-09-16更新</span>
-								<span class="r">4022人学习</span>							
-							</div>
-							</a>
-						</li>
-						<li>
-							<a href="info.html">
-							<div class="course-list-img">
-								<img width="280" height="160" src="${pageContext.request.contextPath}/image/53ec5a590001d85606000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
-							</div>
-							<h5>
-								<span class="topicon">
-									案例：文件传输基础——Java I..
-								</span>
-							</h5>
-							<div class="intro">
-								<p>通过大量的案例为您介绍JAVA中的IO流的使用。</p>
-								<span class="l">更新至6-3</span>
-								<span class="r">课程时长：2小时0分</span>
-							</div>
-							<div class="tips">
-								<span class="l">2014-09-16更新</span>
-								<span class="r">4022人学习</span>							
-							</div>
-							</a>
-						</li>
-						<li>
-							<a href="info.html">
-							<div class="course-list-img">
-								<img width="280" height="160" src="${pageContext.request.contextPath}/image/54125edc0001ce6306000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
-							</div>
-							<h5>
-								<span class="topicon">
-									案例：文件传输基础——Java I..
-								</span>
-							</h5>
-							<div class="intro">
-								<p>通过大量的案例为您介绍JAVA中的IO流的使用。</p>
-								<span class="l">更新至6-3</span>
-								<span class="r">课程时长：2小时0分</span>
-							</div>
-							<div class="tips">
-								<span class="l">2014-09-16更新</span>
-								<span class="r">4022人学习</span>							
-							</div>
-							</a>
-						</li>
-						<li>
-							<a href="info.html">
-							<div class="course-list-img">
-								<img width="280" height="160" src="${pageContext.request.contextPath}/image/541943720001c89206000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
-							</div>
-							<h5>
-								<span class="topicon">
-									案例：文件传输基础——Java I..
-								</span>
-							</h5>
-							<div class="intro">
-								<p>通过大量的案例为您介绍JAVA中的IO流的使用。</p>
-								<span class="l">更新至6-3</span>
-								<span class="r">课程时长：2小时0分</span>
-							</div>
-							<div class="tips">
-								<span class="l">2014-09-16更新</span>
-								<span class="r">4022人学习</span>							
-							</div>
-							</a>
-						</li>
-						<li>
-							<a href="info.html">
-							<div class="course-list-img">
-								<img width="280" height="160" src="${pageContext.request.contextPath}/image/542376b20001374c06000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
-							</div>
-							<h5>
-								<span class="topicon">
-									案例：文件传输基础——Java I..
-								</span>
-							</h5>
-							<div class="intro">
-								<p>通过大量的案例为您介绍JAVA中的IO流的使用。</p>
-								<span class="l">更新至6-3</span>
-								<span class="r">课程时长：2小时0分</span>
-							</div>
-							<div class="tips">
-								<span class="l">2014-09-16更新</span>
-								<span class="r">4022人学习</span>							
-							</div>
-							</a>
-						</li>
-						<li>
-							<a href="info.html">
-							<div class="course-list-img">
-								<img width="280" height="160" src="${pageContext.request.contextPath}/image/543f682600012d1406000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
-							</div>
-							<h5>
-								<span class="topicon">
-									案例：文件传输基础——Java I..
-								</span>
-							</h5>
-							<div class="intro">
-								<p>通过大量的案例为您介绍JAVA中的IO流的使用。</p>
-								<span class="l">更新至6-3</span>
-								<span class="r">课程时长：2小时0分</span>
-							</div>
-							<div class="tips">
-								<span class="l">2014-09-16更新</span>
-								<span class="r">4022人学习</span>							
-							</div>
-							</a>
-						</li>
-						<li>
-							<a href="info.html">
-							<div class="course-list-img">
-								<img width="280" height="160" src="${pageContext.request.contextPath}/image/5444a3280001f1fe06000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
-							</div>
-							<h5>
-								<span class="topicon">
-									案例：文件传输基础——Java I..
-								</span>
-							</h5>
-							<div class="intro">
-								<p>通过大量的案例为您介绍JAVA中的IO流的使用。</p>
-								<span class="l">更新至6-3</span>
-								<span class="r">课程时长：2小时0分</span>
-							</div>
-							<div class="tips">
-								<span class="l">2014-09-16更新</span>
-								<span class="r">4022人学习</span>							
-							</div>
-							</a>
-						</li>
-						<li>
-							<a href="info.html">
-							<div class="course-list-img">
-								<img width="280" height="160" src="${pageContext.request.contextPath}/image/53e4ba4c0001f2d206000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
 							</div>
 							<h5>
 								<span class="topicon">
