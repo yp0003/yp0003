@@ -4,43 +4,26 @@
 <%@ taglib uri="com.yfann.web.page" prefix="p"%>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title>Bootstrap</title>
 <!-- Le styles -->
 <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet"/>
 <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
 <link href="${pageContext.request.contextPath}/bootstrap/css/docs.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/bootstrap/js/google-code-prettify/prettify.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/css/list.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/css/base.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet"/>
+
+
+<!-- link script -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
-
-	<!-- Navbar
-    ================================================== -->
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<div class="nav-collapse collapse">
-					<!--
-           <a class="brand" href="./index.html">注册</a> |
-           <a class="brand" href="./index.html">登录</a>
-	-->
-					<a class="brand" href="./index.html">我的订单</a> <a class="brand"
-						href="./index.html">购物车</a> <a class="brand" href="./index.html">个人中心</a>
-					<ul class="nav">
-						<li class="active"><a href="./index.html">课程</a></li>
-						<li class=""><a href="#">问答</a></li>
-						<li class=""><a href="#">求课</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- 程序包含结束 -->
-
-
+<%@ include file="common/common.jsp" %>
 <div id="main">
 
     <div class="container">
@@ -127,27 +110,29 @@
             <div class="course-list">
                 <div class="js-course-list">
 					<ul>
-					
-						<li>
-							<div class="course-list-img">
-								<img width="280" height="160" src="image/53e4ba4c0001f2d206000338-590-330.jpg" alt="案例：文件传输基础——Java IO流"></img>
-							</div>
-							<h5>
-								<span class="topicon">
-									案例：文件传输基础——Java I..
-								</span>
-							</h5>
-							<div class="intro">
-								<p>通过大量的案例为您介绍JAVA中的IO流的使用。</p>
-								<span class="l">更新至6-3</span>
-								<span class="r">课程时长：2小时0分</span>
-							</div>
-							<div class="tips">
-								<span class="l">2014-09-16更新</span>
-								<span class="r">4022人学习</span>							
-							</div>
-							</a>
-						</li>
+						<li><a href="info.html">
+								<div class="course-list-img">
+									<img width="280" height="160"
+										src="image/53e4ba4c0001f2d206000338-590-330.jpg"
+										alt="案例：文件传输基础——Java IO流"></img>
+								</div>
+								<h5>
+									<span class="topicon"> 案例：文件传输基础——Java I.. </span>
+								</h5>
+								<div class="intro">
+									<p>通过大量的案例为您介绍JAVA中的IO流的使用。</p>
+									<span class="l">更新至6-3</span> <span class="r">课程时长：2小时0分</span>
+								</div>
+								<div class="tips">
+									<span class="l">2014-09-16更新</span> <span class="r">4022人学习</span>
+								</div>
+						</a>
+							<div class="shop">
+								<span><a><button class="btn">加入购物车</button></a></span> <span><a><button
+											class="btn" type="button">立即购买</button>
+										<a></span>
+							</div></li>
+
 					</ul>
 				</div>
             </div>

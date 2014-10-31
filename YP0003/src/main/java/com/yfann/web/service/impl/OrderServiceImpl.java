@@ -63,7 +63,8 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<BuyCar> findBuyCarList(BuyCar buyCar, PageInfo pageInfo)
 			throws Exception {
-		Map<String, Object> parames = getBuyCarParamerMap(buyCar);
+		//Map<String, Object> parames = 
+		getBuyCarParamerMap(buyCar);
 		/*
 		 * pageInfo.setCount(buyCarMapper.selectBuyCarCountByParamer(parames));
 		 * return buyCarMapper.selectBuyCarListByParamer(parames, new

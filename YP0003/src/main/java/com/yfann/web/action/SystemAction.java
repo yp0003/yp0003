@@ -48,14 +48,6 @@ public class SystemAction extends CommonAction {
 	private String validateCode;
 	private String remPass;
 
-	/**
-	 * 跳转到所有课程列表
-	 * @return
-	 */
-	public String forwardCourseList(){
-		return "forwardCourseList";
-	}
-
 	// 转向修改用户资料页面
 	public String updateInfoUI() {
 		user = (User) session.getAttribute(ApplicationValue.USER_KEY_ON_SESSION);

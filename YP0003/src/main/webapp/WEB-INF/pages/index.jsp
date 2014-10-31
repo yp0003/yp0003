@@ -2,6 +2,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="com.yfann.web.page" prefix="p"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -82,13 +83,17 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<div class="nav-collapse collapse">
-
+				<c:if test="${sessuonScope.userInfo}==null">
+				
 					<a class="brand" href="#regist" class="hid" data-toggle="modal">注册</a>
 
 					<a class="brand" href="#myModal" class="hid" data-toggle="modal">登录</a>
-
-					<!--<a class="brand" href="./index.html">我的订单</a> <a class="brand"
-						href="./index.html">购物车</a> <a class="brand" href="./index.html">个人中心</a>-->
+				</c:if>
+				<c:if test="${sessionScope.userInfo}!=null">
+				<a class="brand" href="#">尊敬的${sessionScope.userInfo.userId}您好</a>
+					<a class="brand" href="./index.html">我的订单</a> <a class="brand"
+						href="./index.html">购物车</a> <a class="brand" href="./index.html">个人中心</a>
+				</c:if>
 					<ul class="nav">
 						<li class="active"><a href="./index.html">课程</a></li>
 						<li class=""><a href="#">问答</a></li>
@@ -106,7 +111,7 @@
 			<h1>365IT学院</h1>
 			<p>编程未来，成就梦想</p>
 			<p>
-				<a href="#" class="btn btn-primary btn-large">立即选课</a>
+				<a href="${pageContext.request.contextPath}/product!forwardProductList.html" class="btn btn-primary btn-large">立即选课</a>
 			</p>
 		</div>
 	</div>

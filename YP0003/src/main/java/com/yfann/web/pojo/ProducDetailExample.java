@@ -604,6 +604,76 @@ public class ProducDetailExample {
             addCriterion("attachment_file_name not between", value1, value2, "attachmentFileName");
             return (Criteria) this;
         }
+
+        public Criteria andCloudPanCodeIsNull() {
+            addCriterion("cloud_pan_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeIsNotNull() {
+            addCriterion("cloud_pan_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeEqualTo(String value) {
+            addCriterion("cloud_pan_code =", value, "cloudPanCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeNotEqualTo(String value) {
+            addCriterion("cloud_pan_code <>", value, "cloudPanCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeGreaterThan(String value) {
+            addCriterion("cloud_pan_code >", value, "cloudPanCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("cloud_pan_code >=", value, "cloudPanCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeLessThan(String value) {
+            addCriterion("cloud_pan_code <", value, "cloudPanCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeLessThanOrEqualTo(String value) {
+            addCriterion("cloud_pan_code <=", value, "cloudPanCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeLike(String value) {
+            addCriterion("cloud_pan_code like", value, "cloudPanCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeNotLike(String value) {
+            addCriterion("cloud_pan_code not like", value, "cloudPanCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeIn(List<String> values) {
+            addCriterion("cloud_pan_code in", values, "cloudPanCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeNotIn(List<String> values) {
+            addCriterion("cloud_pan_code not in", values, "cloudPanCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeBetween(String value1, String value2) {
+            addCriterion("cloud_pan_code between", value1, value2, "cloudPanCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCloudPanCodeNotBetween(String value1, String value2) {
+            addCriterion("cloud_pan_code not between", value1, value2, "cloudPanCode");
+            return (Criteria) this;
+        }
     }
 
     /**
