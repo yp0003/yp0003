@@ -24,12 +24,10 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<div class="nav-collapse collapse">
-				<c:if test="${sessionScope.userInfo}==null">
 				
 					<a class="brand" href="#regist" class="hid" data-toggle="modal">注册</a>
 
 					<a class="brand" href="#myModal" class="hid" data-toggle="modal">登录</a>
-				</c:if>
 				<c:if test="${sessionScope.userInfo}!=null">
 				<a class="brand" href="#">尊敬的${sessionScope.userInfo.userId}您好</a>
 					<a class="brand" href="./index.html">我的订单</a> <a class="brand"

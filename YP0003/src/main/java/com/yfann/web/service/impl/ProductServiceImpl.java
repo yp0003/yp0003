@@ -20,7 +20,7 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> findProductList(Product product, PageInfo pageInfo) {
 		Map<String, Object> paramer = getProductParamer(product);
 		pageInfo.setCount(productMapper.selectProductCountByParamer(paramer));
-		pageInfo.setPageSize(15);
+		//pageInfo.setPageSize(15);
 		return productMapper.selectProductByParamer(paramer, new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
 	}
 

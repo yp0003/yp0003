@@ -45,64 +45,53 @@
 				"${pageContext.request.contextPath}/system!validateCode.html?time="
 						+ new Date());
 	}
-	
-	function regist(){
+
+	function regist() {
 		var aaa = "${pageContext.request.contextPath}/system!register.html?user.userId="
-		+ $("#registUserId").val() + "&"
-		+ "user.nowPassword="
-		+ $("#registNowPassword1").val() + ","
-		+ $("#registNowPassword2").val() + "&"
-		+ "user.email=" + $("#registEmail").val() + "&" + "validateCode=" + $("#registValidateCode").val();
+				+ $("#registUserId").val()
+				+ "&"
+				+ "user.nowPassword="
+				+ $("#registNowPassword1").val()
+				+ ","
+				+ $("#registNowPassword2").val()
+				+ "&"
+				+ "user.email="
+				+ $("#registEmail").val()
+				+ "&"
+				+ "validateCode="
+				+ $("#registValidateCode").val();
 		alert(aaa);
-		$.ajax({
-			type : "POST",
-			url : "${pageContext.request.contextPath}/system!register.html?user.userId="
-					+ $("#registUserId").val() + "&"
-					+ "user.nowPassword="
-					+ $("#registNowPassword1").val() + ","
-					+ $("#registNowPassword2").val() + "&"
-					+ "user.email=" + $("#registEmail").val() + "&" + "validateCode=" + $("#registValidateCode").val(),
-			dataType : "json", //ajax返回值设置为text（json格式也可用它返回，可打印出结果，也可设置成json）
-			success : function(json) {
-				var obj = $.parseJSON(json); //使用这个方法解析json
-				var state_value = obj.result; //result是和action中定义的result变量的get方法对应的
-				alert(state_value);
-			},
-			error : function(json) {
-				alert("json=" + json);
-				return false;
-			}
-		});
+		$
+				.ajax({
+					type : "POST",
+					url : "${pageContext.request.contextPath}/system!register.html?user.userId="
+							+ $("#registUserId").val()
+							+ "&"
+							+ "user.nowPassword="
+							+ $("#registNowPassword1").val()
+							+ ","
+							+ $("#registNowPassword2").val()
+							+ "&"
+							+ "user.email="
+							+ $("#registEmail").val()
+							+ "&"
+							+ "validateCode=" + $("#registValidateCode").val(),
+					dataType : "json", //ajax返回值设置为text（json格式也可用它返回，可打印出结果，也可设置成json）
+					success : function(json) {
+						var obj = $.parseJSON(json); //使用这个方法解析json
+						var state_value = obj.result; //result是和action中定义的result变量的get方法对应的
+						alert(state_value);
+					},
+					error : function(json) {
+						alert("json=" + json);
+						return false;
+					}
+				});
 	}
 </script>
 </head>
 <body>
-	<!-- Navbar
-    ================================================== -->
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<div class="nav-collapse collapse">
-				<c:if test="${sessuonScope.userInfo}==null">
-				
-					<a class="brand" href="#regist" class="hid" data-toggle="modal">注册</a>
-
-					<a class="brand" href="#myModal" class="hid" data-toggle="modal">登录</a>
-				</c:if>
-				<c:if test="${sessionScope.userInfo}!=null">
-				<a class="brand" href="#">尊敬的${sessionScope.userInfo.userId}您好</a>
-					<a class="brand" href="./index.html">我的订单</a> <a class="brand"
-						href="./index.html">购物车</a> <a class="brand" href="./index.html">个人中心</a>
-				</c:if>
-					<ul class="nav">
-						<li class="active"><a href="./index.html">课程</a></li>
-						<li class=""><a href="#">问答</a></li>
-						<li class=""><a href="#">求课</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+	<%@ include file="common/common.jsp"%>
 	<!-- 程序包含结束 -->
 
 
@@ -111,7 +100,9 @@
 			<h1>365IT学院</h1>
 			<p>编程未来，成就梦想</p>
 			<p>
-				<a href="${pageContext.request.contextPath}/product!forwardProductList.html" class="btn btn-primary btn-large">立即选课</a>
+				<a
+					href="${pageContext.request.contextPath}/product!forwardProductList.html"
+					class="btn btn-primary btn-large">立即选课</a>
 			</p>
 		</div>
 	</div>
@@ -210,112 +201,5 @@
 		</ul>
 	</div>
 	</footer>
-	<!-- login -->
-	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div id="signin" class="rl-modal in" aria-hidden="false">
-			<div class="rl-modal-header">
-				<h1>
-					<span class="active-title hid" href="#myModal" data-toggle="modal">登录</span>
-				</h1>
-				<button type="button" class="rl-close" data-dismiss="modal"
-					hidefocus="true" aria-hidden="true"></button>
-			</div>
-			<div class="rl-modal-body">
-				<div class="clearfix">
-					<div class="l-left-wrap l">
-						<form id="signup-form">
-							<div class="rlf-group">
-								<input type="text" name="email" data-validate="email"
-									autocomplete="off" class="rlf-input rlf-input-email"
-									placeholder="请输入登录邮箱" />
-								<p class="rlf-tip-wrap"></p>
-							</div>
-							<div class="rlf-group">
-								<input type="password" name="password" autocomplete="off"
-									class="rlf-input rlf-input-pwd" placeholder="请输入密码" />
-								<p class="rlf-tip-wrap" />
-							</div>
-							<div class="rlf-group rlf-appendix clearfix">
-								<label for="auto-signin" class="l" hidefocus="true" /> <input
-									type="checkbox" checked="checked" id="auto-signin" /> 自动登录 </label> <a
-									href="/user/newforgot" class="rlf-forget r" target="_blank"
-									hidefocus="true">忘记密码？ </a>
-							</div>
-							<div class="rlf-group clearfix">
-								<p class="rlf-tip-wrap " id="signin-globle-error"></p>
-								<input type="button" id="signin-btn" value="登录" hidefocus="true"
-									class="rlf-btn-green btn-full r" />
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="rl-model-footer">
-				<div class="pop-login-sns">
-					<a href="javascript:void(0)" hidefocus="true"
-						data-login-sns="/user/loginqq" class="pop-sns-qq"> <i></i> QQ
-						帐号直接登录
-					</a> <a href="javascript:void(0)" hidefocus="true"
-						data-login-sns="/user/loginweibo" class="pop-sns-weibo"> <i></i>
-						新浪微博帐号登录
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- regist -->
-	<div id="regist" class="modal hide fade" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div id="signup" class="rl-modal  in" aria-hidden="false">
-			<div class="rl-modal-header">
-				<button type="button" class="rl-close" data-dismiss="modal"
-					aria-hidden="true"></button>
-				<h1>
-					<span class="active-title hid" href="#regist" data-toggle="modal">注册</span>
-				</h1>
-			</div>
-			<div class="rl-modal-body">
-				<s:form id="signup-form" action="system!register.html">
-					<div class="rlf-group">
-						<input type="text" id="registUserId" name="user.userId"
-							class="rlf-input rlf-input-nick" placeholder="请输入用户名" />
-						<p class="rlf-tip-wrap">请输入用户，2-18位英文、数字或下划线！</p>
-					</div>
-					<div class="rlf-group">
-						<input type="password" id="registNowPassword1"
-							name="user.nowPassword" class="rlf-input rlf-input-pwd"
-							placeholder="请输入密码" />
-						<p class="rlf-tip-wrap">请输入6-16位密码，区分大小写，不能使用空格</p>
-					</div>
-					<div class="rlf-group">
-						<input type="password" id="registNowPassword2"
-							name="user.nowPassword" class="rlf-input rlf-input-pwd"
-							placeholder="请输入密码" />
-						<p class="rlf-tip-wrap">请输入6-16位密码，区分大小写，不能使用空格</p>
-					</div>
-					<div class="rlf-group">
-						<input type="text" id="registEmail" name="user.email"
-							class="rlf-input rlf-input-email" autocomplete="off"
-							placeholder="请输入登录邮箱" />
-						<p class="rlf-tip-wrap">请输入有效的邮箱！</p>
-					</div>
-					<div class="rlf-group">
-						<input type="text" id="registValidateCode"
-							name="user.validateCode" class="rlf-input rlf-input-nick" /> <img
-							id="vertImg"
-							src="${pageContext.request.contextPath}/system!validateCode.html" />
-						<a class="chgVertImg" href="javascript:void(0);" onclick="reImg()">看不清，换一张</a>
-						<p class="rlf-tip-wrap">请输入验证码</p>
-					</div>
-					<div class="rlf-group clearfix">
-						<input type="button" id="signup-btn" value="注册" hidefocus="true"
-							class="rlf-btn-green btn-full r" style="float: left;" onclick="regist();"/>
-					</div>
-				</s:form>
-			</div>
-		</div>
-	</div>
 </body>
 </html>

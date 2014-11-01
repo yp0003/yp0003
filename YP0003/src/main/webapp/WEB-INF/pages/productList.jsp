@@ -134,6 +134,9 @@
 							</div></li>
 
 					</ul>
+					<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
+										pageSize="pageInfo.pageSize" count="pageInfo.count"
+										includes="" />
 				</div>
             </div>
         </div>

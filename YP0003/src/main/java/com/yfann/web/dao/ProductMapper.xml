@@ -112,18 +112,6 @@
     -->
     product_samll_pic
   </sql>
-  <!-- 分页查询产品列表 -->
-	<select id="selectProductByParamer" parameterType="map" resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from t_product where 1 = 1
-	</select>
-<!-- 分页查询产品列表总数 -->
-	<select id="selectProductCountByParamer" parameterType="map" resultType="int">
-		select
-		count(*)
-		from t_product where 1 = 1
-	</select>
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yfann.web.pojo.ProductExample" >
     <!--
       WARNING - @mbggenerated
@@ -554,4 +542,17 @@
       update_matter = #{updateMatter,jdbcType=DECIMAL}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <!-- **********************************************************业务SQL***************************************************************** -->
+    <!-- 分页查询产品列表 -->
+	<select id="selectProductByParamer" parameterType="map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_product where 1 = 1
+	</select>
+<!-- 分页查询产品列表总数 -->
+	<select id="selectProductCountByParamer" parameterType="map" resultType="int">
+		select
+		count(*)
+		from t_product where 1 = 1
+	</select>
 </mapper>
