@@ -55,7 +55,7 @@ public class PageInfo {
 	}
 	public void setCount(Integer count) {
 		this.count = count;
-		if (pageNo > getTotal())
+		if (pageNo > getTotal() && getTotal() != 0)
 			pageNo = getTotal();
 	}
 	public Integer getPageSize() {

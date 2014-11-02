@@ -88,13 +88,15 @@ public class Pages extends Component {
 
 		//用于计算的当前页整数形式
 		int cpageInt = Integer.valueOf(pageNo);
-		str.append("<div class='pagination'>");
+		
+
+		str.append("<div class='pagination pagination-centered'><ul>");
 		Integer totalInt = Integer.valueOf(total);
 
 		/*str.append("<select name='pageInfo.pageSize' style='width: 50px' onchange=\"window.location.href='" + url + "?pageInfo.pageNo=" + (cpageInt > totalInt ? totalInt : cpageInt)+ "&pageInfo.pageSize=' + this.options[this.selectedIndex].value + '" + perUrl + "'\"><option value='10' " + (pagesizeInt == 10 ? "selected='selected'" : "") + ">10</option><option value='20' " + (pagesizeInt == 20 ? "selected='selected'" : "") + ">20</option><option value='30' " + (pagesizeInt == 30 ? "selected='selected'" : "") + ">30</option><option value='40' " + (pagesizeInt == 40 ? "selected='selected'" : "") + ">40</option><option value='50' " + (pagesizeInt == 50 ? "selected='selected'" : "") + ">50</option><option value='100' " + (pagesizeInt == 100 ? "selected='selected'" : "") + ">100</option></select>&nbsp;&nbsp;&nbsp;&nbsp;");*/
 		// 如果只有一页，则无需分页
 		//总页数
-		if (totalInt == 1) {
+		if (totalInt <= 1) {
 			str.append("<li><a href='#'>1</a></li>");
 		} else {
 
@@ -211,8 +213,8 @@ public class Pages extends Component {
 			}
 		}
 		
-		str.append("&nbsp;&nbsp;&nbsp;&nbsp;<span class='label label-default'>显示"+b1 + "到" + b2 + "，共" + totalCount +"条记录</span>");
-		str.append("</div>");
+		str.append("&nbsp;&nbsp;&nbsp;&nbsp;<span class='label' style='padding-top:10px;'>显示"+b1 + "到" + b2 + "，共" + totalCount +"条记录</span>");
+		str.append("</ul></div>");
 
 		// logger.debug("=============================\n{}", str.toString());
 		try {

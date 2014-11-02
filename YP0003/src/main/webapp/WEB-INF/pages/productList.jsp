@@ -98,6 +98,9 @@
                 学习计划
             </a>
         </div>
+        					<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
+										pageSize="pageInfo.pageSize" count="pageInfo.count"
+										includes="" />
         <div class="course-content">
             <div class="course-tools">
                 <h2>全部课程</h2>
@@ -134,9 +137,6 @@
 							</div></li>
 
 					</ul>
-					<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
-										pageSize="pageInfo.pageSize" count="pageInfo.count"
-										includes="" />
 				</div>
             </div>
         </div>

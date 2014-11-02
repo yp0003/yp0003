@@ -4,7 +4,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!-- Le styles -->
+<%-- <!-- Le styles -->
+<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/css/base.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet"/>
+
+
+<!-- link script -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script> --%>
+
+
+<!-- link css -->
 <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet"/>
 <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
 <link href="${pageContext.request.contextPath}/bootstrap/css/docs.css" rel="stylesheet"/>
@@ -16,6 +30,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 	<!-- Navbar
