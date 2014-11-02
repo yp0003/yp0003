@@ -65,7 +65,6 @@ public class OrderServiceImpl implements OrderService {
 			throws Exception {
 		Map<String, Object> parames = getBuyCarParamerMap(buyCar);
 		pageInfo.setCount(buyCarMapper.selectBuyCarCountByParamer(parames));
-		int aaaaa = pageInfo.getPageNo();
 		List<BuyCar> buyCarList = buyCarMapper.selectBuyCarListByParamer(parames, new RowBounds(
 				pageInfo.getOffset(), pageInfo.getPageSize()));
 		return buyCarList;
