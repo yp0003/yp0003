@@ -41,8 +41,7 @@
 		<action name="order!*" method="{1}"
 			class="com.yfann.web.action.OrderAction">
 			<!-- 添加到购物车 -->
-			<result name="addBuyCar">/WEB-INF/pages/login.jsp</result>
-			<result name="buyCarList">/WEB-INF/pages/register.jsp</result>
+			<result name="buyCarList">/WEB-INF/pages/buyCarList.jsp</result>
 		</action>
 		
 		

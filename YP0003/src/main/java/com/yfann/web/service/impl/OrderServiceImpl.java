@@ -49,9 +49,9 @@ public class OrderServiceImpl implements OrderService {
 		return parames;
 	}
 
-
 	/**
 	 * Order参数
+	 * 
 	 * @param order
 	 * @return
 	 */
@@ -63,20 +63,20 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<BuyCar> findBuyCarList(BuyCar buyCar, PageInfo pageInfo)
 			throws Exception {
-		//Map<String, Object> parames = 
-		getBuyCarParamerMap(buyCar);
-		/*
-		 * pageInfo.setCount(buyCarMapper.selectBuyCarCountByParamer(parames));
-		 * return buyCarMapper.selectBuyCarListByParamer(parames, new
-		 * RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
-		 */
-		return null;
+		Map<String, Object> parames = getBuyCarParamerMap(buyCar);
+		pageInfo.setCount(buyCarMapper.selectBuyCarCountByParamer(parames));
+		int aaaaa = pageInfo.getPageNo();
+		List<BuyCar> buyCarList = buyCarMapper.selectBuyCarListByParamer(parames, new RowBounds(
+				pageInfo.getOffset(), pageInfo.getPageSize()));
+		return buyCarList;
 	}
 
 	@Override
 	public List<Order> findOrderList(User user, Order order, PageInfo pageInfo) {
 		Map<String, Object> orderListParams = getOrderParamerMap(order);
-		pageInfo.setCount(orderMapper.selectOrderListCountByParams(orderListParams));
-		return orderMapper.selectOrderListByParams(orderListParams, new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
+		pageInfo.setCount(orderMapper
+				.selectOrderListCountByParams(orderListParams));
+		return orderMapper.selectOrderListByParams(orderListParams,
+				new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
 	}
 }

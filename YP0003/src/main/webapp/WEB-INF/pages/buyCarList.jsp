@@ -7,7 +7,6 @@
 <title>购物车</title>
 </head>
 <body>
-	<%@include file="common/common.jsp"%>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">

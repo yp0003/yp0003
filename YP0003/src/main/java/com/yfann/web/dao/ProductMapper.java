@@ -20,6 +20,7 @@ public interface ProductMapper {
 	/**
 	 * 根据条件返回产品总数
 	 * @param paramer
+	 * 
 	 * @return
 	 */
 	
