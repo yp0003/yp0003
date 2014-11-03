@@ -5,7 +5,7 @@
 <configuration>
 	<!-- MyBatis实现物理分页 -->
 	<properties>
-		<property name="dialect" value="oracle" />
+		<property name="dialect" value="mysql" />
 	</properties>
 
 	<settings>

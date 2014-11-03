@@ -51,8 +51,7 @@ public class PaginationInterceptor  implements Interceptor{
 	            dialect = new MySql5Dialect();
 	            break;
 	        case ORACLE:
-	            //dialect = new OracleDialect();
-	        	dialect = new MySql5Dialect();
+	            dialect = new OracleDialect();
 	            break;
 	        }
 	 

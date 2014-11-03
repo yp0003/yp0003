@@ -7,63 +7,272 @@
 <title>购物车</title>
 </head>
 <body>
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span12">
-				<table id="stupidtable" width="100%" align="center"
-					class="table table-bordered">
-					<caption>购物车列表</caption>
-					<thead>
-						<tr>
-							<th>
-								<div class="checkbox">
-									<label> <input type="checkbox" id="allSelect">全选
-									</label>
-								</div>
-							</th>
-							<th>产品名称</th>
-							<th>产品价格</th>
-							<th>产品打折</th>
-							<th>购买数量</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					<tbody>
-						<s:iterator value="buyCarList" id="bcList" status="status">
-							<tr onmouseover="this.bgColor='#EAF2FF'"
-								onmouseout="this.bgColor='#FFFFFF'" align="center">
-								<th>
-									<div class="checkbox">
-										<input type="checkbox" />
-									</div>
-								</th>
-						</s:iterator>
-					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="14"><s:if test="ddzflist.size > 0">
-									<div>
-										<s:submit value="结算"></s:submit>
-									</div>
-								</s:if></td>
-						</tr>
-					</tfoot>
-				</table>
+<%@ include file="common/common.jsp" %>
+	<div id="main" class="mt49">
+	<div class="container1200" id="course_intro">
+	<div class="cidnav">
+		<ul>
+			<li><span class="orther">3.付款</span></li>
+			<li><span>></span></li>	
+			<li><span class="orther">2.确认订单信息</span></li>
+			<li><span>></span></li>
+			<li><span class="cidcolor">1.我的购物车</span></li>
+		</ul>
+	</div>
+		<div class="title">我的购物车</div>
+		<div style='margin-bottom: 50px;'>
+			<table class="table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<!-- <th><input type="checkbox" name="" class="check-g" /></th> -->
+						<th>商品</th>
+						<th>商品信息</th>
+						<th>单价</th>
+						<th>数量</th>
+						<th>小计</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="checkbox" name="ids[]" /></td>
+						<td><img alt=""
+							src="${pageContext.request.contextPath}/image/53e4ba4c0001f2d206000338-590-330.jpg" width="100" /></td>
+						<td>PHP工程师</td>
+						<td>200</td>
+						<td class="num"><span class="jian" pic="200">&nbsp;</span><label
+							class="num-z"> 1 </label><span class="jia" pic="200">&nbsp;</span></td>
+						<td class="pic">200</td>
+						<td><a href="#">删除</a></td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="ids[]" /></td>
+						<td><img alt=""
+							src="${pageContext.request.contextPath}/image/53e4ba4c0001f2d206000338-590-330.jpg" width="100" /></td>
+						<td>PHP工程师</td>
+						<td>200</td>
+						<td class="num"><span class="jian" pic="200">&nbsp;</span><label
+							class="num-z"> 1 </label><span class="jia" pic="200">&nbsp;</span></td>
+						<td class="pic">200</td>
+						<td><a href="#">删除</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="statistics fn-clear">
+			<div class="fn-left qx">
+				<input type="checkbox" name="" class="check-g" /> 全选
+				&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">清除购物车 </a>
+			</div>
+			<div class="fn-right">
+				共计<span class="red-1"> 0 </span>件商品合计（不含运费）<label class="red-1">￥<span>20</span></label>&nbsp;&nbsp;&nbsp;
+				<a href="order.html"><button class="btn">结算</button></a>
+				<a href="list.html"><button class="btn">继续购物</button></a>
 			</div>
 		</div>
+
+		<div class="tab">
+			<div class="title">
+				<ul class="fn-clear tab-ul">
+					<li class="def tab-s" n="1">今日特价</li>
+					<li class="tab-s" n="2">我的关注</li>
+					<li class="tab-s" n="3">猜你喜欢</li>
+					<li class="tab-s" n="4">最近浏览</li>
+				</ul>
+			</div>
+			<div class="tj_1 sp fn-clear">
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/53ec5a590001d85606000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/53ec5a590001d85606000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/53ec5a590001d85606000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/53ec5a590001d85606000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/53ec5a590001d85606000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+			</div>
+			<div class="tj_2 sp fn-clear">
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/54125edc0001ce6306000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/54125edc0001ce6306000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/54125edc0001ce6306000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/54125edc0001ce6306000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/54125edc0001ce6306000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+			</div>
+			<div class="tj_3 sp fn-clear">
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/542376b20001374c06000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/542376b20001374c06000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/542376b20001374c06000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/542376b20001374c06000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/542376b20001374c06000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+			</div>
+			<div class="tj_4 sp fn-clear">
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/541943720001c89206000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/541943720001c89206000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/541943720001c89206000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/541943720001c89206000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<img src="${pageContext.request.contextPath}/image/541943720001c89206000338-590-330.jpg" />
+					</dt>
+					<dd>java 眼中的 XML</dd>
+					<dd>
+						价格：<span class="red-1">￥20</span>
+					</dd>
+				</dl>
+			</div>
+		</div>
+
 	</div>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#allSelect").bind("click", function() {
-				var flag = $('#allSelect').is(':checked');
-				if(!flag){
-			    $("[name='checkbox']").attr("checked",'true');//全选
-				} else {
-					$("[name='checkbox']").attr("checked",'flase');//全不选
-				}
-			});
-		});
-	</script>
+
+</div>
 </body>
 
 </html>
