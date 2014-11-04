@@ -34,10 +34,24 @@
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
 	<%@ include file="common/common.jsp"%>
-	<div id="main">
-
+	<div id="main" class="mt49">
 		<div class="container">
 			<div class="course-sidebar">
+				<form action="#" method="post">
+					<div class="control-group">
+						<div class="controls">
+							<div class="input-prepend" id="sub">
+								<span class="add-on"><i class="icon-search"></i></span> <input
+									class="span2" id="inputIcon" type="text">
+							</div>
+							<span
+								style="height: 45px; display: inline-block; margin-bottom: 10px;">
+								<button class="btn btn-success" type="submit">搜索</button>
+							</span>
+						</div>
+					</div>
+
+				</form>
 				<div class="course-sidebar-type">
 					<div class="course-sidebar-menu">
 						<ul>
@@ -48,76 +62,62 @@
 					</div>
 					<div class="course-sidebar-tabs">
 						<ul class="js-sidebar-lang">
+							<li><a data-id="0" class="curr" href="javascript:void(0)">全部</a></li>
 							<s:iterator value="productKindList" var="pkl">
 								<li><a href="javascript:void(0)">${pkl.productKind}</a></li>
 							</s:iterator>
 						</ul>
+						<div style="clear: both"></div>
 					</div>
-					<form action="#" method="post">
-						<div class="control-group">
-							<div class="controls">
-								<div class="input-prepend" id="sub">
-									<span class="add-on"><i class="icon-search"></i></span> <input
-										class="span2" id="inputIcon" type="text">
-								</div>
-								<span
-									style="height: 45px; display: inline-block; margin-bottom: 10px;">
-									<button class="btn btn-success" type="submit">搜索</button>
-								</span>
-							</div>
-						</div>
-
-					</form>
-					<a href="#" class="course-sidebar-program"> 学习计划 </a>
 				</div>
-				<div class="course-content">
-					<div class="course-tools">
-						<h2>课程</h2>
-						<ul class="js-tool-sort">
-							<li><a class="curr" data-id="last" href="javascript:void(0)">最新</a></li>
-							<li><a href="javascript:void(0)" data-id="pop">最热</a></li>
+
+				<!-- <a href="#" class="course-sidebar-program"> 学习计划 </a> -->
+			</div>
+			<div class="course-content">
+				<div class="course-tools">
+					<h2>全部课程</h2>
+				</div>
+				<div class="course-list">
+					<div class="js-course-list">
+						<ul>
+
+							<s:iterator value="productList" var="pl">
+								<li><a href="info.html">
+										<div class="course-list-img">
+											<img width="280" height="160"
+												src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"
+												alt="${pl.projectDesc}"></img>
+										</div>
+										<h5>
+											<span class="topicon"> ${pl.projectDesc}</span>
+										</h5>
+										<div class="intro">
+											<p>${pl.productDesc}</p>
+											<span class="l">更新至${pl.updateBadge}-${pl.updateMatter}</span>
+											<span class="r">课程时长:${pl.productSale}分</span>
+										</div>
+										<div class="tips">
+											<span class="l">${pl.updateTime}更新</span> <span class="r">${pl.buyCount}人学习</span>
+										</div>
+								</a>
+									<div class="shop">
+										<span><a><button class="btn">加入购物车</button></a></span> <span><a><button
+													class="btn" type="button">立即购买</button> <a></span>
+									</div></li>
+							</s:iterator>
 						</ul>
-						<div class="dot-tool-curr"></div>
-					</div>
-					<div class="course-list">
-						<div class="js-course-list">
-							<ul>
-								<s:iterator value="productList" var="pl">
-									<li><a href="info.html">
-											<div class="course-list-img">
-												<img width="280" height="160"
-													src="image/53e4ba4c0001f2d206000338-590-330.jpg"
-													alt="${pl.projectDesc}"></img>
-											</div>
-											<h5>
-												<span class="topicon"> ${pl.projectDesc}</span>
-											</h5>
-											<div class="intro">
-												<p>${pl.productDesc}</p>
-												<span class="l">更新至${pl.updateBadge}-${pl.updateMatter}</span>
-												<span class="r">课程时长:${pl.productSale}分</span>
-											</div>
-											<div class="tips">
-												<span class="l">${pl.updateTime}更新</span> <span class="r">${pl.buyCount}人学习</span>
-											</div>
-									</a>
-										<div class="shop">
-											<span><a><button class="btn">加入购物车</button></a></span> <span><a><button
-														class="btn" type="button">立即购买</button> <a></span>
-										</div></li>
-								</s:iterator>
-							</ul>
-						</div>
-						<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
-							pageSize="pageInfo.pageSize" count="pageInfo.count" includes="" />
-
-
-
 
 					</div>
+
 				</div>
+				<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
+					pageSize="pageInfo.pageSize" count="pageInfo.count" includes="" />
 			</div>
 		</div>
-		<%@ include file="common/commonFooter.jsp"%>
+	</div>
+
+
+
+	<%@ include file="common/commonFooter.jsp"%>
 </body>
 </html>

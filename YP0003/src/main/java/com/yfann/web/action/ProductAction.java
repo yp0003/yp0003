@@ -39,6 +39,13 @@ public class ProductAction extends CommonAction{
 		}
 		return product;
 	}
+	
+	public String showProductSmallImg(){
+		//填充内存流(课程缩略图)
+		setByteArrayInputStream(productService.findProductSmallImgById(product));
+		return "showProductSmallImg";
+		
+	}
 	public Product getProduct() {
 		return product;
 	}

@@ -1,9 +1,11 @@
 package com.yfann.web.service.impl;
 
+import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +42,15 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<ProductKind> findAllProductKindList() {
 		return productKindMapper.selectAllProductKindList();
+	}
+
+	@Override
+	public ByteArrayInputStream findProductSmallImgById(Product product) {
+		ByteArrayInputStream productSmallImg = null;
+		if(product != null && StringUtils.isNotBlank(product.getId())){
+			byte[] productSmallPicByte = productMapper.selectProductSmallImgById(product.getId());
+			productSmallImg = new ByteArrayInputStream(productSmallPicByte);
+		}
+		return productSmallImg;
 	}
 }

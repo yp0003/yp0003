@@ -1,5 +1,6 @@
 package com.yfann.web.service;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import com.yfann.web.pojo.Product;
@@ -25,4 +26,10 @@ public interface ProductService {
 	 * @return
 	 */
 	public List<ProductKind> findAllProductKindList();
+	/**
+	 * 返回课程缩图
+	 * @param product
+	 * @return
+	 */
+	public ByteArrayInputStream findProductSmallImgById(Product product);
 }

@@ -2,10 +2,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-</head>
-<body>
 	  <!-- Footer -->
 	<footer class="footer">
 		<div class="container">
@@ -28,6 +24,3 @@
 			</ul>
 		</div>
 	</footer>
-	
-</body>
-</html>
