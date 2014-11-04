@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.pojo.Product;
+import com.yfann.web.pojo.ProductKind;
 import com.yfann.web.service.ProductService;
 import com.yfann.web.vo.PageInfo;
 
@@ -19,6 +20,7 @@ public class ProductAction extends CommonAction{
 	private List<Product> productList;
 	/**分页*/
 	private PageInfo pageInfo;
+	private List<ProductKind> productKindList;
 	@Autowired
 	private ProductService productService;
 	/**
@@ -27,6 +29,7 @@ public class ProductAction extends CommonAction{
 	 */
 	public String forwardProductList() throws Exception{
 		Product productInfo = ifEmptyProduct(product);
+		productKindList = productService.findAllProductKindList();
 		productList = productService.findProductList(productInfo, pageInfo);
 		return "forwardProductList";
 	}
@@ -54,4 +57,11 @@ public class ProductAction extends CommonAction{
 	public void setPageInfo(PageInfo pageInfo) {
 		this.pageInfo = pageInfo;
 	}
+	public List<ProductKind> getProductKindList() {
+		return productKindList;
+	}
+	public void setProductKindList(List<ProductKind> productKindList) {
+		this.productKindList = productKindList;
+	}
+	
 }

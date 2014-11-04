@@ -22,6 +22,8 @@
     <result column="product_status" property="productStatus" jdbcType="VARCHAR" />
     <result column="update_badge" property="updateBadge" jdbcType="DECIMAL" />
     <result column="update_matter" property="updateMatter" jdbcType="DECIMAL" />
+    <result column="product_kind_id" property="productKindId" jdbcType="VARCHAR" />
+    <result column="project_desc" property="projectDesc" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.yfann.web.pojo.Product" extends="BaseResultMap" >
     <!--
@@ -103,7 +105,7 @@
     -->
     id, product_id, product_price, product_sale, online_time, offline_time, online_status, 
     teacher_id, product_desc, product_lang, update_time, product_name, buy_count, product_status, 
-    update_badge, update_matter
+    update_badge, update_matter, product_kind_id, project_desc
   </sql>
   <sql id="Blob_Column_List" >
     <!--
@@ -190,13 +192,15 @@
       online_status, teacher_id, product_desc, 
       product_lang, update_time, product_name, 
       buy_count, product_status, update_badge, 
-      update_matter, product_samll_pic)
+      update_matter, product_kind_id, project_desc, 
+      product_samll_pic)
     values (#{id,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, #{productPrice,jdbcType=DECIMAL}, 
       #{productSale,jdbcType=DECIMAL}, #{onlineTime,jdbcType=TIMESTAMP}, #{offlineTime,jdbcType=TIMESTAMP}, 
       #{onlineStatus,jdbcType=VARCHAR}, #{teacherId,jdbcType=VARCHAR}, #{productDesc,jdbcType=VARCHAR}, 
       #{productLang,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{productName,jdbcType=VARCHAR}, 
       #{buyCount,jdbcType=DECIMAL}, #{productStatus,jdbcType=VARCHAR}, #{updateBadge,jdbcType=DECIMAL}, 
-      #{updateMatter,jdbcType=DECIMAL}, #{productSamllPic,jdbcType=LONGVARBINARY})
+      #{updateMatter,jdbcType=DECIMAL}, #{productKindId,jdbcType=VARCHAR}, #{projectDesc,jdbcType=VARCHAR}, 
+      #{productSamllPic,jdbcType=LONGVARBINARY})
   </insert>
   <insert id="insertSelective" parameterType="com.yfann.web.pojo.Product" >
     <!--
@@ -253,6 +257,12 @@
       <if test="updateMatter != null" >
         update_matter,
       </if>
+      <if test="productKindId != null" >
+        product_kind_id,
+      </if>
+      <if test="projectDesc != null" >
+        project_desc,
+      </if>
       <if test="productSamllPic != null" >
         product_samll_pic,
       </if>
@@ -305,6 +315,12 @@
       </if>
       <if test="updateMatter != null" >
         #{updateMatter,jdbcType=DECIMAL},
+      </if>
+      <if test="productKindId != null" >
+        #{productKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="projectDesc != null" >
+        #{projectDesc,jdbcType=VARCHAR},
       </if>
       <if test="productSamllPic != null" >
         #{productSamllPic,jdbcType=LONGVARBINARY},
@@ -376,6 +392,12 @@
       <if test="record.updateMatter != null" >
         update_matter = #{record.updateMatter,jdbcType=DECIMAL},
       </if>
+      <if test="record.productKindId != null" >
+        product_kind_id = #{record.productKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectDesc != null" >
+        project_desc = #{record.projectDesc,jdbcType=VARCHAR},
+      </if>
       <if test="record.productSamllPic != null" >
         product_samll_pic = #{record.productSamllPic,jdbcType=LONGVARBINARY},
       </if>
@@ -406,6 +428,8 @@
       product_status = #{record.productStatus,jdbcType=VARCHAR},
       update_badge = #{record.updateBadge,jdbcType=DECIMAL},
       update_matter = #{record.updateMatter,jdbcType=DECIMAL},
+      product_kind_id = #{record.productKindId,jdbcType=VARCHAR},
+      project_desc = #{record.projectDesc,jdbcType=VARCHAR},
       product_samll_pic = #{record.productSamllPic,jdbcType=LONGVARBINARY}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -432,7 +456,9 @@
       buy_count = #{record.buyCount,jdbcType=DECIMAL},
       product_status = #{record.productStatus,jdbcType=VARCHAR},
       update_badge = #{record.updateBadge,jdbcType=DECIMAL},
-      update_matter = #{record.updateMatter,jdbcType=DECIMAL}
+      update_matter = #{record.updateMatter,jdbcType=DECIMAL},
+      product_kind_id = #{record.productKindId,jdbcType=VARCHAR},
+      project_desc = #{record.projectDesc,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -489,6 +515,12 @@
       <if test="updateMatter != null" >
         update_matter = #{updateMatter,jdbcType=DECIMAL},
       </if>
+      <if test="productKindId != null" >
+        product_kind_id = #{productKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="projectDesc != null" >
+        project_desc = #{projectDesc,jdbcType=VARCHAR},
+      </if>
       <if test="productSamllPic != null" >
         product_samll_pic = #{productSamllPic,jdbcType=LONGVARBINARY},
       </if>
@@ -516,6 +548,8 @@
       product_status = #{productStatus,jdbcType=VARCHAR},
       update_badge = #{updateBadge,jdbcType=DECIMAL},
       update_matter = #{updateMatter,jdbcType=DECIMAL},
+      product_kind_id = #{productKindId,jdbcType=VARCHAR},
+      project_desc = #{projectDesc,jdbcType=VARCHAR},
       product_samll_pic = #{productSamllPic,jdbcType=LONGVARBINARY}
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -539,7 +573,9 @@
       buy_count = #{buyCount,jdbcType=DECIMAL},
       product_status = #{productStatus,jdbcType=VARCHAR},
       update_badge = #{updateBadge,jdbcType=DECIMAL},
-      update_matter = #{updateMatter,jdbcType=DECIMAL}
+      update_matter = #{updateMatter,jdbcType=DECIMAL},
+      product_kind_id = #{productKindId,jdbcType=VARCHAR},
+      project_desc = #{projectDesc,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <!-- **********************************************************业务SQL***************************************************************** -->

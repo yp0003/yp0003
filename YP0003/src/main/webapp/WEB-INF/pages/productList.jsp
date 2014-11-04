@@ -5,164 +5,119 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>Bootstrap</title>
 <!-- Le styles -->
-<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/css/base.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet"/>
+<link
+	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css"
+	rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/base.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/style.css"
+	rel="stylesheet" />
 
 
 <!-- link script -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/custom.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
-<%@ include file="common/common.jsp" %>
-<div id="main">
+	<%@ include file="common/common.jsp"%>
+	<div id="main">
 
-    <div class="container">
-        <div class="course-sidebar">
-            <div class="course-sidebar-type">
-                <div class="course-sidebar-menu">
-                    <ul>
-                        <li><a class="curr" href="javascript:void(0)">课程库</a></li>
-                        <li><a href="javascript:void(0)">职位</a></li>
-                    </ul>
-                    <div class="dot-curr"></div>
-                </div>
-                <div class="course-sidebar-tabs">
-                    <ul class="js-sidebar-lang">
-                        <li><a data-id="0" class="curr" href="javascript:void(0)">全部</a></li>
-                                                      <li><a data-id="1" href="javascript:void(0)">PHP</a></li>
-                                                      <li><a data-id="223" href="javascript:void(0)">Android</a></li>
-                                                      <li><a data-id="957" href="javascript:void(0)">Swift</a></li>
-                                                      <li><a data-id="1118" href="javascript:void(0)">Python</a></li>
-                                                      <li><a data-id="221" href="javascript:void(0)">Html5</a></li>
-                                                      <li><a data-id="220" href="javascript:void(0)">JAVA</a></li>
-                                                      <li><a data-id="222" href="javascript:void(0)">Node.js</a></li>
-                                                      <li><a data-id="955" href="javascript:void(0)">iOS</a></li>
-                                                      <li><a data-id="56" href="javascript:void(0)">CSS</a></li>
-                                                      <li><a data-id="7" href="javascript:void(0)">HTML</a></li>
-                                                      <li><a data-id="44" href="javascript:void(0)">JavaScript</a></li>
-                                                      <li><a data-id="219" href="javascript:void(0)">jQuery</a></li>
-                                                      <li><a data-id="952" href="javascript:void(0)">MySQL</a></li>
-                                                      <li><a data-id="468" href="javascript:void(0)">Linux</a></li>
-                                                      <li><a data-id="958" href="javascript:void(0)">MongoDB</a></li>
-                                                      <li><a data-id="953" href="javascript:void(0)">Photoshop</a></li>
-                                                      <li><a data-id="956" href="javascript:void(0)">Maya</a></li>
-                                                      <li><a data-id="954" href="javascript:void(0)">Premiere</a></li>
-                                                  
-                    </ul>
-                    <ul class="course-sidebar-job js-sidebar-job" style="display:none">
-                        <li><a data-id="0" class="curr" href="javascript:void(0)">全部</a></li>
-                                                                   <li><a data-id="6" href="javascript:void(0)">Android<br>开发工程师</a></li>
-                                              <li><a data-id="2" href="javascript:void(0)">前端开发<br>工程师</a></li>
-                                              <li><a data-id="1" href="javascript:void(0)">PHP<br>开发工程师</a></li>
-                                              <li><a data-id="5" href="javascript:void(0)">JAVA<br>开发工程师</a></li>
-                                              <li><a data-id="8" href="javascript:void(0)">iOS<br>开发工程师</a></li>
-                                              <li><a data-id="10" href="javascript:void(0)">多媒体<br>设计师</a></li>
-                                          
-                    </ul>
-					<div style="clear:both"></div>
-				</div>
-                <dl class="course-sidebar-level js-sidebar-level">
-                    <dt>难度</dt>
-                    <dd><a data-id="0" class="curr" href="javascript:void(0)">全部</a></dd>
-                                              <dd><a data-id="1" href="javascript:void(0)">初级</a></dd>
-                                              <dd><a data-id="2" href="javascript:void(0)">中级</a></dd>
-                                              <dd><a data-id="3" href="javascript:void(0)">高级</a></dd>
-                                          
-                </dl>
-            </div>
-			<form action="#" method="post">
-			<div class="control-group">
-				<div class="controls">
-					<div class="input-prepend" id="sub">
-						<span class="add-on"><i class="icon-search"></i></span>
-						<input class="span2" id="inputIcon" type="text">
+		<div class="container">
+			<div class="course-sidebar">
+				<div class="course-sidebar-type">
+					<div class="course-sidebar-menu">
+						<ul>
+							<li><a class="curr" href="javascript:void(0)">课程库</a></li>
+							<li><a href="javascript:void(0)">职位</a></li>
+						</ul>
+						<div class="dot-curr"></div>
 					</div>
-					<span style="height:45px; display:inline-block; margin-bottom:10px;">
-					<button class="btn btn-success" type="submit" >搜索</button>
-					</span>
+					<div class="course-sidebar-tabs">
+						<ul class="js-sidebar-lang">
+							<s:iterator value="productKindList" var="pkl">
+								<li><a href="javascript:void(0)">${pkl.productKind}</a></li>
+							</s:iterator>
+						</ul>
+					</div>
+					<form action="#" method="post">
+						<div class="control-group">
+							<div class="controls">
+								<div class="input-prepend" id="sub">
+									<span class="add-on"><i class="icon-search"></i></span> <input
+										class="span2" id="inputIcon" type="text">
+								</div>
+								<span
+									style="height: 45px; display: inline-block; margin-bottom: 10px;">
+									<button class="btn btn-success" type="submit">搜索</button>
+								</span>
+							</div>
+						</div>
+
+					</form>
+					<a href="#" class="course-sidebar-program"> 学习计划 </a>
+				</div>
+				<div class="course-content">
+					<div class="course-tools">
+						<h2>课程</h2>
+						<ul class="js-tool-sort">
+							<li><a class="curr" data-id="last" href="javascript:void(0)">最新</a></li>
+							<li><a href="javascript:void(0)" data-id="pop">最热</a></li>
+						</ul>
+						<div class="dot-tool-curr"></div>
+					</div>
+					<div class="course-list">
+						<div class="js-course-list">
+							<ul>
+								<s:iterator value="productList" var="pl">
+									<li><a href="info.html">
+											<div class="course-list-img">
+												<img width="280" height="160"
+													src="image/53e4ba4c0001f2d206000338-590-330.jpg"
+													alt="${pl.projectDesc}"></img>
+											</div>
+											<h5>
+												<span class="topicon"> ${pl.projectDesc}</span>
+											</h5>
+											<div class="intro">
+												<p>${pl.productDesc}</p>
+												<span class="l">更新至${pl.updateBadge}-${pl.updateMatter}</span>
+												<span class="r">课程时长:${pl.productSale}分</span>
+											</div>
+											<div class="tips">
+												<span class="l">${pl.updateTime}更新</span> <span class="r">${pl.buyCount}人学习</span>
+											</div>
+									</a>
+										<div class="shop">
+											<span><a><button class="btn">加入购物车</button></a></span> <span><a><button
+														class="btn" type="button">立即购买</button> <a></span>
+										</div></li>
+								</s:iterator>
+							</ul>
+						</div>
+						<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
+							pageSize="pageInfo.pageSize" count="pageInfo.count" includes="" />
+
+
+
+
+					</div>
 				</div>
 			</div>
-			
-			</form>
-            <a href="#" class="course-sidebar-program">
-                学习计划
-            </a>
-        </div>
-        					<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
-										pageSize="pageInfo.pageSize" count="pageInfo.count"
-										includes="" />
-        <div class="course-content">
-            <div class="course-tools">
-                <h2>全部课程</h2>
-                                <ul class="js-tool-sort">
-                    <li><a class="curr" data-id="last" href="javascript:void(0)">最新</a></li>
-                    <li><a href="javascript:void(0)" data-id="pop">最热</a></li>
-                </ul>
-                <div class="dot-tool-curr"></div>
-            </div>
-            <div class="course-list">
-                <div class="js-course-list">
-					<ul>
-						<li><a href="info.html">
-								<div class="course-list-img">
-									<img width="280" height="160"
-										src="image/53e4ba4c0001f2d206000338-590-330.jpg"
-										alt="案例：文件传输基础——Java IO流"></img>
-								</div>
-								<h5>
-									<span class="topicon"> 案例：文件传输基础——Java I.. </span>
-								</h5>
-								<div class="intro">
-									<p>通过大量的案例为您介绍JAVA中的IO流的使用。</p>
-									<span class="l">更新至6-3</span> <span class="r">课程时长：2小时0分</span>
-								</div>
-								<div class="tips">
-									<span class="l">2014-09-16更新</span> <span class="r">4022人学习</span>
-								</div>
-						</a>
-							<div class="shop">
-								<span><a><button class="btn">加入购物车</button></a></span> <span><a><button
-											class="btn" type="button">立即购买</button>
-										<a></span>
-							</div></li>
-
-					</ul>
-				</div>
-            </div>
-        </div>
-    </div>
-  </div>
-  <!-- Footer -->
-	<footer class="footer">
-		<div class="container">
-			<p>
-				<a href="#">求课网欢迎您的到来</a>
-			</p>
-			<p>
-				<a href="#">求课网欢迎您的到来求课网欢迎您的到来求课网欢迎您的到来</a>
-			</p>
-			
-			<p>
-				<a href="#">Glyphicons Free</a> licensed under <a
-					href="#">CC BY </a>.
-			</p>
-			<ul class="footer-links">
-				<li>求课网欢迎您的到来</li>
-				<li class="muted">求课网欢迎您的到来</li>
-				<li>求课网欢迎您的到来</li>
-				<li>求课网欢迎您的到来</li>
-			</ul>
 		</div>
-	</footer>
+		<%@ include file="common/commonFooter.jsp"%>
 </body>
 </html>

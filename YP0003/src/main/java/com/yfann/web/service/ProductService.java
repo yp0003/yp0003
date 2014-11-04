@@ -3,6 +3,7 @@ package com.yfann.web.service;
 import java.util.List;
 
 import com.yfann.web.pojo.Product;
+import com.yfann.web.pojo.ProductKind;
 import com.yfann.web.vo.PageInfo;
 
 /**
@@ -18,4 +19,10 @@ public interface ProductService {
 	 * @return
 	 */
 	public List<Product> findProductList(Product product,PageInfo pageInfo);
+	
+	/**
+	 * 返回产品分类列表
+	 * @return
+	 */
+	public List<ProductKind> findAllProductKindList();
 }
