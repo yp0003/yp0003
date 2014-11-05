@@ -16,6 +16,7 @@
 			<!-- 修改个人信息 -->
 			<result name="updateInfoUI">/WEB-INF/pages/updateInfo.jsp</result>
 			<result name="updateInfo">/index.jsp</result>
+			<result name="register">/WEB-INF/pages/index.jsp</result>
 		</action>
 
 		<!-- OA -->

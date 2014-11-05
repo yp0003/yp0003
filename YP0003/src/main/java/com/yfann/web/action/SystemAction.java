@@ -48,7 +48,10 @@ public class SystemAction extends CommonAction {
 	private String validateCode;
 	private String remPass;
 
-	// 转向修改用户资料页面
+	/**
+	 * 转向修改用户资料页面
+	 * @return
+	 */
 	public String updateInfoUI() {
 		user = (User) session.getAttribute(ApplicationValue.USER_KEY_ON_SESSION);
 		if (user == null) {
@@ -58,7 +61,11 @@ public class SystemAction extends CommonAction {
 		return "updateInfoUI";
 	}
 
-	// 修改用户资料
+	/**
+	 * 修改用户资料
+	 * @return
+	 * @throws Exception
+	 */
 	public String updateInfo() throws Exception {
 		User u = (User) session
 				.getAttribute(ApplicationValue.USER_KEY_ON_SESSION);
@@ -104,12 +111,19 @@ public class SystemAction extends CommonAction {
 		return "updateInfo";
 	}
 
-	// 转向修改密码页面
+	/**
+	 * 转向修改密码页面
+	 * @return
+	 */
 	public String updatePasswordUI() {
 		return "updatePasswordUI";
 	}
 
-	// 修改密码
+	/**
+	 * 修改密码
+	 * @return
+	 * @throws Exception
+	 */
 	public String updatePassword() throws Exception {
 		// 验证当前密码
 		if ("".equals(user.getOldPassword())) {
@@ -225,7 +239,12 @@ public class SystemAction extends CommonAction {
 	public String register() throws Exception {
 		if (user != null) {
 			user.setId(UUIDCreate.getUUID());
-			systemService.saveUser(user);
+			@SuppressWarnings("deprecation")
+			Object valiCodeObj = session.getValue("valiCode");
+			String flagValiCode = valiCodeObj.toString();
+			if(StringUtils.isNotBlank(flagValiCode) && flagValiCode.equals(validateCode)){
+				systemService.saveUser(user);
+			}
 		}
 		return "register";
 	}

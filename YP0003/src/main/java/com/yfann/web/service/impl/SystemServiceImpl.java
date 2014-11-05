@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.yfann.web.dao.UserMapper;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.SystemService;
+import com.yfann.web.vo.MailContext;
 @Service
 public class SystemServiceImpl implements SystemService{
 	@Autowired
@@ -30,6 +31,12 @@ public class SystemServiceImpl implements SystemService{
 	@Override
 	public void updateUser(User user) throws Exception {
 		userMapper.updateByPrimaryKeySelective(user);
+	}
+
+	@Override
+	public void sendMail(User user, MailContext mailContext) {
+		
+		
 	}
 	
 	

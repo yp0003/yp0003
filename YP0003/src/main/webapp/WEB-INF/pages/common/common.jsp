@@ -17,7 +17,14 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
-
+<script type="text/javascript">
+function reImg() {
+	$("#vertImg").attr(
+			"src",
+			"${pageContext.request.contextPath}/system!validateCode.html?time="
+					+ new Date());
+}
+</script>
 </head>
 <body>
 	<!-- Navbar

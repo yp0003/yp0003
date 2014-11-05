@@ -1,6 +1,7 @@
 package com.yfann.web.service;
 
 import com.yfann.web.pojo.User;
+import com.yfann.web.vo.MailContext;
 
 public interface SystemService {
 	/**
@@ -20,4 +21,11 @@ public interface SystemService {
 	public void updateUser(User user) throws Exception;
 
 	public User validateUser(User user);
+	
+	/**
+	 * 发送邮件
+	 * @param user
+	 * @param mailContext
+	 */
+	public void sendMail(User user,MailContext mailContext);
 }
