@@ -19,6 +19,9 @@
 			<li><span class="cidcolor">1.我的购物车</span></li>
 		</ul>
 	</div>
+
+    <%--结算表单--%>
+    <s:form>
 		<div class="title">我的购物车</div>
 		<div style='margin-bottom: 50px;'>
 			<table class="table table-bordered table-striped table-hover">
@@ -34,42 +37,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td><input type="checkbox" name="ids[]" /></td>
-						<td><img alt=""
-							src="${pageContext.request.contextPath}/image/53e4ba4c0001f2d206000338-590-330.jpg" width="100" /></td>
-						<td>PHP工程师</td>
-						<td>200</td>
-						<td class="num"><span class="jian" pic="200">&nbsp;</span><label
-							class="num-z"> 1 </label><span class="jia" pic="200">&nbsp;</span></td>
-						<td class="pic">200</td>
-						<td><a href="#">删除</a></td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="ids[]" /></td>
-						<td><img alt=""
-							src="${pageContext.request.contextPath}/image/53e4ba4c0001f2d206000338-590-330.jpg" width="100" /></td>
-						<td>PHP工程师</td>
-						<td>200</td>
-						<td class="num"><span class="jian" pic="200">&nbsp;</span><label
-							class="num-z"> 1 </label><span class="jia" pic="200">&nbsp;</span></td>
-						<td class="pic">200</td>
-						<td><a href="#">删除</a></td>
-					</tr>
-
-
-
-
-
                 <s:iterator value="buyCarList" id="bcl">
                     <tr>
                         <td><input type="checkbox" name="ids[]" /></td>
                         <td><img alt=""
                                  src="${pageContext.request.contextPath}/image/53e4ba4c0001f2d206000338-590-330.jpg" width="100" /></td>
                         <td><s:property value="#bcl.productName"></s:property>课程名称</td>
-                        <td><s:property value="#bcl.productName"></s:property>购买数量</td>
+                        <td><s:property value="#bcl.productName"></s:property>课程单价</td>
                         <td class="num"><span class="jian" pic="200">&nbsp;</span><label
-                                class="num-z"> 1 </label><span class="jia" pic="200">&nbsp;</span></td>
+                                class="num-z"> <s:property value="#bcl.buyCount"></s:property>购买数量 </label><span class="jia" pic="200">&nbsp;</span></td>
                         <td class="pic">200</td>
                         <td><a href="#">删除</a></td>
                     </tr>
@@ -88,7 +64,7 @@
 				<a href="list.html"><button class="btn">继续购物</button></a>
 			</div>
 		</div>
-
+    </s:form>
 		<div class="tab">
 			<div class="title">
 				<ul class="fn-clear tab-ul">

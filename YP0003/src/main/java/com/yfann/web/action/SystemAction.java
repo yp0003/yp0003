@@ -243,6 +243,8 @@ public class SystemAction extends CommonAction {
 			Object valiCodeObj = session.getValue("valiCode");
 			String flagValiCode = valiCodeObj.toString();
 			if(StringUtils.isNotBlank(flagValiCode) && flagValiCode.equals(validateCode)){
+                String[] passwordArray = user.getNowPassword().split(",");
+                user.setNowPassword(passwordArray[0]);
 				systemService.saveUser(user);
 			}
 		}
