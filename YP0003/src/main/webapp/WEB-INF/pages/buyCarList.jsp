@@ -56,6 +56,24 @@
 						<td class="pic">200</td>
 						<td><a href="#">删除</a></td>
 					</tr>
+
+
+
+
+
+                <s:iterator value="buyCarList" id="bcl">
+                    <tr>
+                        <td><input type="checkbox" name="ids[]" /></td>
+                        <td><img alt=""
+                                 src="${pageContext.request.contextPath}/image/53e4ba4c0001f2d206000338-590-330.jpg" width="100" /></td>
+                        <td><s:property value="#bcl.productName"></s:property>课程名称</td>
+                        <td><s:property value="#bcl.productName"></s:property>购买数量</td>
+                        <td class="num"><span class="jian" pic="200">&nbsp;</span><label
+                                class="num-z"> 1 </label><span class="jia" pic="200">&nbsp;</span></td>
+                        <td class="pic">200</td>
+                        <td><a href="#">删除</a></td>
+                    </tr>
+                </s:iterator>
 				</tbody>
 			</table>
 		</div>

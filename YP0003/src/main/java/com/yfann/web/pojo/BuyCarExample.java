@@ -595,6 +595,66 @@ public class BuyCarExample {
             addCriterion("add_time not between", value1, value2, "addTime");
             return (Criteria) this;
         }
+
+        public Criteria andBuyCountIsNull() {
+            addCriterion("buy_count is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyCountIsNotNull() {
+            addCriterion("buy_count is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyCountEqualTo(Integer value) {
+            addCriterion("buy_count =", value, "buyCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyCountNotEqualTo(Integer value) {
+            addCriterion("buy_count <>", value, "buyCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyCountGreaterThan(Integer value) {
+            addCriterion("buy_count >", value, "buyCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("buy_count >=", value, "buyCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyCountLessThan(Integer value) {
+            addCriterion("buy_count <", value, "buyCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyCountLessThanOrEqualTo(Integer value) {
+            addCriterion("buy_count <=", value, "buyCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyCountIn(List<Integer> values) {
+            addCriterion("buy_count in", values, "buyCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyCountNotIn(List<Integer> values) {
+            addCriterion("buy_count not in", values, "buyCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyCountBetween(Integer value1, Integer value2) {
+            addCriterion("buy_count between", value1, value2, "buyCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("buy_count not between", value1, value2, "buyCount");
+            return (Criteria) this;
+        }
     }
 
     /**
