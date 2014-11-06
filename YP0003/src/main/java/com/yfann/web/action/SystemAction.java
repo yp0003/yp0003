@@ -251,7 +251,6 @@ public class SystemAction extends CommonAction {
 
 	public void validateCode() throws Exception {
 		// 通知浏览器，图片不要缓存
-		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setHeader("Expires", "-1");
 		response.setHeader("Cache-Control", "no-cache");
 		response.setHeader("Pragma", "no-cache");

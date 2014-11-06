@@ -29,6 +29,7 @@ public class OrderAction extends CommonAction {
 	}
 
 	public String buyCarList() throws Exception{
+		//此处BuyCar作为业务拼装条件map来使用
 		if(buyCar == null){
 			buyCar = new BuyCar();
 		}
@@ -68,8 +69,7 @@ public class OrderAction extends CommonAction {
 	}
 
 	/**
-	 * 添加到购
-	 * 物车
+	 * 添加到购物车
 	 * 
 	 * @return
 	 */
