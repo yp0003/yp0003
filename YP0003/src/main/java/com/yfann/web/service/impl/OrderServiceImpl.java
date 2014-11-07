@@ -1,9 +1,13 @@
 package com.yfann.web.service.impl;
 
+import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.yfann.web.dao.ProductMapper;
+import com.yfann.web.pojo.Product;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +29,8 @@ public class OrderServiceImpl implements OrderService {
 	private BuyCarMapper buyCarMapper;
 	@Autowired
 	private OrderMapper orderMapper;
+    @Autowired
+    private ProductMapper productMapper;
 
 	@Override
 	public void addBuyCar(BuyCar buyCar) throws Exception {
@@ -78,4 +84,19 @@ public class OrderServiceImpl implements OrderService {
 		return orderMapper.selectOrderListByParams(orderListParams,
 				new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
 	}
+
+    /**
+     * 根据ID查找缩略图
+     *
+     * @param product
+     * @return
+     */
+    @Override
+    public ByteArrayInputStream findProductSmallImgById(Product product) {
+        ByteArrayInputStream byteArrayInputStream = null;
+        if (product != null && StringUtils.isNotBlank(product.getId())){
+            byteArrayInputStream = new ByteArrayInputStream(productMapper.selectProductSmallImgById(product.getId()));
+        }
+        return byteArrayInputStream;
+    }
 }

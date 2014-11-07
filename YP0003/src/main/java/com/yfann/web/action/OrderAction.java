@@ -2,6 +2,10 @@ package com.yfann.web.action;
 
 import java.util.List;
 
+import com.yfann.web.common.ApplicationValue;
+import com.yfann.web.pojo.Product;
+import com.yfann.web.pojo.User;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +23,38 @@ public class OrderAction extends CommonAction {
 	private BuyCar buyCar;
 	private PageInfo pageInfo;
 	private List<BuyCar> buyCarList;
+    private String[] buyCarIds;
+    private Product product;
 	@Autowired
 	private OrderService orderService;
-	
-	
-	
+
+
+    /**
+     * 订单列表
+     * @return
+     */
 	public String orderList(){
 		return "orderList";
 	}
 
+    /**
+     * 显示购物车缩略图
+     * @return
+     */
+    public String viewSmallProductPic(){
+        if (buyCar != null && StringUtils.isNotBlank(buyCar.getProductId())){
+            Product productTemp = new Product();
+            productTemp.setId(buyCar.getProductId());
+            setByteArrayInputStream(orderService.findProductSmallImgById(productTemp));
+        }
+        return "viewSmallProductPic";
+    }
+
+    /**
+     * 购物车列表
+     * @return
+     * @throws Exception
+     */
 	public String buyCarList() throws Exception{
 		//此处BuyCar作为业务拼装条件map来使用
 		if(buyCar == null){
@@ -74,13 +101,27 @@ public class OrderAction extends CommonAction {
 	 * @return
 	 */
 	public String addBuyCar() throws Exception {
-		for (int i = 0; i < 47; i++) {
-			BuyCar buyCar = new BuyCar();
-			buyCar.setId(UUIDCreate.getUUID());
-			orderService.addBuyCar(buyCar);
-		}
+        if (product != null){
+            if (buyCar == null) {
+                buyCar = new BuyCar();
+            }
+            buyCar.setProductId(product.getId());
+            buyCar.setId(UUIDCreate.getUUID());
+            //获取用户信息
+            buyCar.setProductName(product.getProductName());
+            buyCar.setBuyCount(1);
+            buyCar.setUserId(currentUserInfo().getUserId());
+            orderService.addBuyCar(buyCar);
+        }
 		return "addBuyCar";
 	}
+
+    private User currentUserInfo(){
+        @SuppressWarnings("deprecation")
+        Object userObj = session.getValue(ApplicationValue.USER_KEY_ON_SESSION);
+        User userInfo = (User)userObj;
+        return userInfo;
+    }
 
 	/**
 	 * 跳转到购物车页面
@@ -115,4 +156,19 @@ public class OrderAction extends CommonAction {
 		this.buyCarList = buyCarList;
 	}
 
+    public String[] getBuyCarIds() {
+        return buyCarIds;
+    }
+
+    public void setBuyCarIds(String[] buyCarIds) {
+        this.buyCarIds = buyCarIds;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }

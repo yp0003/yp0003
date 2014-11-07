@@ -182,39 +182,19 @@ public class SystemAction extends CommonAction {
 		return "forwardLogin";
 	}
 
+    /**
+     * 登陆
+     * @return
+     */
 	public String validateLoginInfo() {
-		if ("".equals(user.getUserId())) {
-			loginMessage.setUserIdMessage("用户名不能为空！");
-		}
-		if ("".equals(user.getNowPassword())) {
-			loginMessage.setPasswordMessage("密码不能为空！");
-		}
-
-		if (loginMessage.isNotEmpty())
-			return "forwardLogin";
-		User userTemp = systemService.validateUser(user);
-		if (null == userTemp) { // 没有此用户
-			addActionError("用户不存在，请先注册！");
-			return "forwardLogin";
-		} else if (null != userTemp
-				&& !userTemp.getNowPassword().equals(user.getNowPassword())) {// 存在此用户，但是用户名密码对不上
-			addActionError("用户名输入有误！请输入正确的用户名密码！");
-			return "forwardLogin";
-		} else {// 存在此用户并输入正确
-
-			if (null != remPass && "on".equals(remPass)) {// 判断是否记住用户名密码
-
-				Cookie cookie = cookieUtils.addCookie(user);
-				response = ServletActionContext.getResponse();
-				response.addCookie(cookie);// 添加cookie到response中
-
-			}
-
-			session.setAttribute(ApplicationValue.USER_KEY_ON_SESSION, userTemp);// 添加用户到session中
-			return "loginSuccess";
-		}
-
-	}
+        if (user != null) {
+            User userTemp = systemService.valiDateLogin(user);
+            if (userTemp != null){
+                session.setAttribute(ApplicationValue.USER_KEY_ON_SESSION, userTemp);// 添加用户到session中
+            }
+        }
+        return "forwardIndex";
+    }
 
 	public String forwardIndex() {
 		return "forwardIndex";
@@ -222,7 +202,7 @@ public class SystemAction extends CommonAction {
 
 	/**
 	 * 跳转到登录界面
-	 * 
+	 *
 	 * @return
 	 */
 	public String forwardLogin() {

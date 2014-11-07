@@ -22,7 +22,7 @@ public class CommonAction extends ActionSupport{
 	/**HttpServletResponse*/
 	protected HttpServletResponse response = ServletActionContext.getResponse();
 	/**Struts2下载(内存数据下载)*/
-	protected ByteArrayInputStream byteArrayInputStream;
+	public ByteArrayInputStream byteArrayInputStream;
 
 	/**
 	 * 返回应用跟路径：http://localhost:8080/YP0003

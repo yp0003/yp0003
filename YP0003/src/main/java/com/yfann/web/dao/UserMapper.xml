@@ -944,10 +944,30 @@
 		where ID =
 		#{id,jdbcType=VARCHAR}
 	</update>
+    <!--**************************************************************************************************业务SQL***************************************************************************************************-->
 	<select id="selectUserByUserId"  parameterType="java.lang.String"  resultMap="BaseResultMap">
 		select
 			<include refid="Base_Column_List" />
 		from t_sys_user
 		where USER_ID = #{userId,jdbcType=VARCHAR}
 	</select>
+
+    <!--根据条件查询用户数量-->
+    <select id="selectLoginUserByParames" parameterType="map" resultType="com.yfann.web.pojo.User">
+      select <include refid="Base_Column_List"/> from t_sys_user
+        where 1 = 1
+        <include refid="where_condition"/>
+    </select>
+    <sql id="where_condition">
+        /*用户名*/
+        <if test="userName != null">
+          and USER_NAME = #{userName,jdbcType=VARCHAR}
+        </if>
+
+        /*密码*/
+        <if test="userName != null">
+            and NOW_PASSWORD = #{nowPassword,jdbcType=VARCHAR}
+        </if>
+
+    </sql>
 </mapper>

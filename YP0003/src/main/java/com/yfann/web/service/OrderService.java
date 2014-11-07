@@ -1,9 +1,11 @@
 package com.yfann.web.service;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import com.yfann.web.pojo.BuyCar;
 import com.yfann.web.pojo.Order;
+import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.User;
 import com.yfann.web.vo.PageInfo;
 
@@ -29,7 +31,7 @@ public interface OrderService {
 	
 	/**
 	 * 根据ID批量删除购物车产品
-	 * @param id
+	 * @param ids
 	 */
 	public void deleteProductOnBuyCayByAllIds(String[] ids);
 	
@@ -42,5 +44,12 @@ public interface OrderService {
 	 * @return
 	 */
 	public List<Order> findOrderList(User user,Order order,PageInfo pageInfo);
+
+    /**
+     * 根据ID查找缩略图
+     * @param product
+     * @return
+     */
+    public ByteArrayInputStream findProductSmallImgById(Product product);
 
 }

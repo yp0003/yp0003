@@ -7,7 +7,6 @@
 		<!-- 系统 -->
 		<action name="system!*" method="{1}"
 			class="com.yfann.web.action.SystemAction">
-			<result name="loginSuccess">/WEB-INF/pages/mypage.jsp</result>
 			<!-- 跳转到主页 -->
 			<result name="forwardIndex">/WEB-INF/pages/index.jsp</result>
 			<!-- 修改密码 -->
@@ -18,6 +17,37 @@
 			<result name="updateInfo">/index.jsp</result>
 			<result name="register">/WEB-INF/pages/index.jsp</result>
 		</action>
+
+
+
+        <!-- 订单 -->
+        <action name="order!*" method="{1}"
+                class="com.yfann.web.action.OrderAction">
+            <!-- 添加到购物车 -->
+            <result name="buyCarList">/WEB-INF/pages/buyCarList.jsp</result>
+            <!-- 下载购物车显示缩略图 -->
+            <result name="viewSmallProductPic" type="stream">
+                <param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
+                <param name="inputName">byteArrayInputStream</param>
+            </result>
+        </action>
+
+
+        <!-- 课程 -->
+        <action name="product!*" method="{1}"
+                class="com.yfann.web.action.ProductAction">
+            <!-- 跳转到课程列表 -->
+            <result name="forwardProductList">/WEB-INF/pages/productList.jsp</result>
+            <!-- 下载缩略图 -->
+            <result name="showProductSmallImg" type="stream">
+            <param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
+            <param name="inputName">byteArrayInputStream</param>
+        </result>
+        </action>
+
+
+
+
 
 		<!-- OA -->
 		<action name="employee!*" method="{1}"
@@ -35,27 +65,6 @@
 			<!-- 修改个人信息 -->
 			<result name="updateInfoUI">/WEB-INF/pages/oa/updateInfo_oa.jsp</result>
 			<result name="updateInfo">/index.jsp</result>
-		</action>
-
-
-		<!-- 订单 -->
-		<action name="order!*" method="{1}"
-			class="com.yfann.web.action.OrderAction">
-			<!-- 添加到购物车 -->
-			<result name="buyCarList">/WEB-INF/pages/buyCarList.jsp</result>
-		</action>
-
-
-		<!-- 课程 -->
-		<action name="product!*" method="{1}"
-			class="com.yfann.web.action.ProductAction">
-			<!-- 跳转到课程列表 -->
-			<result name="forwardProductList">/WEB-INF/pages/productList.jsp</result>
-			<!-- 下载缩略图 -->
-			<result name="showProductSmallImg" type="stream">
-				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
-				<param name="inputName">byteArrayInputStream</param>
-			</result>
 		</action>
 	</package>
 </struts>

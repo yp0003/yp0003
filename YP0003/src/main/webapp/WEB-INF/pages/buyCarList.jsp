@@ -39,7 +39,7 @@
 				<tbody>
                 <s:iterator value="buyCarList" id="bcl">
                     <tr>
-                        <td><input type="checkbox" name="ids[]" /></td>
+                        <td><input type="checkbox" name="buyCarIds" value="<s:property value="#bcl.id"/>" /></td>
                         <td><img alt=""
                                  src="${pageContext.request.contextPath}/image/53e4ba4c0001f2d206000338-590-330.jpg" width="100" /></td>
                         <td><s:property value="#bcl.productName"></s:property>课程名称</td>
@@ -84,80 +84,8 @@
 						价格：<span class="red-1">￥20</span>
 					</dd>
 				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/53ec5a590001d85606000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/53ec5a590001d85606000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/53ec5a590001d85606000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/53ec5a590001d85606000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
 			</div>
 			<div class="tj_2 sp fn-clear">
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/54125edc0001ce6306000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/54125edc0001ce6306000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/54125edc0001ce6306000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/54125edc0001ce6306000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
 				<dl>
 					<dt>
 						<img src="${pageContext.request.contextPath}/image/54125edc0001ce6306000338-590-330.jpg" />
@@ -178,80 +106,8 @@
 						价格：<span class="red-1">￥20</span>
 					</dd>
 				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/542376b20001374c06000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/542376b20001374c06000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/542376b20001374c06000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/542376b20001374c06000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
 			</div>
 			<div class="tj_4 sp fn-clear">
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/541943720001c89206000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/541943720001c89206000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/541943720001c89206000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>
-						<img src="${pageContext.request.contextPath}/image/541943720001c89206000338-590-330.jpg" />
-					</dt>
-					<dd>java 眼中的 XML</dd>
-					<dd>
-						价格：<span class="red-1">￥20</span>
-					</dd>
-				</dl>
 				<dl>
 					<dt>
 						<img src="${pageContext.request.contextPath}/image/541943720001c89206000338-590-330.jpg" />

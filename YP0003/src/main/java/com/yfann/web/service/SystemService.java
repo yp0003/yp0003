@@ -28,4 +28,11 @@ public interface SystemService {
 	 * @param mailContext
 	 */
 	public void sendMail(User user,MailContext mailContext);
+
+    /**
+     * 验证用户
+     * @param user
+     * @return
+     */
+    public User valiDateLogin(User user);
 }
