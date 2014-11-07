@@ -952,9 +952,9 @@
 		where USER_ID = #{userId,jdbcType=VARCHAR}
 	</select>
 
-    <!--根据条件查询用户数量-->
+    <!--根据条件查询用户-->
     <select id="selectLoginUserByParames" parameterType="map" resultType="com.yfann.web.pojo.User">
-      select <!-- <include refid="Base_Column_List"/> --> USER_ID from t_sys_user
+      select <include refid="Base_Column_List"/> from t_sys_user
         where 1 = 1
         <include refid="where_condition"/>
     </select>
