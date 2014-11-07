@@ -954,18 +954,18 @@
 
     <!--根据条件查询用户数量-->
     <select id="selectLoginUserByParames" parameterType="map" resultType="com.yfann.web.pojo.User">
-      select <include refid="Base_Column_List"/> from t_sys_user
+      select <!-- <include refid="Base_Column_List"/> --> USER_ID from t_sys_user
         where 1 = 1
         <include refid="where_condition"/>
     </select>
     <sql id="where_condition">
-        /*用户名*/
-        <if test="userName != null">
-          and USER_NAME = #{userName,jdbcType=VARCHAR}
+        <!-- 用户名 -->
+        <if test="userId != null">
+          and USER_ID = #{userId,jdbcType=VARCHAR}
         </if>
-
-        /*密码*/
-        <if test="userName != null">
+        
+        <!-- 密码 -->
+        <if test="nowPassword != null">
             and NOW_PASSWORD = #{nowPassword,jdbcType=VARCHAR}
         </if>
 

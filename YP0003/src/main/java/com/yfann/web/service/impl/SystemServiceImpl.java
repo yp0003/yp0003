@@ -60,9 +60,13 @@ public class SystemServiceImpl implements SystemService {
     private Map<String, Object> getParames(User user) {
         Map<String, Object> parames = new HashMap<String, Object>();
         if (user != null) {
-            /*用户名*/
+            /*用户名字*/
             if (StringUtils.isNotBlank(user.getUserName())) {
                 parames.put("userName", user.getUserName());
+            }
+            //用户名
+            if (StringUtils.isNotBlank(user.getUserId())) {
+                parames.put("userId", user.getUserId());
             }
             /*密码*/
             if (StringUtils.isNotBlank(user.getNowPassword())) {

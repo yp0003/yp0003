@@ -39,9 +39,10 @@ function reImg() {
 					<a class="brand" href="#myModal" class="hid" data-toggle="modal">登录</a>
                 </c:if>
 				<c:if test="${sessionScope.userInfo != null}">
-				<a class="brand" href="#">尊敬的${sessionScope.userInfo.userId}您好</a>
+				
 					<a class="brand" href="./index.html">我的订单</a> <a class="brand"
 						href="./index.html">购物车</a> <a class="brand" href="./index.html">个人中心</a>
+						<a class="brand" href="#">尊敬的${sessionScope.userInfo.userId}您好</a>
 				</c:if>
 					<ul class="nav">
 						<li class="active"><a href="./index.html">课程</a></li>
@@ -67,15 +68,15 @@ function reImg() {
 			<div class="rl-modal-body">
 				<div class="clearfix">
 					<div class="l-left-wrap l">
-						<form id="signup-form">
+						<form id="signup-form" action="system!login.html" method="post">
 							<div class="rlf-group">
-								<input type="text" name="email" data-validate="email"
+								<input type="text" name="user.userId"
 									autocomplete="off" class="rlf-input rlf-input-email"
 									placeholder="请输入登录邮箱" />
 								<p class="rlf-tip-wrap"></p>
 							</div>
 							<div class="rlf-group">
-								<input type="password" name="password" autocomplete="off"
+								<input type="password" name="user.nowPassword" autocomplete="off"
 									class="rlf-input rlf-input-pwd" placeholder="请输入密码" />
 								<p class="rlf-tip-wrap" />
 							</div>
@@ -87,7 +88,7 @@ function reImg() {
 							</div>
 							<div class="rlf-group clearfix">
 								<p class="rlf-tip-wrap " id="signin-globle-error"></p>
-								<input type="button" id="signin-btn" value="登录" hidefocus="true"
+								<input type="submit" id="signin-btn" value="登录" hidefocus="true"
 									class="rlf-btn-green btn-full r" />
 							</div>
 						</form>

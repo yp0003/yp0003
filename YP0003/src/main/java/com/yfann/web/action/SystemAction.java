@@ -186,7 +186,7 @@ public class SystemAction extends CommonAction {
      * 登陆
      * @return
      */
-	public String validateLoginInfo() {
+	public String login() {
         if (user != null) {
             User userTemp = systemService.valiDateLogin(user);
             if (userTemp != null){
