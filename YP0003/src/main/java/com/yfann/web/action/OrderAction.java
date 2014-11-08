@@ -1,10 +1,12 @@
 package com.yfann.web.action;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.User;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +26,12 @@ public class OrderAction extends CommonAction {
 	private PageInfo pageInfo;
 	private List<BuyCar> buyCarList;
     private String[] buyCarIds;
+    private String[] producyIds;
     private Product product;
 	@Autowired
 	private OrderService orderService;
+	/**Struts2下载(内存数据下载)*/
+	public ByteArrayInputStream byteArrayInputStream;
 
 
     /**
@@ -105,15 +110,27 @@ public class OrderAction extends CommonAction {
             if (buyCar == null) {
                 buyCar = new BuyCar();
             }
-            buyCar.setProductId(product.getId());
-            buyCar.setId(UUIDCreate.getUUID());
-            //获取用户信息
-            buyCar.setProductName(product.getProductName());
-            buyCar.setBuyCount(1);
-            buyCar.setUserId(currentUserInfo().getUserId());
-            orderService.addBuyCar(buyCar);
+            //查询购物车是否已存在该商品
+            if(orderService.findIsProduct(product.getId())){
+            	//更新购物车
+            	orderService.addProductCountInBuyCar(product.getId());
+            }else{
+            	//添加到购物车
+                buyCar.setProductId(product.getId());
+                buyCar.setId(UUIDCreate.getUUID());
+                //获取用户信息
+                buyCar.setProductName(product.getProductName());
+                buyCar.setBuyCount(1);
+                buyCar.setUserId(currentUserInfo().getUserId());
+                orderService.addBuyCar(buyCar);
+            }
         }
 		return "addBuyCar";
+	}
+	
+	public String addProductCountInBuyCar(){
+		orderService.addProductCountInBuyCar(product.getId());
+		return "addProductCountInBuyCar";
 	}
 
     private User currentUserInfo(){
@@ -171,4 +188,21 @@ public class OrderAction extends CommonAction {
     public void setProduct(Product product) {
         this.product = product;
     }
+
+	public ByteArrayInputStream getByteArrayInputStream() {
+		return byteArrayInputStream;
+	}
+
+	public void setByteArrayInputStream(ByteArrayInputStream byteArrayInputStream) {
+		this.byteArrayInputStream = byteArrayInputStream;
+	}
+
+	public String[] getProducyIds() {
+		return producyIds;
+	}
+
+	public void setProducyIds(String[] producyIds) {
+		this.producyIds = producyIds;
+	}
+	
 }

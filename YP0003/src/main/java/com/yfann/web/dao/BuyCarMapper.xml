@@ -313,4 +313,8 @@
 	count(*)
 	from t_buy_car where 1 = 1
 	</select>
+	<!-- 更新购物车产品数量+1 -->
+	<update id="updateProductOnBuyCar" parameterType="string">
+	 update t_buy_car set buy_count = buy_count + 1 where product_id = #{productId,jdbcType=VARCHAR}
+	</update>
 </mapper>

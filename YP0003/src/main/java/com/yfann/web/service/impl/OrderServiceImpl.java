@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.yfann.web.dao.ProductMapper;
 import com.yfann.web.pojo.Product;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
@@ -95,8 +96,22 @@ public class OrderServiceImpl implements OrderService {
     public ByteArrayInputStream findProductSmallImgById(Product product) {
         ByteArrayInputStream byteArrayInputStream = null;
         if (product != null && StringUtils.isNotBlank(product.getId())){
-            byteArrayInputStream = new ByteArrayInputStream(productMapper.selectProductSmallImgById(product.getId()));
+            //byteArrayInputStream = new ByteArrayInputStream(productMapper.selectProductSmallImgById(product.getId()));
         }
         return byteArrayInputStream;
     }
+
+	@Override
+	public boolean findIsProduct(String id) {
+		//购物车没有该产品
+		if(productMapper.selectByPrimaryKey(id) == null){
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void addProductCountInBuyCar(String productId) {
+		buyCarMapper.updateProductOnBuyCar(productId);
+	}
 }

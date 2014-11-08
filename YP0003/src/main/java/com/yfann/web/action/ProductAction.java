@@ -1,5 +1,6 @@
 package com.yfann.web.action;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -23,6 +24,8 @@ public class ProductAction extends CommonAction{
 	private List<ProductKind> productKindList;
 	@Autowired
 	private ProductService productService;
+	/**Struts2下载(内存数据下载)*/
+	public ByteArrayInputStream byteArrayInputStream;
 	/**
 	 * 课程列表
 	 * @return
@@ -69,6 +72,12 @@ public class ProductAction extends CommonAction{
 	}
 	public void setProductKindList(List<ProductKind> productKindList) {
 		this.productKindList = productKindList;
+	}
+	public ByteArrayInputStream getByteArrayInputStream() {
+		return byteArrayInputStream;
+	}
+	public void setByteArrayInputStream(ByteArrayInputStream byteArrayInputStream) {
+		this.byteArrayInputStream = byteArrayInputStream;
 	}
 	
 }

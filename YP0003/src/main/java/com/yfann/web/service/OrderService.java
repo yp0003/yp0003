@@ -51,5 +51,18 @@ public interface OrderService {
      * @return
      */
     public ByteArrayInputStream findProductSmallImgById(Product product);
+    
+    /**
+     * 查询购物车是否已经存在该产品
+     * @param id
+     * @return
+     */
+    public boolean findIsProduct(String id);
+    
+    /**
+     * 将购物车产品数量增加1
+     * @param productId
+     */
+    public void addProductCountInBuyCar(String productId);
 
 }
