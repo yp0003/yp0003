@@ -41,6 +41,15 @@ public class OrderAction extends CommonAction {
 	public String orderList(){
 		return "orderList";
 	}
+	
+	/**
+	 * 直接结算
+	 * @return
+	 */
+	public String payProductOnlyOne(){
+		
+		return "payProductOnlyOne";
+	}
 
     /**
      * 显示购物车缩略图

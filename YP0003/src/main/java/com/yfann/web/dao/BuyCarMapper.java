@@ -11,6 +11,12 @@ import org.apache.ibatis.session.RowBounds;
 
 public interface BuyCarMapper {
 	/**
+	 * 查询购物车根据订单ID
+	 * @param productId
+	 * @return
+	 */
+	BuyCar selectBuyCarByProductId(String productId);
+	/**
 	 * 更新购物车产品数量+1
 	 * @param productId
 	 * @return

@@ -11,6 +11,12 @@ import com.yfann.web.vo.PageInfo;
 
 public interface OrderService {
 	/**
+	 * 直接结算
+	 * @param product
+	 * @param user
+	 */
+	public void payProductOnlyOne(Product product,User user);
+	/**
 	 * 根据条件查询购物车产品
 	 * @param buyCar
 	 * @return
@@ -65,4 +71,10 @@ public interface OrderService {
      */
     public void addProductCountInBuyCar(String productId);
 
+    /**
+     * 购物车结算
+     * @param user
+     * @param productIds
+     */
+    public void buyCarPay(User user,String[] productIds);
 }

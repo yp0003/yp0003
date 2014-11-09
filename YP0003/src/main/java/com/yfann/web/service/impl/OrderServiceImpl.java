@@ -1,10 +1,12 @@
 package com.yfann.web.service.impl;
 
 import java.io.ByteArrayInputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.dao.ProductMapper;
 import com.yfann.web.pojo.Product;
 
@@ -16,9 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yfann.web.dao.BuyCarMapper;
+import com.yfann.web.dao.OrderDetailMapper;
 import com.yfann.web.dao.OrderMapper;
 import com.yfann.web.pojo.BuyCar;
 import com.yfann.web.pojo.Order;
+import com.yfann.web.pojo.OrderDetail;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.OrderService;
 import com.yfann.web.vo.PageInfo;
@@ -30,8 +34,10 @@ public class OrderServiceImpl implements OrderService {
 	private BuyCarMapper buyCarMapper;
 	@Autowired
 	private OrderMapper orderMapper;
-    @Autowired
-    private ProductMapper productMapper;
+	@Autowired
+	private ProductMapper productMapper;
+	@Autowired
+	private OrderDetailMapper orderDetailMapper;
 
 	@Override
 	public void addBuyCar(BuyCar buyCar) throws Exception {
@@ -72,8 +78,9 @@ public class OrderServiceImpl implements OrderService {
 			throws Exception {
 		Map<String, Object> parames = getBuyCarParamerMap(buyCar);
 		pageInfo.setCount(buyCarMapper.selectBuyCarCountByParamer(parames));
-		List<BuyCar> buyCarList = buyCarMapper.selectBuyCarListByParamer(parames, new RowBounds(
-				pageInfo.getOffset(), pageInfo.getPageSize()));
+		List<BuyCar> buyCarList = buyCarMapper.selectBuyCarListByParamer(
+				parames,
+				new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
 		return buyCarList;
 	}
 
@@ -86,25 +93,26 @@ public class OrderServiceImpl implements OrderService {
 				new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
 	}
 
-    /**
-     * 根据ID查找缩略图
-     *
-     * @param product
-     * @return
-     */
-    @Override
-    public ByteArrayInputStream findProductSmallImgById(Product product) {
-        ByteArrayInputStream byteArrayInputStream = null;
-        if (product != null && StringUtils.isNotBlank(product.getId())){
-            //byteArrayInputStream = new ByteArrayInputStream(productMapper.selectProductSmallImgById(product.getId()));
-        }
-        return byteArrayInputStream;
-    }
+	/**
+	 * 根据ID查找缩略图
+	 *
+	 * @param product
+	 * @return
+	 */
+	@Override
+	public ByteArrayInputStream findProductSmallImgById(Product product) {
+		ByteArrayInputStream byteArrayInputStream = null;
+		if (product != null && StringUtils.isNotBlank(product.getId())) {
+			// byteArrayInputStream = new
+			// ByteArrayInputStream(productMapper.selectProductSmallImgById(product.getId()));
+		}
+		return byteArrayInputStream;
+	}
 
 	@Override
 	public boolean findIsProduct(String id) {
-		//购物车没有该产品
-		if(productMapper.selectByPrimaryKey(id) == null){
+		// 购物车没有该产品
+		if (productMapper.selectByPrimaryKey(id) == null) {
 			return true;
 		}
 		return false;
@@ -113,5 +121,39 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void addProductCountInBuyCar(String productId) {
 		buyCarMapper.updateProductOnBuyCar(productId);
+	}
+
+	@Override
+	public void payProductOnlyOne(Product product, User user) {
+		if (product != null && user != null
+				&& StringUtils.isNotBlank(product.getId())
+				&& StringUtils.isNotBlank(user.getId())) {
+			Order order = new Order();
+			order.setId(UUIDCreate.getUUID());
+			// 订单总价格
+			order.setCountPrice(productMapper.selectByPrimaryKey(
+					product.getId()).getProductPrice());
+			// 订单创建时间
+			order.setOrderCreateTime(new Date());
+			// 支付用户
+			order.setUserId(user.getId());
+
+			OrderDetail orderDetail = new OrderDetail();
+			orderDetail.setId(UUIDCreate.getUUID());
+			orderDetail.setOrderId(order.getId());
+			orderDetail.setPrice(order.getCountPrice());
+			orderDetail.setProductId(product.getId());
+
+			orderMapper.insertSelective(order);
+			orderDetailMapper.insertSelective(orderDetail);
+		}
+	}
+	
+	@Override
+	public void buyCarPay(User user,String[] productIds){
+		List<Product> productList = null;
+		Order order = new Order();
+		order.setId(UUIDCreate.getUUID());
+		//order.setCountPrice(countPrice);
 	}
 }
