@@ -29,6 +29,18 @@
 	src="${pageContext.request.contextPath}/js/custom.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	/* 添加到购物车 */
+	function addBuyCar() {
+		document.forms[0].action = "order!orderList.html";
+		document.forms[0].submit();
+	}
+	/* 直接结算 */
+	function pay() {
+		document.forms[0].action = "order!orderList.html";
+		document.forms[0].submit();
+	}
+</script>
 
 </head>
 
@@ -81,29 +93,29 @@
 					<div class="js-course-list">
 						<ul>
 							<s:iterator value="productList" id="pl">
-								<li><a href="info.html">
-										<div class="course-list-img">
-											<img width="280" height="160"
-												src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"
-												alt="案例：文件传输基础——Java IO流"></img>
-										</div>
-										<h5>
-											<span class="topicon">${pl.projectDesc}</span>
-										</h5>
-										<div class="intro">
-											<p>${pl.projectDesc}</p>
-											<span class="l">更新至${pl.updateBadge}-${pl.updateMatter}</span>
-											<span class="r">课程时长:${pl.productSale}分</span>
-										</div>
-										<div class="tips">
-											<span class="l">${pl.updateTime}更新</span> <span class="r">${pl.buyCount}人学习</span>
-										</div>
-								</a>
-									<div class="shop">
-										<span><a><button class="btn " type="button">加入购物车</button></a></span>
-										<span><a><button class="btn" type="button">立即购买</button>
-												<a></span>
-									</div></li>
+									<li><a href="info.html">
+											<div class="course-list-img">
+												<img width="280" height="160"
+													src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"
+													alt="案例：文件传输基础——Java IO流"></img>
+											</div>
+											<h5>
+												<span class="topicon">${pl.projectDesc}</span>
+											</h5>
+											<div class="intro">
+												<p>${pl.projectDesc}</p>
+												<span class="l">更新至${pl.updateBadge}-${pl.updateMatter}</span>
+												<span class="r">课程时长:${pl.productSale}分</span>
+											</div>
+											<div class="tips">
+												<span class="l">${pl.updateTime}更新</span> <span class="r">${pl.buyCount}人学习</span>
+											</div>
+									</a>
+										<div class="shop">
+											<span><a href="${pageContext.request.contextPath}/order!addBuyCar.html?buyCar.productName=${pl.productName}&buyCar.productId=${pl.id}"><button class="btn " type="button"
+														>加入购物车</button></a></span> <span><a><button
+														class="btn" type="button">立即购买</button> <a></span>
+										</div></li>
 							</s:iterator>
 						</ul>
 
@@ -119,8 +131,5 @@
 
 
 	<%@ include file="common/commonFooter.jsp"%>
-<script type="text/script">
-
-</script>
 </body>
 </html>

@@ -11,6 +11,12 @@ import org.apache.ibatis.session.RowBounds;
 
 public interface ProductMapper {
 	/**
+	 * 根据多个产品ID查询产品
+	 * @param productIds
+	 * @return
+	 */
+	List<Product> selectProductListByIds(List<String> productIds);
+	/**
 	 * 根据条件返回产品列表
 	 * @param paramer
 	 * @param rowBounds

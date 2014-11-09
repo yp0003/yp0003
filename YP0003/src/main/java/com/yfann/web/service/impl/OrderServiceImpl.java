@@ -1,6 +1,7 @@
 package com.yfann.web.service.impl;
 
 import java.io.ByteArrayInputStream;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -151,9 +152,12 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Override
 	public void buyCarPay(User user,String[] productIds){
-		List<Product> productList = null;
+		List<Product> productList = productMapper.selectProductListByIds(Arrays.asList(productIds));
 		Order order = new Order();
 		order.setId(UUIDCreate.getUUID());
 		//order.setCountPrice(countPrice);
+		for(Product productInfo : productList){
+			
+		}
 	}
 }

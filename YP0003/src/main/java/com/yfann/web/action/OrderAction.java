@@ -47,7 +47,7 @@ public class OrderAction extends CommonAction {
 	 * @return
 	 */
 	public String payProductOnlyOne(){
-		
+		orderService.payProductOnlyOne(product,currentUserInfo());
 		return "payProductOnlyOne";
 	}
 
@@ -134,7 +134,7 @@ public class OrderAction extends CommonAction {
                 orderService.addBuyCar(buyCar);
             }
         }
-		return "addBuyCar";
+		return buyCarList();
 	}
 	
 	public String addProductCountInBuyCar(){
