@@ -115,25 +115,21 @@ public class OrderAction extends CommonAction {
 	 * @return
 	 */
 	public String addBuyCar() throws Exception {
-        if (product != null){
             if (buyCar == null) {
                 buyCar = new BuyCar();
             }
             //查询购物车是否已存在该商品
-            if(orderService.findIsProduct(product.getId())){
+            if(orderService.findIsProduct(buyCar.getProductId())){
             	//更新购物车
-            	orderService.addProductCountInBuyCar(product.getId());
+            	orderService.addProductCountInBuyCar(buyCar.getProductId());
             }else{
             	//添加到购物车
-                buyCar.setProductId(product.getId());
                 buyCar.setId(UUIDCreate.getUUID());
                 //获取用户信息
-                buyCar.setProductName(product.getProductName());
                 buyCar.setBuyCount(1);
-                buyCar.setUserId(currentUserInfo().getUserId());
+                //buyCar.setUserId(currentUserInfo().getUserId());
                 orderService.addBuyCar(buyCar);
             }
-        }
 		return buyCarList();
 	}
 	

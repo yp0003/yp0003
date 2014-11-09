@@ -156,7 +156,7 @@ public class OrderServiceImpl implements OrderService {
 		Order order = new Order();
 		order.setId(UUIDCreate.getUUID());
 		//order.setCountPrice(countPrice);
-		for(Product productInfo : productList){
+		for(@SuppressWarnings("unused") Product productInfo : productList){
 			
 		}
 	}

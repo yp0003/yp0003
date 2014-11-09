@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="com.yfann.web.page" prefix="p"%>
 <html lang="en">
@@ -112,7 +113,7 @@
 											</div>
 									</a>
 										<div class="shop">
-											<span><a href="${pageContext.request.contextPath}/order!addBuyCar.html?buyCar.productName=${pl.productName}&buyCar.productId=${pl.id}"><button class="btn " type="button"
+											<span><a href="${pageContext.request.contextPath}/order!addBuyCar.html?buyCar.productName=${pl.productName}&buyCar.productId=${pl.id}&buyCar.Price=${pl.price}"><button class="btn " type="button"
 														>加入购物车</button></a></span> <span><a><button
 														class="btn" type="button">立即购买</button> <a></span>
 										</div></li>
