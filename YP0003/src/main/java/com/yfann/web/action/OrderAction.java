@@ -18,8 +18,6 @@ import com.yfann.web.service.OrderService;
 import com.yfann.web.vo.PageInfo;
 
 public class OrderAction extends CommonAction {
-
-
 	final Logger logger = LoggerFactory.getLogger(OrderAction.class);
 	private static final long serialVersionUID = 5350272860785771007L;
 	private BuyCar buyCar;
@@ -33,6 +31,22 @@ public class OrderAction extends CommonAction {
 	/**Struts2下载(内存数据下载)*/
 	public ByteArrayInputStream byteArrayInputStream;
 
+	/**
+	 * 购物车加1
+	 * @return
+	 */
+	public String addOneInBuyCar(){
+		
+		return "addOne";
+	}
+	/**
+	 * 购物车减1
+	 * @return
+	 */
+	public String subductionOneInBuyCar(){
+		return "subductionOneInBuyCar";
+	}
+	
 	/**
 	 * 根据ID删除购物车
 	 * @return

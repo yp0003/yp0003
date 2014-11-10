@@ -26,6 +26,14 @@ public class ProductAction extends CommonAction{
 	private ProductService productService;
 	/**Struts2下载(内存数据下载)*/
 	public ByteArrayInputStream byteArrayInputStream;
+	
+	/**
+	 * 跳转到课程详情页面
+	 * @return
+	 */
+	public String forwardProductDetail(){
+		return "productDetail";
+	}
 	/**
 	 * 课程列表
 	 * @return

@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Bootstrap</title>
+<title>课程列表</title>
 <!-- Le styles -->
 <link
 	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css"
@@ -98,7 +98,7 @@
 											<div class="course-list-img">
 												<img width="280" height="160"
 													src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"
-													alt="案例：文件传输基础——Java IO流"></img>
+													alt=""></img>
 											</div>
 											<h5>
 												<span class="topicon">${pl.productName}</span>

@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -50,17 +51,15 @@
 </body>
 <script type="text/javascript">
 	function btnEvent() {
-		var chenked=$("input[type='checkbox']:checked").val([]); 
-		for(var i=0;i<chenked.length;i++){ 
-			var hang = $(this).parent("tr").prevAll().length;   
-			var lie = $(this).prevAll().length;   
-			hang = Number(hang)+1;//字符串变为数字   
-			lie = Number(lie)+1;   
-			alert("第"+hang+"行"+"第"+lie+"列");
+		var chenked = $("input[type='checkbox']:checked").val([]);
+		for (var i = 0; i < chenked.length; i++) {
+			var hang = $(this).parent("tr").prevAll().length;
+			var lie = $(this).prevAll().length;
+			hang = Number(hang) + 1;//字符串变为数字    
+			lie = Number(lie) + 1;
+			alert("第" + hang + "行" + "第" + lie + "列");
 		}
-		
 		//alert($("#myTable tr:eq(1) td:eq(2)").html());
-
 	}
 </script>
 </html>
