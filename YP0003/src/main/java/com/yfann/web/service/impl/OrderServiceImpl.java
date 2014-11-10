@@ -160,4 +160,9 @@ public class OrderServiceImpl implements OrderService {
 			
 		}
 	}
+
+	@Override
+	public Product findProductById(String id) {
+		return productMapper.selectByPrimaryKey(id);
+	}
 }

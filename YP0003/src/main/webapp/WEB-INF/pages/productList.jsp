@@ -101,7 +101,7 @@
 													alt="案例：文件传输基础——Java IO流"></img>
 											</div>
 											<h5>
-												<span class="topicon">${pl.projectDesc}</span>
+												<span class="topicon">${pl.productName}</span>
 											</h5>
 											<div class="intro">
 												<p>${pl.projectDesc}</p>
@@ -113,7 +113,7 @@
 											</div>
 									</a>
 										<div class="shop">
-											<span><a href="${pageContext.request.contextPath}/order!addBuyCar.html?buyCar.productName=${pl.productName}&buyCar.productId=${pl.id}&buyCar.Price=${pl.price}"><button class="btn " type="button"
+											<span><a href="${pageContext.request.contextPath}/order!addBuyCar.html?buyCar.productName=${pl.productName}&buyCar.productId=${pl.id}&buyCar.Price=${pl.productPrice}"><button class="btn " type="button"
 														>加入购物车</button></a></span> <span><a><button
 														class="btn" type="button">立即购买</button> <a></span>
 										</div></li>

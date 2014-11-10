@@ -77,4 +77,11 @@ public interface OrderService {
      * @param productIds
      */
     public void buyCarPay(User user,String[] productIds);
+    
+    /**
+     * 根据ID查询课程
+     * @param id
+     * @return
+     */
+    public Product findProductById(String id);
 }

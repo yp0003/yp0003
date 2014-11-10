@@ -33,6 +33,15 @@ public class OrderAction extends CommonAction {
 	/**Struts2下载(内存数据下载)*/
 	public ByteArrayInputStream byteArrayInputStream;
 
+	/**
+	 * 根据ID删除购物车
+	 * @return
+	 * @throws Exception
+	 */
+	public String deleteProductInBuyCar() throws Exception{
+		orderService.deleteProductOnBuyCay(product.getId());
+		return buyCarList();
+	}
 
     /**
      * 订单列表
@@ -123,11 +132,15 @@ public class OrderAction extends CommonAction {
             	//更新购物车
             	orderService.addProductCountInBuyCar(buyCar.getProductId());
             }else{
+            	Product productTemp = orderService.findProductById(buyCar.getProductId());
             	//添加到购物车
                 buyCar.setId(UUIDCreate.getUUID());
                 //获取用户信息
                 buyCar.setBuyCount(1);
-                //buyCar.setUserId(currentUserInfo().getUserId());
+                buyCar.setProductName(productTemp.getProductName());
+                if(currentUserInfo() != null){
+                buyCar.setUserId(currentUserInfo().getUserId());
+                }
                 orderService.addBuyCar(buyCar);
             }
 		return buyCarList();
