@@ -64,12 +64,6 @@ public interface OrderService {
      * @return
      */
     public boolean findIsProduct(String id);
-    
-    /**
-     * 将购物车产品数量增加1
-     * @param productId
-     */
-    public void addProductCountInBuyCar(String productId);
 
     /**
      * 购物车结算

@@ -294,13 +294,6 @@
 		<include refid="Base_Column_List2" />
 		from t_buy_car t where 1 = 1
 	</select>
-	<!-- 查询购物车根据订单ID -->
-	<select id="selectBuyCarByProductId" parameterType="string"
-		resultType="com.yfann.web.pojo.BuyCar">
-		select
-		<include refid="Base_Column_List2" />
-		from t_buy_car t where product_id = #{productId,jdbcType=VARCHAR}
-</select>
 	<!-- 查询购物车总记录 -->
 	<select id="selectBuyCarCountByParamer" parameterType="map"
 		resultType="int">
@@ -308,9 +301,4 @@
 		count(*)
 		from t_buy_car where 1 = 1
 	</select>
-	<!-- 更新购物车产品数量+1 -->
-	<update id="updateProductOnBuyCar" parameterType="string">
-		update t_buy_car set buy_count = buy_count + 1 where product_id =
-		#{productId,jdbcType=VARCHAR}
-	</update>
 </mapper>

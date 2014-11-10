@@ -112,17 +112,13 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public boolean findIsProduct(String id) {
-		// 购物车没有该产品
-		if (productMapper.selectByPrimaryKey(id) == null) {
+		// 购物车有该产品
+		if (productMapper.selectByPrimaryKey(id) != null) {
 			return true;
 		}
 		return false;
 	}
 
-	@Override
-	public void addProductCountInBuyCar(String productId) {
-		buyCarMapper.updateProductOnBuyCar(productId);
-	}
 
 	@Override
 	public void payProductOnlyOne(Product product, User user) {

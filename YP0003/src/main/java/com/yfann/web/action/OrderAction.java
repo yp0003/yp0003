@@ -3,17 +3,15 @@ package com.yfann.web.action;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
-import com.yfann.web.common.ApplicationValue;
-import com.yfann.web.pojo.Product;
-import com.yfann.web.pojo.User;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.yfann.web.common.UUIDCreate;
+import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.pojo.BuyCar;
+import com.yfann.web.pojo.Product;
+import com.yfann.web.pojo.User;
 import com.yfann.web.service.OrderService;
 import com.yfann.web.vo.PageInfo;
 
@@ -138,31 +136,7 @@ public class OrderAction extends CommonAction {
 	 * @return
 	 */
 	public String addBuyCar() throws Exception {
-            if (buyCar == null) {
-                buyCar = new BuyCar();
-            }
-            //查询购物车是否已存在该商品
-            if(orderService.findIsProduct(buyCar.getProductId())){
-            	//更新购物车
-            	orderService.addProductCountInBuyCar(buyCar.getProductId());
-            }else{
-            	Product productTemp = orderService.findProductById(buyCar.getProductId());
-            	//添加到购物车
-                buyCar.setId(UUIDCreate.getUUID());
-                //获取用户信息
-                buyCar.setBuyCount(1);
-                buyCar.setProductName(productTemp.getProductName());
-                if(currentUserInfo() != null){
-                buyCar.setUserId(currentUserInfo().getUserId());
-                }
-                orderService.addBuyCar(buyCar);
-            }
 		return buyCarList();
-	}
-	
-	public String addProductCountInBuyCar(){
-		orderService.addProductCountInBuyCar(product.getId());
-		return "addProductCountInBuyCar";
 	}
 
     private User currentUserInfo(){
