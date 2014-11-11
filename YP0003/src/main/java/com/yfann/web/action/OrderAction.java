@@ -32,6 +32,23 @@ public class OrderAction extends CommonAction {
 	public ByteArrayInputStream byteArrayInputStream;
 
 	/**
+	 * 清空购物车
+	 * @return
+	 */
+	public String emptyBuyCar(){
+		orderService.deleteBuyCar(currentUserInfo());
+		return "emptyBuyCar";
+	}
+	/**
+	 * 根据购物车ID删除购物车
+	 * @return
+	 * @throws Exception
+	 */
+	public String deleteBuyCarById() throws Exception{
+		orderService.deleteBuyCayById(buyCar.getId());
+		return buyCarList();
+	}
+	/**
 	 * 添加到购物车
 	 * 
 	 * @return
@@ -61,28 +78,21 @@ public class OrderAction extends CommonAction {
 	 * 购物车加1
 	 * 
 	 * @return
+	 * @throws Exception 
 	 */
-	public void addOneInBuyCar() {
+	public String addOneInBuyCar() throws Exception {
 		orderService.addOneInBuyCar(buyCar);
+		return buyCarList();
 	}
 
 	/**
 	 * 购物车减1
 	 * 
 	 * @return
+	 * @throws Exception 
 	 */
-	public void subductionOneInBuyCar() {
+	public String subductionOneInBuyCar() throws Exception {
 		orderService.subOneInBuyCar(buyCar);
-	}
-
-	/**
-	 * 根据ID删除购物车
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public String deleteProductInBuyCar() throws Exception {
-		orderService.deleteProductOnBuyCay(product.getId());
 		return buyCarList();
 	}
 
@@ -139,21 +149,6 @@ public class OrderAction extends CommonAction {
 			throw new Exception(e.getMessage(), e);
 		}
 		return "buyCarList";
-	}
-
-	/**
-	 * 单个删除购物车产品
-	 * 
-	 * @return
-	 */
-	public String deleteProductOnBuyCay() throws Exception {
-		try {
-			orderService.deleteProductOnBuyCay(buyCar.getProductId());
-		} catch (Exception e) {
-			logger.error("系统异常---------------", e);
-			throw new Exception(e.getMessage());
-		}
-		return "deleteProduct";
 	}
 
 	/**

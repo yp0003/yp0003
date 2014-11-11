@@ -14,7 +14,9 @@ public class CheckSessionInterceptor extends MethodFilterInterceptor{
 	final Logger logger = LoggerFactory.getLogger(CheckSessionInterceptor.class);
 	@Override
 	protected String doIntercept(ActionInvocation invocation) throws Exception {
-		User userInfo = (User)ServletActionContext.getRequest().getSession().getAttribute(ApplicationValue.USER_KEY_ON_SESSION);
+		@SuppressWarnings("deprecation")
+		Object userInfoTemp = ServletActionContext.getRequest().getSession().getValue(ApplicationValue.USER_KEY_ON_SESSION);
+		User userInfo = (User)userInfoTemp;
 		if(userInfo != null){
 			return invocation.invoke();
 		}

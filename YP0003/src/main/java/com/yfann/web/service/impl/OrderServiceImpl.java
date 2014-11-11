@@ -41,6 +41,13 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDetailMapper orderDetailMapper;
 
 	@Override
+	public void deleteBuyCar(User user) {
+		if(user != null){
+		buyCarMapper.deleteBuyCarByUserId(user.getId());
+		}
+	}
+	
+	@Override
 	public void addBuyCountByProductIdInBuyCar(Product product) {
 		if(product != null && StringUtils.isNotBlank(product.getId())){
 		buyCarMapper.updateAddBuyCountByProductId(product.getId());
@@ -88,7 +95,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void deleteProductOnBuyCay(String id) {
+	public void deleteBuyCayById(String id) {
 		buyCarMapper.deleteByPrimaryKey(id);
 	}
 

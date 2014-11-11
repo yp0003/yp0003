@@ -11,6 +11,11 @@ import com.yfann.web.vo.PageInfo;
 
 public interface OrderService {
 	/**
+	 * 清空购物车
+	 * @param user
+	 */
+	public void deleteBuyCar(User user);
+	/**
 	 * 查询课程是否存在购物车
 	 * @param product
 	 * @return
@@ -55,7 +60,7 @@ public interface OrderService {
 	 * 根据ID删除购物车产品
 	 * @param id
 	 */
-	public void deleteProductOnBuyCay(String id);
+	public void deleteBuyCayById(String id);
 	
 	/**
 	 * 根据ID批量删除购物车产品

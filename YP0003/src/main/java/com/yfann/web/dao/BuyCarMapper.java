@@ -10,7 +10,17 @@ import com.yfann.web.pojo.BuyCar;
 import com.yfann.web.pojo.BuyCarExample;
 
 public interface BuyCarMapper {
-	
+	/**
+	 * 根据用户ID删除购物车
+	 * @param userId
+	 * @return
+	 */
+	int deleteBuyCarByUserId(String userId); 
+	/**
+	 * 根据产品id增加数量
+	 * @param productId
+	 * @return
+	 */
 	int updateAddBuyCountByProductId(String productId);
 	/**
 	 * 根据产品Id查询购物车

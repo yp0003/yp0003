@@ -287,6 +287,9 @@
 		t.id, t.product_id, t.product_name, t.user_id, t.price, t.add_time,
 		t.buy_count
 	</sql>
+	<delete id="deleteBuyCarByUserId" parameterType="java.lang.String">
+	delete t_buy_car where user_id = #{userId,jdbcType=VARCHAR}
+	</delete>
 	<!-- 根据产品ID查询产品在购物车 -->
 	<select id="selectBuyCarByProductId" parameterType="map" resultMap="BaseResultMap">
 	select 
@@ -304,7 +307,7 @@
 	</update>
 	<!-- 购物车商品数量-1 -->
 	<update id="updateSubBuyCarCountById" parameterType="java.lang.String">
-	update t_buy_car set buy_count = buy_count - 1 where id = #{id,jdbcType=VARCHAR}
+	update t_buy_car set buy_count = buy_count - 1 where id = #{id,jdbcType=VARCHAR} and buy_count > 0
 	</update>
 	
 	<!-- 查询购物车 -->

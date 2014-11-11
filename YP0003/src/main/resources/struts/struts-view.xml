@@ -21,8 +21,7 @@
 
 
         <!-- 订单 -->
-        <action name="order!*" method="{1}"
-                class="com.yfann.web.action.OrderAction">
+        <action name="order!*" method="{1}" class="com.yfann.web.action.OrderAction">
             <!-- 添加到购物车 -->
             <result name="buyCarList">/WEB-INF/pages/buyCarList.jsp</result>
             <!-- 下载购物车显示缩略图 -->
@@ -30,6 +29,8 @@
                 <param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
                 <param name="inputName">byteArrayInputStream</param>
             </result>
+            <!-- 清空购物车 -->
+            <result name="emptyBuyCar" type="redirectAction">product!productList.html</result>
         </action>
 
 

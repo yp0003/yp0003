@@ -46,11 +46,11 @@
 										width="100" /></td>
 									<td><s:property value="#bcl.productName"></s:property></td>
 									<td><s:property value="#bcl.price"></s:property></td>
-									<td class="num"><span class="jian" pic="200">&nbsp;</span><label
+									<td class="num"><a href="${pageContext.request.contextPath}/order!subductionOneInBuyCar.html?buyCar.id=${bcl.id}"><span class="jian" pic="200">&nbsp;</span></a><label
 										class="num-z"> <s:property value="#bcl.buyCount"></s:property>
-									</label><span class="jia" pic="200">&nbsp;</span></td>
+									</label><a href="${pageContext.request.contextPath}/order!addOneInBuyCar.html?buyCar.id=${bcl.id}"><span class="jia" pic="200">&nbsp;</span></a></td>
 									<td class="pic">200</td>
-									<td><a href="#">删除</a></td>
+									<td><a href="${pageContext.request.contextPath}/order!deleteBuyCarById.html?buyCar.id=${bcl.id}">删除</a></td>
 								</tr>
 							</s:iterator>
 						</tbody>
@@ -59,12 +59,12 @@
 				<div class="statistics fn-clear">
 					<div class="fn-left qx">
 						<input type="checkbox" name="" class="check-g" /> 全选
-						&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">清除购物车 </a>
+						&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/order!emptyBuyCar.html">清除购物车 </a>
 					</div>
 					<div class="fn-right">
 						共计<span class="red-1"> 0 </span>件商品合计（不含运费）<label class="red-1">￥<span>20</span></label>&nbsp;&nbsp;&nbsp;
 						<a href="order.html"><button class="btn">结算</button></a> <a
-							href="list.html"><button class="btn">继续购物</button></a>
+							href="${pageContext.request.contextPath}/product!productList.html"><button class="btn">继续购物</button></a>
 					</div>
 				</div>
 			</s:form>
