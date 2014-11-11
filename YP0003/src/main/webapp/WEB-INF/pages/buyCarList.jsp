@@ -27,7 +27,7 @@
 					<table class="table table-bordered table-striped table-hover">
 						<thead>
 							<tr>
-								<th><input type="checkbox" name="" class="check-g" /></th>
+								<th><input type="checkbox" id="selectAll" class="check-g" checked="true"/></th>
 								<th>商品</th>
 								<th>商品信息</th>
 								<th>单价</th>
@@ -48,12 +48,12 @@
 									<td><s:property value="#bcl.price"></s:property></td>
 
 
-									<td class="num"><span class="jian" pic="200">&nbsp;</span>
+									<td class="num"><span class="jian" pic="${bcl.price}">&nbsp;</span>
 									<s:hidden id="flagHidden" name="#bcl.id"></s:hidden><label
 										class="num-z"> <s:property value="#bcl.buyCount"></s:property></label><span
-										class="jia" pic="200">&nbsp;</span></td>
+										class="jia" pic="${bcl.price}">&nbsp;</span></td>
 									<td class="pic-01"><span class="red-1">￥</span><span
-										class="pic red-1">200</span><span class="red-1">元</span></td>
+										class="pic red-1"><s:property value="#bcl.countPrice"></s:property></span><span class="red-1">元</span></td>
 
 									<td><a
 										href="${pageContext.request.contextPath}/order!deleteBuyCarById.html?buyCar.id=${bcl.id}">删除</a></td>
@@ -64,7 +64,7 @@
 				</div>
 				<div class="statistics fn-clear">
 					<div class="fn-left qx">
-						<input type="checkbox" name="" class="check-g" /> 全选
+						<!-- <input type="checkbox" name="" class="check-g" /> 全选 -->
 						&nbsp;&nbsp;&nbsp;&nbsp;<a
 							href="${pageContext.request.contextPath}/order!emptyBuyCar.html">清除购物车
 						</a>
@@ -148,7 +148,6 @@
 						function() {
 							var num = $(this).nextAll('.num-z').text();
 							var pic = $(this).attr('pic');
-							
 							var aaaa = $(this);
 							if (num == 1) {
 								alert('请至少选择一项');
@@ -160,8 +159,8 @@
 															"#flagHidden")
 															.val(),
 											success : function(data) {
-												aaaa.parent().next('.pic-01').find('.pic').text((num-1)*pic);
-												aaaa.nextAll('.num-z').text(num-1);
+												aaaa.parent().next('.pic-01').find('.pic').text(data*pic);
+												aaaa.nextAll('.num-z').text(data);
 
 											}
 										});
@@ -170,7 +169,7 @@
 
 		$('.jia').click(
 						function() {
-							var num = $(this).parent().find('.num-z').text();
+							//var num = $(this).parent().find('.num-z').text();
 							var pic = $(this).attr('pic');
 							var aaaa = $(this);
 							$.ajax({
@@ -178,11 +177,18 @@
 										url : "${pageContext.request.contextPath}/order!addOneInBuyCar.html?buyCar.id="
 												+ $(this).prevAll("#flagHidden").val(),
 										success : function(data) {
-											aaaa.parent().next('.pic-01').find('.pic').text(parseInt((parseInt(num)+1)*pic));
-											aaaa.parent().find('.num-z').text(parseInt(num)+parseInt(1));
+											aaaa.parent().next('.pic-01').find('.pic').text(parseInt(data*pic));
+											aaaa.parent().find('.num-z').text(data);
 										}
 									});
 						});
+		
+		$('#selectAll').click(function(){
+			if($(this).attr("checked") == "true"){
+			alert($(this).attr("checked","flase"));
+			$(this)
+			}
+		});					
 	</script>
 </body>
 
