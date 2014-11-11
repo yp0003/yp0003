@@ -11,6 +11,28 @@ import com.yfann.web.vo.PageInfo;
 
 public interface OrderService {
 	/**
+	 * 查询课程是否存在购物车
+	 * @param product
+	 * @return
+	 */
+	public boolean findProductIsInBuyCar(Product product,User user);
+	/**
+	 * 根据课程ID购买数增加1
+	 * @param product
+	 */
+	public void addBuyCountByProductIdInBuyCar(Product product);
+	/**
+	 * 增加1
+	 * @param buyCar
+	 */
+	public void addOneInBuyCar(BuyCar buyCar);
+	
+	/**
+	 * 减1
+	 * @param buyCar
+	 */
+	public void subOneInBuyCar(BuyCar buyCar);
+	/**
 	 * 直接结算
 	 * @param product
 	 * @param user
@@ -77,5 +99,5 @@ public interface OrderService {
      * @param id
      * @return
      */
-    public Product findProductById(String id);
+    public Product findProductById(String productId);
 }

@@ -1,15 +1,36 @@
 package com.yfann.web.dao;
 
-import com.yfann.web.pojo.BuyCar;
-import com.yfann.web.pojo.BuyCarExample;
-
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
+import com.yfann.web.pojo.BuyCar;
+import com.yfann.web.pojo.BuyCarExample;
+
 public interface BuyCarMapper {
+	
+	int updateAddBuyCountByProductId(String productId);
+	/**
+	 * 根据产品Id查询购物车
+	 * @param productId
+	 * @return
+	 */
+	BuyCar selectBuyCarByProductId(Map<String,Object> parames);
+	/**
+	 * 购物车商品数量+1
+	 * @param id
+	 * @return
+	 */
+	int updateAddBuyCarCountById(String id);
+	
+	/**
+	 * 购物车商品数量-1
+	 * @param id
+	 * @return
+	 */
+	int updateSubBuyCarCountById(String id);
 	/**
 	 * 查询产品数量
 	 * @param paramer

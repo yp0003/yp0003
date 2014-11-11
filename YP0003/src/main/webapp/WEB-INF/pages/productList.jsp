@@ -113,7 +113,7 @@
 											</div>
 									</a>
 										<div class="shop">
-											<span><a href="${pageContext.request.contextPath}/order!addBuyCar.html?buyCar.productName=${pl.productName}&buyCar.productId=${pl.id}&buyCar.Price=${pl.productPrice}"><button class="btn " type="button"
+											<span><a href="${pageContext.request.contextPath}/order!addBuyCar.html?product.id=${pl.id}"><button class="btn " type="button"
 														>加入购物车</button></a></span> <span><a><button
 														class="btn" type="button">立即购买</button> <a></span>
 										</div></li>

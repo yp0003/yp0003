@@ -41,6 +41,48 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDetailMapper orderDetailMapper;
 
 	@Override
+	public void addBuyCountByProductIdInBuyCar(Product product) {
+		if(product != null && StringUtils.isNotBlank(product.getId())){
+		buyCarMapper.updateAddBuyCountByProductId(product.getId());
+		}
+	}
+	
+	@Override
+	public boolean findProductIsInBuyCar(Product product,User user) {
+		if (product != null && StringUtils.isNotBlank(product.getId())) {
+			//购物车存在该商品
+			Map<String,Object> parames = new HashMap<String,Object>();
+			if(user != null){
+			parames.put("userId", StringUtils.isNotBlank(user.getId()));
+			}
+			parames.put("productId", product.getId());
+			if(buyCarMapper.selectBuyCarByProductId(parames) != null){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public Product findProductById(String productId) {
+		return productMapper.selectByPrimaryKey(productId);
+	}
+
+	@Override
+	public void addOneInBuyCar(BuyCar buyCar) {
+		if (buyCar != null && StringUtils.isNotBlank(buyCar.getId())) {
+			buyCarMapper.updateAddBuyCarCountById(buyCar.getId());
+		}
+	}
+
+	@Override
+	public void subOneInBuyCar(BuyCar buyCar) {
+		if (buyCar != null && StringUtils.isNotBlank(buyCar.getId())) {
+			buyCarMapper.updateSubBuyCarCountById(buyCar.getId());
+		}
+	}
+
+	@Override
 	public void addBuyCar(BuyCar buyCar) throws Exception {
 		buyCarMapper.insertSelective(buyCar);
 	}
@@ -96,7 +138,7 @@ public class OrderServiceImpl implements OrderService {
 
 	/**
 	 * 根据ID查找缩略图
-	 *
+	 * 
 	 * @param product
 	 * @return
 	 */
@@ -118,7 +160,6 @@ public class OrderServiceImpl implements OrderService {
 		}
 		return false;
 	}
-
 
 	@Override
 	public void payProductOnlyOne(Product product, User user) {
@@ -145,20 +186,17 @@ public class OrderServiceImpl implements OrderService {
 			orderDetailMapper.insertSelective(orderDetail);
 		}
 	}
-	
-	@Override
-	public void buyCarPay(User user,String[] productIds){
-		List<Product> productList = productMapper.selectProductListByIds(Arrays.asList(productIds));
-		Order order = new Order();
-		order.setId(UUIDCreate.getUUID());
-		//order.setCountPrice(countPrice);
-		for(@SuppressWarnings("unused") Product productInfo : productList){
-			
-		}
-	}
 
 	@Override
-	public Product findProductById(String id) {
-		return productMapper.selectByPrimaryKey(id);
+	public void buyCarPay(User user, String[] productIds) {
+		List<Product> productList = productMapper.selectProductListByIds(Arrays
+				.asList(productIds));
+		Order order = new Order();
+		order.setId(UUIDCreate.getUUID());
+		// order.setCountPrice(countPrice);
+		for (@SuppressWarnings("unused")
+		Product productInfo : productList) {
+
+		}
 	}
 }
