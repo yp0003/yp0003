@@ -18,7 +18,7 @@
 		</interceptors>
 
 		<default-interceptor-ref name="yfannDefaultStack" />
-<!--
+
 		<global-results>
 			<result name="errHandler" type="chain">errorAction</result>
 			<result name="errHandler" type="dispatcher">/WEB-INF/pages/error/globalError.jsp
@@ -36,6 +36,6 @@
 			</result>
 
 			<exception-mapping result="error" exception="java.lang.Exception" />
-		</action> -->
+		</action>
 	</package>
 </struts>

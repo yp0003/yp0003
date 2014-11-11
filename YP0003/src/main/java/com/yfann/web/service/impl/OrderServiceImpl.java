@@ -41,6 +41,11 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDetailMapper orderDetailMapper;
 
 	@Override
+	public BuyCar findBuyCarById(String buyCarid) {
+		return buyCarMapper.selectByPrimaryKey(buyCarid);
+	}
+	
+	@Override
 	public void deleteBuyCar(User user) {
 		if(user != null){
 		buyCarMapper.deleteBuyCarByUserId(user.getId());

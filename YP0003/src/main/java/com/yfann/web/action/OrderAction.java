@@ -1,6 +1,7 @@
 package com.yfann.web.action;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class OrderAction extends CommonAction {
 	private OrderService orderService;
 	/** Struts2下载(内存数据下载) */
 	public ByteArrayInputStream byteArrayInputStream;
+	private InputStream jsonInputStream;
 
 	/**
 	 * 清空购物车
@@ -82,7 +84,9 @@ public class OrderAction extends CommonAction {
 	 */
 	public String addOneInBuyCar() throws Exception {
 		orderService.addOneInBuyCar(buyCar);
-		return buyCarList();
+		BuyCar buyCarInfo = orderService.findBuyCarById(buyCar.getId());
+		setJsonInputStream(new ByteArrayInputStream(buyCarInfo.getBuyCount().toString().getBytes("utf-8")));
+		return "addOneInBuyCar";
 	}
 
 	/**
@@ -91,9 +95,11 @@ public class OrderAction extends CommonAction {
 	 * @return
 	 * @throws Exception 
 	 */
-	public String subductionOneInBuyCar() throws Exception {
+	public String subOneInBuyCar() throws Exception {
 		orderService.subOneInBuyCar(buyCar);
-		return buyCarList();
+		BuyCar buyCarInfo = orderService.findBuyCarById(buyCar.getId());
+		setJsonInputStream(new ByteArrayInputStream(buyCarInfo.getBuyCount().toString().getBytes("utf-8")));
+		return "subOneInBuyCar";
 	}
 
 	/**
@@ -232,6 +238,12 @@ public class OrderAction extends CommonAction {
 
 	public void setProducyIds(String[] producyIds) {
 		this.producyIds = producyIds;
+	}
+	public InputStream getJsonInputStream() {
+		return jsonInputStream;
+	}
+	public void setJsonInputStream(InputStream jsonInputStream) {
+		this.jsonInputStream = jsonInputStream;
 	}
 
 }
