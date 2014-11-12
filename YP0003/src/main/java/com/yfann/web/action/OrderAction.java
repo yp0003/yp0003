@@ -71,7 +71,7 @@ public class OrderAction extends CommonAction {
 	public String addBuyCar() throws Exception {
 		if (orderService.findProductIsInBuyCar(product, currentUserInfo())) {
 			// 已存在 数量加1
-			orderService.addBuyCountByProductIdInBuyCar(product);
+			orderService.addBuyCountByProductIdInBuyCar(product,currentUserInfo());
 		} else {
 			Product productTemp = orderService.findProductById(product.getId());
 			BuyCar buyCar = new BuyCar();

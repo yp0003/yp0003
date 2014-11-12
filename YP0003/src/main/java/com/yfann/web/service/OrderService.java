@@ -31,7 +31,7 @@ public interface OrderService {
 	 * 根据课程ID购买数增加1
 	 * @param product
 	 */
-	public void addBuyCountByProductIdInBuyCar(Product product);
+	public void addBuyCountByProductIdInBuyCar(Product product,User user);
 	/**
 	 * 增加1
 	 * @param buyCar

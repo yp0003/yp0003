@@ -53,20 +53,21 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
-	public void addBuyCountByProductIdInBuyCar(Product product) {
+	public void addBuyCountByProductIdInBuyCar(Product product,User user) {
 		if(product != null && StringUtils.isNotBlank(product.getId())){
-		buyCarMapper.updateAddBuyCountByProductId(product.getId());
+			Map<String, Object> parames = new HashMap<>();
+			parames.put("userId", user.getId());
+			parames.put("productId", product.getId());
+		buyCarMapper.updateAddBuyCountByProductId(parames);
 		}
 	}
 	
 	@Override
 	public boolean findProductIsInBuyCar(Product product,User user) {
-		if (product != null && StringUtils.isNotBlank(product.getId())) {
+		if (user != null && product != null && StringUtils.isNotBlank(product.getId())) {
 			//购物车存在该商品
 			Map<String,Object> parames = new HashMap<String,Object>();
-			if(user != null){
 			parames.put("userId", StringUtils.isNotBlank(user.getId()));
-			}
 			parames.put("productId", product.getId());
 			if(buyCarMapper.selectBuyCarByProductId(parames) != null){
 				return true;

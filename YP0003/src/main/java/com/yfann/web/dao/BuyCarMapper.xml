@@ -294,7 +294,7 @@
 	<select id="selectBuyCarByProductId" parameterType="map" resultMap="BaseResultMap">
 	select 
 	<include refid="Base_Column_List2" />
-	from t_buy_car t where t.product_id = #{productId,jdbcType=VARCHAR}
+	from t_buy_car t where t.product_id = #{productId,jdbcType=VARCHAR} and t.user_id = #{userId,jdbcType=VARCHAR}
 	</select>
 	<!-- 购物车商品数量+1 -->
 	<update id="updateAddBuyCarCountById" parameterType="java.lang.String">
@@ -303,7 +303,7 @@
 		
 	<!-- 根据产品ID购物车商品数量+1 -->
 	<update id="updateAddBuyCountByProductId" parameterType="java.lang.String">
-	update t_buy_car set buy_count = buy_count + 1 where product_id = #{productId,jdbcType=VARCHAR}
+	update t_buy_car set buy_count = buy_count + 1 where product_id = #{productId,jdbcType=VARCHAR} and user_id = #{userId,jdbcType=VARCHAR}
 	</update>
 	<!-- 购物车商品数量-1 -->
 	<update id="updateSubBuyCarCountById" parameterType="java.lang.String">

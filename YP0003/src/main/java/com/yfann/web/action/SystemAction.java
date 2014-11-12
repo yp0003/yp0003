@@ -20,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.yfann.web.annotation.UserSessionCheck;
 import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.common.CookieUtils;
 import com.yfann.web.common.UUIDCreate;
@@ -52,6 +53,7 @@ public class SystemAction extends CommonAction {
 	 * 转向修改用户资料页面
 	 * @return
 	 */
+	@UserSessionCheck
 	public String updateInfoUI() {
 		user = (User) session.getAttribute(ApplicationValue.USER_KEY_ON_SESSION);
 		if (user == null) {
@@ -66,6 +68,7 @@ public class SystemAction extends CommonAction {
 	 * @return
 	 * @throws Exception
 	 */
+	@UserSessionCheck
 	public String updateInfo() throws Exception {
 		User u = (User) session
 				.getAttribute(ApplicationValue.USER_KEY_ON_SESSION);

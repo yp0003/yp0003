@@ -21,7 +21,7 @@ public interface BuyCarMapper {
 	 * @param productId
 	 * @return
 	 */
-	int updateAddBuyCountByProductId(String productId);
+	int updateAddBuyCountByProductId(Map<String, Object> parames);
 	/**
 	 * 根据产品Id查询购物车
 	 * @param productId
