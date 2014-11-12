@@ -4,19 +4,9 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<package name="sys" namespace="/" extends="yfann-default">
-		<interceptors>
-			<interceptor name="checkSessionInterceptor"
-				class="com.yfann.web.interceptor.CheckSessionInterceptor">
-				<param name="excludeMethods">forwardIndex,forwardLogin,forwardRegister</param>
-			</interceptor>
-		</interceptors>
 		<!-- 系统 -->
 		<action name="system!*" method="{1}"
 			class="com.yfann.web.action.SystemAction">
-			<!-- 默认拦截器 -->
-			<interceptor-ref name="yfannDefaultStack"></interceptor-ref>
-			<!-- 检查是否登陆拦截器 -->
-			<interceptor-ref name="checkSessionInterceptor"></interceptor-ref>
 			<!-- 跳转到主页 -->
 			<result name="forwardIndex">
 				/WEB-INF/pages/index.jsp
@@ -33,19 +23,9 @@
 
 
 	<package name="buy" namespace="/" extends="yfann-default">
-		<interceptors>
-			<interceptor name="checkSessionInterceptor"
-				class="com.yfann.web.interceptor.CheckSessionInterceptor">
-				<param name="excludeMethods">forwardIndex,forwardLogin,forwardRegister,viewSmallProductPic,</param>
-			</interceptor>
-		</interceptors>
 		<!-- 订单 -->
 		<action name="order!*" method="{1}"
 			class="com.yfann.web.action.OrderAction">
-			<!-- 默认拦截器 -->
-			<interceptor-ref name="yfannDefaultStack"></interceptor-ref>
-			<!-- 检查是否登陆拦截器 -->
-			<interceptor-ref name="checkSessionInterceptor"></interceptor-ref>
 			<!-- 添加到购物车 -->
 			<result name="buyCarList">/WEB-INF/pages/buyCarList.jsp</result>
 			<!-- 下载购物车显示缩略图 -->
@@ -90,20 +70,9 @@
 
 
 	<package name="oa" namespace="/" extends="yfann-default">
-		<interceptors>
-			<interceptor name="checkSessionInterceptor"
-				class="com.yfann.web.interceptor.CheckSessionInterceptor">
-				<param name="excludeMethods">forwardIndex,forwardLogin,forwardRegister</param>
-			</interceptor>
-		</interceptors>
 		<!-- OA -->
 		<action name="employee!*" method="{1}"
 			class="com.yfann.web.action.EmployeeAction">
-
-			<!-- 默认拦截器 -->
-			<interceptor-ref name="yfannDefaultStack"></interceptor-ref>
-			<!-- 检查是否登陆拦截器 -->
-			<interceptor-ref name="checkSessionInterceptor"></interceptor-ref>
 			<!-- 转向登录页面 -->
 			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
 			<result name="loginSuccess">/WEB-INF/pages/oa/mypage_oa.jsp</result>
