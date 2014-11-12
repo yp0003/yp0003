@@ -19,7 +19,9 @@ public class CheckSessionInterceptor extends MethodFilterInterceptor{
 	@SuppressWarnings("unchecked")
 	@Override
 	protected String doIntercept(ActionInvocation invocation) throws Exception {
+		//获取调用的Action
 		Object targetAction = invocation.getAction();
+		//获取将要执行的方法名
 		String methodName = invocation.getProxy().getMethod();
 		if(StringUtils.isNotBlank(methodName)){
 			@SuppressWarnings("rawtypes")

@@ -14,11 +14,16 @@ import com.yfann.web.annotation.UserSessionCheck;
 import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.BuyCar;
+import com.yfann.web.pojo.Order;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.OrderService;
 import com.yfann.web.vo.PageInfo;
-
+/**
+ * 订单动作类
+ * @author Simon
+ *
+ */
 public class OrderAction extends CommonAction {
 	final Logger logger = LoggerFactory.getLogger(OrderAction.class);
 	private static final long serialVersionUID = 5350272860785771007L;
@@ -33,6 +38,23 @@ public class OrderAction extends CommonAction {
 	/** Struts2下载(内存数据下载) */
 	public ByteArrayInputStream byteArrayInputStream;
 	private InputStream jsonInputStream;
+	/**
+	 * 创建订单
+	 * @return
+	 */
+	public String createOrder(){
+		return "createOrder";
+	}
+	/**
+	 * 直接结算
+	 * 
+	 * @return
+	 */
+	@UserSessionCheck
+	public String payProductOnlyOne() {
+		orderService.payProductOnlyOne(product, currentUserInfo());
+		return "payProductOnlyOne";
+	}
 	
 	/**
 	 * 跳转到确认订单页面
@@ -126,17 +148,6 @@ public class OrderAction extends CommonAction {
 	@UserSessionCheck
 	public String orderList() {
 		return "orderList";
-	}
-
-	/**
-	 * 直接结算
-	 * 
-	 * @return
-	 */
-	@UserSessionCheck
-	public String payProductOnlyOne() {
-		orderService.payProductOnlyOne(product, currentUserInfo());
-		return "payProductOnlyOne";
 	}
 
 	/**

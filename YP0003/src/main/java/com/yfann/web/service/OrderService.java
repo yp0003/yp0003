@@ -11,6 +11,13 @@ import com.yfann.web.vo.PageInfo;
 
 public interface OrderService {
 	/**
+	 * 创建订单
+	 * @param user
+	 * @param buyCarIds
+	 * @return
+	 */
+	public Order createOrder(User user,String[] buyCarIds); 
+	/**
 	 * 查询购物车根据IDS
 	 * @param ids
 	 * @return

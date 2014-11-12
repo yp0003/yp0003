@@ -1,6 +1,7 @@
 package com.yfann.web.service.impl;
 
 import java.io.ByteArrayInputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.yfann.web.common.DicValue;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.dao.ProductMapper;
 import com.yfann.web.pojo.Product;
@@ -42,14 +44,60 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDetailMapper orderDetailMapper;
 
 	@Override
-	public List<BuyCar> findBuyCarByIds(String[] ids) {
+	public Order createOrder(User user, String[] buyCarIds) {
+		Order order = new Order();
+		OrderDetail orderDetail = new OrderDetail();
+		List<String> idsList = getIdsList(buyCarIds);
+		//获取查询购物车的Map参数
 		Map<String, Object> parames = getBuyCarParamerMap(null);
-		List<String> idsList = new ArrayList<String>();
-		for (String idsTemp : ids) {
-			idsList.add(idsTemp);
+		parames.put("idsList", idsList);
+		List<BuyCar> buyCList = buyCarMapper.selectBuyCarListByParames(parames);
+		//设置ID 该字段也是销售码
+		order.setId(UUIDCreate.getUUID());
+		order.setUserId(user.getId());
+		//订单总金额
+		double countPrice = 0;
+		for(BuyCar buyCarInfo : buyCList){
+			countPrice += buyCarInfo.getCountPrice().doubleValue();
 		}
+		//设置总金额
+		order.setCountPrice(new BigDecimal(countPrice));
+		order.setOrderCreateTime(new Date());
+		//设置订单状态为未支付
+		order.setOrderStatus(DicValue.ORDER_STATUS_UNPAY);
+		// TODO 该订单号生成有误后期需更改
+		order.setOrderId(UUIDCreate.getUUID());
+		//设置支付状态为在线支付
+		order.setPayWay(DicValue.PAY_WAY_ONLINE_PAY);
+		
+		orderDetail.setId(UUIDCreate.getUUID());
+		//orderDetail.setPrice(price);
+		return null;
+	}
+	
+	@Override
+	public List<BuyCar> findBuyCarByIds(String[] ids) {
+		//获取查询购物车的Map参数
+		Map<String, Object> parames = getBuyCarParamerMap(null);
+		List<String> idsList = getIdsList(ids);
 		parames.put("idsList", idsList);
 		return buyCarMapper.selectBuyCarListByParames(parames);
+	}
+	
+	/**
+	 * 将ids转换成List
+	 * @param ids
+	 * @return
+	 */
+	private List<String> getIdsList(String[] ids){
+		List<String> idsList = null;
+		if(ids != null && ids.length > 0){
+			idsList = new ArrayList<String>();
+			for (String idsTemp : ids) {
+				idsList.add(idsTemp);
+			}
+		}
+		return idsList;
 	}
 
 	@Override
@@ -226,4 +274,5 @@ public class OrderServiceImpl implements OrderService {
 
 		}
 	}
+
 }

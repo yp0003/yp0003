@@ -41,7 +41,7 @@ function reImg() {
 				<c:if test="${sessionScope.userInfo != null}">
 				
 					<a class="brand" href="./index.html">我的订单</a> <a class="brand"
-						href="./index.html">购物车</a> <a class="brand" href="./index.html">个人中心</a>
+						href="${pageContext.request.contextPath}/order!buyCarList.html">购物车</a> <a class="brand" href="./index.html">个人中心</a>
 						<a class="brand" href="#">尊敬的${sessionScope.userInfo.userId}您好</a>
 				</c:if>
 					<ul class="nav">

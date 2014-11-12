@@ -23,6 +23,7 @@
 		</div>
 		<div style="clear:both"></div>
 		<div class="line"></div>
+		<s:form>
 		<div>
 			<div class="queren">核对商品信息</div>
 			<div class="contable">
@@ -39,13 +40,14 @@
 
 					</thead>
 					<tbody>
+					
 						<s:iterator value="buyCarList" id="bcl">
 							<tr>
 								<td><s:property value="#bcl.productName" /></td>
 								<td><img alt=""
 									src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${bcl.productId}"
 									width="100" /></td>
-								<td>帮助你的学习，帮助您的成长</td>
+								<td><s:property value="#bcl.product.productDesc"></s:property></td>
 								<td>无优惠</td>
 								<td><s:property value="#bcl.buyCount"></s:property></td>
 								<td><span class="cidcolor">￥<span><s:property value="#bcl.countPrice"></s:property></span>元
@@ -83,11 +85,12 @@
 				</div>
 				<div class="clear"></div>
 				<div class="ordersub">
-					<button class="btn  btn-large  btn-danger" type="button"
+					<button class="btn  btn-large  btn-danger" type="submit"
 						placeholder="nihao">提交订单</button>
 				</div>
 			</div>
 		</div>
+		</s:form>
 	</div>
 	<%@ include file="common/commonFooter.jsp"%>
 </body>
