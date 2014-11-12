@@ -11,6 +11,12 @@ import com.yfann.web.pojo.BuyCarExample;
 
 public interface BuyCarMapper {
 	/**
+	 *根据map条件查询购物车列表 不分页
+	 * @param parames
+	 * @return
+	 */
+	List<BuyCar> selectBuyCarListByParames(Map<String, Object> parames);
+	/**
 	 * 根据用户ID删除购物车
 	 * @param userId
 	 * @return

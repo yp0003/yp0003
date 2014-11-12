@@ -114,8 +114,8 @@
 									</a>
 										<div class="shop">
 											<span><a href="${pageContext.request.contextPath}/order!addBuyCar.html?product.id=${pl.id}"><button class="btn " type="button"
-														>加入购物车</button></a></span> <span><a><button
-														class="btn" type="button">立即购买</button> <a></span>
+														>加入购物车</button></a></span> <span><button
+														class="btn" type="button">立即购买</button></span>
 										</div></li>
 							</s:iterator>
 						</ul>

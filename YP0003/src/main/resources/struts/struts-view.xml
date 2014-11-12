@@ -13,6 +13,7 @@
 			<!-- 修改个人信息 -->
 			<result name="updateInfoUI">/WEB-INF/pages/updateInfo.jsp</result>
 			<result name="updateInfo">/index.jsp</result>
+			<result name="register">/WEB-INF/pages/index.jsp</result>
 		</action>
 	</package>
 
@@ -23,6 +24,8 @@
 		<action name="order!*" method="{1}"
 			class="com.yfann.web.action.OrderAction">
 			<!-- 添加到购物车 -->
+			<result name="addBuyCar" type="redirectAction">order!buyCarList.html</result>
+			<!-- 购物车列表 -->
 			<result name="buyCarList">/WEB-INF/pages/buyCarList.jsp</result>
 			<!-- 下载购物车显示缩略图 -->
 			<result name="viewSmallProductPic" type="stream">

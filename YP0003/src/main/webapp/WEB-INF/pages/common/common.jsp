@@ -72,7 +72,7 @@ function reImg() {
 							<div class="rlf-group">
 								<input type="text" name="user.userId"
 									autocomplete="off" class="rlf-input rlf-input-email"
-									placeholder="请输入登录邮箱" />
+									placeholder="请输入用户名" />
 								<p class="rlf-tip-wrap"></p>
 							</div>
 							<div class="rlf-group">
@@ -147,15 +147,15 @@ function reImg() {
 					</div>
 					<div class="rlf-group">
 						<input type="text" id="registValidateCode"
-							name="user.validateCode" class="rlf-input rlf-input-nick" /> <img
+							name="validateCode" class="rlf-input rlf-input-nick" /> <img
 							id="vertImg"
 							src="${pageContext.request.contextPath}/system!validateCode.html" />
 						<a class="chgVertImg" href="javascript:void(0);" onclick="reImg()">看不清，换一张</a>
 						<p class="rlf-tip-wrap">请输入验证码</p>
 					</div>
 					<div class="rlf-group clearfix">
-						<input type="button" id="signup-btn" value="注册" hidefocus="true"
-							class="rlf-btn-green btn-full r" style="float: left;" onclick="regist();"/>
+						<input type="submit" id="signup-btn" value="注册" hidefocus="true"
+							class="rlf-btn-green btn-full r" style="float: left;"/>
 					</div>
 				</s:form>
 			</div>

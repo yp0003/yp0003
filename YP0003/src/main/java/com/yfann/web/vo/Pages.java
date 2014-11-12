@@ -213,8 +213,8 @@ public class Pages extends Component {
 			}
 		}
 		
-		str.append("&nbsp;&nbsp;&nbsp;&nbsp;<span class='label' style='padding-top:10px;'>显示"+b1 + "到" + b2 + "，共" + totalCount +"条记录</span>");
-		str.append("</ul></div>");
+		//str.append("&nbsp;&nbsp;&nbsp;&nbsp;");
+		str.append("</ul></div><div><span class='label'>显示"+b1 + "到" + b2 + "，共" + totalCount +"条记录</span></div>");
 
 		// logger.debug("=============================\n{}", str.toString());
 		try {

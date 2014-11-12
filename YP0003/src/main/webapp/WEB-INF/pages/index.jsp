@@ -46,7 +46,7 @@
 						+ new Date());
 	}
 
-	function regist() {
+/* 	function regist() {
 		var aaa = "${pageContext.request.contextPath}/system!register.html?user.userId="
 				+ $("#registUserId").val()
 				+ "&"
@@ -87,7 +87,7 @@
 						return false;
 					}
 				});
-	}
+	} */
 </script>
 </head>
 <body>

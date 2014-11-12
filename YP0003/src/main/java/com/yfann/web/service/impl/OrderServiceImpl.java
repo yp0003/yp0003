@@ -1,6 +1,7 @@
 package com.yfann.web.service.impl;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -41,35 +42,47 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDetailMapper orderDetailMapper;
 
 	@Override
+	public List<BuyCar> findBuyCarByIds(String[] ids) {
+		Map<String, Object> parames = getBuyCarParamerMap(null);
+		List<String> idsList = new ArrayList<String>();
+		for (String idsTemp : ids) {
+			idsList.add(idsTemp);
+		}
+		parames.put("idsList", idsList);
+		return buyCarMapper.selectBuyCarListByParames(parames);
+	}
+
+	@Override
 	public BuyCar findBuyCarById(String buyCarid) {
 		return buyCarMapper.selectByPrimaryKey(buyCarid);
 	}
-	
+
 	@Override
 	public void deleteBuyCar(User user) {
-		if(user != null){
-		buyCarMapper.deleteBuyCarByUserId(user.getId());
+		if (user != null) {
+			buyCarMapper.deleteBuyCarByUserId(user.getId());
 		}
 	}
-	
+
 	@Override
-	public void addBuyCountByProductIdInBuyCar(Product product,User user) {
-		if(product != null && StringUtils.isNotBlank(product.getId())){
+	public void addBuyCountByProductIdInBuyCar(Product product, User user) {
+		if (product != null && StringUtils.isNotBlank(product.getId())) {
 			Map<String, Object> parames = new HashMap<>();
 			parames.put("userId", user.getId());
 			parames.put("productId", product.getId());
-		buyCarMapper.updateAddBuyCountByProductId(parames);
+			buyCarMapper.updateAddBuyCountByProductId(parames);
 		}
 	}
-	
+
 	@Override
-	public boolean findProductIsInBuyCar(Product product,User user) {
-		if (user != null && product != null && StringUtils.isNotBlank(product.getId())) {
-			//购物车存在该商品
-			Map<String,Object> parames = new HashMap<String,Object>();
-			parames.put("userId", StringUtils.isNotBlank(user.getId()));
+	public boolean findProductIsInBuyCar(Product product, User user) {
+		if (user != null && product != null
+				&& StringUtils.isNotBlank(product.getId())) {
+			// 购物车存在该商品
+			Map<String, Object> parames = new HashMap<String, Object>();
+			parames.put("userId", user.getId());
 			parames.put("productId", product.getId());
-			if(buyCarMapper.selectBuyCarByProductId(parames) != null){
+			if (buyCarMapper.selectBuyCarByProductId(parames) != null) {
 				return true;
 			}
 		}
@@ -130,8 +143,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<BuyCar> findBuyCarList(User user,BuyCar buyCar, PageInfo pageInfo)
-			throws Exception {
+	public List<BuyCar> findBuyCarList(User user, BuyCar buyCar,
+			PageInfo pageInfo) throws Exception {
 		Map<String, Object> parames = getBuyCarParamerMap(buyCar);
 		parames.put("userId", user.getId());
 		pageInfo.setCount(buyCarMapper.selectBuyCarCountByParamer(parames));

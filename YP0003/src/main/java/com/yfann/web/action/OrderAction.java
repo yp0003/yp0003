@@ -40,6 +40,7 @@ public class OrderAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String forwardSureOrder(){
+		buyCarList = orderService.findBuyCarByIds(buyCarIds);
 		return "forwardSureOrder";
 	}
 
@@ -86,7 +87,7 @@ public class OrderAction extends CommonAction {
 			buyCar.setProductName(productTemp.getProductName());
 			orderService.addBuyCar(buyCar);
 		}
-		return buyCarList();
+		return "addBuyCar";
 	}
 
 	/**

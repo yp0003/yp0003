@@ -287,6 +287,13 @@
 		t.id, t.product_id, t.product_name, t.user_id, t.price, t.add_time,
 		t.buy_count
 	</sql>
+	<!-- 根据条件查询购物车列表 不分页 -->
+	<select id="selectBuyCarListByParames" parameterType="map" resultMap="BaseResultMap">
+	select 
+	<include refid="Base_Column_List2" />
+	from t_buy_car t where 1 = 1
+	 <include refid="where_condition"/>
+	</select>
 	<delete id="deleteBuyCarByUserId" parameterType="java.lang.String">
 	delete t_buy_car where user_id = #{userId,jdbcType=VARCHAR}
 	</delete>
@@ -323,7 +330,7 @@
 		resultType="int">
 		select
 		count(*)
-		from t_buy_car where 1 = 1
+		from t_buy_car t where 1 = 1
 		<include refid="where_condition"/>
 	</select>
 	
@@ -331,6 +338,13 @@
 	<!-- 用户ID -->
 	<if test="userId != null">
 	and t.user_id = #{userId,jdbcType=VARCHAR}
+	</if>
+	<if test="idsList != null">
+	AND t.id in
+			<foreach item="status" index="index" open="(" close=")"
+				separator="," collection="idsList">
+				#{status}
+			</foreach>
 	</if>
 	</sql>
 </mapper>

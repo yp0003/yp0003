@@ -11,6 +11,12 @@ import com.yfann.web.vo.PageInfo;
 
 public interface OrderService {
 	/**
+	 * 查询购物车根据IDS
+	 * @param ids
+	 * @return
+	 */
+	public List<BuyCar> findBuyCarByIds(String[] ids);
+	/**
 	 * 根据购物车主键查询购物车
 	 * @param buyCarid
 	 * @return

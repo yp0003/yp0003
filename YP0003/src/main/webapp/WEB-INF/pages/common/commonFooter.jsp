@@ -17,10 +17,10 @@
 					href="#">CC BY </a>.
 			</p>
 			<ul class="footer-links">
-				<li>求课网欢迎您的到来</li>
-				<li class="muted">求课网欢迎您的到来</li>
-				<li>求课网欢迎您的到来</li>
-				<li>求课网欢迎您的到来</li>
+				<li>365IT学院欢迎您的到来</li>
+				<li class="muted">365IT学院欢迎您的到来</li>
+				<li>365IT学院欢迎您的到来</li>
+				<li>365IT学院欢迎您的到来</li>
 			</ul>
 		</div>
 	</footer>
