@@ -316,6 +316,7 @@
 		select
 		<include refid="Base_Column_List2" />
 		from t_buy_car t where 1 = 1
+		<include refid="where_condition"/>
 	</select>
 	<!-- 查询购物车总记录 -->
 	<select id="selectBuyCarCountByParamer" parameterType="map"
@@ -323,5 +324,13 @@
 		select
 		count(*)
 		from t_buy_car where 1 = 1
+		<include refid="where_condition"/>
 	</select>
+	
+	<sql id="where_condition">
+	<!-- 用户ID -->
+	<if test="userId != null">
+	and t.user_id = #{userId,jdbcType=VARCHAR}
+	</if>
+	</sql>
 </mapper>

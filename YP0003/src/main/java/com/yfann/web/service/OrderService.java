@@ -54,7 +54,7 @@ public interface OrderService {
 	 * @param buyCar
 	 * @return
 	 */
-	public List<BuyCar> findBuyCarList(BuyCar buyCar,PageInfo pageInfo) throws Exception;
+	public List<BuyCar> findBuyCarList(User user,BuyCar buyCar,PageInfo pageInfo) throws Exception;
 	/**
 	 * 产品增加到购物车
 	 * @param buyCar

@@ -166,7 +166,7 @@ public class OrderAction extends CommonAction {
 			buyCar = new BuyCar();
 		}
 		try {
-			buyCarList = orderService.findBuyCarList(buyCar, pageInfo);
+			buyCarList = orderService.findBuyCarList(currentUserInfo(),buyCar, pageInfo);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			logger.error(e.getLocalizedMessage());
