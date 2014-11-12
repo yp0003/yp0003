@@ -25,13 +25,21 @@ public class OrderAction extends CommonAction {
 	private PageInfo pageInfo;
 	private List<BuyCar> buyCarList;
 	private String[] buyCarIds;
-	private String[] producyIds;
+	private String[] productIds;
 	private Product product;
 	@Autowired
 	private OrderService orderService;
 	/** Struts2下载(内存数据下载) */
 	public ByteArrayInputStream byteArrayInputStream;
 	private InputStream jsonInputStream;
+	
+	/**
+	 * 跳转到确认订单页面
+	 * @return
+	 */
+	public String forwardSureOrder(){
+		return "forwardSureOrder";
+	}
 
 	/**
 	 * 清空购物车
@@ -174,15 +182,6 @@ public class OrderAction extends CommonAction {
 		return userInfo;
 	}
 
-	/**
-	 * 跳转到购物车页面
-	 * 
-	 * @return
-	 */
-	public String forwardBuyCar() {
-		return "forwardBuyCar";
-	}
-
 	public BuyCar getBuyCar() {
 		return buyCar;
 	}
@@ -232,13 +231,14 @@ public class OrderAction extends CommonAction {
 		this.byteArrayInputStream = byteArrayInputStream;
 	}
 
-	public String[] getProducyIds() {
-		return producyIds;
+	public String[] getProductIds() {
+		return productIds;
 	}
 
-	public void setProducyIds(String[] producyIds) {
-		this.producyIds = producyIds;
+	public void setProductIds(String[] productIds) {
+		this.productIds = productIds;
 	}
+
 	public InputStream getJsonInputStream() {
 		return jsonInputStream;
 	}

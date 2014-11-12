@@ -20,8 +20,8 @@
 				</ul>
 			</div>
 
-			<%--结算表单--%>
-			<s:form>
+			<%--订单确认表单--%>
+			<s:form action="/order!forwardSureOrder.html">
 				<div class="title">我的购物车</div>
 				<div style='margin-bottom: 50px;'>
 					<table class="table table-bordered table-striped table-hover">
@@ -54,7 +54,6 @@
 										class="jia" pic="${bcl.price}">&nbsp;</span></td>
 									<td class="pic-01"><span class="red-1">￥</span><span
 										class="pic red-1"><s:property value="#bcl.countPrice"></s:property></span><span class="red-1">元</span></td>
-
 									<td><a
 										href="${pageContext.request.contextPath}/order!deleteBuyCarById.html?buyCar.id=${bcl.id}">删除</a></td>
 								</tr>
@@ -71,7 +70,7 @@
 					</div>
 					<div class="fn-right">
 						共计<span class="red-1"> 0 </span>件商品合计（不含运费）<label class="red-1">￥<span>20</span></label>&nbsp;&nbsp;&nbsp;
-						<a href="order.html"><button class="btn">结算</button></a> <a
+						<button class="btn" type="submit">结算</button><a
 							href="${pageContext.request.contextPath}/product!productList.html"><button
 								class="btn">继续购物</button></a>
 					</div>

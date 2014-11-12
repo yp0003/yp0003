@@ -4,9 +4,7 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="yfann-default" extends="json-default" abstract="true"
-		namespace="/">
- 
+	<package name="yfann-default" extends="json-default" abstract="true" namespace="/">
 		<interceptors>
 			<interceptor-stack name="yfannDefaultStack">
 				<!-- 基于paramsPrepareParamsStack,增加store interceptor保证actionMessage在redirect后不会丢失 -->
@@ -17,7 +15,7 @@
 			</interceptor-stack>
 		</interceptors>
 
-		<default-interceptor-ref name="yfannDefaultStack" />
+	<default-interceptor-ref name="yfannDefaultStack" />
 
 		<global-results>
 			<result name="errHandler" type="chain">errorAction</result>
