@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.yfann.web.annotation.UserSessionCheck;
 import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.BuyCar;
@@ -37,6 +38,7 @@ public class OrderAction extends CommonAction {
 	 * 跳转到确认订单页面
 	 * @return
 	 */
+	@UserSessionCheck
 	public String forwardSureOrder(){
 		return "forwardSureOrder";
 	}
@@ -45,6 +47,7 @@ public class OrderAction extends CommonAction {
 	 * 清空购物车
 	 * @return
 	 */
+	@UserSessionCheck
 	public String emptyBuyCar(){
 		orderService.deleteBuyCar(currentUserInfo());
 		return "emptyBuyCar";
@@ -54,6 +57,7 @@ public class OrderAction extends CommonAction {
 	 * @return
 	 * @throws Exception
 	 */
+	@UserSessionCheck
 	public String deleteBuyCarById() throws Exception{
 		orderService.deleteBuyCayById(buyCar.getId());
 		return buyCarList();
@@ -63,6 +67,7 @@ public class OrderAction extends CommonAction {
 	 * 
 	 * @return
 	 */
+	@UserSessionCheck
 	public String addBuyCar() throws Exception {
 		if (orderService.findProductIsInBuyCar(product, currentUserInfo())) {
 			// 已存在 数量加1
@@ -90,6 +95,7 @@ public class OrderAction extends CommonAction {
 	 * @return
 	 * @throws Exception 
 	 */
+	@UserSessionCheck
 	public String addOneInBuyCar() throws Exception {
 		orderService.addOneInBuyCar(buyCar);
 		BuyCar buyCarInfo = orderService.findBuyCarById(buyCar.getId());
@@ -103,6 +109,7 @@ public class OrderAction extends CommonAction {
 	 * @return
 	 * @throws Exception 
 	 */
+	@UserSessionCheck
 	public String subOneInBuyCar() throws Exception {
 		orderService.subOneInBuyCar(buyCar);
 		BuyCar buyCarInfo = orderService.findBuyCarById(buyCar.getId());
@@ -115,6 +122,7 @@ public class OrderAction extends CommonAction {
 	 * 
 	 * @return
 	 */
+	@UserSessionCheck
 	public String orderList() {
 		return "orderList";
 	}
@@ -124,6 +132,7 @@ public class OrderAction extends CommonAction {
 	 * 
 	 * @return
 	 */
+	@UserSessionCheck
 	public String payProductOnlyOne() {
 		orderService.payProductOnlyOne(product, currentUserInfo());
 		return "payProductOnlyOne";
@@ -150,6 +159,7 @@ public class OrderAction extends CommonAction {
 	 * @return
 	 * @throws Exception
 	 */
+	@UserSessionCheck
 	public String buyCarList() throws Exception {
 		// 此处BuyCar作为业务拼装条件map来使用
 		if (buyCar == null) {
@@ -170,6 +180,7 @@ public class OrderAction extends CommonAction {
 	 * 
 	 * @return
 	 */
+	@UserSessionCheck
 	public String deleteProductOnBuyCayByAllIds() throws Exception {
 		// orderService.deleteProductOnBuyCayByAllIds(buyCar.getIds());
 		return "deleteProductOnBuyCayByAllIds";

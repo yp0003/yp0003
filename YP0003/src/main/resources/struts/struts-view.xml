@@ -7,10 +7,6 @@
 		<!-- 系统 -->
 		<action name="system!*" method="{1}"
 			class="com.yfann.web.action.SystemAction">
-			<!-- 跳转到主页 -->
-			<result name="forwardIndex">
-				/WEB-INF/pages/index.jsp
-			</result>
 			<!-- 修改密码 -->
 			<result name="updatePasswordUI">/WEB-INF/pages/updatePassword.jsp</result>
 			<result name="updatePasswordSuccess">/WEB-INF/pages/login.jsp</result>

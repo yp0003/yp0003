@@ -4,20 +4,27 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="yfann-default" extends="json-default" abstract="true" namespace="/">
+	<package name="yfann-default" extends="json-default" abstract="true"
+		namespace="/">
 		<interceptors>
+			<interceptor name="checkSessionInterceptor"
+				class="com.yfann.web.interceptor.CheckSessionInterceptor"></interceptor>
 			<interceptor-stack name="yfannDefaultStack">
 				<!-- 基于paramsPrepareParamsStack,增加store interceptor保证actionMessage在redirect后不会丢失 -->
-				<interceptor-ref name="store"> <param name="operationMode">AUTOMATIC</param> 
-					</interceptor-ref>
+				<interceptor-ref name="store">
+					<param name="operationMode">AUTOMATIC</param>
+				</interceptor-ref>
 				<interceptor-ref name="paramsPrepareParamsStack" />
 				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="checkSessionInterceptor"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
 
-	<default-interceptor-ref name="yfannDefaultStack" />
+		<default-interceptor-ref name="yfannDefaultStack" />
 
 		<global-results>
+		<!-- 验证登陆失败 -->
+			<result name="forwardIndex">/WEB-INF/pages/index.jsp</result>
 			<result name="errHandler" type="chain">errorAction</result>
 			<result name="errHandler" type="dispatcher">/WEB-INF/pages/error/globalError.jsp
 			</result>
