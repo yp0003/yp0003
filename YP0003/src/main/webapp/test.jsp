@@ -51,15 +51,14 @@
 </body>
 <script type="text/javascript">
 	function btnEvent() {
-		var chenked = $("input[type='checkbox']:checked").val([]);
-		for (var i = 0; i < chenked.length; i++) {
-			var hang = $(this).parent("tr").prevAll().length;
-			var lie = $(this).prevAll().length;
-			hang = Number(hang) + 1;//字符串变为数字    
-			lie = Number(lie) + 1;
-			alert("第" + hang + "行" + "第" + lie + "列");
-		}
-		//alert($("#myTable tr:eq(1) td:eq(2)").html());
+		$.ajax({
+			type : "POST",
+			url : "http://xindao.gensee.com/training/room/created",
+			data : "subject=testetste&teacherToken=767175432&studentClientToken=19950806&startDate=2014-11-10 00:00:00&assistantToken=19930520&loginName=admin@xindao.com&password=xindao",
+			success : function(msg) {
+				alert("Data Saved: " + msg);
+			}
+		});
 	}
 </script>
 </html>
