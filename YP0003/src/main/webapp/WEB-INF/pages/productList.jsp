@@ -94,29 +94,31 @@
 					<div class="js-course-list">
 						<ul>
 							<s:iterator value="productList" id="pl">
-									<li><a href="info.html">
-											<div class="course-list-img">
-												<img width="280" height="160"
-													src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"
-													alt=""></img>
-											</div>
-											<h5>
-												<span class="topicon">${pl.productName}</span>
-											</h5>
-											<div class="intro">
-												<p>${pl.projectDesc}</p>
-												<span class="l">更新至${pl.updateBadge}-${pl.updateMatter}</span>
-												<span class="r">课程时长:${pl.productSale}分</span>
-											</div>
-											<div class="tips">
-												<span class="l">${pl.updateTime}更新</span> <span class="r">${pl.buyCount}人学习</span>
-											</div>
-									</a>
-										<div class="shop">
-											<span><a href="${pageContext.request.contextPath}/order!addBuyCar.html?product.id=${pl.id}"><button class="btn " type="button"
-														>加入购物车</button></a></span> <span><button
-														class="btn" type="button">立即购买</button></span>
-										</div></li>
+								<li><a href="info.html">
+										<div class="course-list-img">
+											<img width="280" height="160"
+												src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"
+												alt=""></img>
+										</div>
+										<h5>
+											<span class="topicon">${pl.productName}</span>
+										</h5>
+										<div class="intro">
+											<p>${pl.projectDesc}</p>
+											<span class="l">更新至${pl.updateBadge}-${pl.updateMatter}</span>
+											<span class="r">课程时长:${pl.productSale}分</span>
+										</div>
+										<div class="tips">
+											<span class="l">${pl.updateTime}更新</span> <span class="r">${pl.buyCount}人学习</span>
+										</div>
+								</a>
+									<div class="shop">
+										<span><a
+											href="${pageContext.request.contextPath}/order!addBuyCar.html?product.id=${pl.id}"><button
+													class="btn " type="button">加入购物车</button></a></span> <span><a
+											href="${pageContext.request.contextPath}/order!payProductOnlyOne.html?product.id=${pl.id}"><button
+													class="btn" type="button">立即购买</button></a></span>
+									</div></li>
 							</s:iterator>
 						</ul>
 

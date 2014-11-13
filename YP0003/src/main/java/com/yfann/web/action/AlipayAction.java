@@ -1,3 +1,13 @@
+/*
+ * AlipayAction.java
+ * V 1.0.0
+ *
+ * Copyright © 2014 上海颐凡科技有限公司 版权所有
+ *
+ * 所有文字、代码资料，版权均属上海颐凡科技有限公司所有，任
+ * 何公司或个人未经本司协议授权，不得复制、下载、存储或公开
+ * 显示。违者本公司将依法追究责任。
+ */
 package com.yfann.web.action;
 
 import com.yfann.web.annotation.UserSessionCheck;

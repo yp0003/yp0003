@@ -48,7 +48,10 @@ public class OrderServiceImpl implements OrderService {
 		if (product != null && user != null
 				&& StringUtils.isNotBlank(product.getId())
 				&& StringUtils.isNotBlank(user.getId())) {
+			//设置订单ID 该字段也是销售码
 			order.setId(UUIDCreate.getUUID());
+			// TODO 该订单号生成有误后期需更改
+			order.setOrderId(UUIDCreate.getUUID());
 			// 订单总价格
 			order.setCountPrice(productMapper.selectByPrimaryKey(
 					product.getId()).getProductPrice());
@@ -56,6 +59,12 @@ public class OrderServiceImpl implements OrderService {
 			order.setOrderCreateTime(new Date());
 			// 支付用户
 			order.setUserId(user.getId());
+			//订单生成时间
+			order.setOrderCreateTime(new Date());
+			//设置订单状态为未支付
+			order.setOrderStatus(DicValue.ORDER_STATUS_UNPAY);
+			order.setPayWay(DicValue.PAY_WAY_ONLINE_PAY);
+			//设置订单详情ID
 			orderDetail.setId(UUIDCreate.getUUID());
 			orderDetail.setOrderId(order.getId());
 			orderDetail.setPrice(order.getCountPrice());

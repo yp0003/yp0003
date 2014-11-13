@@ -50,6 +50,8 @@
 			<result name="forwardSureOrder">/WEB-INF/pages/sureOrder.jsp</result>
 			<!-- 创建订单 -->
 			<result name="createOrder">/WEB-INF/pages/payOrder.jsp</result>
+			<!-- 直接结算 -->
+			<result name="payProductOnlyOne">/WEB-INF/pages/payOrder.jsp</result>
 		</action>
 
 		<!-- 课程 -->

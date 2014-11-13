@@ -68,7 +68,7 @@ public class OrderAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String payProductOnlyOne() {
-		orderService.payProductOnlyOne(product, currentUserInfo());
+		order = orderService.payProductOnlyOne(product, currentUserInfo());
 		return "payProductOnlyOne";
 	}
 	
