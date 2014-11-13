@@ -3,8 +3,10 @@ package com.yfann.web.pojo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class Order implements Serializable{
+	private List<OrderDetail> orderDetailList;
 	private static final long serialVersionUID = -8682087441744371725L;
 
 	/**
@@ -262,4 +264,14 @@ public class Order implements Serializable{
     public void setCountPrice(BigDecimal countPrice) {
         this.countPrice = countPrice;
     }
+    /***********************************************************************************************************************/
+
+	public List<OrderDetail> getOrderDetailList() {
+		return orderDetailList;
+	}
+
+	public void setOrderDetailList(List<OrderDetail> orderDetailList) {
+		this.orderDetailList = orderDetailList;
+	}
+    
 }

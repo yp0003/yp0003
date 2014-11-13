@@ -15,6 +15,7 @@ import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.BuyCar;
 import com.yfann.web.pojo.Order;
+import com.yfann.web.pojo.OrderDetail;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.OrderService;
@@ -33,16 +34,31 @@ public class OrderAction extends CommonAction {
 	private String[] buyCarIds;
 	private String[] productIds;
 	private Product product;
+	private Order order;
+	private OrderDetail orderDetail;
+	private List<OrderDetail> orderDetailList;
 	@Autowired
 	private OrderService orderService;
 	/** Struts2下载(内存数据下载) */
 	public ByteArrayInputStream byteArrayInputStream;
 	private InputStream jsonInputStream;
+	
+	/**
+	 * 直接结算跳转到订单确认页面
+	 * @return
+	 */
+	@UserSessionCheck
+	public String payOnlyOneSureOrder(){
+		orderService.payProductOnlyOne(product, currentUserInfo());
+		return "payOnlyOneSureOrder";
+	}
 	/**
 	 * 创建订单
 	 * @return
 	 */
+	@UserSessionCheck
 	public String createOrder(){
+		order = orderService.createOrder(currentUserInfo(), buyCarIds);
 		return "createOrder";
 	}
 	/**
@@ -267,6 +283,24 @@ public class OrderAction extends CommonAction {
 	}
 	public void setJsonInputStream(InputStream jsonInputStream) {
 		this.jsonInputStream = jsonInputStream;
+	}
+	public Order getOrder() {
+		return order;
+	}
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+	public OrderDetail getOrderDetail() {
+		return orderDetail;
+	}
+	public void setOrderDetail(OrderDetail orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+	public List<OrderDetail> getOrderDetailList() {
+		return orderDetailList;
+	}
+	public void setOrderDetailList(List<OrderDetail> orderDetailList) {
+		this.orderDetailList = orderDetailList;
 	}
 
 }

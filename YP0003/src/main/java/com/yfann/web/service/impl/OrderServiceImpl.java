@@ -3,16 +3,10 @@ package com.yfann.web.service.impl;
 import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.yfann.web.common.DicValue;
-import com.yfann.web.common.UUIDCreate;
-import com.yfann.web.dao.ProductMapper;
-import com.yfann.web.pojo.Product;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
@@ -21,12 +15,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yfann.web.common.DicValue;
+import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.dao.BuyCarMapper;
 import com.yfann.web.dao.OrderDetailMapper;
 import com.yfann.web.dao.OrderMapper;
+import com.yfann.web.dao.ProductMapper;
 import com.yfann.web.pojo.BuyCar;
 import com.yfann.web.pojo.Order;
 import com.yfann.web.pojo.OrderDetail;
+import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.OrderService;
 import com.yfann.web.vo.PageInfo;
@@ -42,6 +40,31 @@ public class OrderServiceImpl implements OrderService {
 	private ProductMapper productMapper;
 	@Autowired
 	private OrderDetailMapper orderDetailMapper;
+	
+	@Override
+	public Order payProductOnlyOne(Product product, User user) {
+		Order order = new Order();
+		OrderDetail orderDetail = new OrderDetail();
+		if (product != null && user != null
+				&& StringUtils.isNotBlank(product.getId())
+				&& StringUtils.isNotBlank(user.getId())) {
+			order.setId(UUIDCreate.getUUID());
+			// 订单总价格
+			order.setCountPrice(productMapper.selectByPrimaryKey(
+					product.getId()).getProductPrice());
+			// 订单创建时间
+			order.setOrderCreateTime(new Date());
+			// 支付用户
+			order.setUserId(user.getId());
+			orderDetail.setId(UUIDCreate.getUUID());
+			orderDetail.setOrderId(order.getId());
+			orderDetail.setPrice(order.getCountPrice());
+			orderDetail.setProductId(product.getId());
+			orderMapper.insertSelective(order);
+			orderDetailMapper.insertSelective(orderDetail);
+		}
+		return order;
+	}
 
 	@Override
 	public Order createOrder(User user, String[] buyCarIds) {
@@ -50,6 +73,7 @@ public class OrderServiceImpl implements OrderService {
 		List<String> idsList = getIdsList(buyCarIds);
 		//获取查询购物车的Map参数
 		Map<String, Object> parames = getBuyCarParamerMap(null);
+		parames.put("userId", user.getId());
 		parames.put("idsList", idsList);
 		List<BuyCar> buyCList = buyCarMapper.selectBuyCarListByParames(parames);
 		//设置ID 该字段也是销售码
@@ -69,10 +93,19 @@ public class OrderServiceImpl implements OrderService {
 		order.setOrderId(UUIDCreate.getUUID());
 		//设置支付状态为在线支付
 		order.setPayWay(DicValue.PAY_WAY_ONLINE_PAY);
-		
-		orderDetail.setId(UUIDCreate.getUUID());
-		//orderDetail.setPrice(price);
-		return null;
+		//保存订单
+		orderMapper.insertSelective(order);
+		for(BuyCar buyCarInfo : buyCList){
+			orderDetail.setId(UUIDCreate.getUUID());
+			orderDetail.setPrice(buyCarInfo.getPrice());
+			orderDetail.setOrderId(order.getId());
+			orderDetail.setProductId(buyCarInfo.getProductId());
+			//保存订单详情
+			orderDetailMapper.insertSelective(orderDetail);
+			//订单生成完毕 应该删除购物车记录
+			buyCarMapper.deleteByPrimaryKey(buyCarInfo.getId());
+		}
+		return order;
 	}
 	
 	@Override
@@ -205,6 +238,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<Order> findOrderList(User user, Order order, PageInfo pageInfo) {
 		Map<String, Object> orderListParams = getOrderParamerMap(order);
+		orderListParams.put("userId", user.getId());
 		pageInfo.setCount(orderMapper
 				.selectOrderListCountByParams(orderListParams));
 		return orderMapper.selectOrderListByParams(orderListParams,
@@ -235,44 +269,4 @@ public class OrderServiceImpl implements OrderService {
 		}
 		return false;
 	}
-
-	@Override
-	public void payProductOnlyOne(Product product, User user) {
-		if (product != null && user != null
-				&& StringUtils.isNotBlank(product.getId())
-				&& StringUtils.isNotBlank(user.getId())) {
-			Order order = new Order();
-			order.setId(UUIDCreate.getUUID());
-			// 订单总价格
-			order.setCountPrice(productMapper.selectByPrimaryKey(
-					product.getId()).getProductPrice());
-			// 订单创建时间
-			order.setOrderCreateTime(new Date());
-			// 支付用户
-			order.setUserId(user.getId());
-
-			OrderDetail orderDetail = new OrderDetail();
-			orderDetail.setId(UUIDCreate.getUUID());
-			orderDetail.setOrderId(order.getId());
-			orderDetail.setPrice(order.getCountPrice());
-			orderDetail.setProductId(product.getId());
-
-			orderMapper.insertSelective(order);
-			orderDetailMapper.insertSelective(orderDetail);
-		}
-	}
-
-	@Override
-	public void buyCarPay(User user, String[] productIds) {
-		List<Product> productList = productMapper.selectProductListByIds(Arrays
-				.asList(productIds));
-		Order order = new Order();
-		order.setId(UUIDCreate.getUUID());
-		// order.setCountPrice(countPrice);
-		for (@SuppressWarnings("unused")
-		Product productInfo : productList) {
-
-		}
-	}
-
 }

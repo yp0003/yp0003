@@ -61,7 +61,7 @@ public interface OrderService {
 	 * @param product
 	 * @param user
 	 */
-	public void payProductOnlyOne(Product product,User user);
+	public Order payProductOnlyOne(Product product,User user);
 	/**
 	 * 根据条件查询购物车产品
 	 * @param buyCar
@@ -110,13 +110,6 @@ public interface OrderService {
      * @return
      */
     public boolean findIsProduct(String id);
-
-    /**
-     * 购物车结算
-     * @param user
-     * @param productIds
-     */
-    public void buyCarPay(User user,String[] productIds);
     
     /**
      * 根据ID查询课程

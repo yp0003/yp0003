@@ -385,4 +385,10 @@
 			</foreach>
 		</if>
 	</sql>
+	
+	
+	<delete id="deleteBuyCarByparames" parameterType="map">
+	delete from t_buy_car t where 1 = 1 
+	<include refid="where_condition"/>
+	</delete>
 </mapper>

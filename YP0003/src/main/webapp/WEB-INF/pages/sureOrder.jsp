@@ -43,7 +43,7 @@
 					
 						<s:iterator value="buyCarList" id="bcl">
 							<tr>
-								<td><s:property value="#bcl.productName" /></td>
+								<td><s:property value="#bcl.productName" /><s:hidden name="#bcl.id" cssClass="buyCarId"></s:hidden></td>
 								<td><img alt=""
 									src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${bcl.productId}"
 									width="100" /></td>
@@ -85,13 +85,25 @@
 				</div>
 				<div class="clear"></div>
 				<div class="ordersub">
-					<button class="btn  btn-large  btn-danger" type="submit"
-						placeholder="nihao">提交订单</button>
+					<button class="btn  btn-large  btn-danger" type="button"
+						placeholder="nihao" onclick="selectBuyCarId()">提交订单</button>
 				</div>
 			</div>
 		</div>
 		</s:form>
 	</div>
 	<%@ include file="common/commonFooter.jsp"%>
+	<script type="text/javascript">
+	
+	function selectBuyCarId() {
+		var url = "${pageContext.request.contextPath}/order!createOrder.html?abc=5";
+		$(".buyCarId").each(function(){
+			url = url + "&buyCarIds=" + $(this).val();
+		});
+		document.forms[0].action = url;
+		document.forms[0].submit();
+	}
+	
+	</script>
 </body>
 </html>
