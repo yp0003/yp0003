@@ -37,6 +37,7 @@
 	<a href="${pageContext.request.contextPath}/system!updateInfoUI.html">修改资料</a>
 	<br><br>
 	<p>OA</p>
+	<a href="${pageContext.request.contextPath}/oasystem!forwardOAIndex.html">主页</a>
 	<a href="${pageContext.request.contextPath}/employee!forwardLogin.html">登录</a>
 	<br>
 	<a href="${pageContext.request.contextPath}/employee!forwardRegister.html">注册</a>
