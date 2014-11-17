@@ -339,18 +339,25 @@
     <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
     <result column="count_price" property="countPrice" jdbcType="DECIMAL" />
     <!-- 订单详情 -->
-   	<collection column="id" property="orderDetailList" javaType="ArrayList" ofType="com.yfann.web.pojo.OrderDetail" select="com.yfann.web.dao.OrderMapper"></collection>
+   	<collection column="id" property="orderDetailList" javaType="ArrayList" ofType="com.yfann.web.pojo.OrderDetail" select="com.yfann.web.dao.OrderDetailMapper.selectOrderDetailListByOrderId"></collection>
   </resultMap>
+  <!-- 分页查询订单列表 -->
   <select id="selectOrderListByParams" parameterType="map" resultMap="BaseResultMap2">
   select <include refid="Base_Column_List2"/> from t_order t where 1 = 1 
+  <include refid="where_condition"/>
   </select>
   
     <!-- 根据列表查询订单数量 -->
   <select id="selectOrderListCountByParams" parameterType="map" resultType="int">
-  select count(*) from t_order t where 1 = 1
+  select count(*) from t_order t where 1 = 1 <include refid="where_condition"/>
   </select>
   <!-- 根据orderId查询OrderDetail -->
   <select id="selectOrderDetailByOrderId" parameterType="string" resultMap="BaseResultMap2">
   	 select <include refid="Base_Column_List2"/> from t_order t where t.id = #{id,jdbcType=VARCHAR}
   </select>
+  <sql id="where_condition">
+  <if test="userId != null">
+  	and t.user_id = #{userId,jdbcType=VARCHAR}
+  </if>
+  </sql>
 </mapper>

@@ -229,6 +229,12 @@ public class OrderServiceImpl implements OrderService {
 	 */
 	private Map<String, Object> getOrderParamerMap(Order order) {
 		Map<String, Object> parames = new HashMap<String, Object>();
+		if(order != null){
+			if(StringUtils.isNotBlank(order.getUserId())){
+				//设置用户名筛选
+				parames.put("userId",order.getUserId());	
+			}
+		}
 		return parames;
 	}
 
@@ -247,7 +253,6 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<Order> findOrderList(User user, Order order, PageInfo pageInfo) {
 		Map<String, Object> orderListParams = getOrderParamerMap(order);
-		orderListParams.put("userId", user.getId());
 		pageInfo.setCount(orderMapper
 				.selectOrderListCountByParams(orderListParams));
 		return orderMapper.selectOrderListByParams(orderListParams,

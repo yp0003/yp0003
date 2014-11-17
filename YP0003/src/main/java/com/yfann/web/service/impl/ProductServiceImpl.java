@@ -34,7 +34,10 @@ public class ProductServiceImpl implements ProductService{
 	private Map<String,Object> getProductParamer(Product product){
 		Map<String, Object> paramer = new HashMap<String, Object>();
 		if(product != null){
-			//TODO DO SOMETHING...
+			if(StringUtils.isNotBlank(product.getProductName())){
+				//产品名
+				paramer.put("productName", "%"+ product.getProductName().trim() + "%");
+			}
 		}
 		return paramer;
 	}

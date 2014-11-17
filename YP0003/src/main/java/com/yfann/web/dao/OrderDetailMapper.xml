@@ -432,4 +432,7 @@
   <select id="selectOrderDetailByParames" parameterType="map" resultMap="BaseResultMap2">
   select <include refid="Base_Column_List2"/> from t_order_detail t where 1 = 1
   </select>
+  <select id="selectOrderDetailListByOrderId" parameterType="java.lang.String" resultMap="BaseResultMap2">
+  select <include refid="Base_Column_List2"/> from t_order_detail t where t.order_id = #{orderId,jdbcType=VARCHAR}
+  </select>
 </mapper>

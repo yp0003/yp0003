@@ -9,6 +9,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 public interface OrderDetailMapper {
+	List<OrderDetail> selectOrderDetailListByOrderId(String orderId);
 	/**
 	 * 根据条件查询订单详情列表
 	 * @param parames

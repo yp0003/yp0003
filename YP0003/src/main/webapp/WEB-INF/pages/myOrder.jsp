@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="com.yfann.web.page" prefix="p"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,57 +42,39 @@
 		<div class="container">
 			<%@ include file="common/mypageCommon.jsp"%>
 			<div class="course-content">
+			
 				<div class="course-list">
-					<div class="del">
-						<button class="btn check-t">全选</button>
-						<button class="btn">删除</button>
-					</div>
 					<table class="table table-bordered table-striped table-hover">
 						<thead>
 							<tr>
-								<th>选择</th>
-								<th>课程图标</th>
-								<th>课程名称</th>
+								<th>订单号</th>
+								<th>订单物品</th>
 								<th>价格</th>
-								<th>数量</th>
-								<th>小计</th>
 								<th>订单状态</th>
-								<th>订单状态</th>
-								<th>订单状态</th>
+								<th>订单创建时间</th>
 								<th>操作</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td><input type="checkbox" name="ids[]"></td>
-								<td><img alt=""
-									src="${pageContext.request.contextPath}/image/53e4ba4c0001f2d206000338-590-330.jpg"
-									width="100" /></td>
-								<td>PHP工程师</td>
-								<td>200</td>
-								<td>1</td>
-								<td>200</td>
-								<td>未支付</td>
-								<td><a href="#">订单详情</a></td>
-								<td><a href="#">订单详情</a></td>
-								<td><a href="#">订单详情</a></td>
-								<td><a href="#">订单详情</a></td>
-							</tr>
+							<s:iterator value="orderList" id="ol">
+								<tr>
+									<td>${ol.orderId}</td>
+									<td><s:iterator value="#ol.orderDetailList" id="odl">
+									${odl.product.productName}</br>
+										</s:iterator></td>
+									<td>${ol.countPrice}</td>
+									<td>未支付</td>
+									<td><s:date name="#ol.orderCreateTime" format="yyyy-MM-dd hh:mm:ss"/>  </td>
+									<td><a href="#">取消订单</a>&nbsp;&nbsp;&nbsp;<a href="#">订单详情</a></td>
+								</tr>
+							</s:iterator>
 						</tbody>
 
 					</table>
 				</div>
-				<div class="pagination pagination-centered">
-					<ul>
-						<li><a href="#">&laquo;</a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">&raquo;</a></li>
-					</ul>
-				</div>
+
+				<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
+					pageSize="pageInfo.pageSize" count="pageInfo.count" includes="" />
 			</div>
 		</div>
 	</div>

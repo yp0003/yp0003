@@ -55,7 +55,7 @@
 						<div class="controls">
 							<div class="input-prepend" id="sub">
 								<span class="add-on"><i class="icon-search"></i></span> <input
-									class="span2" id="inputIcon" type="text">
+									class="span2" id="inputIcon" type="text" name="product.productName"/>
 							</div>
 							<span
 								style="height: 45px; display: inline-block; margin-bottom: 10px;">
@@ -109,7 +109,7 @@
 											<span class="r">课程时长:${pl.productSale}分</span>
 										</div>
 										<div class="tips">
-											<span class="l">${pl.updateTime}更新</span> <span class="r">${pl.buyCount}人学习</span>
+											<span class="l"><s:date name="#pl.updateTime" format="yyyy-MM-dd hh:mm:ss"/>更新</span> <span class="r">${pl.buyCount}人学习</span>
 										</div>
 								</a>
 									<div class="shop">
@@ -126,7 +126,7 @@
 
 				</div>
 				<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
-					pageSize="pageInfo.pageSize" count="pageInfo.count" includes="" />
+					pageSize="pageInfo.pageSize" count="pageInfo.count" includes="product.productName" />
 			</div>
 		</div>
 	</div>
