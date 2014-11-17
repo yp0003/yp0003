@@ -11,13 +11,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.annotation.UserSessionCheck;
-import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.BuyCar;
 import com.yfann.web.pojo.Order;
 import com.yfann.web.pojo.OrderDetail;
 import com.yfann.web.pojo.Product;
-import com.yfann.web.pojo.User;
 import com.yfann.web.service.OrderService;
 import com.yfann.web.vo.PageInfo;
 /**
@@ -212,13 +210,6 @@ public class OrderAction extends CommonAction {
 	public String deleteProductOnBuyCayByAllIds() throws Exception {
 		// orderService.deleteProductOnBuyCayByAllIds(buyCar.getIds());
 		return "deleteProductOnBuyCayByAllIds";
-	}
-
-	private User currentUserInfo() {
-		@SuppressWarnings("deprecation")
-		Object userObj = session.getValue(ApplicationValue.USER_KEY_ON_SESSION);
-		User userInfo = (User) userObj;
-		return userInfo;
 	}
 
 	public BuyCar getBuyCar() {

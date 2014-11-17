@@ -28,7 +28,7 @@ $(function(){
 	/**
 	 * 购物车商品加减
 	 * **/
-/*	$('.jian').click(function(){
+	$('.jian').click(function(){
 		var num = $(this).next('.num-z').text();
 		var pic = $(this).attr('pic');
 		if(num == 1){
@@ -44,7 +44,7 @@ $(function(){
 		var pic = $(this).attr('pic');
 		$(this).parent().next('.pic').text(parseInt((parseInt(num)+1)*pic));
 		$(this).parent().find('.num-z').text(parseInt(num)+parseInt(1));
-	});*/
+	});
 	
 	/**
 	 * tab 切换

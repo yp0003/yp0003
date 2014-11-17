@@ -7,15 +7,22 @@
 <title>365IT学院</title>
 </head>
 <body>
-			<div class="span4">
-				<ul class="nav nav-list">
-					<li class="active"><a href="#">我的课程</a></li>
-					<li class="active"><a href="#">订单管理</a></li>
-					<li class="active"><a href="#">在线测试</a></li>
-					<li class="active"><a href="#">我的证书</a></li>
-					<li class="active"><a href="#">咨询管理</a></li>
-					<li class="active"><a href="#">管理面板</a></li>
-				</ul>
+		<div class="course-sidebar">
+			<div class="course-sidebar-type lf-center">
+				<a href="center.html">我的课程</a>
 			</div>
+			<div class="course-sidebar-type lf-center  lf-default">
+				<a href="ord.html">订单管理</a>
+			</div>
+			<div class="course-sidebar-type lf-center">
+				<a href="test.html">在线测试</a>
+			</div>
+			<div class="course-sidebar-type lf-center">
+				<a href="certificate.html">我的证书</a>
+			</div>
+			<div class="course-sidebar-type lf-center">
+				<a href="xxlist.html">消息列表<span class="red">(1)</span></a>
+			</div>
+		</div>
 </body>
 </html>

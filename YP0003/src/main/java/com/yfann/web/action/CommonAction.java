@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.yfann.web.common.ApplicationValue;
+import com.yfann.web.pojo.User;
 
 public class CommonAction extends ActionSupport{
 	final Logger logger = LoggerFactory.getLogger(CommonAction.class);
@@ -28,5 +30,16 @@ public class CommonAction extends ActionSupport{
 				+ ServletActionContext.getRequest().getServerName() + ":"
 				+ ServletActionContext.getRequest().getServerPort()
 				+ ServletActionContext.getRequest().getContextPath();
+	}
+	
+	/**
+	 * 获取当前登陆人
+	 * @return
+	 */
+	public User currentUserInfo() {
+		@SuppressWarnings("deprecation")
+		Object userObj = session.getValue(ApplicationValue.USER_KEY_ON_SESSION);
+		User userInfo = (User) userObj;
+		return userInfo;
 	}
 }

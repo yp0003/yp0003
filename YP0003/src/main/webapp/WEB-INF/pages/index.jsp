@@ -177,29 +177,7 @@
 
 	</div>
 
-
-
-	<!-- Footer -->
-	<footer class="footer">
-	<div class="container">
-		<p>
-			<a href="#">求课网欢迎您的到来</a>
-		</p>
-		<p>
-			<a href="#">求课网欢迎您的到来求课网欢迎您的到来求课网欢迎您的到来</a>
-		</p>
-
-		<p>
-			<a href="#">Glyphicons Free</a> licensed under <a href="#">CC BY
-			</a> .
-		</p>
-		<ul class="footer-links">
-			<li>求课网欢迎您的到来</li>
-			<li class="muted">求课网欢迎您的到来</li>
-			<li>求课网欢迎您的到来</li>
-			<li>求课网欢迎您的到来</li>
-		</ul>
-	</div>
-	</footer>
+	<!-- 底部 -->
+	<%@ include file="common/commonFooter.jsp"%>
 </body>
 </html>
