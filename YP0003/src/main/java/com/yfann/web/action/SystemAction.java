@@ -24,6 +24,7 @@ import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.SystemService;
 import com.yfann.web.vo.LoginMessage;
+import com.yfann.web.vo.MailContext;
 import com.yfann.web.vo.RegisterMessage;
 
 /**
@@ -46,17 +47,50 @@ public class SystemAction extends CommonAction {
 	private String validateCode;
 	private String remPass;
 
+	/**
+	 * 跳转到找回密码页面
+	 * 
+	 * @return
+	 */
+	public String forwardFindPassword() {
+		return "forwardFindPassword";
+	}
 
+	/**
+	 * 找回密码功能
+	 * 
+	 * @return
+	 */
+	public String findPassword() {
+		if (user != null) {
+			try{
+			User userInfo = systemService.findUserByUserId(user.getUserId());
+			MailContext mailContext = new MailContext();
+			mailContext
+					.setMailSubject(ApplicationValue.MAIL_FIND_PASSWORD_SUBJECT);
+			mailContext.setTextContext("尊敬的" + user.getUserId() + "您好,您的密码为"
+					+ userInfo.getNowPassword() + "请妥善保存好您的密码.");
+			
+			systemService.sendMail(user.getEmail(), mailContext);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return "forwardLogin";
+	}
 
 	/**
 	 * 跳转到注册页面
+	 * 
 	 * @return
 	 */
-	public String forwardRegister(){
+	public String forwardRegister() {
 		return "forwardRegister";
 	}
+
 	/**
 	 * 退出功能
+	 * 
 	 * @return
 	 */
 	public String logout() {
@@ -69,23 +103,26 @@ public class SystemAction extends CommonAction {
 		return "forwardLogin";
 	}
 
-    /**
-     * 登陆
-     * @return
-     */
+	/**
+	 * 登陆
+	 * 
+	 * @return
+	 */
 	public String login() {
-        if (user != null) {
-            User userTemp = systemService.valiDateLogin(user);
-            if (userTemp != null){
-                session.setAttribute(ApplicationValue.USER_KEY_ON_SESSION, userTemp);// 添加用户到session中
-            }
-        }
-        return "forwardLogin";
-       
-    }
+		if (user != null) {
+			User userTemp = systemService.valiDateLogin(user);
+			if (userTemp != null) {
+				session.setAttribute(ApplicationValue.USER_KEY_ON_SESSION,
+						userTemp);// 添加用户到session中
+			}
+		}
+		return "forwardLogin";
+
+	}
 
 	/**
 	 * 跳转到主页
+	 * 
 	 * @return
 	 */
 	public String forwardIndex() {
@@ -114,9 +151,10 @@ public class SystemAction extends CommonAction {
 			@SuppressWarnings("deprecation")
 			Object valiCodeObj = session.getValue("valiCode");
 			String flagValiCode = valiCodeObj.toString();
-			if(StringUtils.isNotBlank(flagValiCode) && flagValiCode.equals(validateCode)){
-                String[] passwordArray = user.getNowPassword().split(",");
-                user.setNowPassword(passwordArray[0]);
+			if (StringUtils.isNotBlank(flagValiCode)
+					&& flagValiCode.equals(validateCode)) {
+				String[] passwordArray = user.getNowPassword().split(",");
+				user.setNowPassword(passwordArray[0]);
 				systemService.saveUser(user);
 			}
 		}
@@ -224,6 +262,7 @@ public class SystemAction extends CommonAction {
 	public void setRemPass(String remPass) {
 		this.remPass = remPass;
 	}
+
 	public String getBirthday() {
 		return birthday;
 	}

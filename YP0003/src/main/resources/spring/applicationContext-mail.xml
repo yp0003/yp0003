@@ -21,9 +21,9 @@
 	http://www.springframework.org/schema/cache/spring-cache-4.0.xsd"
 	default-autowire="byName">
 
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<bean id="javaMailSenderImpl" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host">
-			<value>stmp.qq.com</value>
+			<value>smtp.qq.com</value>
 		</property>
 		<property name="javaMailProperties">
 			<props>
@@ -35,7 +35,7 @@
 			<value>767175432@qq.com</value>
 		</property>
 		<property name="password">
-			<value>767175432</value>
+			<value>a19950806</value>
 		</property>
 	</bean>
 </beans>

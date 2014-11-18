@@ -4,6 +4,13 @@ import com.yfann.web.pojo.User;
 import com.yfann.web.vo.MailContext;
 
 public interface SystemService {
+	
+	/**
+	 * 根据用户ID超找用户
+	 * @param userId
+	 * @return
+	 */
+	public User findUserByUserId(String userId);
 	/**
 	 * 保存用户
 	 * 
@@ -20,14 +27,19 @@ public interface SystemService {
 	 */
 	public void updateUser(User user) throws Exception;
 
+	/**
+	 * 验证用户是否登陆
+	 * @param user
+	 * @return
+	 */
 	public User validateUser(User user);
 	
 	/**
 	 * 发送邮件
-	 * @param user
+	 * @param toEmail
 	 * @param mailContext
 	 */
-	public void sendMail(User user,MailContext mailContext);
+	public void sendMail(String toEmail, MailContext mailContext);
 
     /**
      * 验证用户

@@ -10,7 +10,9 @@
 			<!-- 跳转到注册 -->
 			<result name="forwardRegister">/WEB-INF/pages/register.jsp</result>
 			<!-- 系统主页 -->
-			<result name="forwardIndex">/WEB-INF/pages/index.jsp</result>		
+			<result name="forwardIndex">/WEB-INF/pages/index.jsp</result>
+			<!-- 跳转到召回密码页面 -->
+			<result name="forwardFindPassword">/WEB-INF/pages/findPassword.jsp</result>
 		</action>
 	</package>
 

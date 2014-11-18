@@ -83,7 +83,8 @@ function reImg() {
 							<div class="rlf-group rlf-appendix clearfix">
 								<label for="auto-signin" class="l" hidefocus="true" /> <input
 									type="checkbox" checked="checked" id="auto-signin" /> 自动登录 </label> <a
-									href="/user/newforgot" class="rlf-forget r" target="_blank"
+									href="${pageContext.request.contextPath}/system!forwardFindPassword.html
+									" class="rlf-forget r" target="_blank"
 									hidefocus="true">忘记密码？ </a>
 							</div>
 							<div class="rlf-group clearfix">

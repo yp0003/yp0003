@@ -34,22 +34,21 @@
  <img class="hr_conTitle" src="image/login/hr_content1.png" alt="" />
  
  <div id="passwd_form" style="margin-top: 100px;">
- <form id="login">
+ <form id="login" action="system!findPassword.html">
    <ul class="passwd">
     <li>
     <label for="memberID">用户名:</label>
-    <input id="memberID" type="text" placeHolder="请输入你要找回的用户名"/>
+    <input id="memberID" type="text" placeHolder="请输入你要找回的用户名" name="user.userId"/>
     </li>
     <li>
     <label for="passWord">邮&nbsp;箱:</label>
-    <input id="passWord" type="text" placeHolder="请输入你要找回的账户绑定的邮箱"/>
+    <input id="passWord" type="text" placeHolder="请输入你要找回的账户绑定的邮箱" name="user.email"/>
     </li>
     <li>
     <li style="width:100%;  margin-top: 30px;">
-    <button id="btn_passwd1"  type="submit" value="">登录</button>
+    <button id="btn_passwd1"  type="submit" value="">发送到邮箱</button>
     </li>
     <div class="clear"></div>
-    </li>
   </ul>
   </form>
   

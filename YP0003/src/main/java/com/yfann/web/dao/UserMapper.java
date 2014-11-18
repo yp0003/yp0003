@@ -13,7 +13,7 @@ public interface UserMapper {
      * @param userId
      * @return
      */
-	List<User> selectUserByUserId(String userId);
+	User selectUserByUserId(String userId);
 
     /**
      * 根据条件查询用户数量

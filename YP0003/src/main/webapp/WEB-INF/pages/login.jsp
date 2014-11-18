@@ -55,7 +55,7 @@
     <li>
     <input id="remPass" type="checkbox" />
     <label id="lblRemPass" for="remPass">记住密码，两周内自动登录</label>
-    <a id="forgetPW" href="#">忘记密码</a>
+    <a id="forgetPW" href="${pageContext.request.contextPath}/system!forwardFindPassword.html">忘记密码</a>
     <div class="clear"></div>
     </li>
     <li>
