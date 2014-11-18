@@ -139,6 +139,7 @@ function reImg() {
 							placeholder="请输入密码" />
 						<p class="rlf-tip-wrap">请输入6-16位密码，区分大小写，不能使用空格</p>
 					</div>
+								
 					<div class="rlf-group">
 						<input type="text" id="registEmail" name="user.email"
 							class="rlf-input rlf-input-email" autocomplete="off"

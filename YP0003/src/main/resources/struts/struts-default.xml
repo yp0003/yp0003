@@ -24,7 +24,7 @@
 
 		<global-results>
 		<!-- 验证登陆失败 -->
-			<result name="forwardIndex">/WEB-INF/pages/index.jsp</result>
+			<result name="forwardLogin">/WEB-INF/pages/login.jsp</result>
 			<result name="errHandler" type="chain">errorAction</result>
 			<result name="errHandler" type="dispatcher">/WEB-INF/pages/error/globalError.jsp
 			</result>

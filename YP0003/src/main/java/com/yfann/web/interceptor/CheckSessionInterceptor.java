@@ -35,7 +35,7 @@ public class CheckSessionInterceptor extends MethodFilterInterceptor{
 				if(userInfo != null){
 					return invocation.invoke();
 				}else{
-					return "forwardIndex";
+					return "forwardLogin";
 				}
 			}
 		}

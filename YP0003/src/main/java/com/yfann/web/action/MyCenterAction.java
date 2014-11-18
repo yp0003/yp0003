@@ -20,6 +20,17 @@ public class MyCenterAction extends CommonAction{
 	private PageInfo pageInfo;
 	@Autowired
 	private OrderService orderService;
+	
+	/**
+	 * 修改密码
+	 * @return
+	 */
+	@UserSessionCheck
+	public String modifyPassword(){
+		
+		return "modifyPassword";
+	}
+	
 	/**
 	 * 跳转到我的订单页面
 	 * @return
