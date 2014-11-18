@@ -14,6 +14,12 @@ import com.yfann.web.vo.PageInfo;
  */
 public interface ProductService {
 	/**
+	 * 根据产品Id获取产品
+	 * @param productId
+	 * @return
+	 */
+	public Product findProductById(String productId);
+	/**
 	 * 返回产品列表
 	 * @param product
 	 * @param rowBounds

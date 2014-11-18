@@ -94,7 +94,7 @@
 					<div class="js-course-list">
 						<ul>
 							<s:iterator value="productList" id="pl">
-								<li><a href="info.html">
+								<li><a href="${pageContext.request.contextPath}/product!forwardProductDetail.html?product.id=${pl.id}">
 										<div class="course-list-img">
 											<img width="280" height="160"
 												src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"

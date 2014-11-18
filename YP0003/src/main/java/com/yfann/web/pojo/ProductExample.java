@@ -1306,73 +1306,73 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescIsNull() {
-            addCriterion("project_desc is null");
+        public Criteria andProductKnowsIsNull() {
+            addCriterion("product_knows is null");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescIsNotNull() {
-            addCriterion("project_desc is not null");
+        public Criteria andProductKnowsIsNotNull() {
+            addCriterion("product_knows is not null");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescEqualTo(String value) {
-            addCriterion("project_desc =", value, "projectDesc");
+        public Criteria andProductKnowsEqualTo(String value) {
+            addCriterion("product_knows =", value, "productKnows");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescNotEqualTo(String value) {
-            addCriterion("project_desc <>", value, "projectDesc");
+        public Criteria andProductKnowsNotEqualTo(String value) {
+            addCriterion("product_knows <>", value, "productKnows");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescGreaterThan(String value) {
-            addCriterion("project_desc >", value, "projectDesc");
+        public Criteria andProductKnowsGreaterThan(String value) {
+            addCriterion("product_knows >", value, "productKnows");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescGreaterThanOrEqualTo(String value) {
-            addCriterion("project_desc >=", value, "projectDesc");
+        public Criteria andProductKnowsGreaterThanOrEqualTo(String value) {
+            addCriterion("product_knows >=", value, "productKnows");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescLessThan(String value) {
-            addCriterion("project_desc <", value, "projectDesc");
+        public Criteria andProductKnowsLessThan(String value) {
+            addCriterion("product_knows <", value, "productKnows");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescLessThanOrEqualTo(String value) {
-            addCriterion("project_desc <=", value, "projectDesc");
+        public Criteria andProductKnowsLessThanOrEqualTo(String value) {
+            addCriterion("product_knows <=", value, "productKnows");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescLike(String value) {
-            addCriterion("project_desc like", value, "projectDesc");
+        public Criteria andProductKnowsLike(String value) {
+            addCriterion("product_knows like", value, "productKnows");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescNotLike(String value) {
-            addCriterion("project_desc not like", value, "projectDesc");
+        public Criteria andProductKnowsNotLike(String value) {
+            addCriterion("product_knows not like", value, "productKnows");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescIn(List<String> values) {
-            addCriterion("project_desc in", values, "projectDesc");
+        public Criteria andProductKnowsIn(List<String> values) {
+            addCriterion("product_knows in", values, "productKnows");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescNotIn(List<String> values) {
-            addCriterion("project_desc not in", values, "projectDesc");
+        public Criteria andProductKnowsNotIn(List<String> values) {
+            addCriterion("product_knows not in", values, "productKnows");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescBetween(String value1, String value2) {
-            addCriterion("project_desc between", value1, value2, "projectDesc");
+        public Criteria andProductKnowsBetween(String value1, String value2) {
+            addCriterion("product_knows between", value1, value2, "productKnows");
             return (Criteria) this;
         }
 
-        public Criteria andProjectDescNotBetween(String value1, String value2) {
-            addCriterion("project_desc not between", value1, value2, "projectDesc");
+        public Criteria andProductKnowsNotBetween(String value1, String value2) {
+            addCriterion("product_knows not between", value1, value2, "productKnows");
             return (Criteria) this;
         }
     }

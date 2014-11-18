@@ -24,6 +24,11 @@ public class ProductServiceImpl implements ProductService{
 	/**产品分类*/
 	@Autowired
 	private ProductKindMapper productKindMapper;
+	
+	@Override
+	public Product findProductById(String productId) {
+		return productMapper.selectByPrimaryKey(productId);
+	}
 	@Override
 	public List<Product> findProductList(Product product, PageInfo pageInfo) {
 		Map<String, Object> paramer = getProductParamer(product);

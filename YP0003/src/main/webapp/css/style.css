@@ -1326,9 +1326,9 @@ h3.chapter_catalog {
 }
 
 .outline {
-	width: 679px;
+/* 	width: 679px; */
 	float: left;
-	border-right: 1px solid #ddd;
+/* 	border-right: 1px solid #ddd; */
 	padding: 0 20px;
 	min-height: 800px
 }
