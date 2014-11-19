@@ -55,33 +55,24 @@
 					<ul>
 						<li><span>报名人数</span> <em>${product.buyCount}</em></li>
 						<li class="course_hour"><span>课程时长</span> <em
-							class="ft-adjust"><span> 1</span>小时<span>32</span>分</em></li>
+							class="ft-adjust">${product.productLang}分</em></li>
 						<li><span>课程难度</span> <em>中级</em></li>
 					</ul>
 				</div>
 
-
-
-
 				<div class="course_intro">
 					<h3 class="course_notes">课程须知</h3>
-					<div class="course_description">希望您了解jQuery
-						Mobile的基本知识，或者具备jQuery知识，这样对课程学习会有很大帮助。</div>
+					<div class="course_description">${product.productKnows}</div>
 					<div class="curse_btn">
 						<a
-							href="${pageContext.request.contextPath}/order!payProductOnlyOne.html?product.id=${product.id}">立即购买</a>
+							href="${pageContext.request.contextPath}/order!addBuyCar.html?product.id=${product.id}">加入购物车</a>
 					</div>
 				</div>
 			</div>
 			<div class="course_list">
 				<div class="outline">
 					<h3 class="chapter_introduces">课程介绍</h3>
-					<div class="course_shortdecription">jQuery Mobile
-						是创建移动WEB应用程序的框架，使用广泛。本课程通过一个列车时刻表的简单案例，讲解了jQMobile的页面、事件、按钮、图标、导航栏、网格、列表、表单、Ajax等主要组件的使用方法，通过案例学习，举一反三，基本上可以开发简单的Web
-						App应用。</div>
-
-
-
+					<div class="course_shortdecription">${product.productDesc}</div>
 					<h3 class="chapter_introduces">授课老师</h3>
 					<div>
 						<div class="course_teacher">
