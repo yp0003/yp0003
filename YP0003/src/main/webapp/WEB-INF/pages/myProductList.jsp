@@ -42,7 +42,6 @@
 		<div class="container">
 			<%@ include file="common/mypageCommon.jsp"%>
 			<div class="course-content">
-			
 				<div class="course-list">
 					<table class="table table-bordered table-striped table-hover">
 						<thead>
@@ -67,7 +66,7 @@
 									<td><s:date name="#mpl.accreditTime" format="yyyy-MM-dd hh:mm:ss"/></td>
 									<td>${mpl.userId}</td>
 									<td>${mpl.accreditStatusDic.dicCn}</td>
-									<td><a href="#">课程详情</a>&nbsp;&nbsp;<a href="#">提交机器码</a></td>
+									<td><a href="#">课程详情</a>&nbsp;&nbsp;<a href="#" data-toggle="modal">提交机器码</a></td>
 								</tr>
 							</s:iterator>
 						</tbody>
@@ -80,8 +79,63 @@
 			</div>
 		</div>
 	</div>
-
-
+	
+	
+	
+	
+	
+	<!-- 提交机器码申请 -->
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div id="signin" class="rl-modal in" aria-hidden="false">
+			<div class="rl-modal-header">
+				<h1>
+					<span class="active-title hid" href="#myModal" data-toggle="modal">申请播放码</span>
+				</h1>
+				<button type="button" class="rl-close" data-dismiss="modal"
+					hidefocus="true" aria-hidden="true"></button>
+			</div>
+			<div class="rl-modal-body">
+				<div class="clearfix">
+					<div class="l-left-wrap l">
+						<form id="signup-form" action="" method="post">
+							<div class="rlf-group">
+							课程名称
+							</div>
+							<div class="rlf-group">
+								<input type="password" name="user.nowPassword" autocomplete="off"
+									class="rlf-input rlf-input-pwd" placeholder="请输入密码" />
+								<p class="rlf-tip-wrap" />
+							</div>
+							<div class="rlf-group rlf-appendix clearfix">
+								<label for="auto-signin" class="l" hidefocus="true" /> <input
+									type="checkbox" checked="checked" id="auto-signin" /> 自动登录 </label> <a
+									href="${pageContext.request.contextPath}/system!forwardFindPassword.html
+									" class="rlf-forget r" target="_blank"
+									hidefocus="true">忘记密码？ </a>
+							</div>
+							<div class="rlf-group clearfix">
+								<p class="rlf-tip-wrap " id="signin-globle-error"></p>
+								<input type="submit" id="signin-btn" value="登录" hidefocus="true"
+									class="rlf-btn-green btn-full r" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="rl-model-footer">
+				<div class="pop-login-sns">
+					<a href="javascript:void(0)" hidefocus="true"
+						data-login-sns="/user/loginqq" class="pop-sns-qq"> <i></i> QQ
+						帐号直接登录
+					</a> <a href="javascript:void(0)" hidefocus="true"
+						data-login-sns="/user/loginweibo" class="pop-sns-weibo"> <i></i>
+						新浪微博帐号登录
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- 底部 -->
 	<%@ include file="common/commonFooter.jsp"%>
 </body>

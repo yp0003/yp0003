@@ -36,7 +36,7 @@ function reImg() {
 				<c:if test="${sessionScope.userInfo == null}">
 					<a class="brand" href="#regist" class="hid" data-toggle="modal">注册</a>
 
-					<a class="brand" href="#myModal" class="hid" data-toggle="modal">登录</a>
+					<a class="brand" href="#login" class="hid" data-toggle="modal">登录</a>
                 </c:if>
 				<c:if test="${sessionScope.userInfo != null}">
 				
@@ -55,7 +55,7 @@ function reImg() {
 	</div>
 	<!-- 程序包含结束 -->
 	<!-- login -->
-	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
+	<div id="login" class="modal hide fade" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div id="signin" class="rl-modal in" aria-hidden="false">
 			<div class="rl-modal-header">
