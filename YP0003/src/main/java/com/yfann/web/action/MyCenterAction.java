@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.yfann.web.annotation.UserSessionCheck;
 import com.yfann.web.pojo.Order;
 import com.yfann.web.pojo.OrderDetail;
+import com.yfann.web.pojo.User;
+import com.yfann.web.service.MyCenterService;
 import com.yfann.web.service.OrderService;
 import com.yfann.web.vo.PageInfo;
 
@@ -18,8 +20,34 @@ public class MyCenterAction extends CommonAction{
 	private String[] orderIds;
 	/**分页组件*/
 	private PageInfo pageInfo;
+	/**用户*/
+	private User user;
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private MyCenterService myCenterService;
+	
+	/**
+	 * 跳转到更新个人资料页面
+	 * @return
+	 */
+	@UserSessionCheck
+	public String forwardUpdateInfo(){
+		user = myCenterService.findUserInfoById(currentUserInfo());
+		return "forwardUpdateInfo";
+	}
+	/**
+	 * 更新用户信息
+	 * @return
+	 */
+	@UserSessionCheck
+	public String updateInfo(){
+		boolean flag = myCenterService.updateSingleInfo(user);
+		if(!flag){
+			addActionError("更新失败");
+		}
+		return forwardUpdateInfo();
+	}
 	
 	/**
 	 * 修改密码
@@ -82,6 +110,14 @@ public class MyCenterAction extends CommonAction{
 
 	public void setPageInfo(PageInfo pageInfo) {
 		this.pageInfo = pageInfo;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

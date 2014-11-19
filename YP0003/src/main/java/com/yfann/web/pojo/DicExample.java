@@ -613,6 +613,76 @@ public class DicExample {
             addCriterion("dic_status not between", value1, value2, "dicStatus");
             return (Criteria) this;
         }
+
+        public Criteria andDicCodeIsNull() {
+            addCriterion("dic_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeIsNotNull() {
+            addCriterion("dic_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeEqualTo(String value) {
+            addCriterion("dic_code =", value, "dicCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeNotEqualTo(String value) {
+            addCriterion("dic_code <>", value, "dicCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeGreaterThan(String value) {
+            addCriterion("dic_code >", value, "dicCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("dic_code >=", value, "dicCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeLessThan(String value) {
+            addCriterion("dic_code <", value, "dicCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeLessThanOrEqualTo(String value) {
+            addCriterion("dic_code <=", value, "dicCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeLike(String value) {
+            addCriterion("dic_code like", value, "dicCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeNotLike(String value) {
+            addCriterion("dic_code not like", value, "dicCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeIn(List<String> values) {
+            addCriterion("dic_code in", values, "dicCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeNotIn(List<String> values) {
+            addCriterion("dic_code not in", values, "dicCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeBetween(String value1, String value2) {
+            addCriterion("dic_code between", value1, value2, "dicCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andDicCodeNotBetween(String value1, String value2) {
+            addCriterion("dic_code not between", value1, value2, "dicCode");
+            return (Criteria) this;
+        }
     }
 
     /**

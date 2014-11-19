@@ -9,6 +9,11 @@ import com.yfann.web.pojo.User;
  */
 public interface MyCenterService {
 	/**
+	 * 根据id查询用户
+	 * @return
+	 */
+	public User findUserInfoById(User user);
+	/**
 	 * 更新密码
 	 * @param user
 	 * @return

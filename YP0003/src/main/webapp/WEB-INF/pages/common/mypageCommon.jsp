@@ -12,13 +12,13 @@
 			<a href="center.html">我的课程</a>
 		</div>
 		<div class="course-sidebar-type lf-center  lf-default">
-			<a href="ord.html">订单管理</a>
+			<a href="${pageContext.request.contextPath}/mycenter!forwardMyOrder.html">订单管理</a>
 		</div>
 		<div class="course-sidebar-type lf-center">
 			<a href="xxlist.html">消息列表<span class="red">(1)</span></a>
 		</div>
 		<div class="course-sidebar-type lf-center">
-			<a href="ord.html">我的信息</a>
+			<a href="${pageContext.request.contextPath}/mycenter!forwardUpdateInfo.html">我的信息</a>
 		</div>
 		<div class="course-sidebar-type lf-center">
 			<a href="ord.html">修改密码</a>
