@@ -83,10 +83,11 @@
 		<action name="mycenter!*" method="{1}"
 			class="com.yfann.web.action.MyCenterAction">
 			<!-- 订单中心 -->
-			<result name="forwardMyOrder">/WEB-INF/pages/myOrder.jsp</result>
+			<result name="forwardMyOrderList">/WEB-INF/pages/myOrderList.jsp</result>
 			<!-- 跳转更新个人资料 -->
 			<result name="forwardUpdateInfo">/WEB-INF/pages/updateInfo.jsp</result>
 			
+			<result name="forwardMyProductList">/WEB-INF/pages/myProductList.jsp</result>
 		</action>
 	</package>
 </struts>

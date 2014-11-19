@@ -9,13 +9,13 @@
 <body>
 	<div class="course-sidebar">
 		<div class="course-sidebar-type lf-center">
-			<a href="center.html">我的课程</a>
+			<a href="${pageContext.request.contextPath}/mycenter!forwardMyProductList.html">我的课程</a>
 		</div>
 		<div class="course-sidebar-type lf-center  lf-default">
-			<a href="${pageContext.request.contextPath}/mycenter!forwardMyOrder.html">订单管理</a>
+			<a href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">订单管理</a>
 		</div>
 		<div class="course-sidebar-type lf-center">
-			<a href="xxlist.html">消息列表<span class="red">(1)</span></a>
+			<a href="${pageContext.request.contextPath}/mycenter!">消息列表<span class="red">(1)</span></a>
 		</div>
 		<div class="course-sidebar-type lf-center">
 			<a href="${pageContext.request.contextPath}/mycenter!forwardUpdateInfo.html">我的信息</a>

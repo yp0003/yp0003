@@ -46,11 +46,11 @@
    <ul>
     <li>
     <label for="memberID">用户名:</label>
-    <input id="memberID" type="text" />
+    <input id="memberID" type="text" name="user.userId"/>
     </li>
     <li>
     <label for="passWord">密&nbsp;码:</label>
-    <input id="passWord" type="password" />
+    <input id="passWord" type="password" name="user.nowPassword"/>
     </li>
     <li>
     <input id="remPass" type="checkbox" />

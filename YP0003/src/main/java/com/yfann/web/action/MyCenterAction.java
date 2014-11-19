@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.annotation.UserSessionCheck;
+import com.yfann.web.pojo.MyProduct;
 import com.yfann.web.pojo.Order;
 import com.yfann.web.pojo.OrderDetail;
 import com.yfann.web.pojo.User;
@@ -22,10 +23,22 @@ public class MyCenterAction extends CommonAction{
 	private PageInfo pageInfo;
 	/**用户*/
 	private User user;
+	/**我的课程*/
+	private MyProduct myProduct;
+	/**我的课程列表*/
+	private List<MyProduct> myProductList;
 	@Autowired
 	private OrderService orderService;
 	@Autowired
 	private MyCenterService myCenterService;
+	
+	public String forwardMyProductList(){
+		if(myProduct == null){
+			myProduct = new MyProduct();
+		}
+		myProductList = myCenterService.findMyProductList(currentUserInfo(), myProduct, pageInfo);
+		return "forwardMyProductList";
+	}
 	
 	/**
 	 * 跳转到更新个人资料页面
@@ -64,7 +77,7 @@ public class MyCenterAction extends CommonAction{
 	 * @return
 	 */
 	@UserSessionCheck
-	public String forwardMyOrder(){
+	public String forwardMyOrderList(){
 		if(order == null){
 			order = new Order();
 		}
@@ -74,7 +87,7 @@ public class MyCenterAction extends CommonAction{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return "forwardMyOrder";
+		return "forwardMyOrderList";
 	}
 	
 	public String[] getOrderIds() {
@@ -118,6 +131,20 @@ public class MyCenterAction extends CommonAction{
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public MyProduct getMyProduct() {
+		return myProduct;
+	}
+	public void setMyProduct(MyProduct myProduct) {
+		this.myProduct = myProduct;
+	}
+
+	public List<MyProduct> getMyProductList() {
+		return myProductList;
+	}
+
+	public void setMyProductList(List<MyProduct> myProductList) {
+		this.myProductList = myProductList;
 	}
 	
 }

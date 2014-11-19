@@ -36,4 +36,15 @@ public class DicValue {
 		/**消息状态-----已读*/
 		public static final String MESSAGE_STATUS_READ = "1";
 	}
+	/**
+	 * 播放码授权状态
+	 * @author Simon
+	 *
+	 */
+	public static class PlayerCodeAccreditStatus{
+		/**播放码授权状态-----未授权*/
+		public static final String PALYER_CODE_ACCREDIT_STATUS_UNACCREDIT = "0";
+		/**播放码授权状态-----已授权*/
+		public static final String PALYER_CODE_ACCREDIT_STATUS_ACCREDITTED = "1";
+	}
 }

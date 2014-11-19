@@ -114,6 +114,7 @@ public class SystemAction extends CommonAction {
 			if (userTemp != null) {
 				session.setAttribute(ApplicationValue.USER_KEY_ON_SESSION,
 						userTemp);// 添加用户到session中
+				return forwardIndex();
 			}
 		}
 		return "forwardLogin";

@@ -24,7 +24,7 @@
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<title>我的订单</title>
+<title>我的课程</title>
 </head>
 <body>
 	<!-- 头部 -->
@@ -35,8 +35,8 @@
 		<div class="mb">
 			<ul class="breadcrumb">
 				<li><a href="index.html">首页</a> <span class="divider">/</span></li>
-				<li><a href="center.html">个人中心</a> <span class="divider">/</span></li>
-				<li class="active">订单管理</li>
+				<li><a href="#">个人中心</a> <span class="divider">/</span></li>
+				<li class="active">我的课程</li>
 			</ul>
 		</div>
 		<div class="container">
@@ -47,25 +47,27 @@
 					<table class="table table-bordered table-striped table-hover">
 						<thead>
 							<tr>
-								<th>订单号</th>
-								<th>订单物品</th>
-								<th>价格</th>
-								<th>订单状态</th>
-								<th>订单创建时间</th>
+								<th>课程编号</th>
+								<th>课程名称</th>
+								<th>机器码</th>
+								<th>播放码</th>
+								<th>播放码授权时间</th>
+								<th>播放码授权人</th>
+								<th>播放码授权状态</th>
 								<th>操作</th>
 							</tr>
 						</thead>
 						<tbody>
-							<s:iterator value="orderList" id="ol">
+							<s:iterator value="myProductList" id="mpl">
 								<tr>
-									<td>${ol.orderId}</td>
-									<td><s:iterator value="#ol.orderDetailList" id="odl">
-									${odl.product.productName}</br>
-										</s:iterator></td>
-									<td>${ol.countPrice}</td>
-									<td>未支付</td>
-									<td><s:date name="#ol.orderCreateTime" format="yyyy-MM-dd hh:mm:ss"/>  </td>
-									<td><a href="#">取消订单</a>&nbsp;&nbsp;&nbsp;<a href="#">订单详情</a></td>
+									<td>${mpl.product.productId}</td>
+									<td>${mpl.product.productName}</td>
+									<td>${mpl.smartCode}</td>
+									<td>${mpl.playerCode}</td>
+									<td><s:date name="#mpl.accreditTime" format="yyyy-MM-dd hh:mm:ss"/></td>
+									<td>${mpl.userId}</td>
+									<td>${mpl.accreditStatusDic.dicCn}</td>
+									<td><a href="#">课程详情</a>&nbsp;&nbsp;<a href="#">提交机器码</a></td>
 								</tr>
 							</s:iterator>
 						</tbody>

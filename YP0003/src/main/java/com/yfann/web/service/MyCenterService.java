@@ -1,6 +1,10 @@
 package com.yfann.web.service;
 
+import java.util.List;
+
+import com.yfann.web.pojo.MyProduct;
 import com.yfann.web.pojo.User;
+import com.yfann.web.vo.PageInfo;
 
 /**
  * 我的中心业务逻辑
@@ -8,6 +12,13 @@ import com.yfann.web.pojo.User;
  *
  */
 public interface MyCenterService {
+	/**
+	 * 查询我的课程
+	 * @param user
+	 * @param myProduct
+	 * @return
+	 */
+	public List<MyProduct> findMyProductList(User user,MyProduct myProduct,PageInfo pageInfo);
 	/**
 	 * 根据id查询用户
 	 * @return
