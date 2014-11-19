@@ -62,8 +62,8 @@ public class OrderServiceImpl implements OrderService {
 			//订单生成时间
 			order.setOrderCreateTime(new Date());
 			//设置订单状态为未支付
-			order.setOrderStatus(DicValue.ORDER_STATUS_UNPAY);
-			order.setPayWay(DicValue.PAY_WAY_ONLINE_PAY);
+			order.setOrderStatus(DicValue.OrderStatus.ORDER_STATUS_UNPAY);
+			order.setPayWay(DicValue.PayWay.PAY_WAY_ONLINE_PAY);
 			//设置订单详情ID
 			orderDetail.setId(UUIDCreate.getUUID());
 			orderDetail.setOrderId(order.getId());
@@ -97,11 +97,11 @@ public class OrderServiceImpl implements OrderService {
 		order.setCountPrice(new BigDecimal(countPrice));
 		order.setOrderCreateTime(new Date());
 		//设置订单状态为未支付
-		order.setOrderStatus(DicValue.ORDER_STATUS_UNPAY);
+		order.setOrderStatus(DicValue.OrderStatus.ORDER_STATUS_UNPAY);
 		// TODO 该订单号生成有误后期需更改
 		order.setOrderId(UUIDCreate.getUUID());
 		//设置支付状态为在线支付
-		order.setPayWay(DicValue.PAY_WAY_ONLINE_PAY);
+		order.setPayWay(DicValue.PayWay.PAY_WAY_ONLINE_PAY);
 		//保存订单
 		orderMapper.insertSelective(order);
 		for(BuyCar buyCarInfo : buyCList){
