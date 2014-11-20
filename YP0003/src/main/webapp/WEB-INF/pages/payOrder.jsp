@@ -9,9 +9,188 @@
 <title>支付订单</title>
 </head>
 <body>
-<%@ include file="common/common.jsp"%>
+	<%@ include file="common/common.jsp"%>
 
-<s:form action="order!">
+
+	<div class="jumbotron masthead">
+		<div class="container">
+			<h1>365IT教育学院</h1>
+			<h2>365IT教育学院让开发变得更迅速、简单。</h2>
+			<p class="masthead-button-links">
+				<a class="btn btn-lg btn-primary btn-shadow"
+					href="${pageContext.request.contextPath}/product!forwardProductList.html"
+					role="button" se_prerender_url="complete">立即选课</a>
+			</p>
+		</div>
+	</div>
+
+
+
+	<div class="container-fluid" style="width: 1300px; margin-top: 50px;">
+		<div class="row">
+			<div class="col-lg-12">
+				<ul class="nav nav-pills" role="tablist">
+					<li role="presentation"><a href="#">1.我的购物车</a></li>
+					<li role="presentation"><a href="#">2.确认订单信息</a></li>
+					<li role="presentation" class="active"><a href="#">3.付款</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">订单信息</h1>
+				<span>订单编号：<span style="color: #EA5504"><s:property
+							value="order.orderId" /></span></span> <span>下单时间：<span
+					style="color: #2A8C01"><s:property
+							value="order.orderCreateTime" /></span></span> <span>金额：<span
+					style="color: #EA5504"><s:property value="order.countPrice" /></span></span>
+			</div>
+			<div class="col-lg-12">
+				<h1 class="page-header">付款金额</h1>
+				<span class="orderinfo_02">共<b style="color: #BE3948">2</b>种商品，应付总额<b
+					style="color: #BE3948; font-size: 16px;">￥22.00元</b></span>
+			</div>
+
+			<div class="col-lg-12">
+				<h1 class="page-header">支付方式</h1>
+				<div class="row">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#home"
+							role="tab" data-toggle="tab">Home</a></li>
+						<li role="presentation"><a href="#profile" role="tab"
+							data-toggle="tab">Profile</a></li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="home">
+							<ul class="nCard-list nCard-last clearfix">
+								<li class="bankCard nCardCil" data-gateway="0005"><label
+									title="工商银行" for="bank_0005"> <input id="bank_0005"
+										class="nRadio" type="radio" checked="checked" data-name="工商银行"
+										name="myCard" value="0005"></input> <img
+										src="image/card/bank_5.gif" alt="工商银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard " data-gateway="0007"><label
+									title="招商银行" for="bank_0007"> <input id="bank_0007"
+										class="nRadio" type="radio" data-name="招商银行" name="myCard"
+										value="0007"></input> <img src="image/card/bank_11.gif"
+										alt="招商银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard " data-gateway="4008"><label
+									title="农业银行" for="bank_4008"> <input id="bank_4008"
+										class="nRadio" type="radio" data-name="农业银行" name="myCard"
+										value="4008"></input> <img src="image/card/bank_17.gif"
+										alt="农业银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard " data-gateway="1025"><label
+									title="交通银行" for="bank_1025"> <input id="bank_1025"
+										class="nRadio" type="radio" data-name="交通银行" name="myCard"
+										value="1025"></input> <img src="image/card/bank_9.gif"
+										alt="交通银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard " data-gateway="1023"><label
+									title="中国银行" for="bank_1023"> <input id="bank_1023"
+										class="nRadio" type="radio" data-name="中国银行" name="myCard"
+										value="1023"></input> <img src="image/card/bank_8.gif"
+										alt="中国银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard " data-gateway="0031"><label
+									title="平安银行" for="bank_0031"> <input id="bank_0031"
+										class="nRadio" type="radio" data-name="平安银行" name="myCard"
+										value="0031"></input> <img src="image/card/bank_60.gif"
+										alt="平安银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard " data-gateway="1022"><label
+									title="浦东发展银行" for="bank_1022"> <input id="bank_1022"
+										class="nRadio" type="radio" data-name="浦东发展银行" name="myCard"
+										value="1022"></input> <img src="image/card/bank_4.gif"
+										alt="浦东发展银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard " data-gateway="0015"><label
+									title="中国民生银行" for="bank_0015"> <input id="bank_0015"
+										class="nRadio" type="radio" data-name="中国民生银行" name="myCard"
+										value="0015"></input> <img src="image/card/bank_18.gif"
+										alt="中国民生银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard " data-gateway="1010"><label
+									title="中国建设银行" for="bank_1010"> <input id="bank_1010"
+										class="nRadio" type="radio" data-name="中国建设银行" name="myCard"
+										value="1010"></input> <img src="image/card/bank_6.gif"
+										alt="中国建设银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard " data-gateway="0030"><label
+									title="上海银行" for="bank_0030"> <input id="bank_0030"
+										class="nRadio" type="radio" data-name="上海银行" name="myCard"
+										value="0030"></input> <img src="image/card/bank_21.gif"
+										alt="上海银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard " data-gateway="0009"><label
+									title="兴业银行" for="bank_0009"> <input id="bank_0009"
+										class="nRadio" type="radio" data-name="兴业银行" name="myCard"
+										value="0009"></input> <img src="image/card/bank_12.gif"
+										alt="兴业银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard " data-gateway="0027"><label
+									title="光大银行" for="bank_0027"> <input id="bank_0027"
+										class="nRadio" type="radio" data-name="光大银行" name="myCard"
+										value="0027"></input> <img src="image/card/bank_13.gif"
+										alt="光大银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard " data-gateway="0026"><label
+									title="广发银行" for="bank_0026"> <input id="bank_0026"
+										class="nRadio" type="radio" data-name="广发银行" name="myCard"
+										value="0026"></input> <img src="image/card/bank_3.gif"
+										alt="广发银行"></img>
+								</label> <span class="nCard-tips"></span></li>
+							</ul>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="profile">
+							<ul class="nCard-list nCard-last clearfix">
+
+								<li class="bankCard nCardCil"><label title="在线支付平台"
+									for="100100_platform"> <input id="100100_platform"
+										class="nRadio" type="radio" data-name="在线支付平台"
+										checked="checked" name="myCardpaytype"></input> <img
+										src="image/card/bank_0.gif" alt="在线支付平台"></img>
+								</label> <span class="nCard-tips"></span></li>
+								<li class="bankCard "><label title="支付宝"
+									for="100112_platform"> <input id="100112_platform"
+										class="nRadio" type="radio" data-name="支付宝"
+										name="myCardpaytype" value="alipay"></input> <img
+										src="image/card/zfb2.gif" alt="支付宝"></img>
+								</label> <span class="nCard-tips"></span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-offset-11">
+				<button class="btn btn-large btn-danger" type="submit">确认付款
+					》</button>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<%-- <s:form action="order!">
 <div class="content">
    <div class="cidnav">
    		    <ul>                
@@ -193,8 +372,8 @@
 </div>
 
 </s:form>
+ --%>
 
-
-<%@ include file="common/commonFooter.jsp"%>
+	<%@ include file="common/commonFooter.jsp"%>
 </body>
 </html>

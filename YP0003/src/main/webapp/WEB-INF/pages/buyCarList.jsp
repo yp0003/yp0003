@@ -8,6 +8,118 @@
 </head>
 <body>
 	<%@ include file="common/common.jsp"%>
+		<div class="jumbotron masthead">
+		<div class="container">
+			<h1>365IT教育学院</h1>
+			<h2>365IT教育学院让开发变得更迅速、简单。</h2>
+			<p class="masthead-button-links">
+				<a class="btn btn-lg btn-primary btn-shadow"
+					href="${pageContext.request.contextPath}/product!forwardProductList.html" role="button"
+					se_prerender_url="complete">立即选课</a>
+			</p>
+		</div>
+	</div>
+	<div class="container-fluid" style="width: 1300px; margin-top: 50px;">
+		<div class="row">
+			<div class="col-lg-12">
+				<ul class="nav nav-pills" role="tablist">
+					<li role="presentation" class="active"><a href="#">1.我的购物车</a></li>
+					<li role="presentation"><a href="#">2.确认订单信息</a></li>
+					<li role="presentation"><a href="#">3.付款</a></li>
+				</ul>
+			</div>
+		</div>
+		<s:form action="/order!forwardSureOrder.html">
+			<div class="row">
+				<div class="col-lg-12">
+					<%--订单确认表单--%>
+
+					<div style='margin-bottom: 50px;'>
+					<h1 class="page-header">购物车列表</h1>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th><input type="checkbox" id="selectAll" class="check-g"
+										checked="true" /></th>
+									<th>商品</th>
+									<th>商品信息</th>
+									<th>单价</th>
+									<th>数量</th>
+									<th>小计</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<s:iterator value="buyCarList" id="bcl">
+									<tr>
+										<td><input type="checkbox" name="buyCarIds"
+											value="<s:property value="#bcl.id"/>" /></td>
+										<td><img alt=""
+											src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${bcl.productId}"
+											width="100" /></td>
+										<td><s:property value="#bcl.productName"></s:property></td>
+										<td><s:property value="#bcl.price"></s:property></td>
+
+
+										<td class="num"><span class="jian" pic="${bcl.price}">-&nbsp;</span>
+											<s:hidden id="flagHidden" name="#bcl.id"></s:hidden><label
+											class="num-z"> <s:property value="#bcl.buyCount"></s:property></label><span
+											class="jia" pic="${bcl.price}">&nbsp;+</span></td>
+										<td class="pic-01"><span class="red-1">￥</span><span
+											class="pic red-1"><s:property value="#bcl.countPrice"></s:property></span><span
+											class="red-1">元</span></td>
+										<td><a
+											href="${pageContext.request.contextPath}/order!deleteBuyCarById.html?buyCar.id=${bcl.id}">删除</a></td>
+									</tr>
+								</s:iterator>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+
+
+
+
+
+			</div>
+
+
+			<div class="row">
+
+				<div class="col-lg-12">
+					<a href="${pageContext.request.contextPath}/order!emptyBuyCar.html">清除购物车
+					</a>
+				</div>
+
+
+
+
+				<div class="col-lg-12">
+
+					<div class="fn-right">
+						共计<span class="red-1"> 0 </span>件商品合计（不含运费）<label class="red-1">￥<span>20</span></label>&nbsp;&nbsp;&nbsp;
+						<button class="btn" type="submit">结算</button>
+						<a
+							href="${pageContext.request.contextPath}/product!forwardProductList.html">继续购物>></a>
+					</div>
+
+				</div>
+
+			</div>
+		</s:form>
+	</div>
+
+
+
+
+
+
+
+
+
+
+	<%-- 
 	<div id="main" class="mt49">
 		<div class="container1200" id="course_intro">
 			<div class="cidnav">
@@ -20,64 +132,7 @@
 				</ul>
 			</div>
 
-			<%--订单确认表单--%>
-			<s:form action="/order!forwardSureOrder.html">
-				<div class="title">我的购物车</div>
-				<div style='margin-bottom: 50px;'>
-					<table class="table table-bordered table-striped table-hover">
-						<thead>
-							<tr>
-								<th><input type="checkbox" id="selectAll" class="check-g"
-									checked="true" /></th>
-								<th>商品</th>
-								<th>商品信息</th>
-								<th>单价</th>
-								<th>数量</th>
-								<th>小计</th>
-								<th>操作</th>
-							</tr>
-						</thead>
-						<tbody>
-							<s:iterator value="buyCarList" id="bcl">
-								<tr>
-									<td><input type="checkbox" name="buyCarIds"
-										value="<s:property value="#bcl.id"/>" /></td>
-									<td><img alt=""
-										src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${bcl.productId}"
-										width="100" /></td>
-									<td><s:property value="#bcl.productName"></s:property></td>
-									<td><s:property value="#bcl.price"></s:property></td>
 
-
-									<td class="num"><span class="jian" pic="${bcl.price}">&nbsp;</span>
-										<s:hidden id="flagHidden" name="#bcl.id"></s:hidden><label
-										class="num-z"> <s:property value="#bcl.buyCount"></s:property></label><span
-										class="jia" pic="${bcl.price}">&nbsp;</span></td>
-									<td class="pic-01"><span class="red-1">￥</span><span
-										class="pic red-1"><s:property value="#bcl.countPrice"></s:property></span><span
-										class="red-1">元</span></td>
-									<td><a
-										href="${pageContext.request.contextPath}/order!deleteBuyCarById.html?buyCar.id=${bcl.id}">删除</a></td>
-								</tr>
-							</s:iterator>
-						</tbody>
-					</table>
-				</div>
-				<div class="statistics fn-clear">
-					<div class="fn-left qx">
-						<!-- <input type="checkbox" name="" class="check-g" /> 全选 -->
-						&nbsp;&nbsp;&nbsp;&nbsp;<a
-							href="${pageContext.request.contextPath}/order!emptyBuyCar.html">清除购物车
-						</a>
-					</div>
-					<div class="fn-right">
-						共计<span class="red-1"> 0 </span>件商品合计（不含运费）<label class="red-1">￥<span>20</span></label>&nbsp;&nbsp;&nbsp;
-						<button class="btn" type="submit">结算</button>
-						<a
-							href="${pageContext.request.contextPath}/product!forwardProductList.html">继续购物>></a>
-					</div>
-				</div>
-			</s:form>
 			<div class="tab">
 				<div class="title">
 					<ul class="fn-clear tab-ul">
@@ -139,7 +194,7 @@
 
 		</div>
 
-	</div>
+	</div> --%>
 	<%@ include file="common/commonFooter.jsp"%>
 	<script type="text/javascript">
 		/**

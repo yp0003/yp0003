@@ -8,45 +8,47 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>课程列表</title>
-<!-- Le styles -->
+<!-- Site CSS -->
 <link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css"
-	rel="stylesheet" />
-<link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/base.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/style.css"
+	href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet" />
 
+<link
+	href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css"
+	rel="stylesheet" />
+<link href="http://static.bootcss.com/www/assets/css/site.min.css?v3"
+	rel="stylesheet" />
 
-<!-- link script -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/custom.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	/* 添加到购物车 */
-	function addBuyCar() {
-		document.forms[0].action = "order!orderList.html";
-		document.forms[0].submit();
-	}
-	/* 直接结算 */
-	function pay() {
-		document.forms[0].action = "order!orderList.html";
-		document.forms[0].submit();
-	}
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed"
+	href="http://static.bootcss.com/www/assets/ico/apple-touch-icon-precomposed.png" />
+<link rel="shortcut icon"
+	href="http://static.bootcss.com/www/assets/ico/favicon.png" />
+
+
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/jquery.min.js"></script>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" />
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstrap.min.js"></script>
+<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js" />
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/jquery.unveil.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/jquery.scrollUp.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/toc.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/site.min.js"></script>
+
+<script>
+	var _hmt = _hmt || [];
 </script>
-
 </head>
 
-<body data-spy="scroll" data-target=".bs-docs-sidebar">
-	<%@ include file="common/common.jsp"%>
+<body>
+	<%-- 	<%@ include file="common/common.jsp"%>
 	<div id="main" class="mt49">
 		<div class="container">
 			<div class="course-sidebar">
@@ -104,7 +106,7 @@
 											<span class="topicon">${pl.productName}</span>
 										</h5>
 										<div class="intro">
-											<p>${pl.projectDesc}</p>
+											<p>${pl.productDesc}</p>
 											<span class="l">更新至${pl.updateBadge}-${pl.updateMatter}</span>
 											<span class="r">课程时长:${pl.productSale}分</span>
 										</div>
@@ -130,6 +132,100 @@
 			</div>
 		</div>
 	</div>
+	<%@ include file="common/commonFooter.jsp"%> --%>
+
+	<%@ include file="common/common.jsp"%>
+	<div class="jumbotron" style="margin-top: 10px">
+		<div class="container">
+
+			<h4>egjijgowigj</h4>
+			<h4>egjijgowigj</h4>
+			<h4>egjijgowigj</h4>
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="container-fluid" style="width: 1300px">
+		<div class="row">
+			<div class="col-lg-4">
+				<h3>课程搜索</h3>
+				<div class="input-group">
+					<input type="text" class="form-control"> <span
+						class="input-group-btn">
+							<button class="btn btn-default" type="button">搜索课程</button>
+					</span>
+				</div>
+				<h3>课程标签</h3>
+				<ul class="nav nav-pills nav-stacked" role="tablist">
+					<li class="nav-header">列表标题</li>
+					<li class="active"><a href="#">首页</a></li>
+					<li><a href="#">库</a></li>
+					<li><a href="#">应用</a></li>
+					<li class="nav-header">功能列表</li>
+					<li><a href="#">资料</a></li>
+					<li><a href="#">设置</a></li>
+					<li class="divider"></li>
+					<li><a href="#">帮助</a></li>
+				</ul>
+
+
+			</div>
+			<div class="col-lg-8">
+				<div class="row"></div>
+				<div class="row">
+					<s:iterator value="productList" id="pl">
+						<div class="col-lg-4">
+							<div class="thumbnail">
+								<a
+									href="${pageContext.request.contextPath}/product!forwardProductDetail.html?product.id=${pl.id}"
+									title="${pl.productName}"><img class="lazy"
+									src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"
+									width="300" height="150"
+									data-src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"
+									alt=""></a>
+								<div class="caption">
+									<h3>
+										<a
+											href="${pageContext.request.contextPath}/product!forwardProductDetail.html?product.id=${pl.id}"
+											title="${pl.productName}">${pl.productName}</a>
+									</h3>
+									<p>${pl.productDesc}</p>
+									<p>￥${pl.productPrice}元</p>
+									<p>
+										<a
+											href="${pageContext.request.contextPath}/order!addBuyCar.html?product.id=${pl.id}"><button
+												type="button" class="btn btn-danger" style="float: left;">加入购物车</button>
+										</a> &nbsp; <a
+											href="${pageContext.request.contextPath}/order!payProductOnlyOne.html?product.id=${pl.id}"><button
+												type="button" class="btn btn-danger" style="float: right;">直接结算</button></a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</s:iterator>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
 
 
 

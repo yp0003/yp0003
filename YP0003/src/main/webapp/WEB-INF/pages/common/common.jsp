@@ -4,165 +4,187 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<!-- Site CSS -->
+<link
+	href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css"
+	rel="stylesheet" />
 
-<!-- link css -->
-<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/css/base.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet"/>
+<link
+	href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css"
+	rel="stylesheet" />
+<link href="http://static.bootcss.com/www/assets/css/site.min.css?v3"
+	rel="stylesheet" />
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed"
+	href="http://static.bootcss.com/www/assets/ico/apple-touch-icon-precomposed.png" />
+<link rel="shortcut icon"
+	href="http://static.bootcss.com/www/assets/ico/favicon.png" />
 
 
-<!-- link script -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/jquery.min.js"></script>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" />
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstrap.min.js"></script>
+<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js" />
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/jquery.unveil.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/jquery.scrollUp.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/toc.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/site.min.js"></script>
+
+<script>
+	var _hmt = _hmt || [];
+</script>
+
 <script type="text/javascript">
-function reImg() {
-	$("#vertImg").attr(
-			"src",
-			"${pageContext.request.contextPath}/system!validateCode.html?time="
-					+ new Date());
-}
+	function reImg() {
+		$("#vertImg").attr(
+				"src",
+				"${pageContext.request.contextPath}/system!validateCode.html?time="
+						+ new Date());
+	}
 </script>
 </head>
 <body>
-	<!-- Navbar
-    ================================================== -->
 	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<div class="nav-collapse collapse">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed" type="button"
+					data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand hidden-sm"
+					href="./Bootstrap中文网_files/Bootstrap中文网.htm">365IT教育学院中文网</a>
+			</div>
+			<div class="navbar-collapse collapse" role="navigation">
+				<ul class="nav navbar-nav">
+					<li><a href="javascript:void(0)">课程</a></li>
+					<li><a href="javascript:void(0)">问答</a>
+						<li><a href="http://www.bootcss.com/p/lesscss/">求课</a></li>
+				</ul>
 				<c:if test="${sessionScope.userInfo == null}">
-					<a class="brand" href="#regist" class="hid" data-toggle="modal">注册</a>
-
-					<a class="brand" href="#login" class="hid" data-toggle="modal">登录</a>
-                </c:if>
-				<c:if test="${sessionScope.userInfo != null}">
-				
-					<a class="brand" href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">我的订单</a> <a class="brand"
-						href="${pageContext.request.contextPath}/order!buyCarList.html">购物车</a> <a class="brand" href="./index.html">个人中心</a>
-						<a class="brand" href="#">尊敬的${sessionScope.userInfo.userId}您好</a>
-				</c:if>
-					<ul class="nav">
-						<li class="active"><a href="./index.html">课程</a></li>
-						<li class=""><a href="#">问答</a></li>
-						<li class=""><a href="#">求课</a></li>
+					<ul class="nav navbar-nav navbar-right hidden-sm">
+						<li><a class="brand" href="#login" class="hid"
+							data-toggle="modal">登录</a></li>
+						<li><a class="brand" href="#register" class="hid"
+							data-toggle="modal">注册</a></li>
 					</ul>
-				</div>
+				</c:if>
+				<c:if test="${sessionScope.userInfo != null}">
+					<ul class="nav navbar-nav navbar-right hidden-sm">
+						<li><a>尊敬的${sessionScope.userInfo.userId}您好</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/order!buyCarList.html">购物车</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">我的订单</a></li>
+					</ul>
+				</c:if>
+
 			</div>
 		</div>
 	</div>
 	<!-- 程序包含结束 -->
-	<!-- login -->
-	<div id="login" class="modal hide fade" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div id="signin" class="rl-modal in" aria-hidden="false">
-			<div class="rl-modal-header">
-				<h1>
-					<span class="active-title hid" href="#myModal" data-toggle="modal">登录</span>
-				</h1>
-				<button type="button" class="rl-close" data-dismiss="modal"
-					hidefocus="true" aria-hidden="true"></button>
-			</div>
-			<div class="rl-modal-body">
-				<div class="clearfix">
-					<div class="l-left-wrap l">
-						<form id="signup-form" action="system!login.html" method="post">
-							<div class="rlf-group">
-								<input type="text" name="user.userId"
-									autocomplete="off" class="rlf-input rlf-input-email"
-									placeholder="请输入用户名" />
-								<p class="rlf-tip-wrap"></p>
-							</div>
-							<div class="rlf-group">
-								<input type="password" name="user.nowPassword" autocomplete="off"
-									class="rlf-input rlf-input-pwd" placeholder="请输入密码" />
-								<p class="rlf-tip-wrap" />
-							</div>
-							<div class="rlf-group rlf-appendix clearfix">
-								<label for="auto-signin" class="l" hidefocus="true" /> <input
-									type="checkbox" checked="checked" id="auto-signin" /> 自动登录 </label> <a
-									href="${pageContext.request.contextPath}/system!forwardFindPassword.html
-									" class="rlf-forget r" target="_blank"
-									hidefocus="true">忘记密码？ </a>
-							</div>
-							<div class="rlf-group clearfix">
-								<p class="rlf-tip-wrap " id="signin-globle-error"></p>
-								<input type="submit" id="signin-btn" value="登录" hidefocus="true"
-									class="rlf-btn-green btn-full r" />
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="rl-model-footer">
-				<div class="pop-login-sns">
-					<a href="javascript:void(0)" hidefocus="true"
-						data-login-sns="/user/loginqq" class="pop-sns-qq"> <i></i> QQ
-						帐号直接登录
-					</a> <a href="javascript:void(0)" hidefocus="true"
-						data-login-sns="/user/loginweibo" class="pop-sns-weibo"> <i></i>
-						新浪微博帐号登录
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<!-- regist -->
-	<div id="regist" class="modal hide fade" tabindex="-1" role="dialog"
+
+
+
+
+
+	<!-- login（Modal） -->
+	<div class="modal fade" id="login" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div id="signup" class="rl-modal  in" aria-hidden="false">
-			<div class="rl-modal-header">
-				<button type="button" class="rl-close" data-dismiss="modal"
-					aria-hidden="true"></button>
-				<h1>
-					<span class="active-title hid" href="#regist" data-toggle="modal">注册</span>
-				</h1>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">登陆</h4>
+				</div>
+				<div class="modal-body">
+					<form role="form" action="system!login.html" method="post">
+						<div class="form-group">
+							<label for="exampleInputEmail1">用户名</label> <input type="text"
+								class="form-control" name="user.userId"
+								placeholder="Enter userName" />
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">密码</label> <input
+								type="password" class="form-control" id="exampleInputPassword1"
+								name="user.nowPassword" placeholder="Password" />
+						</div>
+						<button type="submit" class="btn btn-primary">登录</button>
+					</form>
+				</div>
 			</div>
-			<div class="rl-modal-body">
-				<s:form id="signup-form" action="system!register.html">
-					<div class="rlf-group">
-						<input type="text" id="registUserId" name="user.userId"
-							class="rlf-input rlf-input-nick" placeholder="请输入用户名" />
-						<p class="rlf-tip-wrap">请输入用户，2-18位英文、数字或下划线！</p>
-					</div>
-					<div class="rlf-group">
-						<input type="password" id="registNowPassword1"
-							name="user.nowPassword" class="rlf-input rlf-input-pwd"
-							placeholder="请输入密码" />
-						<p class="rlf-tip-wrap">请输入6-16位密码，区分大小写，不能使用空格</p>
-					</div>
-					<div class="rlf-group">
-						<input type="password" id="registNowPassword2"
-							name="user.nowPassword" class="rlf-input rlf-input-pwd"
-							placeholder="请输入密码" />
-						<p class="rlf-tip-wrap">请输入6-16位密码，区分大小写，不能使用空格</p>
-					</div>
-								
-					<div class="rlf-group">
-						<input type="text" id="registEmail" name="user.email"
-							class="rlf-input rlf-input-email" autocomplete="off"
-							placeholder="请输入登录邮箱" />
-						<p class="rlf-tip-wrap">请输入有效的邮箱！</p>
-					</div>
-					<div class="rlf-group">
-						<input type="text" id="registValidateCode"
-							name="validateCode" class="rlf-input rlf-input-nick" /> <img
-							id="vertImg"
-							src="${pageContext.request.contextPath}/system!validateCode.html" />
-						<a class="chgVertImg" href="javascript:void(0);" onclick="reImg()">看不清，换一张</a>
-						<p class="rlf-tip-wrap">请输入验证码</p>
-					</div>
-					<div class="rlf-group clearfix">
-						<input type="submit" id="signup-btn" value="注册" hidefocus="true"
-							class="rlf-btn-green btn-full r" style="float: left;"/>
-					</div>
-				</s:form>
-			</div>
+			<!-- /.modal-content -->
 		</div>
+		<!-- /.modal-dialog -->
 	</div>
-	
+	<!-- /.modal -->
+
+
+
+
+
+	<!-- 注册（Modal） -->
+	<div class="modal fade" id="register" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">注册</h4>
+				</div>
+				<div class="modal-body">
+					<form role="form" action="system!register.html" method="post">
+						<div class="form-group">
+							<label>用户名</label> <input type="text" id="registUserId"
+								name="user.userId" class="form-control" placeholder="请输入用户名" />
+							<p>请输入用户，2-18位英文、数字或下划线！</p>
+						</div>
+						<div class="form-group">
+							<label>密码</label> <input type="password" id="registNowPassword1"
+								name="user.nowPassword" class="form-control" placeholder="请输入密码" />
+							<p>请输入6-16位密码，区分大小写，不能使用空格</p>
+						</div>
+						<div class="form-group">
+							<label>确认密码</label> <input type="password"
+								id="registNowPassword2" name="user.nowPassword"
+								class="form-control" placeholder="请输入密码" />
+							<p>请输入6-16位密码，区分大小写，不能使用空格</p>
+						</div>
+
+						<div class="form-group">
+							<label>邮箱</label> <input type="text" id="registEmail"
+								name="user.email" class="form-control" autocomplete="off"
+								placeholder="请输入登录邮箱" />
+							<p>请输入有效的邮箱！</p>
+						</div>
+						<div class="form-group">
+							<label>验证码</label> <input type="text" id="registValidateCode"
+								name="validateCode" class="form-control" /> <img id="vertImg"
+								src="${pageContext.request.contextPath}/system!validateCode.html" />
+							<a class="chgVertImg" href="javascript:void(0);"
+								onclick="reImg()">看不清，换一张</a>
+							<p>请输入验证码</p>
+						</div>
+						<button type="submit" class="btn btn-primary">注册</button>
+					</form>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
 </body>
 </html>

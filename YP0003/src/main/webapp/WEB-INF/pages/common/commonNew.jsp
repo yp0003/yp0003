@@ -1,70 +1,33 @@
-<!DOCTYPE html>
-<!-- saved from url=(0042)http://v3.bootcss.com/examples/dashboard/# -->
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="http://v3.bootcss.com/favicon.ico">
-
-<title>Dashboard Template for Bootstrap</title>
-
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>测试Common</title>
 <!-- Bootstrap core CSS -->
-<link href="http://v3.bootcss.com/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/new/bootstrap.min.css"
+	rel="stylesheet" />
 
 <!-- Custom styles for this template -->
-<link href="http://v3.bootcss.com/examples/dashboard/dashboard.css"
-	rel="stylesheet">
-
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<link href="${pageContext.request.contextPath}/new/dashboard.css"
+	rel="stylesheet" />
 <script
-	src="./Dashboard Template for Bootstrap_files/ie-emulation-modes-warning.js"></script>
+	src="${pageContext.request.contextPath}/new/ie-emulation-modes-warning.js"></script>
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<script src="${pageContext.request.contextPath}/new/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/new/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/new/docs.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script
+	src="${pageContext.request.contextPath}/new/ie10-viewport-bug-workaround.js"></script>
 </head>
-
 <body>
-
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand"
-					href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.htm">Project
-					name</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a
-						href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.htm">Dashboard</a></li>
-					<li><a
-						href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.htm">Settings</a></li>
-					<li><a
-						href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.htm">Profile</a></li>
-					<li><a
-						href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.htm">Help</a></li>
-				</ul>
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
-				</form>
-			</div>
-		</div>
-	</nav>
 
 	<div class="container-fluid">
 		<div class="row">
@@ -97,40 +60,36 @@
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">Dashboard</h1>
 
-				<div class="row placeholders">
+<%-- 				<div class="row placeholders">
 					<div class="col-xs-6 col-sm-3 placeholder">
 						<img data-src="holder.js/200x200/auto/sky" class="img-responsive"
 							alt="200x200"
 							src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzPjwvZGVmcz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiI+PC9yZWN0PjxnPjx0ZXh0IHg9Ijc1IiB5PSIxMDAiIHN0eWxlPSJmaWxsOiNGRkZGRkY7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTBwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yMDB4MjAwPC90ZXh0PjwvZz48L3N2Zz4="
 							data-holder-rendered="true">
-						<h4>Label</h4>
-						<span class="text-muted">Something else</span>
+							<h4>Label</h4> <span class="text-muted">Something else</span>
 					</div>
 					<div class="col-xs-6 col-sm-3 placeholder">
 						<img data-src="holder.js/200x200/auto/vine" class="img-responsive"
 							alt="200x200"
 							src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzPjwvZGVmcz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyI+PC9yZWN0PjxnPjx0ZXh0IHg9Ijc1IiB5PSIxMDAiIHN0eWxlPSJmaWxsOiMxRTI5MkM7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTBwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yMDB4MjAwPC90ZXh0PjwvZz48L3N2Zz4="
 							data-holder-rendered="true">
-						<h4>Label</h4>
-						<span class="text-muted">Something else</span>
+							<h4>Label</h4> <span class="text-muted">Something else</span>
 					</div>
 					<div class="col-xs-6 col-sm-3 placeholder">
 						<img data-src="holder.js/200x200/auto/sky" class="img-responsive"
 							alt="200x200"
 							src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzPjwvZGVmcz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiI+PC9yZWN0PjxnPjx0ZXh0IHg9Ijc1IiB5PSIxMDAiIHN0eWxlPSJmaWxsOiNGRkZGRkY7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTBwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yMDB4MjAwPC90ZXh0PjwvZz48L3N2Zz4="
 							data-holder-rendered="true">
-						<h4>Label</h4>
-						<span class="text-muted">Something else</span>
+							<h4>Label</h4> <span class="text-muted">Something else</span>
 					</div>
 					<div class="col-xs-6 col-sm-3 placeholder">
 						<img data-src="holder.js/200x200/auto/vine" class="img-responsive"
 							alt="200x200"
 							src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzPjwvZGVmcz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyI+PC9yZWN0PjxnPjx0ZXh0IHg9Ijc1IiB5PSIxMDAiIHN0eWxlPSJmaWxsOiMxRTI5MkM7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTBwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yMDB4MjAwPC90ZXh0PjwvZz48L3N2Zz4="
 							data-holder-rendered="true">
-						<h4>Label</h4>
-						<span class="text-muted">Something else</span>
+							<h4>Label</h4> <span class="text-muted">Something else</span>
 					</div>
-				</div>
+				</div> --%>
 
 				<h2 class="sub-header">Section title</h2>
 				<div class="table-responsive">
@@ -263,6 +222,11 @@
 			</div>
 		</div>
 	</div>
+
+
+
+
+
 
 
 </body>

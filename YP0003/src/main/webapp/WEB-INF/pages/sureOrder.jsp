@@ -10,24 +10,34 @@
 </head>
 <body>
 	<%@ include file="common/common.jsp"%>
-	<!-- 程序包含结束 -->
-	<div class="content">
-		<div class="cidnav">
-			<ul>
-				<li><span class="orther">3.付款</span></li>
-				<li><span>></span></li>
-				<li><span class="cidcolor">2.确认订单信息</span></li>
-				<li><span>></span></li>
-				<li><span class="orther">1.我的购物车</span></li>
-			</ul>
+	<div class="jumbotron masthead">
+		<div class="container">
+			<h1>365IT教育学院</h1>
+			<h2>365IT教育学院让开发变得更迅速、简单。</h2>
+			<p class="masthead-button-links">
+				<a class="btn btn-lg btn-primary btn-shadow"
+					href="${pageContext.request.contextPath}/product!forwardProductList.html" role="button"
+					se_prerender_url="complete">立即选课</a>
+			</p>
 		</div>
-		<div style="clear:both"></div>
-		<div class="line"></div>
-		<s:form>
-		<div>
-			<div class="queren">核对商品信息</div>
-			<div class="contable">
-				<table class="table table-bordered table-striped table-hover">
+	</div>
+<s:form>
+	<div class="container-fluid" style="width: 1300px; margin-top: 50px;">
+		<div class="row">
+			<div class="col-lg-12">
+				<ul class="nav nav-pills" role="tablist">
+					<li role="presentation"><a href="#">1.我的购物车</a></li>
+					<li role="presentation" class="active"><a href="#">2.确认订单信息</a></li>
+					<li role="presentation"><a href="#">3.付款</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">核对订单信息</h1>
+				<table class="table table-striped">
 					<thead>
 						<tr>
 							<th>商品名称</th>
@@ -40,70 +50,54 @@
 
 					</thead>
 					<tbody>
-					
+
+
 						<s:iterator value="buyCarList" id="bcl">
 							<tr>
-								<td><s:property value="#bcl.productName" /><s:hidden name="#bcl.id" cssClass="buyCarId"></s:hidden></td>
+								<td><s:property value="#bcl.productName" /> <s:hidden
+										name="#bcl.id" cssClass="buyCarId"></s:hidden></td>
 								<td><img alt=""
 									src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${bcl.productId}"
 									width="100" /></td>
 								<td><s:property value="#bcl.product.productDesc"></s:property></td>
 								<td>无优惠</td>
 								<td><s:property value="#bcl.buyCount"></s:property></td>
-								<td><span class="cidcolor">￥<span><s:property value="#bcl.countPrice"></s:property></span>元
+								<td><span class="cidcolor">￥<span><s:property
+												value="#bcl.countPrice"></s:property></span>元
 								</span></td>
 							</tr>
 						</s:iterator>
 					</tbody>
 				</table>
 			</div>
-			<div class="queren">给卖家留言</div>
-			<div class="ly">
-				<textarea rows="7" class="text"></textarea>
+		</div>
+
+
+
+
+		<div class="row">
+
+			<div class="col-lg-2">
+				<a href=""><< 返回修改购物车</a>
 			</div>
-			<div class="cart_total">
-				<div class="cart_left">
-					<a href=""><< 返回修改购物车</a>
-				</div>
-				<div class="cart_right">
-					<ul>
-						<li style="text-align: right">
-							<p>
-								3件商品总金额：<b class="cidcolor">￥<span>24.00</span>元
-								</b>
-							</p>
-							<p>
-								优惠金额：<b class="cidcolor">￥<span>24.00</span>元
-								</b>
-							</p>
-							<p>
-								应付金额：<b class="cidcolor">￥<span>24.00</span>元
-								</b>
-							</p>
-						</li>
-					</ul>
-				</div>
-				<div class="clear"></div>
-				<div class="ordersub">
-					<button class="btn  btn-large  btn-danger" type="button"
-						placeholder="nihao" onclick="selectBuyCarId()">提交订单</button>
-				</div>
+
+			<div class="col-lg-1 col-lg-offset-11">
+				<button class="btn  btn-large  btn-danger" type="button"
+					onclick="selectBuyCarId()">提交订单</button>
 			</div>
 		</div>
-		</s:form>
 	</div>
+</s:form>
 	<%@ include file="common/commonFooter.jsp"%>
 	<script type="text/javascript">
-	
-	function selectBuyCarId() {
-		var url = "${pageContext.request.contextPath}/order!createOrder.html?abc=5";
-		$(".buyCarId").each(function(){
-			url = url + "&buyCarIds=" + $(this).val();
-		});
-		document.forms[0].action = url;
-		document.forms[0].submit();
-	}
-	
+		function selectBuyCarId() {
+			var url = "${pageContext.request.contextPath}/order!createOrder.html?abc=5";
+			$(".buyCarId").each(function() {
+				url = url + "&buyCarIds=" + $(this).val();
+			});
+			document.forms[0].action = url;
+			document.forms[0].submit();
+		}
 	</script>
 </body>
 </html>

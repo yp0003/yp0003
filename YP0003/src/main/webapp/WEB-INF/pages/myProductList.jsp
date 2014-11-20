@@ -115,7 +115,8 @@
 									hidefocus="true">忘记密码？ </a>
 							</div>
 							<div class="rlf-group clearfix">
-								<p class="rlf-tip-wrap " id="signin-globle-error"></p>
+								<p class="rlf-tip-wra
+								p " id="signin-globle-error"></p>
 								<input type="submit" id="signin-btn" value="登录" hidefocus="true"
 									class="rlf-btn-green btn-full r" />
 							</div>

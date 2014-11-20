@@ -46,6 +46,12 @@ public class SystemAction extends CommonAction {
 	/** 注册页面验证码 */
 	private String validateCode;
 	private String remPass;
+	
+	
+	public String forwardTest() {
+		return "forwardTest";
+	}
+
 
 	/**
 	 * 跳转到找回密码页面
@@ -159,7 +165,7 @@ public class SystemAction extends CommonAction {
 				systemService.saveUser(user);
 			}
 		}
-		return "register";
+		return "forwardIndex";
 	}
 
 	public void validateCode() throws Exception {
