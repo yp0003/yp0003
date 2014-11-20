@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="oa1" namespace="/" extends="yfann-default">
+		<!-- 登录 -->
+		<action name="login!*" method="{1}" class="com.yfann.web.action.oa.MenuAction">
+			<result type="json"></result>
+		</action>
+
+		<!-- 系统 -->
+		<action name="system!*" method="{1}" class="com.yfann.web.action.SystemAction">
+			<!-- 跳转到注册 -->
+			<result name="forwardRegister">/WEB-INF/pages/register.jsp</result>
+			<!-- 系统主页 -->
+			<result name="forwardIndex">/WEB-INF/pages/index.jsp</result>
+			<!-- 跳转到召回密码页面 -->
+			<result name="forwardFindPassword">/WEB-INF/pages/findPassword.jsp</result>
+		</action>
+	</package>
+
+</struts>
