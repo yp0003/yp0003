@@ -334,6 +334,146 @@ public class OaRoleExample {
             return (Criteria) this;
         }
 
+        public Criteria andTypeIsNull() {
+            addCriterion("TYPE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIsNotNull() {
+            addCriterion("TYPE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeEqualTo(String value) {
+            addCriterion("TYPE =", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotEqualTo(String value) {
+            addCriterion("TYPE <>", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeGreaterThan(String value) {
+            addCriterion("TYPE >", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("TYPE >=", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeLessThan(String value) {
+            addCriterion("TYPE <", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeLessThanOrEqualTo(String value) {
+            addCriterion("TYPE <=", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeLike(String value) {
+            addCriterion("TYPE like", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotLike(String value) {
+            addCriterion("TYPE not like", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIn(List<String> values) {
+            addCriterion("TYPE in", values, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotIn(List<String> values) {
+            addCriterion("TYPE not in", values, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeBetween(String value1, String value2) {
+            addCriterion("TYPE between", value1, value2, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotBetween(String value1, String value2) {
+            addCriterion("TYPE not between", value1, value2, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidIsNull() {
+            addCriterion("PROLEID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidIsNotNull() {
+            addCriterion("PROLEID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidEqualTo(String value) {
+            addCriterion("PROLEID =", value, "proleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidNotEqualTo(String value) {
+            addCriterion("PROLEID <>", value, "proleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidGreaterThan(String value) {
+            addCriterion("PROLEID >", value, "proleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidGreaterThanOrEqualTo(String value) {
+            addCriterion("PROLEID >=", value, "proleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidLessThan(String value) {
+            addCriterion("PROLEID <", value, "proleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidLessThanOrEqualTo(String value) {
+            addCriterion("PROLEID <=", value, "proleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidLike(String value) {
+            addCriterion("PROLEID like", value, "proleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidNotLike(String value) {
+            addCriterion("PROLEID not like", value, "proleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidIn(List<String> values) {
+            addCriterion("PROLEID in", values, "proleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidNotIn(List<String> values) {
+            addCriterion("PROLEID not in", values, "proleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidBetween(String value1, String value2) {
+            addCriterion("PROLEID between", value1, value2, "proleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProleidNotBetween(String value1, String value2) {
+            addCriterion("PROLEID not between", value1, value2, "proleid");
+            return (Criteria) this;
+        }
+
         public Criteria andStatusIsNull() {
             addCriterion("STATUS is null");
             return (Criteria) this;
