@@ -133,80 +133,80 @@
 		<div class="row">
 			<div class="col-lg-12">
 
-				<div class="col-lg-5">
+				<div class="col-lg-9">
 					<h1>课程类别>java</h1>
 					<a href="#" class="thumbnail"> <img
 						src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
 						alt="..."></a>
 				</div>
 
-				<div class="col-lg-7">
+				<div class="col-lg-3">
 					<h1 class="page-header">课程名称</h1>
 
 					<div class="row">
-						<div class="col-lg-2">
+						<div class="col-lg-3">
 							<h4>
 								<span class="label label-default">课程分类</span>
 							</h4>
 						</div>
-						<div class="col-lg-10">
+						<div class="col-lg-9">
 							<h4>中级</h4>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-lg-2">
+						<div class="col-lg-3">
 							<h4>
 								<span class="label label-default">课程难度</span>
 							</h4>
 						</div>
-						<div class="col-lg-10">
+						<div class="col-lg-9">
 							<h4>中级</h4>
 						</div>
 					</div>
 
 
 					<div class="row">
-						<div class="col-lg-2">
+						<div class="col-lg-3">
 							<h4>
 								<span class="label label-default">更新章节</span>
 							</h4>
 						</div>
-						<div class="col-lg-10">
+						<div class="col-lg-9">
 							<h4>1章2节</h4>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-2">
+						<div class="col-lg-3">
 							<h4>
 								<span class="label label-default">更新时间</span>
 							</h4>
 						</div>
-						<div class="col-lg-10">
+						<div class="col-lg-9">
 							<h4>2014-11-11 11:11:11</h4>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-lg-2">
+						<div class="col-lg-3">
 							<h4>
 								<span class="label label-default">课程价格</span>
 							</h4>
 						</div>
-						<div class="col-lg-10">
+						<div class="col-lg-9">
 							<h4>￥100</h4>
 						</div>
 					</div>
 
 
 					<div class="row">
-						<div class="col-lg-2">
+						<div class="col-lg-3">
 							<a
 								href="${pageContext.request.contextPath}/order!addBuyCar.html?product.id=${pl.id}"><button
 									type="button" class="btn btn-danger" style="float: left;">加入购物车</button>
 							</a>
 						</div>
-						<div class="col-lg-2">
+						<div class="col-lg-9">
 							<a
 								href="${pageContext.request.contextPath}/order!payProductOnlyOne.html?product.id=${pl.id}"><button
 									type="button" class="btn btn-danger" style="float: right;">直接结算</button></a>
@@ -247,9 +247,24 @@
 					课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介
 				</p>
 				<h1 class="page-header">教师团队</h1>
-				<p>
-					课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介
-				</p>
+
+
+				<div class="row">
+					<div class="col-lg-2">
+						<img
+							src="http://img.mukewang.com/user/544a17d60001434101400140-80-80.jpg"
+							alt="..." class="img-circle" />
+						<h3>
+							<a href="#">王超</a> <span class="teacher_icon"></span>
+						</h3>
+					</div>
+					<div class="col-lg-10">
+						<p>资深UI+前端+架构，Woorich联合创始人、CTO，Veizen创始人，前后端开发、敏捷过程、项目管理经验丰富；爱技术，爱创业，爱一切新事物，玩过乐队，喜欢折腾！</p>
+					</div>
+				</div>
+
+
+
 				<h1 class="page-header">课程精彩截图</h1>
 				<p>
 					课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介
@@ -275,6 +290,33 @@
 						差评 </label>
 				<textarea class="form-control" rows="5"></textarea>
 				<h1 class="page-header">学员动态</h1>
+				<div class="row">
+					<div class="col-lg-4">
+						<img
+							src="http://img.mukewang.com/user/544a17d60001434101400140-80-80.jpg"
+							alt="..." class="img-circle" />
+					</div>
+					<div class="col-lg-8">
+						<p><span>好评</span></p>
+						<p>资深UI+前端+架构，Woorich联合创始人、CTO，Veizen创始人，前后端开发、敏捷过程、项目管理经验丰富；爱技术，爱创业，爱一切新事物，玩过乐队，喜欢折腾！</p>
+						<p><span>发表时间:2011-11-11</span></p>
+					</div>
+				</div>
+				
+				<hr />
+				
+								<div class="row">
+					<div class="col-lg-4">
+						<img
+							src="http://img.mukewang.com/user/544a17d60001434101400140-80-80.jpg"
+							alt="..." class="img-circle" />
+					</div>
+					<div class="col-lg-8">
+						<p><span>好评</span></p>
+						<p>资深UI+前端+架构，Woorich联合创始人、CTO，Veizen创始人，前后端开发、敏捷过程、项目管理经验丰富；爱技术，爱创业，爱一切新事物，玩过乐队，喜欢折腾！</p>
+						<p><span>发表时间:2011-11-11</span></p>
+					</div>
+				</div>
 
 			</div>
 		</div>
