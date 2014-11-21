@@ -7,22 +7,16 @@
 <title>365IT学院</title>
 </head>
 <body>
-	<div class="course-sidebar">
-		<div class="course-sidebar-type lf-center">
-			<a href="${pageContext.request.contextPath}/mycenter!forwardMyProductList.html">我的课程</a>
-		</div>
-		<div class="course-sidebar-type lf-center  lf-default">
-			<a href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">订单管理</a>
-		</div>
-		<div class="course-sidebar-type lf-center">
-			<a href="${pageContext.request.contextPath}/mycenter!">消息列表<span class="red">(1)</span></a>
-		</div>
-		<div class="course-sidebar-type lf-center">
-			<a href="${pageContext.request.contextPath}/mycenter!forwardUpdateInfo.html">我的信息</a>
-		</div>
-		<div class="course-sidebar-type lf-center">
-			<a href="ord.html">修改密码</a>
-		</div>
-	</div>
+	<ul class="nav nav-pills nav-stacked" role="tablist">
+		<li><a
+			href="${pageContext.request.contextPath}/mycenter!forwardMyProductList.html">我的课程</a></li>
+		<li><a
+			href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">订单管理</a></li>
+		<li><a href="${pageContext.request.contextPath}/mycenter!">消息列表<span
+				class="red">(1)</span></a></li>
+		<li><a
+			href="${pageContext.request.contextPath}/mycenter!forwardUpdateInfo.html">我的信息</a></li>
+		<li><a href="ord.html">修改密码</a></li>
+	</ul>
 </body>
 </html>

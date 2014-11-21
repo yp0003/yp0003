@@ -8,32 +8,47 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>课程详情</title>
-<!-- Le styles -->
+<!-- Site CSS -->
 <link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css"
-	rel="stylesheet" />
-<link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/base.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/style.css"
+	href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet" />
 
+<link
+	href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css"
+	rel="stylesheet" />
+<link href="http://static.bootcss.com/www/assets/css/site.min.css?v3"
+	rel="stylesheet" />
 
-<!-- link script -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/custom.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed"
+	href="http://static.bootcss.com/www/assets/ico/apple-touch-icon-precomposed.png" />
+<link rel="shortcut icon"
+	href="http://static.bootcss.com/www/assets/ico/favicon.png" />
+
+
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/jquery.min.js"></script>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" />
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstrap.min.js"></script>
+<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js" />
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/jquery.unveil.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/jquery.scrollUp.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/toc.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/site.min.js"></script>
+
+<script>
+	var _hmt = _hmt || [];
+</script>
 </head>
 <body>
 	<%@ include file="common/common.jsp"%>
-	<div id="main" class="mt49">
+	<%-- <div id="main" class="mt49">
 		<div class="container1000" id="course_intro">
 			<div class="course-title">
 				<a href="list.html" class="back-btn">前端开发</a>
@@ -107,6 +122,53 @@
 				</div>
 			</div>
 		</div>
+	</div> --%>
+
+
+
+
+
+	<div class="container-fluid" style="width: 80%; margin-top: 50px;">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="row">
+
+					<div class="col-lg-4">
+
+
+
+
+						<div class="row">
+							<div class="col-lg-12">
+								<a href="#" class="thumbnail"> <img
+									src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
+									alt="..."></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-8">
+											<div class="panel panel-primary">
+											<div class="panel-heading">
+							<div class="panel-title">课程详情</div>
+							</div>
+							<div class="panel-body">
+							<p>hnhrtiohjriohjior</p>
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+
+
+
+
+			</div>
+		</div>
 	</div>
+	<!-- 底部 -->
+	<%@ include file="common/commonFooter.jsp"%>
 </body>
 </html>

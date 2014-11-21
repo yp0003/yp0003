@@ -42,6 +42,19 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDetailMapper orderDetailMapper;
 	
 	@Override
+	public Order findOrderByOrderId(String orderId) {
+		return orderMapper.selectOrderByOrderId(orderId);
+	}
+	
+	@Override
+	public void cancelOrder(User user, Order order) {
+		if(order != null && StringUtils.isNotEmpty(order.getId())){
+			order.setOrderStatus(DicValue.OrderStatus.ORDER_STATUS_CANCEL);
+			orderMapper.updateByPrimaryKeySelective(order);
+		}
+	}
+	
+	@Override
 	public Order payProductOnlyOne(Product product, User user) {
 		Order order = new Order();
 		OrderDetail orderDetail = new OrderDetail();

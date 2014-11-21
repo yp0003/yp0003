@@ -135,48 +135,26 @@
 	<%@ include file="common/commonFooter.jsp"%> --%>
 
 	<%@ include file="common/common.jsp"%>
-	<div class="jumbotron" style="margin-top: 10px">
-		<div class="container">
-
-			<h4>egjijgowigj</h4>
-			<h4>egjijgowigj</h4>
-			<h4>egjijgowigj</h4>
-
-		</div>
-	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<div class="container-fluid" style="width: 1300px">
 		<div class="row">
 			<div class="col-lg-4">
-				<h3>课程搜索</h3>
-				<div class="input-group">
-					<input type="text" class="form-control"> <span
-						class="input-group-btn">
-							<button class="btn btn-default" type="button">搜索课程</button>
-					</span>
-				</div>
+				<form action="product!forwardProductList.html" method="post">
+					<h3>课程搜索</h3>
+					<div class="input-group">
+
+						<input type="text" class="form-control" name="product.productName">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="submit">搜索课程</button>
+						</span> </input>
+
+					</div>
+				</form>
 				<h3>课程标签</h3>
 				<ul class="nav nav-pills nav-stacked" role="tablist">
-					<li class="nav-header">列表标题</li>
-					<li class="active"><a href="#">首页</a></li>
-					<li><a href="#">库</a></li>
-					<li><a href="#">应用</a></li>
+					<li class="nav-header">课程</li>
+					<li class="active"><a href="#">MVC框架</a></li>
+					<li><a href="#">数据库</a></li>
+					<li><a href="#">DAO框架</a></li>
 					<li class="nav-header">功能列表</li>
 					<li><a href="#">资料</a></li>
 					<li><a href="#">设置</a></li>
@@ -220,6 +198,9 @@
 						</div>
 					</s:iterator>
 				</div>
+				<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
+					pageSize="pageInfo.pageSize" count="pageInfo.count"
+					includes="product.productName" />
 			</div>
 		</div>
 	</div>
