@@ -21,8 +21,6 @@ import com.yfann.web.dao.ProductMapper;
 import com.yfann.web.pojo.Dic;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ProductAppraise;
-import com.yfann.web.pojo.ProductDetailAvatar;
-import com.yfann.web.pojo.ProductDetailImage;
 import com.yfann.web.pojo.ProductImage;
 import com.yfann.web.pojo.ProductKind;
 import com.yfann.web.service.ProductService;
