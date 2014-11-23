@@ -7,6 +7,7 @@ public class DicValue {
 	 *
 	 */
 	public static class ProductSatisfaction{
+		public static final String PRODUCT_SATISFACTION_DIC_TYPE = "PRODUCT_SATISFACTION";
 		/**课程满意度------差评*/
 		public static final String PRODUCT_SATISFACTION_UNSATISFIED = "0";
 		/**课程满意度------中评*/

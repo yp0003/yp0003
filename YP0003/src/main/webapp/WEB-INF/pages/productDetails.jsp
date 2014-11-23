@@ -136,12 +136,12 @@
 				<div class="col-lg-9">
 					<h1>课程类别>java</h1>
 					<a href="#" class="thumbnail"> <img
-						src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
+						src="${pageContext.request.contextPath}/product!showProductImage.html?product.id=${product.id}"
 						alt="..."></a>
 				</div>
 
 				<div class="col-lg-3">
-					<h1 class="page-header">课程名称</h1>
+					<h1 class="page-header">${product.productName}</h1>
 
 					<div class="row">
 						<div class="col-lg-3">
@@ -173,7 +173,7 @@
 							</h4>
 						</div>
 						<div class="col-lg-9">
-							<h4>1章2节</h4>
+							<h4>${product.updateBadge}章${product.updateMatter}节</h4>
 						</div>
 					</div>
 					<div class="row">
@@ -183,7 +183,7 @@
 							</h4>
 						</div>
 						<div class="col-lg-9">
-							<h4>2014-11-11 11:11:11</h4>
+							<h4><s:date name="product.updateTime" format="yyyy-MM-dd hh:mm:ss"/></h4>
 						</div>
 					</div>
 
@@ -194,7 +194,7 @@
 							</h4>
 						</div>
 						<div class="col-lg-9">
-							<h4>￥100</h4>
+							<h4>￥${product.productPrice}</h4>
 						</div>
 					</div>
 
@@ -226,26 +226,11 @@
 
 		</div>
 
-
-		<%-- <div class="row">
-
-			<div class="col-lg-2 col-lg-offset-5">
-				<a
-					href="${pageContext.request.contextPath}/order!addBuyCar.html?product.id=${pl.id}"><button
-						type="button" class="btn btn-danger" style="float: left;">加入购物车</button>
-				</a> &nbsp; <a
-					href="${pageContext.request.contextPath}/order!payProductOnlyOne.html?product.id=${pl.id}"><button
-						type="button" class="btn btn-danger" style="float: right;">直接结算</button></a>
-			</div>
-		</div> --%>
-
 		<div class="row">
 
 			<div class="col-lg-9">
 				<h1 class="page-header">课程简介</h1>
-				<p>
-					课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介
-				</p>
+				<p>${product.productDesc}</p>
 				<h1 class="page-header">教师团队</h1>
 
 
@@ -263,11 +248,19 @@
 					</div>
 				</div>
 
-
+				<h1 class="page-header">课程详情</h1>
+				<p>
+					<a href="#" class="thumbnail"> <img
+						src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
+						alt="..."></a> <a href="#" class="thumbnail"> <img
+						src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
+						alt="..."></a> <a href="#" class="thumbnail"> <img
+						src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
+						alt="..."></a>
+				</p>
 
 				<h1 class="page-header">课程精彩截图</h1>
 				<p>
-					课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介课程简介
 					<a href="#" class="thumbnail"> <img
 						src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
 						alt="..."></a> <a href="#" class="thumbnail"> <img
@@ -281,14 +274,17 @@
 
 			<div class="col-lg-3">
 				<h1 class="page-header">我要评价</h1>
-				<label class="radio-inline"> <input type="radio"
-					name="inlineRadioOptions" id="inlineRadio1" value="option1">
-						好评 </label> <label class="radio-inline"> <input type="radio"
-					name="inlineRadioOptions" id="inlineRadio2" value="option2">
-						中评 </label> <label class="radio-inline"> <input type="radio"
-					name="inlineRadioOptions" id="inlineRadio3" value="option3">
-						差评 </label>
-				<textarea class="form-control" rows="5"></textarea>
+				<c:if test="${sessionScope.userInfo != null}">
+					<form role="form" action="system!login.html" method="post">
+						<s:radio list="productAppraiseDicList" listKey="dicCode"
+							listValue="dicCn" name="productAppraise.satisfaction"></s:radio>
+						<textarea class="form-control" rows="5"></textarea>
+						<button type="submit" class="btn btn-primary">评论</button>
+					</form>
+				</c:if>
+				<c:if test="${sessionScope.userInfo == null}">
+				<h4>请您先登录才能评论</h4>
+				</c:if>
 				<h1 class="page-header">学员动态</h1>
 				<div class="row">
 					<div class="col-lg-4">
@@ -297,24 +293,32 @@
 							alt="..." class="img-circle" />
 					</div>
 					<div class="col-lg-8">
-						<p><span>好评</span></p>
+						<p>
+							<span>好评</span>
+						</p>
 						<p>资深UI+前端+架构，Woorich联合创始人、CTO，Veizen创始人，前后端开发、敏捷过程、项目管理经验丰富；爱技术，爱创业，爱一切新事物，玩过乐队，喜欢折腾！</p>
-						<p><span>发表时间:2011-11-11</span></p>
+						<p>
+							<span>发表时间:2011-11-11</span>
+						</p>
 					</div>
 				</div>
-				
+
 				<hr />
-				
-								<div class="row">
+
+				<div class="row">
 					<div class="col-lg-4">
 						<img
 							src="http://img.mukewang.com/user/544a17d60001434101400140-80-80.jpg"
 							alt="..." class="img-circle" />
 					</div>
 					<div class="col-lg-8">
-						<p><span>好评</span></p>
+						<p>
+							<span>好评</span>
+						</p>
 						<p>资深UI+前端+架构，Woorich联合创始人、CTO，Veizen创始人，前后端开发、敏捷过程、项目管理经验丰富；爱技术，爱创业，爱一切新事物，玩过乐队，喜欢折腾！</p>
-						<p><span>发表时间:2011-11-11</span></p>
+						<p>
+							<span>发表时间:2011-11-11</span>
+						</p>
 					</div>
 				</div>
 

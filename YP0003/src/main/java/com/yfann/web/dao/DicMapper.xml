@@ -316,13 +316,22 @@
 		resultMap="BaseResultMap2">
 		select
 		<include refid="Base_Column_List2" />
-		from t_sys_dic t where t.dic_type = 'ORDER_STATUS' and t.dic_code = #{dicCode,jdbcType=VARCHAR}
+		from t_sys_dic t where t.dic_type = 'ORDER_STATUS' and t.dic_code =
+		#{dicCode,jdbcType=VARCHAR}
 	</select>
-		<!-- 根据编码查询授权码授权状态 -->
+	<!-- 根据编码查询授权码授权状态 -->
 	<select id="selectPlayerCodeAccreditDicByDicCode" parameterType="java.lang.String"
 		resultMap="BaseResultMap2">
 		select
 		<include refid="Base_Column_List2" />
-		from t_sys_dic t where t.dic_type = 'PALYER_CODE_ACCREDIT_STATUS' and t.dic_code = #{dicCode,jdbcType=VARCHAR}
-	</select>	
+		from t_sys_dic t where t.dic_type = 'PALYER_CODE_ACCREDIT_STATUS' and
+		t.dic_code = #{dicCode,jdbcType=VARCHAR}
+	</select>
+	<!-- 根据字典类型查询字典 -->
+	<select id="selectDicListByDicType" parameterType="java.lang.String"
+		resultMap="BaseResultMap2">
+		select
+		<include refid="Base_Column_List2" />
+		from t_sys_dic t where t.dic_type = #{dicType,jdbcType=VARCHAR}
+	</select>
 </mapper>

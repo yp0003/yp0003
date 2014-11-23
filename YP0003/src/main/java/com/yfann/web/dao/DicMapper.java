@@ -9,6 +9,12 @@ import com.yfann.web.pojo.DicExample;
 
 public interface DicMapper {
 	/**
+	 * 根据DicType查询字典
+	 * @param dicType
+	 * @return
+	 */
+	List<Dic> selectDicListByDicType(String dicType);
+	/**
 	 * 根据编码查询订单状态
 	 * @param parames
 	 * @return

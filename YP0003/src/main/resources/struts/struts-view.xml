@@ -71,6 +71,23 @@
 				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
 				<param name="inputName">byteArrayInputStream</param>
 			</result>
+			<!-- 课程logo -->
+			<result name="showProductImage" type="stream">
+				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
+				<param name="inputName">byteArrayInputStream</param>
+			</result>
+
+			<!-- 课程详情截图 -->
+			<result name="showProductImage" type="stream">
+				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
+				<param name="inputName">byteArrayInputStream</param>
+			</result>
+
+			<!-- 课程截图 -->
+			<result name="showProductDetailAvatar" type="stream">
+				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
+				<param name="inputName">byteArrayInputStream</param>
+			</result>
 			<!-- 课程详情 -->
 			<result name="forwardProductDetail">/WEB-INF/pages/productDetails.jsp</result>
 		</action>
