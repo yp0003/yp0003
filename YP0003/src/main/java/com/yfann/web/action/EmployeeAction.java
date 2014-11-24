@@ -28,7 +28,7 @@ public class EmployeeAction extends CommonAction {
 	private RegisterMessage registerMessage = new RegisterMessage();
 	private LoginMessage loginMessage = new LoginMessage();
 	final Logger logger = LoggerFactory.getLogger(EmployeeAction.class);
-	private OaEmployee employee;
+	private OaEmployee oaEmployee;
 	private String birthday;
 	public String getBirthday() {
 		return birthday;
@@ -46,11 +46,11 @@ public class EmployeeAction extends CommonAction {
 	private String remPass;
 	// 转向修改用户资料页面
 	public String updateInfoUI() {
-		employee = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
-		if (employee == null) {
+		oaEmployee = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
+		if (oaEmployee == null) {
 			return "forwardLogin";
 		}
-		this.birthday = (new SimpleDateFormat("yyyy-MM-dd")).format(employee.getBirthday());
+		this.birthday = (new SimpleDateFormat("yyyy-MM-dd")).format(oaEmployee.getBirthday());
 		return "updateInfoUI";
 	}
 
@@ -60,40 +60,40 @@ public class EmployeeAction extends CommonAction {
 		if (u == null) {
 			return "forwardLogin";
 		}
-		if (employee.getNick() != null)
-			u.setNick(employee.getNick());
-		if (employee.getUserName() != null)
-			u.setUserName(employee.getUserName());
+		if (oaEmployee.getNick() != null)
+			u.setNick(oaEmployee.getNick());
+		if (oaEmployee.getEmployeeName() != null)
+			u.setEmployeeName(oaEmployee.getEmployeeName());
 
 		if (birthday != null && !"".equals(birthday)) {
 			Date bir = (new SimpleDateFormat("yyyy-MM-dd")).parse(birthday);
 			u.setBirthday(bir);
 		}
 
-		if (employee.getSex() != null)
-			u.setSex(employee.getSex());
-		if (employee.getIdcardNumber() != null)
-			u.setIdcardNumber(employee.getIdcardNumber());
-		if (employee.getEducation() != null)
-			u.setEducation(employee.getEducation());
-		if (employee.getForeignCountrie() != null)
-			u.setForeignCountrie(employee.getForeignCountrie());
-		if (employee.getGraduateSchool() != null)
-			u.setGraduateSchool(employee.getGraduateSchool());
-		if (employee.getPhoneNumber() != null)
-			u.setPhoneNumber(employee.getPhoneNumber());
-		if (employee.getCountrie() != null)
-			u.setCountrie(employee.getCountrie());
-		if (employee.getProvinceAndCity() != null)
-			u.setProvinceAndCity(employee.getProvinceAndCity());
-		if (employee.getAddress() != null)
-			u.setAddress(employee.getAddress());
-		if (employee.getZipCode() != null)
-			u.setZipCode(employee.getZipCode());
-		if (employee.getEmail() != null)
-			u.setEmail(employee.getEmail());
-		if (employee.getQq() != null)
-			u.setQq(employee.getQq());
+		if (oaEmployee.getSex() != null)
+			u.setSex(oaEmployee.getSex());
+		if (oaEmployee.getIdcardNumber() != null)
+			u.setIdcardNumber(oaEmployee.getIdcardNumber());
+		if (oaEmployee.getEducation() != null)
+			u.setEducation(oaEmployee.getEducation());
+		if (oaEmployee.getForeignCountrie() != null)
+			u.setForeignCountrie(oaEmployee.getForeignCountrie());
+		if (oaEmployee.getGraduateSchool() != null)
+			u.setGraduateSchool(oaEmployee.getGraduateSchool());
+		if (oaEmployee.getPhoneNumber() != null)
+			u.setPhoneNumber(oaEmployee.getPhoneNumber());
+		if (oaEmployee.getCountrie() != null)
+			u.setCountrie(oaEmployee.getCountrie());
+		if (oaEmployee.getProvinceAndCity() != null)
+			u.setProvinceAndCity(oaEmployee.getProvinceAndCity());
+		if (oaEmployee.getAddress() != null)
+			u.setAddress(oaEmployee.getAddress());
+		if (oaEmployee.getZipCode() != null)
+			u.setZipCode(oaEmployee.getZipCode());
+		if (oaEmployee.getEmail() != null)
+			u.setEmail(oaEmployee.getEmail());
+		if (oaEmployee.getQq() != null)
+			u.setQq(oaEmployee.getQq());
 
 		employeeService.updateOaEmployee(u);
 		return "updateInfo";
@@ -107,7 +107,7 @@ public class EmployeeAction extends CommonAction {
 	// 修改密码
 	public String updatePassword() throws Exception {
 		//验证当前密码
-		if ("".equals(employee.getOldPassword())) {
+		if ("".equals(oaEmployee.getOldPassword())) {
 			registerMessage.setPasswordMessage("当前密码不能为空！");
 			return "updatePasswordUI";
 		}
@@ -115,17 +115,17 @@ public class EmployeeAction extends CommonAction {
 		if(emp==null){
 			return "forwardLogin";
 		}
-		if(!emp.getNowPassword().equals(employee.getOldPassword())){
+		if(!emp.getNowPassword().equals(oaEmployee.getOldPassword())){
 			registerMessage.setPasswordMessage("当前密码输入错误！");
 			return "updatePasswordUI";
 		}
 		String nowPD;
 		// 验证新密码
-		if (!(StringUtils.isNotBlank(employee.getNowPassword()))) {
+		if (!(StringUtils.isNotBlank(oaEmployee.getNowPassword()))) {
 			registerMessage.setPasswordMessage("密码为空!");
 			return "updatePasswordUI";
 		} else {
-			String[] passwords = employee.getNowPassword().split(",");
+			String[] passwords = oaEmployee.getNowPassword().split(",");
 			nowPD = passwords[0];
 			if (passwords.length != 2) {
 				registerMessage.setPasswordMessage("密码非法!");
@@ -145,7 +145,7 @@ public class EmployeeAction extends CommonAction {
 		if (emp.getOldPassword() != null && !"".equals(emp.getOldPassword())){
 			emp.setThanOldPassword(emp.getOldPassword());
 		}
-		emp.setOldPassword(employee.getOldPassword());
+		emp.setOldPassword(oaEmployee.getOldPassword());
 		emp.setNowPassword(nowPD);
 		employeeService.updateOaEmployee(emp);
 		return "logout";
@@ -187,11 +187,11 @@ public class EmployeeAction extends CommonAction {
 	}
 
 	public OaEmployee getEmployee() {
-		return employee;
+		return oaEmployee;
 	}
 
 	public void setEmployee(OaEmployee employee) {
-		this.employee = employee;
+		this.oaEmployee = employee;
 	}
 
 	public LoginMessage getLoginMessage() {
