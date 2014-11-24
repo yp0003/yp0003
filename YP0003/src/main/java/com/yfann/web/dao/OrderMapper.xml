@@ -360,7 +360,7 @@
 		<include refid="where_condition" />
 	</select>
 	<!-- 根据orderId查询OrderDetail -->
-	<select id="selectOrderDetailByOrderId" parameterType="string"
+	<select id="selectOrderByOrderId" parameterType="string"
 		resultMap="BaseResultMap2">
 		select
 		<include refid="Base_Column_List2" />

@@ -26,7 +26,7 @@ public class CheckSessionInterceptor extends MethodFilterInterceptor{
 		if(StringUtils.isNotBlank(methodName)){
 			@SuppressWarnings("rawtypes")
 			Class clazz = targetAction.getClass();
-			Method methodTarget = clazz.getMethod(methodName, null);
+			Method methodTarget = clazz.getMethod(methodName);
 			UserSessionCheck userSessionCheck = methodTarget.getAnnotation(UserSessionCheck.class);
 			if(userSessionCheck != null){
 				@SuppressWarnings("deprecation")

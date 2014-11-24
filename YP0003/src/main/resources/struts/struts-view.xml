@@ -52,6 +52,13 @@
 			<result name="createOrder">/WEB-INF/pages/payOrder.jsp</result>
 			<!-- 直接结算 -->
 			<result name="payProductOnlyOne">/WEB-INF/pages/payOrder.jsp</result>
+			<!-- 取消订单 -->
+			<result name="cancelOrder" type="redirectAction">mycenter!myOrderList.html
+			</result>
+			<!-- 订单详情 -->
+			<result name="orderDetail">/WEB-INF/pages/orderDetail.jsp
+			</result>
+
 		</action>
 
 		<!-- 课程 -->
@@ -61,6 +68,23 @@
 			<result name="forwardProductList">/WEB-INF/pages/productList.jsp</result>
 			<!-- 下载缩略图 -->
 			<result name="showProductSmallImg" type="stream">
+				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
+				<param name="inputName">byteArrayInputStream</param>
+			</result>
+			<!-- 课程logo -->
+			<result name="showProductImage" type="stream">
+				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
+				<param name="inputName">byteArrayInputStream</param>
+			</result>
+
+			<!-- 课程详情截图 -->
+			<result name="showProductImage" type="stream">
+				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
+				<param name="inputName">byteArrayInputStream</param>
+			</result>
+
+			<!-- 课程截图 -->
+			<result name="showProductDetailAvatar" type="stream">
 				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
 				<param name="inputName">byteArrayInputStream</param>
 			</result>
@@ -87,7 +111,7 @@
 			<result name="forwardMyOrderList">/WEB-INF/pages/myOrderList.jsp</result>
 			<!-- 跳转更新个人资料 -->
 			<result name="forwardUpdateInfo">/WEB-INF/pages/updateInfo.jsp</result>
-			
+
 			<result name="forwardMyProductList">/WEB-INF/pages/myProductList.jsp</result>
 		</action>
 	</package>

@@ -11,6 +11,18 @@ import com.yfann.web.vo.PageInfo;
 
 public interface OrderService {
 	/**
+	 * 查询订单根据订单id
+	 * @param orderId
+	 * @return
+	 */
+	public Order findOrderByOrderId(String orderId);
+	/**
+	 * 取消订单
+	 * @param user
+	 * @param order
+	 */
+	public void cancelOrder(User user,Order order);
+	/**
 	 * 创建订单
 	 * @param user
 	 * @param buyCarIds

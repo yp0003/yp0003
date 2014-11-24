@@ -1,22 +1,21 @@
 package com.yfann.web.dao;
 
-import com.yfann.web.pojo.Order;
-import com.yfann.web.pojo.OrderDetail;
-import com.yfann.web.pojo.OrderExample;
-
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
+import com.yfann.web.pojo.Order;
+import com.yfann.web.pojo.OrderExample;
+
 public interface OrderMapper {
 	/**
-	 * 根据orderId查询OrderDetail
+	 * 根据orderId查询订单
 	 * @param orderId
 	 * @return
 	 */
-	List<OrderDetail> selectOrderDetailByOrderId(String orderId);
+	Order selectOrderByOrderId(String orderId);
 	/**
 	 * 根据列表查询订单列表
 	 * @param params

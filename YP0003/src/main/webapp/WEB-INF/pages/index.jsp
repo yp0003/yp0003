@@ -66,20 +66,6 @@
 
 	<!-- 头部 -->
 	<%@ include file="common/common.jsp"%>
-
-
-	<div class="jumbotron masthead">
-		<div class="container">
-			<h1>365IT教育学院</h1>
-			<h2>365IT教育学院让开发变得更迅速、简单。</h2>
-			<p class="masthead-button-links">
-				<a class="btn btn-lg btn-primary btn-shadow"
-					href="${pageContext.request.contextPath}/product!forwardProductList.html" role="button"
-					se_prerender_url="complete">立即选课</a>
-			</p>
-		</div>
-	</div>
-
 	<div class="bc-social">
 		<div class="container">
 			<ul class="bc-social-buttons">

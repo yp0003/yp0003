@@ -51,7 +51,7 @@
 
 				</div>
 			</div>
-			<hr>
+			<hr/>
 				<div class="row footer-bottom">
 					<ul class="list-inline text-center">
 						<li><a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备11008151号</a></li>

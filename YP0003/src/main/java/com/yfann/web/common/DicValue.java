@@ -2,6 +2,21 @@ package com.yfann.web.common;
 
 public class DicValue {
 	/**
+	 * 课程满意度
+	 * @author Simon
+	 *
+	 */
+	public static class ProductSatisfaction{
+		public static final String PRODUCT_SATISFACTION_DIC_TYPE = "PRODUCT_SATISFACTION";
+		/**课程满意度------差评*/
+		public static final String PRODUCT_SATISFACTION_UNSATISFIED = "0";
+		/**课程满意度------中评*/
+		public static final String PRODUCT_SATISFACTION_OK = "1";
+		/**课程满意度------好评*/
+		public static final String PRODUCT_SATISFACTION_SATISFIED = "2";
+	}
+	
+	/**
 	 * 支付方式
 	 * @author Simon
 	 *

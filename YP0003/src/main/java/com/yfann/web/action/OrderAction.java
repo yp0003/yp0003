@@ -42,6 +42,25 @@ public class OrderAction extends CommonAction {
 	private InputStream jsonInputStream;
 	
 	/**
+	 * 订单详情
+	 * @return
+	 */
+	public String orderDetail(){
+		order = orderService.findOrderByOrderId(order.getId());
+		return "orderDetail";
+	}
+	
+	/**
+	 * 取消订单
+	 * @return
+	 */
+	@UserSessionCheck
+	public String cancelOrder(){
+		orderService.cancelOrder(currentUserInfo(), order);
+		return "cancelOrder";
+	}
+	
+	/**
 	 * 直接结算跳转到订单确认页面
 	 * @return
 	 */
