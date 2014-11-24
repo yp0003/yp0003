@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -60,27 +60,27 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>订单号</th>
-							<th>订单物品</th>
-							<th>价格</th>
-							<th>订单状态</th>
-							<th>订单创建时间</th>
+							<th>消息标题</th>
+							<th>发送人</th>
+							<th>消息标题</th>
+							<th>消息发送时间</th>
+							<th>消息状态</th>
 							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody>
 						<s:iterator value="orderList" id="ol">
 							<tr>
-								<td>${ol.orderId}</td>
-								<td><s:iterator value="#ol.orderDetailList" id="odl">
-									${odl.product.productName}</br>
-									</s:iterator></td>
-								<td>${ol.countPrice}</td>
-								<td>${ol.orderStatusDic.dicCn}</td>
-								<td><s:date name="#ol.orderCreateTime"
+								<td>消息标题</td>
+								<td>发送人</td>
+								<td>消息标题</td>
+								<td>消息发送时间<s:date name="#ol.orderCreateTime"
 										format="yyyy-MM-dd hh:mm:ss" /></td>
-								<td><a href="${pageContext.request.contextPath}/order!cancelOrder.html?order.id=${ol.id}">取消订单</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/order!orderDetail.html?order.id=${ol.id}">订单详情</a>&nbsp;&nbsp;<a
-									href="#">去结算</a></td>
+								<td>消息状态</td>
+								<td><a
+									href="${pageContext.request.contextPath}/order!cancelOrder.html?order.id=${ol.id}">消息详情</a>&nbsp;&nbsp;<a
+									href="${pageContext.request.contextPath}/order!orderDetail.html?order.id=${ol.id}">删除</a>&nbsp;&nbsp;<a
+									href="#">回复</a></td>
 							</tr>
 						</s:iterator>
 					</tbody>

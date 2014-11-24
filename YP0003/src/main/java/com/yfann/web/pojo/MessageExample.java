@@ -664,6 +664,76 @@ public class MessageExample {
             addCriterion("open_time not between", value1, value2, "openTime");
             return (Criteria) this;
         }
+
+        public Criteria andMessTitleIsNull() {
+            addCriterion("mess_title is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleIsNotNull() {
+            addCriterion("mess_title is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleEqualTo(String value) {
+            addCriterion("mess_title =", value, "messTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleNotEqualTo(String value) {
+            addCriterion("mess_title <>", value, "messTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleGreaterThan(String value) {
+            addCriterion("mess_title >", value, "messTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("mess_title >=", value, "messTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleLessThan(String value) {
+            addCriterion("mess_title <", value, "messTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleLessThanOrEqualTo(String value) {
+            addCriterion("mess_title <=", value, "messTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleLike(String value) {
+            addCriterion("mess_title like", value, "messTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleNotLike(String value) {
+            addCriterion("mess_title not like", value, "messTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleIn(List<String> values) {
+            addCriterion("mess_title in", values, "messTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleNotIn(List<String> values) {
+            addCriterion("mess_title not in", values, "messTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleBetween(String value1, String value2) {
+            addCriterion("mess_title between", value1, value2, "messTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMessTitleNotBetween(String value1, String value2) {
+            addCriterion("mess_title not between", value1, value2, "messTitle");
+            return (Criteria) this;
+        }
     }
 
     /**

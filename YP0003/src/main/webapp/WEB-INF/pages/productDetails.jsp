@@ -214,18 +214,8 @@
 									type="button" class="btn btn-danger" style="float: right;">直接结算</button></a>
 						</div>
 					</div>
-
-
-
 				</div>
-
-
-
 			</div>
-
-
-
-
 		</div>
 
 		<div class="row">
