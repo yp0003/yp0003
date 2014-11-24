@@ -3,9 +3,28 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="oa1" namespace="/" extends="yfann-default">
+	<package name="oalogin" namespace="/" extends="yfann-default">
+		<!-- OA登录 -->
+		<action name="oalogin!*" method="{1}" class="com.yfann.web.action.oa.OaLoginAction">
+			<!-- 跳转到登录 -->
+			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
+			<!-- 跳转到注册 -->
+			<result name="forwardRegister">/WEB-INF/pages/oa/register_oa.jsp</result>
+			<!-- 跳转到OA主页 -->
+			<result name="forwardIndex">/WEB-INF/pages/oa/index_oa.jsp</result>
+			<result name="loginSuccess">/WEB-INF/pages/oa/index_oa.jsp</result>
+			<result type="json"></result>
+			<!-- 欢迎页面 -->
+			<result name="welcome">/WEB-INF/pages/oa/welcome_oa.jsp</result>
+			<!-- 跳转到密码页面 -->
+			<result name="forwardFindPassword">/WEB-INF/pages/findPassword.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 菜单 -->
+	<package name="oamenu" namespace="/" extends="yfann-default">
 		<!-- 登录 -->
-		<action name="login!*" method="{1}" class="com.yfann.web.action.oa.MenuAction">
+		<action name="login*" method="{1}" class="com.yfann.web.action.oa.MenuAction">
 			<result type="json"></result>
 		</action>
 
