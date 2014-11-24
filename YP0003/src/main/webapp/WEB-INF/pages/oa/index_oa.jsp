@@ -47,8 +47,8 @@
         <a href="javascript:void(0)" title="关闭全部标签页" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cancel'" onclick="removePanel()">全部关闭</a>
     </div>
 	<div id="tt" class="easyui-tabs" fit="true" border="false" tools="#tab-tools">
-		<div title="首页" data-options="iconCls:'icon-home'" >
-			<iframe frameborder="0" id="iframe_center" name="iframe_center" width="100%" height="100%" src="main!home.html" scrolling="auto"></iframe>
+		<div title="欢迎" " >
+			<iframe frameborder="0" id="iframe_center" name="iframe_center" width="100%" height="100%" src="oalogin!welcome.html" scrolling="auto"></iframe>
 		</div>
 	</div>
 </div>
@@ -99,7 +99,7 @@
 			},
 			async: {
 				enable: true,
-				url:"login!getOaMenu.html",
+				url:"oalogin!getOaMenu.html",
 				//autoParam:["id=menuId","pid" ,"name=n"]
 			},
 			callback: {

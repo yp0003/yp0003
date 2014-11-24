@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>365ITEDU</title>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.9.0.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/itedu.js"></script>
 <link href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript">
@@ -41,50 +41,50 @@
  <img src="${pageContext.request.contextPath}/images/hr_admin.png" alt="" />
  
  <!-- 表单 -->
-  <s:form action="employee!register.html" id="register">
+  <s:form action="oalogin!register.html" id="register">
     <ul>
     <li>
     <label for="memberID">会员ID:</label>
-    <s:textfield id="memberID" placeHolder="请输入6个以上的字符作为密码" name="employee.empId" />
+    <s:textfield id="memberID" placeHolder="请输入6个以上的字符作为密码" name="oaEmployee.employeeId" />
     <span class="redStar">*</span>
-     <s:if test="registerMessage.userIdMessage != null">
-      <span class="redStar"><s:property	value="registerMessage.userIdMessage" /></span>
+     <s:if test="oaRegisterMessage.employeeIdMessage != null">
+      <span class="redStar"><s:property	value="oaRegisterMessage.employeeIdMessage" /></span>
      </s:if>
     </li>
     <li>
     <label for="passWord">密码:</label>
-    <s:textfield id="passWord" placeHolder="英文、数字或字符，6-20位区分大小写" name="employee.nowPassword" />
+    <s:textfield id="passWord" placeHolder="英文、数字或字符，6-20位区分大小写" name="oaEmployee.nowPassword" />
     <span class="redStar">*</span>
-     <s:if test="registerMessage.passwordMessage != null">
-      <span class="redStar"><s:property	value="registerMessage.passwordMessage" /></span>
+     <s:if test="oaRegisterMessage.passwordMessage != null">
+      <span class="redStar"><s:property	value="oaRegisterMessage.passwordMessage" /></span>
      </s:if>
     </li>
     <li>
     <label for="passWord">确认密码:</label>
-    <s:textfield id="passWord" type="password" name="employee.nowPassword" />
+    <s:textfield id="passWord" type="password" name="oaEmployee.nowPassword" />
     <span class="redStar">*</span>
     </li>
     <li>
     <label for="passWord">电子邮箱:</label>
-    <s:textfield id="passWord" placeHolder="请使用常用邮箱地址作为登录账号" name="employee.email" />
+    <s:textfield id="passWord" placeHolder="请使用常用邮箱地址作为登录账号" name="oaEmployee.email" />
     <span class="redStar">*</span>
-     <s:if test="registerMessage.emailMessage != null">
-      <span class="redStar"><s:property	value="registerMessage.emailMessage" /></span>
+     <s:if test="oaRegisterMessage.emailMessage != null">
+      <span class="redStar"><s:property	value="oaRegisterMessage.emailMessage" /></span>
      </s:if>
     </li>
     <li>
     <label for="vertCode">验证码:</label>
     <s:textfield id="vertCode" name="validateCode" />
-    <img id="vertImg" src="${pageContext.request.contextPath}/employee!validateCode.html" />
+    <img id="vertImg" src="${pageContext.request.contextPath}/oalogin!validateCode.html" />
     <a class="chgVertImg" href="javascript:void(0);" onclick="reImg()">看不清，换一张</a>
-     <s:if test="registerMessage.valiCodeMessage != null">
-      <span class="redStar"><s:property	value="registerMessage.valiCodeMessage" /></span>
+     <s:if test="oaRegisterMessage.valiCodeMessage != null">
+      <span class="redStar"><s:property	value="oaRegisterMessage.valiCodeMessage" /></span>
      </s:if>
     </li>
    
     <li>
     <button id="btn_register" type="submit" value=""></button>
-    <a class="chgForm" href="${pageContext.request.contextPath}/employee!forwardLogin.html">登录</a>
+    <a class="chgForm" href="${pageContext.request.contextPath}/oalogin!forwardLogin.html">登录</a>
     <div class="clear"></div>
     </li>
     </ul>

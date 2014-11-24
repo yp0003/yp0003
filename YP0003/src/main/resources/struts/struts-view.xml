@@ -70,7 +70,7 @@
 	</package>
 
 
-	<package name="oa" namespace="/" extends="yfann-default">
+	<package name="oa1" namespace="/" extends="yfann-default">
 		<!-- OA -->
 		<action name="oasystem!*" method="{1}"
 			class="com.yfann.web.action.OASystemAction">

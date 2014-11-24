@@ -16,25 +16,24 @@ import com.yfann.web.service.OaMenuService;
 public class OaMenuServiceImpl implements OaMenuService {
 	@Autowired
 	private OaMenuMapper oaMenuMapper;
-	
 	@Autowired
 	private OaRoleMenuMapper oaRoleMenuMapper;
 
 	@Override
 	public void saveOaMenu(OaMenu oaMenu) throws Exception {
-		if(oaMenu!=null){
+		if (oaMenu != null) {
 			oaMenuMapper.insert(oaMenu);
 		}
 	}
 
 	@Override
 	public void deleteOaMenuById(String menuId) throws Exception {
-		if(menuId==null||"".equals(menuId)){
+		if (menuId == null || "".equals(menuId)) {
 			return;
 		}
-		//删除菜单
+		// 删除菜单
 		oaMenuMapper.deleteByPrimaryKey(menuId);
-		//删除关系
+		// 删除关系
 		OaRoleMenuExample oaRoleMenuExample = new OaRoleMenuExample();
 		oaRoleMenuExample.or().andMenuIdEqualTo(menuId);
 		oaRoleMenuMapper.deleteByExample(oaRoleMenuExample);
@@ -42,7 +41,7 @@ public class OaMenuServiceImpl implements OaMenuService {
 
 	@Override
 	public void updateOaMenu(OaMenu oaMenu) throws Exception {
-		if(oaMenu!=null){
+		if (oaMenu != null) {
 			oaMenuMapper.updateByPrimaryKeySelective(oaMenu);
 		}
 	}
@@ -51,7 +50,7 @@ public class OaMenuServiceImpl implements OaMenuService {
 	public List<OaMenu> getAllOaMenu() throws Exception {
 		OaMenuExample oaMenuExample = new OaMenuExample();
 		oaMenuExample.setOrderByClause("MENU_ID ASC");
-		return  oaMenuMapper.selectByExample(oaMenuExample);
+		return oaMenuMapper.selectByExample(oaMenuExample);
 	}
 
 	@Override

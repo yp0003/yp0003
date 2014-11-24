@@ -16,7 +16,7 @@ import com.yfann.web.service.OrderService;
  * @author Simon
  *
  */
-public class MenuAction extends CommonAction {
+public class OaMenuAction extends CommonAction {
 	private static final long serialVersionUID = 8574746594084487602L;
 
 	@Autowired

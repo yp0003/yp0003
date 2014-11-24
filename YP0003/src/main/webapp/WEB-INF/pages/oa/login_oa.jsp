@@ -6,6 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>365ITEDU</title>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/itedu.js"></script>
+<link href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet" />
+</head>
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -13,14 +17,10 @@ $(document).ready(function() {
 function reImg() {
 	$("#vertImg").attr(
 			"src",
-			"${pageContext.request.contextPath}/employee!validateCode.html?time="
+			"${pageContext.request.contextPath}/oalogin!validateCode.html?time="
 					+ new Date());
 }
 </script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.9.0.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/itedu.js"></script>
-<link href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet" />
-</head>
 <body id="admin">
 <div id="wrap_form">
  <div id="admin_login_form">
@@ -33,40 +33,40 @@ function reImg() {
  
  <!-- 表单 -->
 <!--   <form id="login"> -->
-   <s:form id="login" action="employee!validateLoginInfo.html">
+   <s:form id="login" action="oalogin!validateLoginInfo.html">
     <ul>
     <li>
     <label for="memberID">会员ID:</label>
-    <input id="memberID" type="text" name="employee.empId" />
-    <s:if  test="loginMessage.userIdMessage != null">
-		<span class="redStar"><s:property value="loginMessage.userIdMessage" /></span>
+    <input id="memberID" type="text" name="oaEmployee.employeeId" />
+    <s:if  test="oaLoginMessage.employeeIdMessage != null">
+		<span class="redStar"><s:property value="oaLoginMessage.employeeIdMessage" /></span>
 	</s:if>
     </li>
     <li>
     <label for="passWord">密码:</label>
-    <input id="passWord" type="text" name="employee.nowPassword" />
-    <s:if  test="loginMessage.passwordMessage != null">
-		<span class="redStar"><s:property value="loginMessage.passwordMessage" /></span>
+    <input id="passWord" type="password" name="oaEmployee.nowPassword" />
+    <s:if  test="oaLoginMessage.passwordMessage != null">
+		<span class="redStar"><s:property value="oaLoginMessage.passwordMessage" /></span>
 	</s:if>
     </li>
     <li>
     <label for="vertCode">验证码:</label>
     <input id="vertCode" type="text" name="validateCode" />
-    <img id="vertImg" src="${pageContext.request.contextPath}/employee!validateCode.html" />
+    <img id="vertImg" src="${pageContext.request.contextPath}/oalogin!validateCode.html" />
     <a class="chgVertImg" href="javascript:void(0);" onclick="reImg()">看不清，换一张</a>
-     <s:if test="loginMessage.valiCodeMessage != null">
-      <span class="redStar"><s:property	value="loginMessage.valiCodeMessage" /></span>
-     </s:if>
     </li>
     <li>
     <input id="remPass" type="checkbox" />
-    <label id="lblRemPass" for="remPass">记住密码，两周内自动登录</label>
+    <label id="lblRemPass" style="width:200px;" >记住密码，两周内自动登录</label>
     <div class="clear"></div>
     </li>
+	<s:if test="oaLoginMessage.valiCodeMessage != null">
+		<span class="redStar"><s:property value="oaLoginMessage.valiCodeMessage" /></span>
+	</s:if>
     <li>
     <s:actionerror cssStyle="color: red" id="errorInfo"/>
     <button id="btn_login" type="submit" value=""></button>
-    <a class="chgForm" href="employee!forwardRegister.html">注册</a>
+    <a class="chgForm" href="oalogin!forwardRegister.html">注册</a>
     <div class="clear"></div>
     </li>
     </ul>
