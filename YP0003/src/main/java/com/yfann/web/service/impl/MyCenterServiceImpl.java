@@ -44,6 +44,7 @@ public class MyCenterServiceImpl implements MyCenterService{
 	
 	@Override
 	public boolean updatePassword(User user) {
+		user.setNowPassword(user.getNowPassword().split(",")[0]);
 		int result = userMapper.updateByPrimaryKeySelective(user);
 		if(result > 0){
 			return true;

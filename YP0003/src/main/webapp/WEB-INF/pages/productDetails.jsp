@@ -183,7 +183,9 @@
 							</h4>
 						</div>
 						<div class="col-lg-9">
-							<h4><s:date name="product.updateTime" format="yyyy-MM-dd hh:mm:ss"/></h4>
+							<h4>
+								<s:date name="product.updateTime" format="yyyy-MM-dd hh:mm:ss" />
+							</h4>
 						</div>
 					</div>
 
@@ -250,24 +252,24 @@
 
 				<h1 class="page-header">课程详情</h1>
 				<p>
-					<a href="#" class="thumbnail"> <img
-						src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
-						alt="..."></a> <a href="#" class="thumbnail"> <img
-						src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
-						alt="..."></a> <a href="#" class="thumbnail"> <img
-						src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
-						alt="..."></a>
+					<s:iterator value="product.productDetailImageList" id="pdil">
+
+						<a href="#" class="thumbnail"> <img
+							src="${pageContext.request.contextPath}/product!showProductDetailImage.html?productDetailImage.id=<s:property value="#pdil.id"/>"
+							alt="..."></a>
+
+					</s:iterator>
 				</p>
 
 				<h1 class="page-header">课程精彩截图</h1>
 				<p>
-					<a href="#" class="thumbnail"> <img
-						src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
-						alt="..."></a> <a href="#" class="thumbnail"> <img
-						src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
-						alt="..."></a> <a href="#" class="thumbnail"> <img
-						src="http://img.mukewang.com/5428f42e000179f006000338-590-330.jpg"
-						alt="..."></a>
+					<s:iterator value="product.productDetailAvatarList" id="pdal">
+
+						<a href="#" class="thumbnail"> <img
+							src="${pageContext.request.contextPath}/product!showProductDetailAvatar.html?productDetailAvatar.id=<s:property value="#pdal.id"/>"
+							alt="..."></a>
+
+					</s:iterator>
 				</p>
 
 			</div>
@@ -283,45 +285,31 @@
 					</form>
 				</c:if>
 				<c:if test="${sessionScope.userInfo == null}">
-				<h4>请您先登录才能评论</h4>
+					<h4>请您先登录才能评论</h4>
 				</c:if>
 				<h1 class="page-header">学员动态</h1>
+				<s:iterator value="productAppraiseList" id="productAL">
 				<div class="row">
+				
 					<div class="col-lg-4">
+					
 						<img
 							src="http://img.mukewang.com/user/544a17d60001434101400140-80-80.jpg"
 							alt="..." class="img-circle" />
 					</div>
 					<div class="col-lg-8">
 						<p>
-							<span>好评</span>
+							<span>${productAL.productSatisfactionDic.dicCn}</span>
 						</p>
-						<p>资深UI+前端+架构，Woorich联合创始人、CTO，Veizen创始人，前后端开发、敏捷过程、项目管理经验丰富；爱技术，爱创业，爱一切新事物，玩过乐队，喜欢折腾！</p>
+						<p>${productAL.appraiseContext}</p>
 						<p>
-							<span>发表时间:2011-11-11</span>
+							<span>发表时间:<s:date name="#productAL.appraiseTime" format="yyyy-MM-dd hh:mm:ss"></s:date></span>
 						</p>
 					</div>
 				</div>
 
 				<hr />
-
-				<div class="row">
-					<div class="col-lg-4">
-						<img
-							src="http://img.mukewang.com/user/544a17d60001434101400140-80-80.jpg"
-							alt="..." class="img-circle" />
-					</div>
-					<div class="col-lg-8">
-						<p>
-							<span>好评</span>
-						</p>
-						<p>资深UI+前端+架构，Woorich联合创始人、CTO，Veizen创始人，前后端开发、敏捷过程、项目管理经验丰富；爱技术，爱创业，爱一切新事物，玩过乐队，喜欢折腾！</p>
-						<p>
-							<span>发表时间:2011-11-11</span>
-						</p>
-					</div>
-				</div>
-
+				</s:iterator>
 			</div>
 		</div>
 

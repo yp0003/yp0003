@@ -17,7 +17,7 @@
 <body>
 	<!-- 头部 -->
 	<%@ include file="common/common.jsp"%>
-	<s:form action="system!updatePassword.html" id="register">
+	<%-- 	<s:form action="system!updatePassword.html" id="register">
 		<ul>
 			<li><label for="passWord">当前密码:</label> <s:textfield
 					id="passWord" placeHolder="请输入当前密码" name="user.oldPassword" class="rlf-input rlf-input-email"/> <span
@@ -44,7 +44,28 @@
 				<div class="clear"></div>
 			</li>
 		</ul>
-	</s:form>
+	</s:form> --%>
+
+
+
+
+	<form role="form" action="system!login.html" method="post">
+		<div class="form-group">
+			<label for="exampleInputEmail1">旧密码</label> <input type="text"
+				class="form-control" name="user.oldPassword" placeholder="Enter userName" />
+		</div>
+		<div class="form-group">
+			<label for="exampleInputPassword1">新密码</label> <input type="password"
+				class="form-control" id="exampleInputPassword1"
+				name="user.nowPassword" placeholder="Password" />
+		</div>
+		<div class="form-group">
+			<label for="exampleInputPassword1">确认新密码</label> <input type="password"
+				class="form-control" id="exampleInputPassword1"
+				name="user.nowPassword" placeholder="Password" />
+		</div>
+		<button type="submit" class="btn btn-primary">登录</button>
+	</form>
 
 	<!-- 底部 -->
 	<%@ include file="common/commonFooter.jsp"%>

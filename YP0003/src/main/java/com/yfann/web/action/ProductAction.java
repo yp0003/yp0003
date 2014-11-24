@@ -201,4 +201,20 @@ public class ProductAction extends CommonAction {
 		this.productAppraiseDicList = productAppraiseDicList;
 	}
 
+	public ProductDetailImage getProductDetailImage() {
+		return productDetailImage;
+	}
+
+	public void setProductDetailImage(ProductDetailImage productDetailImage) {
+		this.productDetailImage = productDetailImage;
+	}
+
+	public ProductDetailAvatar getProductDetailAvatar() {
+		return productDetailAvatar;
+	}
+
+	public void setProductDetailAvatar(ProductDetailAvatar productDetailAvatar) {
+		this.productDetailAvatar = productDetailAvatar;
+	}
+
 }

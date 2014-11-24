@@ -52,7 +52,6 @@ public class SystemAction extends CommonAction {
 		return "forwardTest";
 	}
 
-
 	/**
 	 * 跳转到找回密码页面
 	 * 

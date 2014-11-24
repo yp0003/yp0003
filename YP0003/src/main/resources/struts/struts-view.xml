@@ -78,7 +78,7 @@
 			</result>
 
 			<!-- 课程详情截图 -->
-			<result name="showProductImage" type="stream">
+			<result name="showProductDetailImage" type="stream">
 				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
 				<param name="inputName">byteArrayInputStream</param>
 			</result>

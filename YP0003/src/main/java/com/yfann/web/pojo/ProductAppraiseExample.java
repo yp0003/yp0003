@@ -1,6 +1,7 @@
 package com.yfann.web.pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ProductAppraiseExample {
@@ -541,6 +542,66 @@ public class ProductAppraiseExample {
 
         public Criteria andProductIdNotBetween(String value1, String value2) {
             addCriterion("product_id not between", value1, value2, "productId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseTimeIsNull() {
+            addCriterion("appraise_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseTimeIsNotNull() {
+            addCriterion("appraise_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseTimeEqualTo(Date value) {
+            addCriterion("appraise_time =", value, "appraiseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseTimeNotEqualTo(Date value) {
+            addCriterion("appraise_time <>", value, "appraiseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseTimeGreaterThan(Date value) {
+            addCriterion("appraise_time >", value, "appraiseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("appraise_time >=", value, "appraiseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseTimeLessThan(Date value) {
+            addCriterion("appraise_time <", value, "appraiseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseTimeLessThanOrEqualTo(Date value) {
+            addCriterion("appraise_time <=", value, "appraiseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseTimeIn(List<Date> values) {
+            addCriterion("appraise_time in", values, "appraiseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseTimeNotIn(List<Date> values) {
+            addCriterion("appraise_time not in", values, "appraiseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseTimeBetween(Date value1, Date value2) {
+            addCriterion("appraise_time between", value1, value2, "appraiseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppraiseTimeNotBetween(Date value1, Date value2) {
+            addCriterion("appraise_time not between", value1, value2, "appraiseTime");
             return (Criteria) this;
         }
     }

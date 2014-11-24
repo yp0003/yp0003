@@ -78,7 +78,8 @@ public class ProductServiceImpl implements ProductService{
 	
 	@Override
 	public Product findProductById(String productId) {
-		return productMapper.selectByPrimaryKey(productId);
+		/*return productMapper.selectByPrimaryKey(productId);*/
+		return productMapper.selectProductByProductId(productId);
 	}
 	@Override
 	public List<Product> findProductList(Product product, PageInfo pageInfo) {
