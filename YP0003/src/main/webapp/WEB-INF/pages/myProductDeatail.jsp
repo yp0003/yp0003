@@ -14,8 +14,8 @@
 		<ol class="breadcrumb">
 			<li><a href="#">主页</a></li>
 			<li><a href="#">个人中心</a></li>
-			<li><a href="#">订单管理</a></li>
-			<li class="active"><a href="#">订单详情</a></li>
+			<li><a href="#">课程管理</a></li>
+			<li class="active"><a href="#">课程详情</a></li>
 		</ol>
 		<div class="row">
 			<div class="col-lg-2">
@@ -24,36 +24,13 @@
 			<div class="col-lg-10">
 				<h1 class="page-header">课程详情</h1>
 				<p>
-				<strong>订单号:</strong>${order.orderId}<br>
-				<strong>订单创建时间:</strong><s:date name="order.orderCreateTime"
-										format="yyyy-MM-dd hh:mm:ss" /><br>
-				<strong>订单状态:</strong>${order.orderStatusDic.dicCn}<br>
-				<strong>订单支付时间:</strong>${order.orderId}<br>
-				<strong>订单支付方式:</strong>${order.orderStatusDic.dicCn}<br>
-				<strong>订单总价:</strong>${order.countPrice}<br>
+				<strong>课程名称:</strong>${myProduct.product.productName}<br>
+				<strong>课程URL:</strong>${myProduct.productDetail.videoUrl}<br>
+				<strong>课程网盘提取码:</strong>${myProduct.productDetail.cloudPanCode}<br>
+				<strong>机器码:</strong>${myProduct.productDetail.cloudPanCode}<br>
+				<strong>播放码:</strong>${myProduct.playerCode}<br>
 				</p>
-				
-				<h1 class="page-header">订单商品详细列表</h1>
-				<table class="table table-striped">
-					<th>商品</th>
-					<th>商品信息</th>
-					<th>商品描述</th>
-					<th>单价</th>
-					<tbody>
-						<s:iterator value="order.orderDetailList" id="odl">
-							<tr>
-								<td><img alt=""
-									src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${odl.productId}"
-									width="100" /></td>
-								<td><s:property value="#odl.product.productName"></s:property></td>
-								<td><s:property value="#odl.product.productDesc"></s:property></td>
-								<td><s:property value="#odl.price"></s:property></td>
-							</tr>
-						</s:iterator>
-					</tbody>
-				</table>
 			</div>
-
 		</div>
 	</div>
 

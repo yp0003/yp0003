@@ -678,15 +678,19 @@
 		<association column="id" javaType="com.yfann.web.pojo.ProductImage"
 			property="productImage"
 			select="com.yfann.web.dao.ProductImageMapper.selectProductImageByProductId" />
+		<!-- 课程详情 -->
+		<association column="id" javaType="com.yfann.web.pojo.ProductDetail"
+			property="productDetail"
+			select="com.yfann.web.dao.ProductDetailMapper.selectProductDetailByProductId" />
 		<!-- 课程评论 -->
-	<!-- 	<collection column="id" property="productAppraiseList" javaType="ArrayList" 
+		<!-- <collection column="id" property="productAppraiseList" javaType="ArrayList" 
 			ofType="com.yfann.web.pojo.ProductAppraise" select="com.yfann.web.dao.ProductAppraiseMapper.selectProductAppraiseByListByProductId"></collection> -->
 		<!-- 课程详情图片 -->
 		<collection column="id" property="productDetailImageList"
 			javaType="ArrayList" ofType="com.yfann.web.pojo.ProductDetailImage"
 			select="com.yfann.web.dao.ProductDetailImageMapper.selectProductDetailImageByProductId"></collection>
 		<!-- 课程截图 -->
- 		<collection column="id" property="productDetailAvatarList"
+		<collection column="id" property="productDetailAvatarList"
 			javaType="ArrayList" ofType="com.yfann.web.pojo.ProductDetailAvatar"
 			select="com.yfann.web.dao.ProductDetailAvatarMapper.selectProductDetailAvatarByListByProductId"></collection>
 	</resultMap>

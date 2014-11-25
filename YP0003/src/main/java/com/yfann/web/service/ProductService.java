@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import com.yfann.web.pojo.Dic;
+import com.yfann.web.pojo.MyProduct;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ProductAppraise;
 import com.yfann.web.pojo.ProductKind;
@@ -15,6 +16,12 @@ import com.yfann.web.vo.PageInfo;
  *
  */
 public interface ProductService {
+	/**
+	 * 根据我的课程Id查询我的课程
+	 * @param myProductId
+	 * @return
+	 */
+	MyProduct findMyProductByMyProductId(String myProductId);
 	/**
 	 * 查询课程详情图片
 	 * @param productDetailAvatarId

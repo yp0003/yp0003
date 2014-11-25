@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.yfann.web.common.DicValue;
 import com.yfann.web.dao.DicMapper;
+import com.yfann.web.dao.MyProductMapper;
 import com.yfann.web.dao.ProductAppraiseMapper;
 import com.yfann.web.dao.ProductDetailAvatarMapper;
 import com.yfann.web.dao.ProductDetailImageMapper;
@@ -19,6 +20,7 @@ import com.yfann.web.dao.ProductImageMapper;
 import com.yfann.web.dao.ProductKindMapper;
 import com.yfann.web.dao.ProductMapper;
 import com.yfann.web.pojo.Dic;
+import com.yfann.web.pojo.MyProduct;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ProductAppraise;
 import com.yfann.web.pojo.ProductImage;
@@ -43,6 +45,13 @@ public class ProductServiceImpl implements ProductService{
 	private ProductDetailImageMapper productDetailImageMapper;
 	@Autowired
 	private ProductDetailAvatarMapper productDetailAvatarMapper;
+	@Autowired
+	private MyProductMapper myProductMapper;
+	
+	@Override
+	public MyProduct findMyProductByMyProductId(String myProductId) {
+		return myProductMapper.selectMyProductById(myProductId);
+	}
 	
 	@Override
 	public ByteArrayInputStream findProductDetailImageById(

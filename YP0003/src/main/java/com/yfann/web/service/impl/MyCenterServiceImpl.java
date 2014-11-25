@@ -24,6 +24,14 @@ public class MyCenterServiceImpl implements MyCenterService{
 	@Autowired
 	private MyProductMapper myProductMapper;
 	@Override
+	public boolean commitSmartCode(MyProduct myProduct) {
+		int reslut = myProductMapper.updateByPrimaryKeySelective(myProduct);
+		if(reslut > 0){
+			return true;
+		}
+		return false;
+	}
+	@Override
 	public List<MyProduct> findMyProductList(User user, MyProduct myProduct,PageInfo pageInfo) {
 		Map<String, Object> parames = getMyProductParames(myProduct);
 		parames.put("userId", user.getId());
