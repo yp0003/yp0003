@@ -46,30 +46,41 @@
 		</ul>
 	</s:form> --%>
 
-
-<div class="row">
-<div class="col"></div>
-</div>
-
-	<form role="form" action="system!login.html" method="post">
-		<div class="form-group">
-			<label for="exampleInputEmail1">旧密码</label> <input type="text"
-				class="form-control" name="user.oldPassword" placeholder="Enter userName" />
+	<div class="container-fluid" style="width: 80%; margin-top: 50px;">
+		<ol class="breadcrumb">
+			<li><a href="#">主页</a></li>
+			<li><a href="#">个人中心</a></li>
+			<li class="active">订单管理</li>
+		</ol>
 		</div>
-		<div class="form-group">
-			<label for="exampleInputPassword1">新密码</label> <input type="password"
-				class="form-control" id="exampleInputPassword1"
-				name="user.nowPassword" placeholder="Password" />
-		</div>
-		<div class="form-group">
-			<label for="exampleInputPassword1">确认新密码</label> <input type="password"
-				class="form-control" id="exampleInputPassword1"
-				name="user.nowPassword" placeholder="Password" />
-		</div>
-		<button type="submit" class="btn btn-primary">确认修改</button>
-	</form>
+		<div class="row">
+			<div class="col-lg-2">
+				<%@ include file="common/mypageCommon.jsp"%>
+			</div>
 
-	<!-- 底部 -->
-	<%@ include file="common/commonFooter.jsp"%>
+
+			<div class="col-lg-10">
+				<form role="form" action="system!modifyPassword.html" method="post">
+					<div class="form-group">
+						<label for="exampleInputEmail1">旧密码</label> <input type="text"
+							class="form-control" name="user.oldPassword"
+							placeholder="Enter userName" />
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">新密码</label> <input
+							type="password" class="form-control" id="exampleInputPassword1"
+							name="user.nowPassword" placeholder="Password" />
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">确认新密码</label> <input
+							type="password" class="form-control" id="exampleInputPassword1"
+							name="user.nowPassword" placeholder="Password" />
+					</div>
+					<button type="submit" class="btn btn-primary">确认修改</button>
+				</form>
+			</div>
+		</div>
+		<!-- 底部 -->
+		<%@ include file="common/commonFooter.jsp"%>
 </body>
 </html>
