@@ -15,7 +15,7 @@ import com.yfann.web.service.OaMenuService;
  * @author Simon
  *
  */
-public class OaMenuAction extends CommonAction {
+public class OaRoleAction extends CommonAction {
 	private static final long serialVersionUID = -344595803339516326L;
 
 	/** 菜单列表 */

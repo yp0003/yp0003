@@ -47,14 +47,14 @@ public class OaMenuServiceImpl implements OaMenuService {
 	}
 
 	@Override
-	public List<OaMenu> getAllOaMenu() throws Exception {
+	public List<OaMenu> getAllOaMenu() {
 		OaMenuExample oaMenuExample = new OaMenuExample();
 		oaMenuExample.setOrderByClause("MENU_ID ASC");
 		return oaMenuMapper.selectByExample(oaMenuExample);
 	}
 
 	@Override
-	public OaMenu getOaMenuById(String menuId) throws Exception {
+	public OaMenu getOaMenuById(String menuId) {
 		return oaMenuMapper.selectByPrimaryKey(menuId);
 	}
 

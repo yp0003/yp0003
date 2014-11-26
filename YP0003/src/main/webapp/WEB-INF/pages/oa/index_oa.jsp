@@ -65,12 +65,24 @@
 		//var index = 0;
 		function addPanel(event, treeId, treeNode){
 			if(treeNode.pid!=0 & treeNode.pid!=null){
-				var title1 = $("#"+treeNode.menuId);
-				if(title1.length==0){
+				//var title1 = $("#"+treeNode.menuId);
+				//if(title1.length==0){
+				if (!$('#tt').tabs('exists', treeNode.name+'')){
 					$('#tt').tabs('add',{
 						title:treeNode.name+'',
 						content: '<iframe scrolling="auto" frameborder="0" id="'+treeNode.menuId+'" src="'+treeNode.url+'" style="width:100%;height:100%;overflow-x:hidden; overflow-y:hidden;" ></iframe>',
 						closable: true
+					});
+				}else{
+					$('#tt').tabs('select', treeNode.name+'');  
+					var tab = $('#tt').tabs('getSelected');  
+					$('#tt').tabs('update',{
+						tab:tab,
+						options:{
+						title:treeNode.name+'',
+						content: '<iframe scrolling="auto" frameborder="0" id="'+treeNode.menuId+'" src="'+treeNode.url+'" style="width:100%;height:100%;overflow-x:hidden; overflow-y:hidden;" ></iframe>',
+						closable: true
+						}
 					});
 				}
 			}
