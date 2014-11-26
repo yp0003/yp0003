@@ -9,9 +9,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.yfann.web.dao.OaEmployeeMapper;
+import com.yfann.web.dao.OaMenuMapper;
+import com.yfann.web.dao.OaRoleMapper;
 import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.OaEmployeeExample;
 import com.yfann.web.pojo.OaMenu;
+import com.yfann.web.pojo.OaRole;
 import com.yfann.web.service.OaEmployeeService;
 import com.yfann.web.service.OaMenuService;
 
@@ -28,6 +31,10 @@ public class OaMenuTest {
 	private OaEmployeeService OaEmployeeService;
 	@Autowired
 	private OaEmployeeMapper oaEmployeeMapper;
+	@Autowired
+	private OaMenuMapper oaMenuMapper;
+	@Autowired
+	private OaRoleMapper oaRoleMapper;
 
 	@Test
 	public void getAllTest() throws Exception {
@@ -45,5 +52,17 @@ public class OaMenuTest {
 		System.out.println(list1.get(0).getEmployeeName());
 		OaEmployee oaEmployee = OaEmployeeService.validateOaEmployee("asd");
 		System.out.println(oaEmployee.getEmployeeName());
+	}
+	
+	@Test
+	public void getMenuByRole(){
+		List<OaMenu> list = oaMenuMapper.selectByRole("1");
+		System.out.println(list.get(0).getName());
+	}
+	
+	@Test
+	public void getRoleByEmp(){
+		List<OaRole> list = oaRoleMapper.selectByEmployee("65842bb38b5d4d7aa731ac27e1105f1c");
+		System.out.println(list.get(0).getName());
 	}
 }

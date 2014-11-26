@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yfann.web.dao.OaMenuMapper" >
+
+	<!-- 查询角色所关联的菜单表 -->
+	<select id="selectByRole" parameterType="java.lang.String" resultMap="BaseResultMap">
+		SELECT m.* FROM
+		t_oa_role_menu mr LEFT JOIN t_oa_menu m ON mr.menu_id=m.menu_id
+		WHERE mr.role_id=#{rid,jdbcType=VARCHAR} Order by
+		m.menu_id
+	</select>
+	
   <resultMap id="BaseResultMap" type="com.yfann.web.pojo.OaMenu" >
     <!--
       WARNING - @mbggenerated
