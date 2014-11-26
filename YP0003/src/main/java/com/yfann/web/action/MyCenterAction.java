@@ -41,11 +41,21 @@ public class MyCenterAction extends CommonAction {
 	private MyCenterService myCenterService;
 	@Autowired
 	private ProductService productService;
+	
+	/**
+	 * 消息列表
+	 * @return
+	 */
+	public String messageList(){
+		
+		return "messageList";
+	}
 
 	/**
 	 * 跳转到提交机器码页面
 	 * @return
 	 */
+	@UserSessionCheck
 	public String forwardCommitSmartCode(){
 		try{
 		myProduct = productService.findMyProductByMyProductId(myProduct.getId());

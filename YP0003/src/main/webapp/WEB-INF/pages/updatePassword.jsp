@@ -47,7 +47,9 @@
 	</s:form> --%>
 
 
-
+<div class="row">
+<div class="col"></div>
+</div>
 
 	<form role="form" action="system!login.html" method="post">
 		<div class="form-group">
@@ -64,7 +66,7 @@
 				class="form-control" id="exampleInputPassword1"
 				name="user.nowPassword" placeholder="Password" />
 		</div>
-		<button type="submit" class="btn btn-primary">登录</button>
+		<button type="submit" class="btn btn-primary">确认修改</button>
 	</form>
 
 	<!-- 底部 -->

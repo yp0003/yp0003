@@ -25,7 +25,7 @@
 <script
 	src="${pageContext.request.contextPath}/bootstarp/js/jquery.min.js"></script>
 
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" />
+<%-- <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" /> --%>
 <script
 	src="${pageContext.request.contextPath}/bootstarp/js/bootstrap.min.js"></script>
 <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js" />
@@ -37,6 +37,8 @@
 	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/toc.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/site.min.js"></script>
+	<script
+	src="${pageContext.request.contextPath}/bootstarp/js/custom.js"></script>
 
 <script>
 	var _hmt = _hmt || [];

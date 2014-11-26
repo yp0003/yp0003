@@ -31,7 +31,7 @@
 		</global-results>
 
 
-		<global-exception-mappings>
+<!-- 		<global-exception-mappings>
 			<exception-mapping result="errHandler" exception="java.lang.Exception" />
 		</global-exception-mappings>
 
@@ -41,6 +41,6 @@
 			</result>
 
 			<exception-mapping result="error" exception="java.lang.Exception" />
-		</action>
+		</action> -->
 	</package>
 </struts>
