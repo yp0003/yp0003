@@ -61,5 +61,9 @@ public class DicValue {
 		public static final String PALYER_CODE_ACCREDIT_STATUS_UNACCREDIT = "0";
 		/**播放码授权状态-----已授权*/
 		public static final String PALYER_CODE_ACCREDIT_STATUS_ACCREDITTED = "1";
+		/**播放码授权状态-----审核中*/
+		public static final String PALYER_CODE_ACCREDIT_STATUS_ACCREDITTING = "2";
+		/**播放码授权状态-----未申请*/
+		public static final String PALYER_CODE_ACCREDIT_STATUS_APPLICATION = "3";
 	}
 }

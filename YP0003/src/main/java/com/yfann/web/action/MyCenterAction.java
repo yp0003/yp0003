@@ -2,15 +2,19 @@ package com.yfann.web.action;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.annotation.UserSessionCheck;
 import com.yfann.web.pojo.MyProduct;
 import com.yfann.web.pojo.Order;
 import com.yfann.web.pojo.OrderDetail;
+import com.yfann.web.pojo.Product;
+import com.yfann.web.pojo.ProductDetail;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.MyCenterService;
 import com.yfann.web.service.OrderService;
+import com.yfann.web.service.ProductService;
 import com.yfann.web.vo.PageInfo;
 
 public class MyCenterAction extends CommonAction {
@@ -27,11 +31,64 @@ public class MyCenterAction extends CommonAction {
 	private MyProduct myProduct;
 	/** 我的课程列表 */
 	private List<MyProduct> myProductList;
+	/**课程*/
+	private Product product;
+	/**课程详情*/
+	private ProductDetail productDetail;
 	@Autowired
 	private OrderService orderService;
 	@Autowired
 	private MyCenterService myCenterService;
+	@Autowired
+	private ProductService productService;
 
+	/**
+	 * 跳转到提交机器码页面
+	 * @return
+	 */
+	public String forwardCommitSmartCode(){
+		try{
+		myProduct = productService.findMyProductByMyProductId(myProduct.getId());
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return "forwardCommitSmartCode";
+	}
+	
+	/**
+	 * 提交机器码
+	 * @return
+	 */
+	@UserSessionCheck
+	public String commitSmartCode(){
+		if(myProduct !=null && product != null && StringUtils.isNotBlank(myProduct.getSmartCode())){
+			boolean flag = myCenterService.commitSmartCode(myProduct);
+			if(flag){
+				addActionMessage("申请已提交!");
+			}else{
+				addActionMessage("提交失败");
+			}
+		}
+		else{
+			addActionError("请填写完整信息");
+		}
+		return "commitSmartCode";
+	}
+	/**
+	 * 我的课程详情
+	 * @return
+	 */
+	@UserSessionCheck
+	public String myProductDetail(){
+		myProduct = productService.findMyProductByMyProductId(myProduct.getId());
+		return "myProductDetail";
+	}
+	/**
+	 * 跳转到我的课程列表
+	 * @return
+	 */
+	@UserSessionCheck
 	public String forwardMyProductList() {
 		if (myProduct == null) {
 			myProduct = new MyProduct();
@@ -89,7 +146,6 @@ public class MyCenterAction extends CommonAction {
 
 	/**
 	 * 跳转到我的订单页面
-	 * 
 	 * @return
 	 */
 	@UserSessionCheck
@@ -169,6 +225,20 @@ public class MyCenterAction extends CommonAction {
 
 	public void setMyProductList(List<MyProduct> myProductList) {
 		this.myProductList = myProductList;
+	}
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public ProductDetail getProductDetail() {
+		return productDetail;
+	}
+
+	public void setProductDetail(ProductDetail productDetail) {
+		this.productDetail = productDetail;
 	}
 
 }

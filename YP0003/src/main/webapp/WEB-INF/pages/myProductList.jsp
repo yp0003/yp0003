@@ -83,7 +83,7 @@
 										format="yyyy-MM-dd hh:mm:ss" /></td>
 								<td>${mpl.userId}</td>
 								<td>${mpl.accreditStatusDic.dicCn}</td>
-								<td><a href="#">课程详情</a>&nbsp;&nbsp;<a href="#"
+								<td><a href="${pageContext.request.contextPath}/mycenter!myProductDetail.html?myProduct.id=${mpl.id}">课程详情</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/mycenter!myProductDetail.html?mycenter!forwardCommitSmartCode.html?myProduct.id=${mpl.id}"
 									data-toggle="modal">提交机器码</a></td>
 							</tr>
 						</s:iterator>

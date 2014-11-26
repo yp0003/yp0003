@@ -113,9 +113,15 @@ public class SystemAction extends CommonAction {
 	 * 
 	 * @return
 	 */
-	public String login() {
+	public String login() throws Exception{
 		if (user != null) {
-			User userTemp = systemService.valiDateLogin(user);
+			User userTemp = null;
+			try{
+				userTemp = systemService.valiDateLogin(user);
+			}catch(Exception e){
+				logger.error(e.getMessage());
+				e.printStackTrace();
+			}
 			if (userTemp != null) {
 				session.setAttribute(ApplicationValue.USER_KEY_ON_SESSION,
 						userTemp);// 添加用户到session中

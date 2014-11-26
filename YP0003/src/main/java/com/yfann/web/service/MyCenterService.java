@@ -12,6 +12,7 @@ import com.yfann.web.vo.PageInfo;
  *
  */
 public interface MyCenterService {
+	public boolean commitSmartCode(MyProduct myProduct);
 	/**
 	 * 查询我的课程
 	 * @param user

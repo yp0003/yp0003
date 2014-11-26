@@ -111,8 +111,12 @@
 			<result name="forwardMyOrderList">/WEB-INF/pages/myOrderList.jsp</result>
 			<!-- 跳转更新个人资料 -->
 			<result name="forwardUpdateInfo">/WEB-INF/pages/updateInfo.jsp</result>
-
+			<!-- 个人课程列表 -->
 			<result name="forwardMyProductList">/WEB-INF/pages/myProductList.jsp</result>
+			<!-- 我的课程详情 -->
+			<result name="myProductDetail">/WEB-INF/pages/myProductDeatail.jsp</result>
+			<!-- 转向提交机器码页面 -->
+			<result name="forwardCommitSmartCode">/WEB-INF/pages/commitSmartCode.jsp</result>
 		</action>
 	</package>
 </struts>

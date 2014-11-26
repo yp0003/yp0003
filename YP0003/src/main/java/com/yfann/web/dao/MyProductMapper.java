@@ -11,6 +11,12 @@ import org.apache.ibatis.session.RowBounds;
 
 public interface MyProductMapper {
 	/**
+	 * 根据主键查询我的课程
+	 * @param id
+	 * @return
+	 */
+	MyProduct selectMyProductById(String id);
+	/**
 	 * 根据条件查询我的课程列表
 	 * @param parames
 	 * @param rowBounds
