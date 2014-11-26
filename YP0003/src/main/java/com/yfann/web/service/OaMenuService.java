@@ -35,7 +35,7 @@ public interface OaMenuService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<OaMenu> getAllOaMenu() throws Exception;
+	public List<OaMenu> getAllOaMenu();
 
 	/**
 	 * 根据menuId获取菜单
@@ -44,6 +44,6 @@ public interface OaMenuService {
 	 * @return
 	 * @throws Exception
 	 */
-	public OaMenu getOaMenuById(String menuId) throws Exception;
+	public OaMenu getOaMenuById(String menuId);
 
 }

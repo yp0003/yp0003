@@ -16,15 +16,60 @@ import com.yfann.web.service.OaMenuService;
  *
  */
 public class OaMenuAction extends CommonAction {
-	private static final long serialVersionUID = 8574746594084487602L;
+	private static final long serialVersionUID = -344595803339516326L;
+
+	/** 菜单列表 */
+	public List<OaMenu> menuList;
+	/** 菜单 */
+	public OaMenu oaMenu;
 
 	@Autowired
 	private OaMenuService oaMenuService;
 
-	public String getOaMenu() throws Exception {
-		List<OaMenu> list = oaMenuService.getAllOaMenu();
-		ActionContext.getContext().getValueStack().push(list);
-		return SUCCESS;
-		
+	public String toList() {
+		menuList = oaMenuService.getAllOaMenu();
+		return "tolist";
 	}
+	
+	public String toAdd(){
+		return "add";
+	}
+	
+	public String add() throws Exception{
+		oaMenuService.saveOaMenu(oaMenu);
+		return toList();
+	}
+
+	public String toUpdate() {
+		oaMenu = oaMenuService.getOaMenuById(request.getParameter("id"));
+		ActionContext.getContext().getValueStack().push(oaMenu);
+		return "update";
+	}
+
+	public String update() throws Exception {
+		oaMenuService.updateOaMenu(oaMenu);
+		return toList();
+	}
+
+	public String del() throws Exception {
+		oaMenuService.deleteOaMenuById(request.getParameter("id"));
+		return toList();
+	}
+
+	public List<OaMenu> getMenuList() {
+		return menuList;
+	}
+
+	public void setMenuList(List<OaMenu> menuList) {
+		this.menuList = menuList;
+	}
+
+	public OaMenu getOaMenu() {
+		return oaMenu;
+	}
+
+	public void setOaMenu(OaMenu oaMenu) {
+		this.oaMenu = oaMenu;
+	}
+
 }

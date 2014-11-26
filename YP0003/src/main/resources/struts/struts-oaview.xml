@@ -23,19 +23,11 @@
 	
 	<!-- 菜单 -->
 	<package name="oamenu" namespace="/" extends="yfann-default">
-		<!-- 登录 -->
-		<action name="login*" method="{1}" class="com.yfann.web.action.oa.MenuAction">
-			<result type="json"></result>
-		</action>
-
-		<!-- 系统 -->
-		<action name="system!*" method="{1}" class="com.yfann.web.action.SystemAction">
-			<!-- 跳转到注册 -->
-			<result name="forwardRegister">/WEB-INF/pages/register.jsp</result>
-			<!-- 系统主页 -->
-			<result name="forwardIndex">/WEB-INF/pages/index.jsp</result>
-			<!-- 跳转到召回密码页面 -->
-			<result name="forwardFindPassword">/WEB-INF/pages/findPassword.jsp</result>
+		<!-- 菜单 -->
+		<action name="oaMenu!*" method="{1}" class="com.yfann.web.action.oa.OaMenuAction">
+			<result name="tolist">/WEB-INF/pages/oa/menu/menulist_oa.jsp</result>
+			<result name="add">/WEB-INF/pages/oa/menu/menuadd_oa.jsp</result>
+			<result name="update">/WEB-INF/pages/oa/menu/menuupdate_oa.jsp</result>
 		</action>
 	</package>
 
