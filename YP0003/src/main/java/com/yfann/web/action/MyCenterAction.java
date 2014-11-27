@@ -121,7 +121,15 @@ public class MyCenterAction extends CommonAction {
 		myMessageList = myCenterService.findMyMessageList(currentUserInfo(), message, pageInfo);
 		return "forwardMyMessageList";
 	}
-	
+	@UserSessionCheck
+	public String delMessage(){
+		myCenterService.delMessage(message.getId());
+		return forwardMyMessage();
+	}
+	@UserSessionCheck
+	public String messageDetail(){
+		return "messageDetail";
+	}
 	/**
 	 * 跳转到更新个人资料页面
 	 * 

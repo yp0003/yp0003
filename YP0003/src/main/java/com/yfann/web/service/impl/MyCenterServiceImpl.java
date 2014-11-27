@@ -84,4 +84,8 @@ public class MyCenterServiceImpl implements MyCenterService{
 		pageInfo.setCount(messageMapper.countByMessageParam(message));
 		return messageMapper.selectByMessageParam(message, new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
 	}
+	@Override
+	public void delMessage(String messageId) {
+		messageMapper.deleteByPrimaryKey(messageId);
+	}
 }

@@ -70,16 +70,16 @@
 						</tr>
 					</thead>
 					<tbody>
-						<s:iterator value="myMessageList" id="ol">
+						<s:iterator value="myMessageList" id="msg">
 							<tr>
-								<td>${ol.messTitle}</td>
-								<td>${ol.sendUser.userName}</td>
-								<td><s:date name="#ol.sendTime"
+								<td>${msg.messTitle}</td>
+								<td>${msg.sendUser.userName}</td>
+								<td><s:date name="#msg.sendTime"
 										format="yyyy-MM-dd hh:mm:ss" /></td>
-								<td>${ol.messStatus}</td>
+								<td>${msg.messStatus}</td>
 								<td><a
-									href="${pageContext.request.contextPath}/order!cancelOrder.html?order.id=${ol.id}">消息详情</a>&nbsp;&nbsp;<a
-									href="${pageContext.request.contextPath}/order!orderDetail.html?order.id=${ol.id}">删除</a>&nbsp;&nbsp;<a
+									href="${pageContext.request.contextPath}/mycenter!messageDetail.html?order.id=${msg.id}">消息详情</a>&nbsp;&nbsp;<a
+									href="${pageContext.request.contextPath}/mycenter!delMessage.html?message.id=${msg.id}">删除</a>&nbsp;&nbsp;<a
 									href="#">回复</a></td>
 							</tr>
 						</s:iterator>

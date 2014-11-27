@@ -14,6 +14,7 @@ import com.yfann.web.vo.PageInfo;
  */
 public interface MyCenterService {
 	
+	public void delMessage(String messageId);
 	/**
 	 * 查询我的消息
 	 * @param user
