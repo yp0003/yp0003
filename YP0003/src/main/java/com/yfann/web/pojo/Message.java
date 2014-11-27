@@ -75,6 +75,8 @@ public class Message {
      *
      * @mbggenerated
      */
+    /**发送人*/
+    private User sendUser;
     public String getId() {
         return id;
     }
@@ -258,4 +260,14 @@ public class Message {
     public void setMessTitle(String messTitle) {
         this.messTitle = messTitle == null ? null : messTitle.trim();
     }
+
+	public User getSendUser() {
+		return sendUser;
+	}
+
+	public void setSendUser(User sendUser) {
+		this.sendUser = sendUser;
+	}
+    
+    
 }

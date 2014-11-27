@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="com.yfann.web.page" prefix="p"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -61,22 +62,21 @@
 					<thead>
 						<tr>
 							<th>消息标题</th>
-							<th>发送人</th>
-							<th>消息标题</th>
+							<th>发送人</th>						
 							<th>消息发送时间</th>
+<!-- 							<th>消息标题</th> -->
 							<th>消息状态</th>
 							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody>
-						<s:iterator value="orderList" id="ol">
+						<s:iterator value="myMessageList" id="ol">
 							<tr>
-								<td>消息标题</td>
-								<td>发送人</td>
-								<td>消息标题</td>
-								<td>消息发送时间<s:date name="#ol.orderCreateTime"
+								<td>${ol.messTitle}</td>
+								<td>${ol.sendUser.userName}</td>
+								<td><s:date name="#ol.sendTime"
 										format="yyyy-MM-dd hh:mm:ss" /></td>
-								<td>消息状态</td>
+								<td>${ol.messStatus}</td>
 								<td><a
 									href="${pageContext.request.contextPath}/order!cancelOrder.html?order.id=${ol.id}">消息详情</a>&nbsp;&nbsp;<a
 									href="${pageContext.request.contextPath}/order!orderDetail.html?order.id=${ol.id}">删除</a>&nbsp;&nbsp;<a

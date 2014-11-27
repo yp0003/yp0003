@@ -117,6 +117,8 @@
 			<result name="myProductDetail">/WEB-INF/pages/myProductDeatail.jsp</result>
 			<!-- 转向提交机器码页面 -->
 			<result name="forwardCommitSmartCode">/WEB-INF/pages/commitSmartCode.jsp</result>
+			<!-- 转向我的消息页面 -->
+			<result name="forwardMyMessageList">/WEB-INF/pages/messageList.jsp</result>
 		</action>
 	</package>
 </struts>

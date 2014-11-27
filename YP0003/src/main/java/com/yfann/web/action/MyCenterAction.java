@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.annotation.UserSessionCheck;
+import com.yfann.web.pojo.Message;
 import com.yfann.web.pojo.MyProduct;
 import com.yfann.web.pojo.Order;
 import com.yfann.web.pojo.OrderDetail;
@@ -31,6 +32,10 @@ public class MyCenterAction extends CommonAction {
 	private MyProduct myProduct;
 	/** 我的课程列表 */
 	private List<MyProduct> myProductList;
+	/** 我的消息列表*/
+	private List<Message> myMessageList;
+	/** 我的消息*/
+	private Message message;
 	/**课程*/
 	private Product product;
 	/**课程详情*/
@@ -108,6 +113,15 @@ public class MyCenterAction extends CommonAction {
 		return "forwardMyProductList";
 	}
 
+	@UserSessionCheck
+	public String forwardMyMessage(){
+		if(message == null){
+			message = new Message();
+		}			
+		myMessageList = myCenterService.findMyMessageList(currentUserInfo(), message, pageInfo);
+		return "forwardMyMessageList";
+	}
+	
 	/**
 	 * 跳转到更新个人资料页面
 	 * 
@@ -249,6 +263,22 @@ public class MyCenterAction extends CommonAction {
 
 	public void setProductDetail(ProductDetail productDetail) {
 		this.productDetail = productDetail;
+	}
+
+	public List<Message> getMyMessageList() {
+		return myMessageList;
+	}
+
+	public void setMyMessageList(List<Message> myMessageList) {
+		this.myMessageList = myMessageList;
+	}
+
+	public Message getMessage() {
+		return message;
+	}
+
+	public void setMessage(Message message) {
+		this.message = message;
 	}
 
 }

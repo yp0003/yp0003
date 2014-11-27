@@ -9,8 +9,10 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yfann.web.dao.MessageMapper;
 import com.yfann.web.dao.MyProductMapper;
 import com.yfann.web.dao.UserMapper;
+import com.yfann.web.pojo.Message;
 import com.yfann.web.pojo.MyProduct;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.MyCenterService;
@@ -23,6 +25,8 @@ public class MyCenterServiceImpl implements MyCenterService{
 	private UserMapper userMapper;
 	@Autowired
 	private MyProductMapper myProductMapper;
+	@Autowired
+	private MessageMapper messageMapper; 
 	@Override
 	public boolean commitSmartCode(MyProduct myProduct) {
 		int reslut = myProductMapper.updateByPrimaryKeySelective(myProduct);
@@ -72,5 +76,12 @@ public class MyCenterServiceImpl implements MyCenterService{
 	@Override
 	public User findUserInfoById(User user) {
 		return userMapper.selectByPrimaryKey(user.getId());
+	}
+	@Override
+	public List<Message> findMyMessageList(User user, Message message,
+			PageInfo pageInfo) {
+		message.setReceiveUserId(user.getId());
+		pageInfo.setCount(messageMapper.countByMessageParam(message));
+		return messageMapper.selectByMessageParam(message, new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
 	}
 }
