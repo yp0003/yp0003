@@ -1,5 +1,6 @@
 package com.yfann.web.service.impl;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.dao.MessageMapper;
 import com.yfann.web.dao.MyProductMapper;
 import com.yfann.web.dao.UserMapper;
@@ -87,5 +89,15 @@ public class MyCenterServiceImpl implements MyCenterService{
 	@Override
 	public void delMessage(String messageId) {
 		messageMapper.deleteByPrimaryKey(messageId);
+	}
+	@Override
+	public Message msgDetail(String messageId) {		
+		return messageMapper.selectByPrimaryKey(messageId);
+	}
+	@Override
+	public void replyMsg(Message msg) {
+		msg.setSendTime(new Date());
+		msg.setId(UUIDCreate.getUUID());
+		messageMapper.insert(msg);
 	}
 }

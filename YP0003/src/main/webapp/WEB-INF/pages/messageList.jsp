@@ -76,11 +76,11 @@
 								<td>${msg.sendUser.userName}</td>
 								<td><s:date name="#msg.sendTime"
 										format="yyyy-MM-dd hh:mm:ss" /></td>
-								<td>${msg.messStatus}</td>
+								<td>${msg.msgStatusDic.dicCn}</td>
 								<td><a
-									href="${pageContext.request.contextPath}/mycenter!messageDetail.html?order.id=${msg.id}">消息详情</a>&nbsp;&nbsp;<a
+									href="${pageContext.request.contextPath}/mycenter!messageDetail.html?message.id=${msg.id}">消息详情</a>&nbsp;&nbsp;<a
 									href="${pageContext.request.contextPath}/mycenter!delMessage.html?message.id=${msg.id}">删除</a>&nbsp;&nbsp;<a
-									href="#">回复</a></td>
+									href="${pageContext.request.contextPath}/mycenter!forwardReplyMsg.html?message.id=${msg.id}">回复</a></td>
 							</tr>
 						</s:iterator>
 					</tbody>

@@ -77,6 +77,9 @@ public class Message {
      */
     /**发送人*/
     private User sendUser;
+    /**接收人*/
+    private User receiveUser;
+    private Dic msgStatusDic;
     public String getId() {
         return id;
     }
@@ -267,6 +270,22 @@ public class Message {
 
 	public void setSendUser(User sendUser) {
 		this.sendUser = sendUser;
+	}
+
+	public User getReceiveUser() {
+		return receiveUser;
+	}
+
+	public void setReceiveUser(User receiveUser) {
+		this.receiveUser = receiveUser;
+	}
+
+	public Dic getMsgStatusDic() {
+		return msgStatusDic;
+	}
+
+	public void setMsgStatusDic(Dic msgStatusDic) {
+		this.msgStatusDic = msgStatusDic;
 	}
     
     

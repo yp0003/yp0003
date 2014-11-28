@@ -113,6 +113,10 @@ public class MyCenterAction extends CommonAction {
 		return "forwardMyProductList";
 	}
 
+	/**
+	 * 跳转到消息列表页面
+	 * @return
+	 */
 	@UserSessionCheck
 	public String forwardMyMessage(){
 		if(message == null){
@@ -121,14 +125,40 @@ public class MyCenterAction extends CommonAction {
 		myMessageList = myCenterService.findMyMessageList(currentUserInfo(), message, pageInfo);
 		return "forwardMyMessageList";
 	}
+	/**
+	 * 删除消息
+	 * @return
+	 */
 	@UserSessionCheck
 	public String delMessage(){
 		myCenterService.delMessage(message.getId());
 		return forwardMyMessage();
 	}
+	/**
+	 * 跳转到消息明细页面
+	 * @return
+	 */
 	@UserSessionCheck
 	public String messageDetail(){
+		message = myCenterService.msgDetail(message.getId());
 		return "messageDetail";
+	}
+	@UserSessionCheck
+	public String forwardReplyMsg(){
+		message = myCenterService.msgDetail(message.getId());
+		Message replyMsg = new Message();
+		replyMsg.setSendUserId(currentUserInfo().getId());
+		replyMsg.setSendUser(currentUserInfo());
+		replyMsg.setReceiveUserId(message.getSendUserId());
+		replyMsg.setReceiveUser(message.getSendUser());
+		message = replyMsg;
+		return "replyMsg";
+	}
+	@UserSessionCheck
+	public String replyMsg(){
+		myCenterService.replyMsg(message);
+		addActionMessage("发送成功");
+		return forwardMyMessage();
 	}
 	/**
 	 * 跳转到更新个人资料页面

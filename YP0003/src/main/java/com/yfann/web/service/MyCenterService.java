@@ -13,7 +13,21 @@ import com.yfann.web.vo.PageInfo;
  *
  */
 public interface MyCenterService {
-	
+	/**
+	 * 回复消息
+	 * @param msg
+	 */
+	public void replyMsg(Message msg);
+	/**
+	 * 得到消息明细
+	 * @param messageId
+	 * @return
+	 */
+	public Message msgDetail(String messageId);
+	/**
+	 * 删除消息
+	 * @param messageId
+	 */
 	public void delMessage(String messageId);
 	/**
 	 * 查询我的消息
