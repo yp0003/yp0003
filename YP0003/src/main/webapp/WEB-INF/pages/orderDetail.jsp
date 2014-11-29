@@ -57,6 +57,7 @@
 						</table>
 					</div>
 				</div>
+				<button type="button" class="btn btn-primary" onclick="goBack();">返回</button>
 			</div>
 
 		</div>
@@ -65,6 +66,11 @@
 
 	<!-- 底部 -->
 	<%@ include file="common/commonFooter.jsp"%>
-
+<script type="text/javascript">
+//返回上一页
+function goBack() {
+	history.back(-1);
+}
+</script>
 </body>
 </html>

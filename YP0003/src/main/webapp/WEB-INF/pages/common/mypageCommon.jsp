@@ -12,7 +12,7 @@
 			href="${pageContext.request.contextPath}/mycenter!forwardMyProductList.html">我的课程</a></li>
 		<li><a
 			href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">订单管理</a></li>
-		<li><a href="${pageContext.request.contextPath}/mycenter!">消息列表<span
+		<li><a href="${pageContext.request.contextPath}/mycenter!forwardMyMessage.html">消息列表<span
 				class="red">(1)</span></a></li>
 		<li><a
 			href="${pageContext.request.contextPath}/mycenter!forwardUpdateInfo.html">我的信息</a></li>

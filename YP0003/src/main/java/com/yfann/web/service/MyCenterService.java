@@ -2,6 +2,7 @@ package com.yfann.web.service;
 
 import java.util.List;
 
+import com.yfann.web.pojo.Message;
 import com.yfann.web.pojo.MyProduct;
 import com.yfann.web.pojo.User;
 import com.yfann.web.vo.PageInfo;
@@ -12,6 +13,31 @@ import com.yfann.web.vo.PageInfo;
  *
  */
 public interface MyCenterService {
+	/**
+	 * 回复消息
+	 * @param msg
+	 */
+	public void replyMsg(Message msg);
+	/**
+	 * 得到消息明细
+	 * @param messageId
+	 * @return
+	 */
+	public Message msgDetail(String messageId);
+	/**
+	 * 删除消息
+	 * @param messageId
+	 */
+	public void delMessage(String messageId);
+	/**
+	 * 查询我的消息
+	 * @param user
+	 * @param message
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<Message> findMyMessageList(User user,Message message,PageInfo pageInfo);
+	
 	public boolean commitSmartCode(MyProduct myProduct);
 	/**
 	 * 查询我的课程

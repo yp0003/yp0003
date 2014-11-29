@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.annotation.UserSessionCheck;
+import com.yfann.web.pojo.Message;
 import com.yfann.web.pojo.MyProduct;
 import com.yfann.web.pojo.Order;
 import com.yfann.web.pojo.OrderDetail;
@@ -31,6 +32,10 @@ public class MyCenterAction extends CommonAction {
 	private MyProduct myProduct;
 	/** 我的课程列表 */
 	private List<MyProduct> myProductList;
+	/** 我的消息列表*/
+	private List<Message> myMessageList;
+	/** 我的消息*/
+	private Message message;
 	/**课程*/
 	private Product product;
 	/**课程详情*/
@@ -41,11 +46,21 @@ public class MyCenterAction extends CommonAction {
 	private MyCenterService myCenterService;
 	@Autowired
 	private ProductService productService;
+	
+	/**
+	 * 消息列表
+	 * @return
+	 */
+	public String messageList(){
+		
+		return "messageList";
+	}
 
 	/**
 	 * 跳转到提交机器码页面
 	 * @return
 	 */
+	@UserSessionCheck
 	public String forwardCommitSmartCode(){
 		try{
 		myProduct = productService.findMyProductByMyProductId(myProduct.getId());
@@ -98,6 +113,53 @@ public class MyCenterAction extends CommonAction {
 		return "forwardMyProductList";
 	}
 
+	/**
+	 * 跳转到消息列表页面
+	 * @return
+	 */
+	@UserSessionCheck
+	public String forwardMyMessage(){
+		if(message == null){
+			message = new Message();
+		}			
+		myMessageList = myCenterService.findMyMessageList(currentUserInfo(), message, pageInfo);
+		return "forwardMyMessageList";
+	}
+	/**
+	 * 删除消息
+	 * @return
+	 */
+	@UserSessionCheck
+	public String delMessage(){
+		myCenterService.delMessage(message.getId());
+		return forwardMyMessage();
+	}
+	/**
+	 * 跳转到消息明细页面
+	 * @return
+	 */
+	@UserSessionCheck
+	public String messageDetail(){
+		message = myCenterService.msgDetail(message.getId());
+		return "messageDetail";
+	}
+	@UserSessionCheck
+	public String forwardReplyMsg(){
+		message = myCenterService.msgDetail(message.getId());
+		Message replyMsg = new Message();
+		replyMsg.setSendUserId(currentUserInfo().getId());
+		replyMsg.setSendUser(currentUserInfo());
+		replyMsg.setReceiveUserId(message.getSendUserId());
+		replyMsg.setReceiveUser(message.getSendUser());
+		message = replyMsg;
+		return "replyMsg";
+	}
+	@UserSessionCheck
+	public String replyMsg(){
+		myCenterService.replyMsg(message);
+		addActionMessage("发送成功");
+		return forwardMyMessage();
+	}
 	/**
 	 * 跳转到更新个人资料页面
 	 * 
@@ -239,6 +301,22 @@ public class MyCenterAction extends CommonAction {
 
 	public void setProductDetail(ProductDetail productDetail) {
 		this.productDetail = productDetail;
+	}
+
+	public List<Message> getMyMessageList() {
+		return myMessageList;
+	}
+
+	public void setMyMessageList(List<Message> myMessageList) {
+		this.myMessageList = myMessageList;
+	}
+
+	public Message getMessage() {
+		return message;
+	}
+
+	public void setMessage(Message message) {
+		this.message = message;
 	}
 
 }

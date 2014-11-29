@@ -9,6 +9,12 @@ import com.yfann.web.pojo.DicExample;
 
 public interface DicMapper {
 	/**
+	 *根据编码查询我的消息状态字典信息
+	 * @param dicCode
+	 * @return
+	 */
+	Dic selectMsgStatusByCode(String dicCode);
+	/**
 	 * 根据编码查询满意度
 	 * @param o
 	 * @return

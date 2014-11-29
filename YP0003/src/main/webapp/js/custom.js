@@ -76,5 +76,8 @@ $(function(){
 		$('.bankCard').attr('class','bankCard');
 		$(this).attr('class','bankCard nCardCil');
 	});
-	
 });
+//返回上一页
+function goBack() {
+	history.back(-1);
+}
