@@ -25,6 +25,7 @@ public class ProductKind {
      *
      * @mbggenerated
      */
+    private boolean selected = false;
     public String getId() {
         return id;
     }
@@ -64,4 +65,14 @@ public class ProductKind {
     public void setProductKind(String productKind) {
         this.productKind = productKind == null ? null : productKind.trim();
     }
+
+	public boolean isSelected() {
+		return selected;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
+    
+    
 }

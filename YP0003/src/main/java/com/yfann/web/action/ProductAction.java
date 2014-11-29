@@ -26,6 +26,9 @@ public class ProductAction extends CommonAction {
 	private List<Product> productList;
 	/** 分页 */
 	private PageInfo pageInfo;
+	/**课程种类*/
+	private ProductKind pkind;
+	/**课程种类列表*/
 	private List<ProductKind> productKindList;
 	/** 课程评论 */
 	private ProductAppraise productAppraise;
@@ -119,6 +122,16 @@ public class ProductAction extends CommonAction {
 		Product productInfo = ifEmptyProduct(product);
 		productKindList = productService.findAllProductKindList();
 		productList = productService.findProductList(productInfo, pageInfo);
+		if(pkind==null&&productKindList!=null&&productKindList.size()>0)
+			productKindList.get(0).setSelected(true);
+		else if(pkind!=null&&productKindList!=null&&productKindList.size()>0){
+			for(ProductKind kind:productKindList){
+				if(kind.getId().equals(pkind.getId()))
+					kind.setSelected(true);
+				else
+					kind.setSelected(false);
+			}
+		}
 		return "forwardProductList";
 	}
 
@@ -216,5 +229,15 @@ public class ProductAction extends CommonAction {
 	public void setProductDetailAvatar(ProductDetailAvatar productDetailAvatar) {
 		this.productDetailAvatar = productDetailAvatar;
 	}
+
+	public ProductKind getPkind() {
+		return pkind;
+	}
+
+	public void setPkind(ProductKind pkind) {
+		this.pkind = pkind;
+	}
+
+	
 
 }

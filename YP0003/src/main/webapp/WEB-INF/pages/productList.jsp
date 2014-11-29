@@ -152,9 +152,25 @@
 				<h3>课程标签</h3>
 				<ul class="nav nav-pills nav-stacked" role="tablist">
 					<li class="nav-header">课程</li>
-					<li class="active"><a href="#">MVC框架</a></li>
-					<li><a href="#">数据库</a></li>
-					<li><a href="#">DAO框架</a></li>
+<!-- 					<li class="active"><a href="#">MVC框架</a></li> -->
+<!-- 					<li><a href="#">数据库</a></li> -->
+<!-- 					<li><a href="#">DAO框架</a></li> -->
+					<s:iterator value="productKindList" id="kind">
+						<s:if test="#kind.selected==true">
+							<li class="active">
+								<a href="${pageContext.request.contextPath}/product!forwardProductList.html?pkind.id=${kind.id}">
+									${kind.productKind}
+								</a>
+							</li>
+						</s:if>
+						<s:else>
+							<li>
+								<a href="${pageContext.request.contextPath}/product!forwardProductList.html?pkind.id=${kind.id}">
+									${kind.productKind}
+								</a>
+								</li>
+						</s:else>
+					</s:iterator>
 					<li class="nav-header">功能列表</li>
 					<li><a href="#">资料</a></li>
 					<li><a href="#">设置</a></li>
