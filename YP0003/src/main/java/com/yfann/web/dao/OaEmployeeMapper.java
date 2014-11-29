@@ -4,11 +4,28 @@ import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.OaEmployeeExample;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface OaEmployeeMapper {
+	/**
+	 * 根据字段查询用户
+	 * 
+	 * @param map
+	 * @return
+	 */
+	List<OaEmployee> selectEmpByField(Map<String, Object> map);
+
+	/**
+	 * 查询符合条件的数量
+	 * 
+	 * @param map
+	 * @return
+	 */
+	Integer selectEmpCountByField(Map<String, Object> map);
+
 	/**
 	 * 查询角色相关的用户
 	 * 

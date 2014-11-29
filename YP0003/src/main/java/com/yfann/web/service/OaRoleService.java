@@ -46,4 +46,19 @@ public interface OaRoleService {
 	 */
 	public OaRole getOaRoleById(String roleId);
 
+	/**
+	 * 根据roleIds获取角色
+	 * 
+	 * @param roleIds
+	 * @return
+	 */
+	public List<OaRole> getOaRoleByIds(String[] roleIds);
+
+	/**
+	 * 更新角色和 用户/客户的关系
+	 * 
+	 * @param oaRole
+	 */
+	public void updatePrivilege(OaRole oaRole);
+
 }

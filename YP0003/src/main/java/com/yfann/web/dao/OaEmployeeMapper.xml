@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yfann.web.dao.OaEmployeeMapper" >
+
+	<select id="selectEmpByField" parameterType="map" resultMap="BaseResultMap">
+		SELECT e.* FROM
+		t_oa_employee e 
+		<if test="roleId != null">
+		LEFT JOIN t_oa_emp_role er ON er.id=e.id WHERE 
+		er.role_id=#{roleId,jdbcType=VARCHAR} and
+		</if>
+		<if test="roleId == null">
+		WHERE
+		</if>
+		<if test="empId != null">
+		e.EMPLOYEE_ID like #{empId,jdbcType=VARCHAR} and
+		</if>
+		<if test="name != null">
+		e.EMPLOYEE_NAME like #{name,jdbcType=VARCHAR} and
+		</if>
+		1=1
+		LIMIT #{off,jdbcType=DECIMAL},#{lim,jdbcType=DECIMAL}
+	</select>
+
+	<select id="selectEmpCountByField" parameterType="map" resultType="java.lang.Integer">
+		SELECT count(1) FROM
+		t_oa_employee e 
+		<if test="roleId != null">
+		LEFT JOIN t_oa_emp_role er ON er.id=e.id WHERE 
+		er.role_id=#{roleId,jdbcType=VARCHAR} and
+		</if>
+		<if test="roleId == null">
+		WHERE
+		</if>
+		<if test="empId != null">
+		e.EMPLOYEE_ID like #{empId,jdbcType=VARCHAR} and
+		</if>
+		<if test="name != null">
+		e.EMPLOYEE_NAME like #{name,jdbcType=VARCHAR} and
+		</if>
+		1=1
+		LIMIT #{off,jdbcType=DECIMAL},#{lim,jdbcType=DECIMAL}
+	</select>
+
+	<select id="selectByRole" parameterType="java.lang.String" resultMap="BaseResultMap">
+		SELECT e.* FROM
+		t_oa_emp_role er LEFT JOIN t_oa_employee e ON er.id=e.id WHERE 
+		er.role_id=#{role_id,jdbcType=VARCHAR}
+	</select>
+	
   <resultMap id="BaseResultMap" type="com.yfann.web.pojo.OaEmployee" >
     <!--
       WARNING - @mbggenerated
@@ -39,6 +86,11 @@
     <result column="SELECTED_FLAG" property="selectedFlag" jdbcType="VARCHAR" />
     <result column="REMARK" property="remark" jdbcType="VARCHAR" />
     <result column="LOGIN_DATE" property="loginDate" jdbcType="TIMESTAMP" />
+    
+	<!-- 角色 -->
+	<collection property="oaRoleList" column="ID" javaType="java.util.ArrayList"
+	ofType="com.yfann.web.pojo.OaRole" select="com.yfann.web.dao.OaRoleMapper.selectByEmployee" />
+
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.yfann.web.pojo.OaEmployee" extends="BaseResultMap" >
     <!--

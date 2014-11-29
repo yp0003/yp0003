@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface OaRoleMapper {
 	/**
-	 * 查询菜单所关联的角色
+	 * 查询员工/客户所关联的角色
 	 * 
 	 * @param id
 	 * @return

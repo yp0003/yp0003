@@ -33,16 +33,29 @@ public interface OaMenuService {
 	 * 获取所有菜单,按照id排序
 	 * 
 	 * @return
-	 * @throws Exception
 	 */
 	public List<OaMenu> getAllOaMenu();
+
+	/**
+	 * 获取所有子菜单（有跳转的菜单）
+	 * 
+	 * @return
+	 */
+	public List<OaMenu> getAllOaMenuchild();
+
+	/**
+	 * 根据menuIds获取菜单
+	 * 
+	 * @param menuIds
+	 * @return
+	 */
+	public List<OaMenu> getOaMenuByIds(String[] menuIds);
 
 	/**
 	 * 根据menuId获取菜单
 	 * 
 	 * @param menuId
 	 * @return
-	 * @throws Exception
 	 */
 	public OaMenu getOaMenuById(String menuId);
 

@@ -20,6 +20,19 @@
     <result column="PROLEID" property="proleid" jdbcType="VARCHAR" />
     <result column="STATUS" property="status" jdbcType="VARCHAR" />
     <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    
+		<!-- 菜单 -->
+		<collection property="oaMenuList" column="ROLE_ID" javaType="java.util.ArrayList"
+			ofType="com.yfann.web.pojo.OaMenu" select="com.yfann.web.dao.OaMenuMapper.selectByRole" />
+
+		<!-- 用户 -->
+		<collection property="oaEmployeeList" column="ROLE_ID" javaType="java.util.ArrayList"
+			ofType="com.yfann.web.pojo.OaEmployee" select="com.yfann.web.dao.OaEmployeeMapper.selectByRole" />
+			
+		<!-- 客户 -->
+		<collection property="userList" column="ROLE_ID" javaType="java.util.ArrayList"
+			ofType="com.yfann.web.pojo.User" select="com.yfann.web.dao.UserMapper.selectByRole" />
+	
   </resultMap>
   <sql id="Example_Where_Clause" >
     <!--

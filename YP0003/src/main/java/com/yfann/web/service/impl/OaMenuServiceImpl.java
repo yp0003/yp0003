@@ -1,5 +1,6 @@
 package com.yfann.web.service.impl;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,12 +51,35 @@ public class OaMenuServiceImpl implements OaMenuService {
 	public List<OaMenu> getAllOaMenu() {
 		OaMenuExample oaMenuExample = new OaMenuExample();
 		oaMenuExample.setOrderByClause("MENU_ID ASC");
+		List<OaMenu> list;
+		try {
+			list = oaMenuMapper.selectByExample(oaMenuExample);
+			return list;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public List<OaMenu> getAllOaMenuchild() {
+		OaMenuExample oaMenuExample = new OaMenuExample();
+		oaMenuExample.or().andPidNotEqualTo("0");
+		oaMenuExample.setOrderByClause("MENU_ID ASC");
 		return oaMenuMapper.selectByExample(oaMenuExample);
 	}
 
 	@Override
 	public OaMenu getOaMenuById(String menuId) {
 		return oaMenuMapper.selectByPrimaryKey(menuId);
+	}
+
+	@Override
+	public List<OaMenu> getOaMenuByIds(String[] menuIds) {
+		OaMenuExample oaMenuExample = new OaMenuExample();
+		oaMenuExample.or().andMenuIdIn(Arrays.asList(menuIds));
+		return oaMenuMapper.selectByExample(oaMenuExample);
 	}
 
 }

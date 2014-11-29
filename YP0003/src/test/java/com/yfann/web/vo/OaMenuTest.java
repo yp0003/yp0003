@@ -64,5 +64,15 @@ public class OaMenuTest {
 	public void getRoleByEmp(){
 		List<OaRole> list = oaRoleMapper.selectByEmployee("65842bb38b5d4d7aa731ac27e1105f1c");
 		System.out.println(list.get(0).getName());
+		
+		OaEmployee emp = oaEmployeeMapper.selectByPrimaryKey("65842bb38b5d4d7aa731ac27e1105f1c");
+		System.out.println(emp.getOaRoleList().get(0).getName());
 	}
+	
+	@Test
+	public void getpro(){
+		OaRole oaRole = oaRoleMapper.selectByPrimaryKey("1");
+		System.out.println(oaRole.getOaMenuList().get(0).getName());
+	}
+	
 }

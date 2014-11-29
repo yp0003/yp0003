@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -90,7 +91,7 @@ public class OaLoginAction extends CommonAction {
 	}
 
 	// 验证登录信息
-	public String validateLoginInfo() {
+	public String validateLoginInfo() throws Exception {
 		if ("".equals(oaEmployee.getEmployeeId())) {
 			// oaLoginMessage.setEmployeeIdMessage("用户名不能为空！");
 			addActionError("用户名不能为空！");
@@ -135,8 +136,10 @@ public class OaLoginAction extends CommonAction {
 				response.addCookie(cookie);// 添加cookie到response中
 
 			}
-
 			session.setAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION, oaEmployeeTemp);// 添加用户到session中
+			// 保存最后一次登录时间
+			oaEmployeeTemp.setLastLoginTime(new Date());
+			oaEmployeeService.updateOaEmployee(oaEmployeeTemp);
 			return "loginSuccess";
 		}
 

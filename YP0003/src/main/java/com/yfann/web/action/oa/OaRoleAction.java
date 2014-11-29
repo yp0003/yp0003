@@ -6,54 +6,110 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.yfann.web.action.CommonAction;
+import com.yfann.web.common.OaUUIDCreate;
 import com.yfann.web.pojo.OaMenu;
+import com.yfann.web.pojo.OaRole;
 import com.yfann.web.service.OaMenuService;
+import com.yfann.web.service.OaRoleService;
 
 /**
  * OA系统功能
  * 
- * @author Simon
- *
  */
 public class OaRoleAction extends CommonAction {
 	private static final long serialVersionUID = -344595803339516326L;
 
-	/** 菜单列表 */
+	/** 角色列表 */
+	public List<OaRole> roleList;
+	/** 角色列表 */
 	public List<OaMenu> menuList;
-	/** 菜单 */
-	public OaMenu oaMenu;
+	/** 角色 */
+	public OaRole oaRole;
 
 	@Autowired
 	private OaMenuService oaMenuService;
+	@Autowired
+	private OaRoleService oaRoleService;
 
+	private String[] mids;
+	
+	// 列表显示
 	public String toList() {
-		menuList = oaMenuService.getAllOaMenu();
+		roleList = oaRoleService.getAllOaRole();
 		return "tolist";
 	}
-	
-	public String toAdd(){
+
+	// 转到新增页面
+	public String toAdd() {
+		menuList = oaMenuService.getAllOaMenuchild();
+		ActionContext.getContext().put("menuList", menuList);
 		return "add";
 	}
-	
-	public String add() throws Exception{
-		oaMenuService.saveOaMenu(oaMenu);
-		return toList();
+
+	// 新增
+	public String add() throws Exception {
+		oaRole.setRoleId(OaUUIDCreate.getUUID());
+		if (mids != null && mids.length > 0) {
+			List<OaMenu> menus = oaMenuService.getOaMenuByIds(mids);
+			oaRole.setOaMenuList(menus);
+		}
+		oaRoleService.saveOaRole(oaRole);
+		return "action2action";
 	}
 
+	// 转到修改页面
 	public String toUpdate() {
-		oaMenu = oaMenuService.getOaMenuById(request.getParameter("id"));
-		ActionContext.getContext().getValueStack().push(oaMenu);
+		menuList = oaMenuService.getAllOaMenuchild();
+		oaRole = oaRoleService.getOaRoleById(request.getParameter("id"));
+		List<OaMenu> list = oaRole.getOaMenuList();
+		mids = new String[list.size()];
+		int i = 0;
+		for (OaMenu m : list) {
+			mids[i] = m.getMenuId();
+			i++;
+		}
+		ActionContext.getContext().put("menuList", menuList);
 		return "update";
 	}
 
+	// 修改
 	public String update() throws Exception {
-		oaMenuService.updateOaMenu(oaMenu);
-		return toList();
+		if (mids != null && mids.length > 0) {
+			List<OaMenu> menus = oaMenuService.getOaMenuByIds(mids);
+			oaRole.setOaMenuList(menus);
+		}
+		oaRoleService.updateOaRole(oaRole);
+		return "action2action";
 	}
 
+	// 删除一个
 	public String del() throws Exception {
-		oaMenuService.deleteOaMenuById(request.getParameter("id"));
-		return toList();
+		oaRoleService.deleteOaRoleById(request.getParameter("id"));
+		return "action2action";
+	}
+
+	public String[] getMids() {
+		return mids;
+	}
+
+	public void setMids(String[] mids) {
+		this.mids = mids;
+	}
+
+	public List<OaRole> getRoleList() {
+		return roleList;
+	}
+
+	public void setRoleList(List<OaRole> roleList) {
+		this.roleList = roleList;
+	}
+
+	public OaRole getOaRole() {
+		return oaRole;
+	}
+
+	public void setOaRole(OaRole oaRole) {
+		this.oaRole = oaRole;
 	}
 
 	public List<OaMenu> getMenuList() {
@@ -62,14 +118,6 @@ public class OaRoleAction extends CommonAction {
 
 	public void setMenuList(List<OaMenu> menuList) {
 		this.menuList = menuList;
-	}
-
-	public OaMenu getOaMenu() {
-		return oaMenu;
-	}
-
-	public void setOaMenu(OaMenu oaMenu) {
-		this.oaMenu = oaMenu;
 	}
 
 }

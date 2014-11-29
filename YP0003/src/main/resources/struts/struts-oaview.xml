@@ -3,7 +3,7 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="oalogin" namespace="/" extends="yfann-default">
+	<package name="oalogin" namespace="/" extends="json-default,struts-default">
 		<!-- OA登录 -->
 		<action name="oalogin!*" method="{1}" class="com.yfann.web.action.oa.OaLoginAction">
 			<!-- 跳转到登录 -->
@@ -20,14 +20,53 @@
 			<result name="forwardFindPassword">/WEB-INF/pages/findPassword.jsp</result>
 		</action>
 	</package>
-	
+
 	<!-- 菜单 -->
 	<package name="oamenu" namespace="/" extends="yfann-default">
-		<!-- 菜单 -->
 		<action name="oaMenu!*" method="{1}" class="com.yfann.web.action.oa.OaMenuAction">
 			<result name="tolist">/WEB-INF/pages/oa/menu/menulist_oa.jsp</result>
 			<result name="add">/WEB-INF/pages/oa/menu/menuadd_oa.jsp</result>
 			<result name="update">/WEB-INF/pages/oa/menu/menuupdate_oa.jsp</result>
+		</action>
+	</package>
+
+	<!-- 角色 -->
+	<package name="oarole" namespace="/" extends="yfann-default">
+		<action name="oaRole!*" method="{1}" class="com.yfann.web.action.oa.OaRoleAction">
+			<result name="tolist">/WEB-INF/pages/oa/role/rolelist_oa.jsp</result>
+			<result name="add">/WEB-INF/pages/oa/role/roleadd_oa.jsp</result>
+			<result name="update">/WEB-INF/pages/oa/role/roleupdate_oa.jsp</result>
+			<result name="action2action" type="redirect">oaRole!toList.html</result>
+		</action>
+	</package>
+
+	<!-- 用户 -->
+	<package name="oaemp" namespace="/" extends="yfann-default">
+		<action name="oaEmp!*" method="{1}" class="com.yfann.web.action.oa.OaEmployeeAction">
+			<result name="toEmpList">/WEB-INF/pages/oa/employee/employeelist_oa.jsp</result>
+			<result name="selectEmp">/WEB-INF/pages/oa/employee/employeelist_oa.jsp</result>
+			<!-- <result type="json"></result> -->
+			<!-- <result name="add">/WEB-INF/pages/oa/employee/employeeadd_oa.jsp</result> -->
+			<result name="update">/WEB-INF/pages/oa/employee/employeeupdate_oa.jsp</result>
+			<result name="privilegeByEmp">/WEB-INF/pages/oa/employee/employeeprivilege_oa.jsp</result>
+			<result name="action2action" type="redirect">oaEmp!toEmpList.html</result>
+			
+			<!-- 客户 -->
+			<result name="toUserList">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
+			<result name="selectUser">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
+			<result name="updateUser">/WEB-INF/pages/oa/employee/userupdate_oa.jsp</result>
+			<result name="privilegeByUser">/WEB-INF/pages/oa/employee/userprivilege_oa.jsp</result>
+			<result name="action2actionUser" type="redirect">oaEmp!toUserList.html</result>
+		</action>
+	</package>
+
+	<!-- 公告 -->
+	<package name="oapm" namespace="/" extends="yfann-default">
+		<action name="oaPM!*" method="{1}" class="com.yfann.web.action.oa.OaPublicMessageAction">
+			<result name="tolist">/WEB-INF/pages/oa/publicMessage/publicMessagelist_oa.jsp</result>
+			<result name="add">/WEB-INF/pages/oa/publicMessage/publicMessageadd_oa.jsp</result>
+			<result name="update">/WEB-INF/pages/oa/publicMessage/publicMessageupdate_oa.jsp</result>
+			<result name="action2action" type="redirect">oaPM!toList.html</result>
 		</action>
 	</package>
 

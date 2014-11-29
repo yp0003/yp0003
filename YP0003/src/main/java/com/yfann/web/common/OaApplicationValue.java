@@ -8,6 +8,6 @@ package com.yfann.web.common;
  */
 public class OaApplicationValue {
 	/** session中存放员工对象的key */
-	public final static String EMPLOYEE_KEY_ON_SESSION = "employeeInfo";
+	public final static String EMPLOYEE_KEY_ON_SESSION = "oaEmployeeInfo";
 
 }
