@@ -18,7 +18,7 @@ public class OaPublicMessageAction extends CommonAction {
 	private static final long serialVersionUID = -7589874192163449060L;
 	/** 公告列表 */
 	public List<PublicMessage> pmList;
-	/** 菜单 */
+	/** 公告 */
 	public PublicMessage publicMessage;
 
 	@Autowired

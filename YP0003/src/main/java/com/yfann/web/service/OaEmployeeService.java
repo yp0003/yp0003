@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.User;
+import com.yfann.web.vo.MailContext;
 
 public interface OaEmployeeService {
 	/**
@@ -171,4 +172,12 @@ public interface OaEmployeeService {
 	 * @return
 	 */
 	public Integer getAllUserCount();
+
+	/**
+	 * 发送邮件
+	 * 
+	 * @param toEmail
+	 * @param mailContext
+	 */
+	public void sendMail(String toEmail, MailContext mailContext);
 }

@@ -16,8 +16,8 @@
 			<result type="json"></result>
 			<!-- 欢迎页面 -->
 			<result name="welcome">/WEB-INF/pages/oa/welcome_oa.jsp</result>
-			<!-- 跳转到密码页面 -->
-			<result name="forwardFindPassword">/WEB-INF/pages/findPassword.jsp</result>
+			<!-- 找回密码 -->
+			<result name="tofindpassword">/WEB-INF/pages/oa/employee/findPassword.jsp</result>
 		</action>
 	</package>
 
@@ -48,8 +48,12 @@
 			<!-- <result type="json"></result> -->
 			<!-- <result name="add">/WEB-INF/pages/oa/employee/employeeadd_oa.jsp</result> -->
 			<result name="update">/WEB-INF/pages/oa/employee/employeeupdate_oa.jsp</result>
+			<result name="myinfo">/WEB-INF/pages/oa/employee/myinfoupdate_oa.jsp</result>
+			<result name="updatePasswordUI">/WEB-INF/pages/oa/employee/updatePassword_oa.jsp</result>
+			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
 			<result name="privilegeByEmp">/WEB-INF/pages/oa/employee/employeeprivilege_oa.jsp</result>
 			<result name="action2action" type="redirect">oaEmp!toEmpList.html</result>
+			<result name="logout" type="redirect">oalogin!logout.html</result>
 			
 			<!-- 客户 -->
 			<result name="toUserList">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
@@ -67,6 +71,27 @@
 			<result name="add">/WEB-INF/pages/oa/publicMessage/publicMessageadd_oa.jsp</result>
 			<result name="update">/WEB-INF/pages/oa/publicMessage/publicMessageupdate_oa.jsp</result>
 			<result name="action2action" type="redirect">oaPM!toList.html</result>
+		</action>
+	</package>
+
+	<!-- 产品 -->
+	<package name="oaproduct" namespace="/" extends="yfann-default">
+		<action name="oaProduct!*" method="{1}" class="com.yfann.web.action.oa.OaProductAction">
+			<result name="tolist">/WEB-INF/pages/oa/product/productlist_oa.jsp</result>
+			<result name="add">/WEB-INF/pages/oa/product/productadd_oa.jsp</result>
+			<result name="update">/WEB-INF/pages/oa/product/productupdate_oa.jsp</result>
+			<result name="action2action" type="redirect">oaProduct!toList.html</result>
+		</action>
+	</package>
+
+	<!-- 消息 -->
+	<package name="oamessage" namespace="/" extends="yfann-default">
+		<action name="oaMessage!*" method="{1}" class="com.yfann.web.action.oa.OaMessageAction">
+			<result name="tolist">/WEB-INF/pages/oa/message/messagelist_oa.jsp</result>
+			<result name="add">/WEB-INF/pages/oa/message/messageadd_oa.jsp</result>
+			<result name="update">/WEB-INF/pages/oa/message/messageupdate_oa.jsp</result>
+			<result name="action2action" type="redirect">oaMessage!toList.html</result>
+			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
 		</action>
 	</package>
 

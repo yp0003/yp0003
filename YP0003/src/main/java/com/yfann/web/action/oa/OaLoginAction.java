@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.yfann.web.action.CommonAction;
+import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.common.OaApplicationValue;
 import com.yfann.web.common.OaCookieUtils;
 import com.yfann.web.common.OaUUIDCreate;
@@ -28,6 +29,7 @@ import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.OaMenu;
 import com.yfann.web.service.OaEmployeeService;
 import com.yfann.web.service.OaMenuService;
+import com.yfann.web.vo.MailContext;
 import com.yfann.web.vo.OaLoginMessage;
 import com.yfann.web.vo.OaRegisterMessage;
 
@@ -208,6 +210,30 @@ public class OaLoginAction extends CommonAction {
 			throw new Exception(e.getMessage());
 		}
 		return forwardLogin();
+	}
+
+	// 转向找回密码页面
+	public String toFindPassword() {
+		return "tofindpassword";
+	}
+
+	/** 找回密码 */
+	public String findPassword() {
+		if (oaEmployee != null) {
+			try {
+				OaEmployee emp = oaEmployeeService.validateOaEmployee(oaEmployee.getEmployeeId());
+				MailContext mailContext = new MailContext();
+				mailContext.setMailSubject(ApplicationValue.MAIL_FIND_PASSWORD_SUBJECT);
+				mailContext.setTextContext("尊敬的" + oaEmployee.getEmployeeId() + "您好,您的密码为"
+						+ emp.getNowPassword() + "请妥善保存好您的密码.");
+				if (oaEmployee.getEmail().equals(emp.getEmail())) {
+					oaEmployeeService.sendMail(oaEmployee.getEmail(), mailContext);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return "forwardLogin";
 	}
 
 	// 绘制验证码图片

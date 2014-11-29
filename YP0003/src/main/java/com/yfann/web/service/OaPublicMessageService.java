@@ -41,8 +41,6 @@ public interface OaPublicMessageService {
 	/**
 	 * 获取所有公告数量
 	 * 
-	 * @param off
-	 * @param lim
 	 * @return
 	 */
 	public Integer getAllCountPublicMessage();

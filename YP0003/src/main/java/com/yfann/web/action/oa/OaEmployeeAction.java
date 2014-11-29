@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.action.CommonAction;
@@ -13,6 +14,7 @@ import com.yfann.web.pojo.OaRole;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.OaEmployeeService;
 import com.yfann.web.service.OaRoleService;
+import com.yfann.web.vo.OaRegisterMessage;
 import com.yfann.web.vo.PageInfo;
 
 /**
@@ -38,6 +40,7 @@ public class OaEmployeeAction extends CommonAction {
 	/** 分页组件 */
 	private PageInfo pageInfo;
 
+	private OaRegisterMessage oaRegisterMessage = new OaRegisterMessage();
 	private OaEmployee oaEmployee;
 	private User user;
 	private String birthday;
@@ -170,25 +173,89 @@ public class OaEmployeeAction extends CommonAction {
 		return "action2actionUser";
 	}
 
-	// 修改用户自己的信息
-	public String updateMy() throws Exception {
-		// 修改用户资料
+	// 转向个人信息修改
+	public String toMyInfo() {
 		oaEmployee = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
 		if (oaEmployee == null) {
 			return "forwardLogin";
 		}
+		oaEmployee = oaEmployeeService.getEmpById(oaEmployee.getId());
+		if (oaEmployee.getBirthday() != null) {
+			birthday = (new SimpleDateFormat("yyyy-MM-dd")).format(oaEmployee.getBirthday());
+		}
+		return "myinfo";
+
+	}
+
+	// 修改用户自己的信息
+	public String updateMyInfo() throws Exception {
 		if (birthday != null && !"".equals(birthday)) {
 			Date bir = (new SimpleDateFormat("yyyy-MM-dd")).parse(birthday);
 			oaEmployee.setBirthday(bir);
 		}
-		if (birthday != null && !"".equals(birthday)) {
-			Date bir = (new SimpleDateFormat("yyyy-MM-dd")).parse(birthday);
-			oaEmployee.setBirthday(bir);
+		oaEmployeeService.updateOaEmployee(oaEmployee);
+		return toMyInfo();
+	}
+	
+	// 转向修改密码页面
+		public String updatePasswordUI() {
+			oaEmployee = null;
+			return "updatePasswordUI";
 		}
 
-		oaEmployeeService.updateOaEmployee(oaEmployee);
-		return "action2action";
-	}
+		// 修改密码
+		public String updatePassword() throws Exception {
+			//验证当前密码
+			if ("".equals(oaEmployee.getOldPassword())) {
+				addActionError("当前密码不能为空！");
+//				oaRegisterMessage.setPasswordMessage("当前密码不能为空！");
+				return updatePasswordUI();
+			}
+			OaEmployee emp = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
+			if(emp==null){
+				return "forwardLogin";
+			}
+			if(!emp.getNowPassword().equals(oaEmployee.getOldPassword())){
+				addActionError("当前密码输入错误！");
+//				oaRegisterMessage.setPasswordMessage("当前密码输入错误！");
+				return updatePasswordUI();
+			}
+			String nowPD;
+			// 验证新密码
+			if (!(StringUtils.isNotBlank(oaEmployee.getNowPassword()))) {
+				addActionError("密码为空!");
+//				oaRegisterMessage.setPasswordMessage("密码为空!");
+				return updatePasswordUI();
+			} else {
+				String[] passwords = oaEmployee.getNowPassword().split(",");
+				nowPD = passwords[0];
+				if (passwords.length != 2) {
+					addActionError("密码非法!");
+//					oaRegisterMessage.setPasswordMessage("密码非法!");
+					return updatePasswordUI();
+				} else if (passwords.length > 1) {
+					if (passwords[0].trim().length() < 5
+							&& passwords[0].trim().length() > 20) {
+						addActionError("密码过长或过短!");
+//						oaRegisterMessage.setPasswordMessage("密码过长或过短!");
+						return updatePasswordUI();
+					} else if (!passwords[0].trim().equals(passwords[1].trim())) {
+						addActionError("两次密码不一致!");
+						oaRegisterMessage.setPasswordMessage("两次密码不一致!");
+						return updatePasswordUI();
+					}
+				}
+			}
+			
+			if (emp.getOldPassword() != null && !"".equals(emp.getOldPassword())){
+				emp.setThanOldPassword(emp.getOldPassword());
+			}
+			emp.setOldPassword(oaEmployee.getOldPassword());
+			emp.setNowPassword(nowPD);
+			oaEmployeeService.updateOaEmployee(emp);
+			return "logout";
+		}
+
 
 	public OaEmployee getOaEmployee() {
 		return oaEmployee;

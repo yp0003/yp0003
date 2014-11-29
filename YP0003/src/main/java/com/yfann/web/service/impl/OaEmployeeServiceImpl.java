@@ -8,8 +8,11 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
+import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.dao.OaEmpRoleMapper;
 import com.yfann.web.dao.OaEmployeeMapper;
 import com.yfann.web.dao.OaRoleMapper;
@@ -21,6 +24,7 @@ import com.yfann.web.pojo.OaEmployeeExample;
 import com.yfann.web.pojo.User;
 import com.yfann.web.pojo.UserExample;
 import com.yfann.web.service.OaEmployeeService;
+import com.yfann.web.vo.MailContext;
 
 @Service
 public class OaEmployeeServiceImpl implements OaEmployeeService {
@@ -32,6 +36,8 @@ public class OaEmployeeServiceImpl implements OaEmployeeService {
 	private OaRoleMapper oaRoleMapper;
 	@Autowired
 	private OaEmpRoleMapper oaEmpRoleMapper;
+	@Autowired
+	private JavaMailSenderImpl javaMailSenderImpl;
 
 	@Override
 	public void saveOaEmployee(OaEmployee oaEmployee) throws Exception {
@@ -166,6 +172,18 @@ public class OaEmployeeServiceImpl implements OaEmployeeService {
 		map.put("off", off);
 		map.put("lim", lim);
 		return userMapper.selectUserCountByField(map);
+	}
+	
+
+	@Override
+	public void sendMail(String toEmail, MailContext mailContext) {
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+		mailMessage.setTo(toEmail);
+		mailMessage.setFrom(ApplicationValue.MAIL_SEND_FROM);
+		mailMessage.setSubject(mailContext.getMailSubject());
+		mailMessage.setText(mailContext.getTextContext());
+		// 发送邮件
+		javaMailSenderImpl.send(mailMessage);
 	}
 
 	@Override

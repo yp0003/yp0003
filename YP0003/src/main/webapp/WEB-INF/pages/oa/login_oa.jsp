@@ -66,11 +66,12 @@ function reImg() {
     <li>
     <s:actionerror cssStyle="color: red" id="errorInfo"/>
     <button id="btn_login" type="submit" value=""></button>
-    <a class="chgForm" href="oalogin!forwardRegister.html">注册</a>
     <div class="clear"></div>
     </li>
     </ul>
   </s:form>
+    <a class="chgForm" href="oalogin!forwardRegister.html">注册</a>&nbsp;&nbsp;&nbsp;
+    <a class="chgForm" href="oalogin!toFindPassword.html">忘记密码</a>
  </div>
 </div>
 
