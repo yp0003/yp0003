@@ -121,17 +121,22 @@ public class ProductAction extends CommonAction {
 	public String forwardProductList() throws Exception {
 		Product productInfo = ifEmptyProduct(product);
 		productKindList = productService.findAllProductKindList();
-		productList = productService.findProductList(productInfo, pageInfo);
-		if(pkind==null&&productKindList!=null&&productKindList.size()>0)
+		if(pkind==null&&productKindList!=null&&productKindList.size()>0){
 			productKindList.get(0).setSelected(true);
+			productInfo.setProductKindId(productKindList.get(0).getId());
+		}
+
 		else if(pkind!=null&&productKindList!=null&&productKindList.size()>0){
 			for(ProductKind kind:productKindList){
-				if(kind.getId().equals(pkind.getId()))
+				if(kind.getId().equals(pkind.getId())){
+					productInfo.setProductKindId(pkind.getId());
 					kind.setSelected(true);
+				}
 				else
 					kind.setSelected(false);
 			}
 		}
+		productList = productService.findProductList(productInfo, pageInfo);
 		return "forwardProductList";
 	}
 

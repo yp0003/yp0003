@@ -10,6 +10,7 @@ import com.yfann.web.action.CommonAction;
 import com.yfann.web.common.OaUUIDCreate;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.service.OaProductService;
+import com.yfann.web.vo.PageInfo;
 
 /**
  * OA系统功能
@@ -25,6 +26,9 @@ public class OaProductAction extends CommonAction {
 
 	private String onlineTime1;
 	private String offlineTime1;
+	
+	/** 分页 */
+	private PageInfo pageInfo;
 
 	@Autowired
 	private OaProductService oaProductService;
@@ -117,4 +121,13 @@ public class OaProductAction extends CommonAction {
 		this.offlineTime1 = offlineTime1;
 	}
 
+	public PageInfo getPageInfo() {
+		return pageInfo;
+	}
+
+	public void setPageInfo(PageInfo pageInfo) {
+		this.pageInfo = pageInfo;
+	}
+
+	
 }
