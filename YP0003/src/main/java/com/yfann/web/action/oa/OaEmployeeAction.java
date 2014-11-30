@@ -2,6 +2,7 @@ package com.yfann.web.action.oa;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -196,66 +197,85 @@ public class OaEmployeeAction extends CommonAction {
 		oaEmployeeService.updateOaEmployee(oaEmployee);
 		return toMyInfo();
 	}
-	
-	// 转向修改密码页面
-		public String updatePasswordUI() {
-			oaEmployee = null;
-			return "updatePasswordUI";
-		}
 
-		// 修改密码
-		public String updatePassword() throws Exception {
-			//验证当前密码
-			if ("".equals(oaEmployee.getOldPassword())) {
-				addActionError("当前密码不能为空！");
-//				oaRegisterMessage.setPasswordMessage("当前密码不能为空！");
+	// 转向修改密码页面
+	public String updatePasswordUI() {
+		oaEmployee = null;
+		return "updatePasswordUI";
+	}
+
+	/** 修改密码 */
+	public String updatePassword() throws Exception {
+		// 验证当前密码
+		if ("".equals(oaEmployee.getOldPassword())) {
+			addActionError("当前密码不能为空！");
+			// oaRegisterMessage.setPasswordMessage("当前密码不能为空！");
+			return updatePasswordUI();
+		}
+		OaEmployee emp = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
+		if (emp == null) {
+			return "forwardLogin";
+		}
+		if (!emp.getNowPassword().equals(oaEmployee.getOldPassword())) {
+			addActionError("当前密码输入错误！");
+			// oaRegisterMessage.setPasswordMessage("当前密码输入错误！");
+			return updatePasswordUI();
+		}
+		String nowPD;
+		// 验证新密码
+		if (!(StringUtils.isNotBlank(oaEmployee.getNowPassword()))) {
+			addActionError("密码为空!");
+			// oaRegisterMessage.setPasswordMessage("密码为空!");
+			return updatePasswordUI();
+		} else {
+			String[] passwords = oaEmployee.getNowPassword().split(",");
+			nowPD = passwords[0];
+			if (passwords.length != 2) {
+				addActionError("密码非法!");
+				// oaRegisterMessage.setPasswordMessage("密码非法!");
 				return updatePasswordUI();
-			}
-			OaEmployee emp = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
-			if(emp==null){
-				return "forwardLogin";
-			}
-			if(!emp.getNowPassword().equals(oaEmployee.getOldPassword())){
-				addActionError("当前密码输入错误！");
-//				oaRegisterMessage.setPasswordMessage("当前密码输入错误！");
-				return updatePasswordUI();
-			}
-			String nowPD;
-			// 验证新密码
-			if (!(StringUtils.isNotBlank(oaEmployee.getNowPassword()))) {
-				addActionError("密码为空!");
-//				oaRegisterMessage.setPasswordMessage("密码为空!");
-				return updatePasswordUI();
-			} else {
-				String[] passwords = oaEmployee.getNowPassword().split(",");
-				nowPD = passwords[0];
-				if (passwords.length != 2) {
-					addActionError("密码非法!");
-//					oaRegisterMessage.setPasswordMessage("密码非法!");
+			} else if (passwords.length > 1) {
+				if (passwords[0].trim().length() < 5 && passwords[0].trim().length() > 20) {
+					addActionError("密码过长或过短!");
+					// oaRegisterMessage.setPasswordMessage("密码过长或过短!");
 					return updatePasswordUI();
-				} else if (passwords.length > 1) {
-					if (passwords[0].trim().length() < 5
-							&& passwords[0].trim().length() > 20) {
-						addActionError("密码过长或过短!");
-//						oaRegisterMessage.setPasswordMessage("密码过长或过短!");
-						return updatePasswordUI();
-					} else if (!passwords[0].trim().equals(passwords[1].trim())) {
-						addActionError("两次密码不一致!");
-						oaRegisterMessage.setPasswordMessage("两次密码不一致!");
-						return updatePasswordUI();
-					}
+				} else if (!passwords[0].trim().equals(passwords[1].trim())) {
+					addActionError("两次密码不一致!");
+					oaRegisterMessage.setPasswordMessage("两次密码不一致!");
+					return updatePasswordUI();
 				}
 			}
-			
-			if (emp.getOldPassword() != null && !"".equals(emp.getOldPassword())){
-				emp.setThanOldPassword(emp.getOldPassword());
-			}
-			emp.setOldPassword(oaEmployee.getOldPassword());
-			emp.setNowPassword(nowPD);
-			oaEmployeeService.updateOaEmployee(emp);
-			return "logout";
 		}
 
+		if (emp.getOldPassword() != null && !"".equals(emp.getOldPassword())) {
+			emp.setThanOldPassword(emp.getOldPassword());
+		}
+		emp.setOldPassword(oaEmployee.getOldPassword());
+		emp.setNowPassword(nowPD);
+		oaEmployeeService.updateOaEmployee(emp);
+		return "logout";
+	}
+	
+	/** 转向图片上传页面 */
+	public String toUpdateImage(){
+		return "updateImage";
+	}
+	
+	/** 上传图片*/
+	public void updateImage(){
+		Enumeration att = request.getAttributeNames();
+		while (att.hasMoreElements()) {
+			String object = (String) att.nextElement();
+			System.out.println("att:"+object);
+		}
+		
+		Enumeration par = request.getParameterNames();
+		while (par.hasMoreElements()) {
+			String object = (String) par.nextElement();
+			System.out.println(object+":"+request.getParameter(object));
+		}
+		System.out.println(1);
+	}
 
 	public OaEmployee getOaEmployee() {
 		return oaEmployee;

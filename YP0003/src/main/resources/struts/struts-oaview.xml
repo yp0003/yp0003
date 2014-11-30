@@ -55,6 +55,8 @@
 			<result name="action2action" type="redirect">oaEmp!toEmpList.html</result>
 			<result name="logout" type="redirect">oalogin!logout.html</result>
 			
+			<result name="updateImage">/WEB-INF/pages/oa/employee/empupdateimage_oa.jsp</result>
+			
 			<!-- 客户 -->
 			<result name="toUserList">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
 			<result name="selectUser">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
