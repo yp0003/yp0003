@@ -1,5 +1,6 @@
 package com.yfann.web.action.oa;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -33,9 +34,48 @@ public class OaProductAction extends CommonAction {
 	@Autowired
 	private OaProductService oaProductService;
 
+	//扫描件
+	private File scan;
+	//扫描件文件类型
+	private String scanContentType;
+	private String scanFileName;
+	/**
+	 * 判断上传扫描件的类型
+	 * @return
+	 */
+	private boolean ifScanContentType() {
+		if(scan == null){
+			addActionMessage("请选择扫描件图片");
+			return false;
+		}
+		if ("image/png".equals(scanContentType)
+				|| "image/gif".equals(scanContentType)
+				|| "image/jpg".equals(scanContentType)
+				|| "image/jpeg".equals(scanContentType)
+				|| "image/bmp".equals(scanContentType)) {
+				return true;
+		}
+		addActionMessage("请不要上传非图片文件");
+		return false;
+	}
+	
+	/**
+	 * 保存课程信息
+	 * @return
+	 */
+	public String saveProductInfo() {
+		if (ifScanContentType()) {
+			try{
+				oaProductService.saveProduct(product, scan);
+				addActionMessage("操作成功！");
+			}catch(Exception e){
+				addActionError("操作失败");
+			}
+		}
+		return toList();
+	}
 	public String toList() {
 		productList = oaProductService.getAllProduct(0, Integer.MAX_VALUE);
-		System.out.println(oaProductService.getAllCountProduct());
 		return "tolist";
 	}
 
@@ -43,20 +83,20 @@ public class OaProductAction extends CommonAction {
 		return "add";
 	}
 
-	public String add() throws Exception {
-		product.setId(OaUUIDCreate.getUUID());
-		product.setUpdateTime(new Date());
-		if (onlineTime1 != null && !"".equals(onlineTime1)) {
-			Date online1 = (new SimpleDateFormat("yyyy-MM-dd")).parse(onlineTime1);
-			product.setOnlineTime(online1);
-		}
-		if (offlineTime1 != null && !"".equals(offlineTime1)) {
-			Date offline1 = (new SimpleDateFormat("yyyy-MM-dd")).parse(offlineTime1);
-			product.setOfflineTime(offline1);
-		}
-		oaProductService.saveProduct(product);
-		return "action2action";
-	}
+//	public String add() throws Exception {
+//		product.setId(OaUUIDCreate.getUUID());
+//		product.setUpdateTime(new Date());
+//		if (onlineTime1 != null && !"".equals(onlineTime1)) {
+//			Date online1 = (new SimpleDateFormat("yyyy-MM-dd")).parse(onlineTime1);
+//			product.setOnlineTime(online1);
+//		}
+//		if (offlineTime1 != null && !"".equals(offlineTime1)) {
+//			Date offline1 = (new SimpleDateFormat("yyyy-MM-dd")).parse(offlineTime1);
+//			product.setOfflineTime(offline1);
+//		}
+//		oaProductService.saveProduct(product);
+//		return "action2action";
+//	}
 
 	public String toUpdate() {
 		product = oaProductService.getProductById(request.getParameter("id"));
@@ -127,6 +167,30 @@ public class OaProductAction extends CommonAction {
 
 	public void setPageInfo(PageInfo pageInfo) {
 		this.pageInfo = pageInfo;
+	}
+
+	public File getScan() {
+		return scan;
+	}
+
+	public void setScan(File scan) {
+		this.scan = scan;
+	}
+
+	public String getScanContentType() {
+		return scanContentType;
+	}
+
+	public void setScanContentType(String scanContentType) {
+		this.scanContentType = scanContentType;
+	}
+
+	public String getScanFileName() {
+		return scanFileName;
+	}
+
+	public void setScanFileName(String scanFileName) {
+		this.scanFileName = scanFileName;
 	}
 
 	

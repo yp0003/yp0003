@@ -43,9 +43,13 @@
 		<fieldset class="fieldset-self">
 			<legend>查询条件</legend>
 			<table align="center" width="100%" border="0">
+				<tr>
+					<td align="right" width="85px">产品ID：</td>
+					<td align="left"><s:textfield name="product.productId" /></td>
+				    <td align="right">审核状态：</td>
+				    <td> <s:select list="#{1:'分类1',0:'分类2'}"  id="isHandle" name="product.productKindId"></s:select></td>							
 				
-				<tr >
-					<td colspan="6" style="border: 0px;padding-right: 210px;height: 50px" align="right">
+					<td  style="border: 0px;padding-right: 210px;height: 50px" align="right">
 						<input type="button" value="新增产品" onclick="window.location.href='oaProduct!toAdd.html'" />
 					</td>
 				</tr>
@@ -62,7 +66,7 @@
 		<thead>
 			<tr>
 				<th data-sort="int">序号</th>
-				<th data-sort="int">产品ID</th>
+				<th data-sort="string">产品ID</th>
 				<th data-sort="string">产品名称</th>
 				<th data-sort="string">讲师ID</th>
 				<th data-sort="date">产品价格</th>
@@ -80,13 +84,13 @@
 						</th>
 						<td align="center"><s:property value="#product.productId"></s:property></td>
 						<td align="center"><s:property value="#product.productName"></s:property></td>
-						<td align="center">${product.teacherId}</td>
-						<td align="center">${product.productPrice}</td>
-						<td align="center">${product.productSale}</td>
-						<td  align="center">${product.productStatus}</td>
+						<td align="center"><s:property value="#product.teacherId"></s:property></td>
+						<td align="center"><s:property value="#product.productPrice"></s:property></td>
+						<td align="center"><s:property value="#product.productSale"></s:property></td>
+						<td  align="center"><s:property value="#product.productStatus"></s:property></td>
 						<td align="center">
-						<a href="oaProduct!toUpdate.html?id=${pl.id}">修改</a>&nbsp;&nbsp;
-						<a href="oaProduct!del.html?id=${pl.id}">删除</a>
+						<a href="oaProduct!toUpdate.html?id=${product.id}">修改</a>&nbsp;&nbsp;
+						<a href="oaProduct!del.html?id=${product.id}">删除</a>
 						</td>
 					</tr>
 				</s:iterator>

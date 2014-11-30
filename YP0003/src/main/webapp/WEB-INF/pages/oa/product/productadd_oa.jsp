@@ -42,13 +42,16 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/oa_js/common.js">
 	//
 </script>
-<script>
-  
+<script type="text/javascript">
+function forSubmit() {
+	document.forms[0].action = "oaProduct!saveProductInfo.html";
+	document.forms[0].submit();
+}
 </script>
 </head>
 
 <body>
-	<s:form method="POST">
+	<s:form method="POST" enctype="multipart/form-data">
 	<s:actionmessage cssStyle="color: green;" />
 	<s:actionerror cssStyle="color: red;" />
 	<div align="center" class="easyui-tabs">
@@ -91,6 +94,12 @@
 									</td>
 								</tr>	
 								<tr>
+									<td align="right" width="100px">课程难度：</td>
+									<td>
+									  	<s:select list="#{1:'分类1',0:'分类2'}"  id="isHandle" name="product.productKindId"></s:select>								
+									</td>
+								</tr>
+								<tr>
 								<td align="right" width="100px">产品描述：</td>
 								<td colspan="7"><s:textarea  cols="100" rows="3"  name="product.productDesc"/><s:actionerror/></td>
 								</tr>					
@@ -100,8 +109,18 @@
 				</tr>
 			</table>
 		</div>
-		<div title="上传课程">
-		
+		<div title="课程详情">
+			<fieldset class="fieldset-self">
+					<legend>产品缩略图信息</legend>
+					<s:file name="scan">选择图片:</s:file>
+			</fieldset>
+			
+		</div>
+		<div title="课程精彩截图">
+				<fieldset class="fieldset-self">
+							<legend>截图信息</legend>
+					
+			</fieldset>
 		</div>
 	</div>
 	

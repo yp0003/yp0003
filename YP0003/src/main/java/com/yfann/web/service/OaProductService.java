@@ -1,5 +1,6 @@
 package com.yfann.web.service;
 
+import java.io.File;
 import java.util.List;
 
 import com.yfann.web.pojo.Product;
@@ -11,7 +12,7 @@ public interface OaProductService {
 	 * @param product
 	 * @throws Exception
 	 */
-	public void saveProduct(Product product) throws Exception;
+	public void saveProduct(Product product,File scan);
 
 	/**
 	 * 根据id下线产品
@@ -19,7 +20,7 @@ public interface OaProductService {
 	 * @param id
 	 * @throws Exception
 	 */
-	public void deleteProductById(String id) throws Exception;
+	public void deleteProductById(String id);
 
 	/**
 	 * 更新产品
@@ -27,7 +28,7 @@ public interface OaProductService {
 	 * @param product
 	 * @throws Exception
 	 */
-	public void updateProduct(Product product) throws Exception;
+	public void updateProduct(Product product);
 
 	/**
 	 * 获取所有产品，按更新时间倒序
