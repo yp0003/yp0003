@@ -43,6 +43,9 @@
 	//
 </script>
 <script type="text/javascript">
+function addFileInput(){
+ 	$("#imagesTable").append('<tr><td width="30%"><s:file name="images">选择图片:</s:file></td></tr>');
+}
 function forSubmit() {
 	document.forms[0].action = "oaProduct!saveProductInfo.html";
 	document.forms[0].submit();
@@ -63,8 +66,7 @@ function forSubmit() {
 							<legend>基本信息</legend>
 							<table align="left" width="100%" cellpadding="5px" border="0">
 								<tr>
-									<td align="right" width="100px">产品ID：</td>
-									<td align="left" width="200px"><s:textfield name="product.productId" />
+									
 									</td>
 									<td align="right" width="100px">产品名称：</td>
 									<td><s:textfield name="product.productName" /></td>
@@ -80,6 +82,12 @@ function forSubmit() {
 												name="product.offlineTime" type="text"
 											class="easyui-datebox" id="d121" />
 					    			</td>
+					    			<td align="right" width="100px">课程难度：</td>
+									<td>
+									  	<s:select headerKey="" headerValue="--请选择--"  name="product.provinceCode"
+											list="productLevelList" listKey="dicCode" listValue="dicCn"
+											cssStyle="width:100px" />								
+									</td>
 								</tr>
 								<tr>
 									<td align="right" width="100px">产品价格：</td>
@@ -90,14 +98,21 @@ function forSubmit() {
 									<td><s:textfield name="product.productLang" /></td>
 									<td align="right" width="100px">所属分类：</td>
 									<td>
-									  	<s:select list="#{1:'分类1',0:'分类2'}"  id="isHandle" name="product.productKindId"></s:select>								
+											<s:select headerKey="" headerValue="--请选择--"  name="product.productKindId"
+											list="productKindList" listKey="id" listValue="productKind"
+											cssStyle="width:100px" />
 									</td>
 								</tr>	
 								<tr>
-									<td align="right" width="100px">课程难度：</td>
-									<td>
-									  	<s:select list="#{1:'分类1',0:'分类2'}"  id="isHandle" name="product.productKindId"></s:select>								
-									</td>
+									<td align="right" width="100px">更新节数：</td>
+									<td><s:textfield name="product.updateBadge" onkeyup="value=value.replace(/[^\d]/g,'')" /></td>
+									<td align="right" width="100px">更新章数：</td>
+									<td><s:textfield name="product.updateMatter" onkeyup="value=value.replace(/[^\d]/g,'')" /></td>
+									<td align="right" width="100px"></td>
+								</tr>
+								<tr>
+									<td align="right" width="100px">课程须知：</td>
+									<td colspan="7"><s:textarea  cols="100" rows="3"  name="product.productKnows"/><s:actionerror/></td>
 								</tr>
 								<tr>
 								<td align="right" width="100px">产品描述：</td>
@@ -112,14 +127,24 @@ function forSubmit() {
 		<div title="课程详情">
 			<fieldset class="fieldset-self">
 					<legend>产品缩略图信息</legend>
-					<s:file name="scan">选择图片:</s:file>
+					<table align="left" width="100%" cellpadding="5px" border="0" >
+						<tr>
+							<td><s:file name="scan">选择图片:</s:file></td>
+						</tr>
+					</table>
+					
 			</fieldset>
 			
 		</div>
 		<div title="课程精彩截图">
 				<fieldset class="fieldset-self">
-							<legend>截图信息</legend>
-					
+					<legend>截图信息</legend>
+					<table align="left" width="100%" cellpadding="5px" border="0" id="imagesTable">
+						<tr>
+							<td width="30%"><s:file name="images">选择图片:</s:file></td>	
+							<td><input type="button" value="增加" onclick="addFileInput()"></input></td>					
+						</tr>
+					</table>
 			</fieldset>
 		</div>
 	</div>
@@ -130,10 +155,10 @@ function forSubmit() {
 		<tr align="center">
 			<td>
 				<button type="button" onclick="return forSubmit()">
-						<img src="images/apply2.png" alt="保存" /> 
+						<img src="images/apply2.png" alt="保存" /> 保存
 					</button> &#160;&#160;&#160;
 				<button type="button" onclick="return history.back();">
-					<img src="images/cross.png" alt="返回" />
+					<img src="images/cross.png" alt="返回" />返回
 				</button>
 			</td>
 		</tr>

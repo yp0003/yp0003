@@ -3,16 +3,35 @@ package com.yfann.web.service;
 import java.io.File;
 import java.util.List;
 
+import com.yfann.web.pojo.Dic;
 import com.yfann.web.pojo.Product;
+import com.yfann.web.pojo.ProductKind;
+import com.yfann.web.pojo.User;
+import com.yfann.web.vo.PageInfo;
 
 public interface OaProductService {
+	/**
+	 * 获取课程分类列表
+	 * @return
+	 */
+	public List<ProductKind> selectProductKindList();
+	/**
+	 * 获取课程登记字典列表
+	 * @return
+	 */
+	public List<Dic> selectProductLevelDicList(); 
+	/** 
+	 * 获取课程状态字典列表
+	 * @return
+	 */
+	public List<Dic> selectProductStatusDicList(); 
 	/**
 	 * 新增产品
 	 * 
 	 * @param product
 	 * @throws Exception
 	 */
-	public void saveProduct(Product product,File scan);
+	public void saveProduct(Product product,File scan,File[] images);
 
 	/**
 	 * 根据id下线产品
@@ -33,11 +52,12 @@ public interface OaProductService {
 	/**
 	 * 获取所有产品，按更新时间倒序
 	 * 
-	 * @param off
-	 * @param lim
+	 * @param product
+	 * @param pageInfo
+	 * @param user
 	 * @return
 	 */
-	public List<Product> getAllProduct(int off, int lim);
+	public List<Product> selectProductList(Product product,PageInfo pageInfo);
 
 	/**
 	 * 获取所有产品数量

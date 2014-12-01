@@ -47,7 +47,10 @@
 					<td align="right" width="85px">产品ID：</td>
 					<td align="left"><s:textfield name="product.productId" /></td>
 				    <td align="right">审核状态：</td>
-				    <td> <s:select list="#{1:'分类1',0:'分类2'}"  id="isHandle" name="product.productKindId"></s:select></td>							
+				    <td> 	<s:select headerKey="" headerValue="--请选择--"  name="product.productStatus"
+											list="productStatusList" listKey="dicCode" listValue="dicCn"
+											cssStyle="width:100px" />	
+					</td>							
 				
 					<td  style="border: 0px;padding-right: 210px;height: 50px" align="right">
 						<input type="button" value="新增产品" onclick="window.location.href='oaProduct!toAdd.html'" />
@@ -89,8 +92,8 @@
 						<td align="center"><s:property value="#product.productSale"></s:property></td>
 						<td  align="center"><s:property value="#product.productStatus"></s:property></td>
 						<td align="center">
-						<a href="oaProduct!toUpdate.html?id=${product.id}">修改</a>&nbsp;&nbsp;
-						<a href="oaProduct!del.html?id=${product.id}">删除</a>
+						<a href="oaProduct!editProduct.html?product.id=<s:property value="#product.id"></s:property>">修改</a>&nbsp;&nbsp;
+						<a href="oaProduct!delProduct.html?product.id=<s:property value="#product.id"></s:property>">删除</a>
 						</td>
 					</tr>
 				</s:iterator>

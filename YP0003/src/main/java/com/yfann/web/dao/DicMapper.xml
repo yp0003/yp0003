@@ -352,4 +352,5 @@
 		<include refid="Base_Column_List2" />
 		from t_sys_dic t where t.dic_type = 'MSG_STATUS' and t.dic_code = #{dicCode,jdbcType=VARCHAR}
 	</select>
+	
 </mapper>

@@ -17,5 +17,5 @@ public class ApplicationValue {
 	public static Integer pageSize = 10;
     /**支付宝提供给商户的服务接入网关URL(新)*/
 	public static String ALIPAY_GATEWAY = "https://mapi.alipay.com/gateway.do?";
-
+	
 }

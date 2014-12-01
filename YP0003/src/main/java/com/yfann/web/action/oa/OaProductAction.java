@@ -8,8 +8,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.action.CommonAction;
-import com.yfann.web.common.OaUUIDCreate;
+import com.yfann.web.dao.DicMapper;
+import com.yfann.web.pojo.Dic;
 import com.yfann.web.pojo.Product;
+import com.yfann.web.pojo.ProductKind;
 import com.yfann.web.service.OaProductService;
 import com.yfann.web.vo.PageInfo;
 
@@ -34,28 +36,40 @@ public class OaProductAction extends CommonAction {
 	@Autowired
 	private OaProductService oaProductService;
 
+
 	//扫描件
-	private File scan;
+	private File scan;	
 	//扫描件文件类型
 	private String scanContentType;
 	private String scanFileName;
+	
+	private File[] images; //上传的文件
+	private String[] imagesFileName; //文件名称
+	private String[] imagesContentType; //文件类型
+	
+	private List<Dic> productStatusList;//课程状态字典列表
+	private List<Dic> productLevelList;//课程难度字典列表
+	
+	private List<ProductKind> productKindList;
 	/**
 	 * 判断上传扫描件的类型
 	 * @return
 	 */
-	private boolean ifScanContentType() {
-		if(scan == null){
-			addActionMessage("请选择扫描件图片");
+	private boolean ifScanContentType(File file,String fileType,boolean isNull) {//isNull是否可以为空
+		if(file == null && !isNull){//如果文件为空但是文件不能为空
+			addActionMessage("请选择"+fileType);
 			return false;
+		}else if(file == null && isNull){
+			return true;
 		}
-		if ("image/png".equals(scanContentType)
+		if (file!=null &&("image/png".equals(scanContentType)
 				|| "image/gif".equals(scanContentType)
 				|| "image/jpg".equals(scanContentType)
 				|| "image/jpeg".equals(scanContentType)
-				|| "image/bmp".equals(scanContentType)) {
+				|| "image/bmp".equals(scanContentType))) {
 				return true;
 		}
-		addActionMessage("请不要上传非图片文件");
+		addActionMessage(fileType+"上传非图片文件");
 		return false;
 	}
 	
@@ -64,9 +78,9 @@ public class OaProductAction extends CommonAction {
 	 * @return
 	 */
 	public String saveProductInfo() {
-		if (ifScanContentType()) {
+		if (ifScanContentType(scan,"产品缩略图",true)) {
 			try{
-				oaProductService.saveProduct(product, scan);
+				oaProductService.saveProduct(product, scan,images);
 				addActionMessage("操作成功！");
 			}catch(Exception e){
 				addActionError("操作失败");
@@ -75,28 +89,20 @@ public class OaProductAction extends CommonAction {
 		return toList();
 	}
 	public String toList() {
-		productList = oaProductService.getAllProduct(0, Integer.MAX_VALUE);
+		productStatusList = oaProductService.selectProductStatusDicList();
+		if(null==product)
+			product = new Product();
+		productList = oaProductService.selectProductList(product,pageInfo);
 		return "tolist";
 	}
 
 	public String toAdd() {
+		productLevelList = oaProductService.selectProductLevelDicList();
+		productKindList = oaProductService.selectProductKindList();
 		return "add";
 	}
 
-//	public String add() throws Exception {
-//		product.setId(OaUUIDCreate.getUUID());
-//		product.setUpdateTime(new Date());
-//		if (onlineTime1 != null && !"".equals(onlineTime1)) {
-//			Date online1 = (new SimpleDateFormat("yyyy-MM-dd")).parse(onlineTime1);
-//			product.setOnlineTime(online1);
-//		}
-//		if (offlineTime1 != null && !"".equals(offlineTime1)) {
-//			Date offline1 = (new SimpleDateFormat("yyyy-MM-dd")).parse(offlineTime1);
-//			product.setOfflineTime(offline1);
-//		}
-//		oaProductService.saveProduct(product);
-//		return "action2action";
-//	}
+
 
 	public String toUpdate() {
 		product = oaProductService.getProductById(request.getParameter("id"));
@@ -111,21 +117,18 @@ public class OaProductAction extends CommonAction {
 		return "update";
 	}
 
-	public String update() throws Exception {
-		if (onlineTime1 != null && !"".equals(onlineTime1)) {
-			Date online1 = (new SimpleDateFormat("yyyy-MM-dd")).parse(onlineTime1);
-			product.setOnlineTime(online1);
-		}
-		if (offlineTime1 != null && !"".equals(offlineTime1)) {
-			Date offline1 = (new SimpleDateFormat("yyyy-MM-dd")).parse(offlineTime1);
-			product.setOfflineTime(offline1);
-		}
-		oaProductService.updateProduct(product);
+	public String editProduct() throws Exception {
+	
 		return "action2action";
 	}
 
-	public String del() throws Exception {
-		oaProductService.deleteProductById(request.getParameter("id"));
+	public String delProduct(){
+		try{
+			oaProductService.deleteProductById(product.getId());
+			addActionMessage("操作成功");
+		}catch(Exception e){
+			addActionError("操作失败");
+		}
 		return "action2action";
 	}
 
@@ -191,6 +194,54 @@ public class OaProductAction extends CommonAction {
 
 	public void setScanFileName(String scanFileName) {
 		this.scanFileName = scanFileName;
+	}
+
+	public File[] getImages() {
+		return images;
+	}
+
+	public void setImages(File[] images) {
+		this.images = images;
+	}
+
+	public String[] getImagesFileName() {
+		return imagesFileName;
+	}
+
+	public void setImagesFileName(String[] imagesFileName) {
+		this.imagesFileName = imagesFileName;
+	}
+
+	public String[] getImagesContentType() {
+		return imagesContentType;
+	}
+
+	public void setImagesContentType(String[] imagesContentType) {
+		this.imagesContentType = imagesContentType;
+	}
+
+	public List<Dic> getProductStatusList() {
+		return productStatusList;
+	}
+
+	public void setProductStatusList(List<Dic> productStatusList) {
+		this.productStatusList = productStatusList;
+	}
+
+	public List<Dic> getProductLevelList() {
+		return productLevelList;
+	}
+
+	public void setProductLevelList(List<Dic> productLevelList) {
+		this.productLevelList = productLevelList;
+	}
+
+	public List<ProductKind> getProductKindList() {
+		return productKindList;
+	}
+
+	public void setProductKindList(List<ProductKind> productKindList) {
+		this.productKindList = productKindList;
 	}
 
 	

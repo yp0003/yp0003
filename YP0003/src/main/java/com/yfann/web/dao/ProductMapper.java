@@ -10,6 +10,9 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface ProductMapper {
+	int selectCountByProductParam(Product product);
+	List<Product> selectListByProductParam(Product product);
+	List<Product> selectListByProductParam(Product product, RowBounds rowBounds);
 	/**
 	 * 分页查询
 	 * 
