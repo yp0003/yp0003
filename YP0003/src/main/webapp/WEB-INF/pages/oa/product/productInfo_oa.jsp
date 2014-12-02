@@ -58,6 +58,7 @@ function forSubmit() {
 	<s:actionmessage cssStyle="color: green;" />
 	<s:actionerror cssStyle="color: red;" />
 	<div align="center" class="easyui-tabs">
+		<s:hidden name="product.id"></s:hidden>
 		<div title="课程基本信息">
 			<table cellpadding="10px" width="100%">
 				<tr>
@@ -84,7 +85,7 @@ function forSubmit() {
 					    			</td>
 					    			<td align="right" width="100px">课程难度：</td>
 									<td>
-									  	<s:select headerKey="" headerValue="--请选择--"  name="product.provinceCode"
+									  	<s:select headerKey="" headerValue="--请选择--" 
 											list="productLevelList" listKey="dicCode" listValue="dicCn"
 											cssStyle="width:100px" />								
 									</td>

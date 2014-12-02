@@ -77,12 +77,10 @@
 	</package>
 
 	<!-- 产品 -->
-	<package name="oaproduct" namespace="/" extends="yfann-default">
+	<package name="oaProduct" namespace="/" extends="yfann-default">
 		<action name="oaProduct!*" method="{1}" class="com.yfann.web.action.oa.OaProductAction">
-			<result name="tolist">/WEB-INF/pages/oa/product/productlist_oa.jsp</result>
-			<result name="add">/WEB-INF/pages/oa/product/productadd_oa.jsp</result>
-			<result name="update">/WEB-INF/pages/oa/product/productupdate_oa.jsp</result>
-			<result name="action2action" type="redirect">oaProduct!toList.html</result>
+			<result name="forwardProductList">/WEB-INF/pages/oa/product/productlist_oa.jsp</result>
+			<result name="productInfo">/WEB-INF/pages/oa/product/productInfo_oa.jsp</result>
 		</action>
 	</package>
 

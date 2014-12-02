@@ -53,7 +53,7 @@
 					</td>							
 				
 					<td  style="border: 0px;padding-right: 210px;height: 50px" align="right">
-						<input type="button" value="新增产品" onclick="window.location.href='oaProduct!toAdd.html'" />
+						<input type="button" value="新增产品" onclick="window.location.href='oaProduct!forwardAddProductInfo.html'" />
 					</td>
 				</tr>
 			</table>
@@ -92,7 +92,7 @@
 						<td align="center"><s:property value="#product.productSale"></s:property></td>
 						<td  align="center"><s:property value="#product.productStatus"></s:property></td>
 						<td align="center">
-						<a href="oaProduct!editProduct.html?product.id=<s:property value="#product.id"></s:property>">修改</a>&nbsp;&nbsp;
+						<a href="oaProduct!forwardEditProduct.html?product.id=<s:property value="#product.id"></s:property>">修改</a>&nbsp;&nbsp;
 						<a href="oaProduct!delProduct.html?product.id=<s:property value="#product.id"></s:property>">删除</a>
 						</td>
 					</tr>

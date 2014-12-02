@@ -2,13 +2,11 @@ package com.yfann.web.action.oa;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.action.CommonAction;
-import com.yfann.web.dao.DicMapper;
 import com.yfann.web.pojo.Dic;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ProductKind;
@@ -84,42 +82,33 @@ public class OaProductAction extends CommonAction {
 				addActionMessage("操作成功！");
 			}catch(Exception e){
 				addActionError("操作失败");
+				e.printStackTrace();
 			}
 		}
-		return toList();
+		return forwardProductList();
 	}
-	public String toList() {
+	public String forwardProductList() {
 		productStatusList = oaProductService.selectProductStatusDicList();
 		if(null==product)
 			product = new Product();
 		productList = oaProductService.selectProductList(product,pageInfo);
-		return "tolist";
+		return "forwardProductList";
 	}
 
-	public String toAdd() {
+	public String forwardAddProductInfo() {
 		productLevelList = oaProductService.selectProductLevelDicList();
 		productKindList = oaProductService.selectProductKindList();
-		return "add";
+		product =new Product();
+		return "productInfo";
 	}
 
 
 
-	public String toUpdate() {
-		product = oaProductService.getProductById(request.getParameter("id"));
-		if (product != null) {
-			if (product.getOnlineTime() != null) {
-				onlineTime1 = (new SimpleDateFormat("yyyy-MM-dd")).format(product.getOnlineTime());
-			}
-			if (product.getOfflineTime() != null) {
-				offlineTime1 = (new SimpleDateFormat("yyyy-MM-dd")).format(product.getOfflineTime());
-			}
-		}
-		return "update";
-	}
-
-	public String editProduct() throws Exception {
-	
-		return "action2action";
+	public String forwardEditProduct() throws Exception {
+		productLevelList = oaProductService.selectProductLevelDicList();
+		productKindList = oaProductService.selectProductKindList();
+		product = oaProductService.getProductById(product.getId());
+		return "productInfo";
 	}
 
 	public String delProduct(){
@@ -129,7 +118,7 @@ public class OaProductAction extends CommonAction {
 		}catch(Exception e){
 			addActionError("操作失败");
 		}
-		return "action2action";
+		return forwardProductList();
 	}
 
 	public List<Product> getProductList() {

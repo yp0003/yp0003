@@ -62,27 +62,30 @@ public class OaProductServiceImpl implements OaProductService {
 	
 	@Override
 	public void saveProduct(Product product,File scan,File[] images) {
-		
 		//转换产品的缩略图
 		byte[] picData = scan==null?null:fileToPicData(scan);
 		product.setProductSamllPic(picData);
-		String productId = UUIDCreate.getUUID();
-		product.setId(productId);
-		if (product != null) {		
+		if(null == product.getId() ||"".equals(product.getId())){//id为空是说明是新增						
+			product.setId(UUIDCreate.getUUID());				
 			productMapper.insert(product);
+			
+		}else{
+			productMapper.updateByPrimaryKeySelective(product);
 		}
 		//保存课程精彩截图
-		for(File image:images){
-			byte[] imgData = image==null?null:fileToPicData(image);
-			if(null != imgData){
-				ProductImage proImg = new ProductImage();
-				proImg.setId(UUIDCreate.getUUID());
-				proImg.setProductId(productId);
-				proImg.setProductImage(imgData);
-				productImageMapper.insert(proImg);
+		if(images!=null){
+			for(File image:images){
+				byte[] imgData = image==null?null:fileToPicData(image);
+				if(null != imgData){
+					ProductImage proImg = new ProductImage();
+					proImg.setId(UUIDCreate.getUUID());
+					proImg.setProductId(product.getId());
+					proImg.setProductImage(imgData);
+					productImageMapper.insert(proImg);
+				}					
 			}
-				
 		}
+		
 
 	}
 
