@@ -1,7 +1,6 @@
 package com.yfann.web.action.oa;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,9 @@ public class OaProductAction extends CommonAction {
 	private static final long serialVersionUID = 4950305054523300932L;
 
 	/** 产品列表 */
-	public List<Product> productList;
+	private List<Product> productList;
 	/** 产品 */
-	public Product product;
+	private Product product;
 
 	private String onlineTime1;
 	private String offlineTime1;

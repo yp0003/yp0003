@@ -253,4 +253,26 @@
       send_content = #{sendContent,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  
+  <select id="SelectListByPublicMsgParam"  parameterType="com.yfann.web.pojo.PublicMessage" resultMap="BaseResultMap">
+   	select * from t_public_message
+   	where 1=1
+   	 <include refid="where_Clause" />
+  </select>
+  <select id="countByPublicMsgParam" parameterType="com.yfann.web.pojo.PublicMessage" resultType="java.lang.Integer" >
+    select count(*) from t_public_message
+    where 1=1
+    <include refid="where_Clause" />
+  </select>
+  <sql id="where_Clause">
+  	 <if test="publicMessageId != null" >
+        and public_message_id = #{publicMessageId,jdbcType=VARCHAR}
+      </if>
+      <if test="sendTime != null" >
+         and send_time = #{sendTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="sendContent != null" >
+         and send_content = #{sendContent,jdbcType=VARCHAR}
+      </if>
+  </sql>
 </mapper>

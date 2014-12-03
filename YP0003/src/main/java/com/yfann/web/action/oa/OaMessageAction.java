@@ -31,7 +31,6 @@ public class OaMessageAction extends CommonAction {
 
 	public String toList() {
 		messageList = oaMessageService.getAllMessage(0, Integer.MAX_VALUE);
-		System.out.println(oaMessageService.getAllCountMessage());
 		return "tolist";
 	}
 

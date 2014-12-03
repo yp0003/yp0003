@@ -3,6 +3,7 @@ package com.yfann.web.service;
 import java.util.List;
 
 import com.yfann.web.pojo.PublicMessage;
+import com.yfann.web.vo.PageInfo;
 
 public interface OaPublicMessageService {
 	/**
@@ -36,7 +37,7 @@ public interface OaPublicMessageService {
 	 * @param lim
 	 * @return
 	 */
-	public List<PublicMessage> getAllPublicMessage(int off, int lim);
+	public List<PublicMessage> selectPublicMessageList(PublicMessage publicMessage,PageInfo pageInfo);
 
 	/**
 	 * 获取所有公告数量

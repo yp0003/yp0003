@@ -9,7 +9,10 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface PublicMessageMapper {
-	/**
+	int countByPublicMsgParam(PublicMessage publicMessage);
+	List<PublicMessage> SelectListByPublicMsgParam(PublicMessage publicMessage);
+	List<PublicMessage> SelectListByPublicMsgParam(PublicMessage publicMessage,RowBounds rowBounds);
+	/** 
 	 * 分页查找公告
 	 * 
 	 * @param off
