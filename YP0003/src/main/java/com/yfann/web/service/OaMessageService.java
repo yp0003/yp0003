@@ -3,6 +3,7 @@ package com.yfann.web.service;
 import java.util.List;
 
 import com.yfann.web.pojo.Message;
+import com.yfann.web.vo.PageInfo;
 
 public interface OaMessageService {
 	/**
@@ -36,7 +37,7 @@ public interface OaMessageService {
 	 * @param lim
 	 * @return
 	 */
-	public List<Message> getAllMessage(int off, int lim);
+	public List<Message> selectMessageList(Message message,PageInfo pageInfo);
 
 	/**
 	 * 获取所有消息数量

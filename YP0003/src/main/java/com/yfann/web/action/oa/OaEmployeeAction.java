@@ -47,6 +47,7 @@ public class OaEmployeeAction extends CommonAction {
 	private String birthday;
 	private String[] rids;
 	private String rid;
+	
 
 	/*
 	 * // 转到新增页面 public String toAdd() { return "add"; }
@@ -200,7 +201,6 @@ public class OaEmployeeAction extends CommonAction {
 
 	// 转向修改密码页面
 	public String updatePasswordUI() {
-		oaEmployee = null;
 		return "updatePasswordUI";
 	}
 
@@ -368,6 +368,8 @@ public class OaEmployeeAction extends CommonAction {
 		this.rid = rid;
 	}
 
+	
+	
 	// public String getData() {
 	// try {
 	// int page = Integer.parseInt(request.getParameter("page"));

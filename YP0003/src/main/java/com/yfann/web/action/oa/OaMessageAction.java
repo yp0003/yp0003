@@ -13,6 +13,7 @@ import com.yfann.web.pojo.Message;
 import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.OaMessageService;
+import com.yfann.web.vo.PageInfo;
 
 /**
  * OA系统功能
@@ -23,6 +24,8 @@ public class OaMessageAction extends CommonAction {
 
 	/** 消息列表 */
 	public List<Message> messageList;
+	/** 分页 */
+	private PageInfo pageInfo;
 	/** 消息 */
 	public Message message;
 
@@ -30,7 +33,9 @@ public class OaMessageAction extends CommonAction {
 	private OaMessageService oaMessageService;
 
 	public String toList() {
-		messageList = oaMessageService.getAllMessage(0, Integer.MAX_VALUE);
+		if(message == null)
+			message = new Message();
+		messageList = oaMessageService.selectMessageList(message, pageInfo);
 		return "tolist";
 	}
 
@@ -84,6 +89,14 @@ public class OaMessageAction extends CommonAction {
 
 	public void setMessage(Message message) {
 		this.message = message;
+	}
+
+	public PageInfo getPageInfo() {
+		return pageInfo;
+	}
+
+	public void setPageInfo(PageInfo pageInfo) {
+		this.pageInfo = pageInfo;
 	}
 
 }

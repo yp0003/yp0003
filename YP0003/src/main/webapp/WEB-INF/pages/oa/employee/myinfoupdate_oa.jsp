@@ -1,109 +1,153 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ taglib uri="/struts-tags" prefix="s"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>365ITEDU</title>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.9.0.js"></script>
-<script language="JavaScript" type="text/javascript" src="${pageContext.request.contextPath}/js/My97DatePicker/WdatePicker.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title><s:text name="display.name" /></title>
 
-<link href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet" />
+<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon" />
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/oa_js/jquery/jquery.last.min.js">
+	//
+</script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/oa_js/jquery/stupidtable.min.js">
+	//
+</script>
+<link
+	href="${pageContext.request.contextPath}/oa_js/jquery/jquery-easyui/themes/default/easyui.css"
+	rel="stylesheet" type="text/css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/oa_js/jquery/jquery-easyui/themes/icon.css"
+	type="text/css" />
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/oa_js/jquery/jquery-easyui/jquery.easyui.min.js">
+	//
+</script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/oa_js/jquery/jquery-easyui/locale/easyui-lang-zh_CN.js">
+	//
+</script>
+<link href="${pageContext.request.contextPath}/oa_css/style.css" rel="stylesheet" type="text/css" />
 
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/oa_js/jquery/magnific-popup/magnific-popup.css" />
+<script type="text/javascript" language="javascript"
+	src="${pageContext.request.contextPath}/oa_js/jquery/magnific-popup/jquery.magnific-popup.js">
+</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/oa_js/common.js">
+	//
+</script>
+<script type="text/javascript">
+function addFileInput(){
+ 	$("#imagesTable").append('<tr><td width="30%"><s:file name="images">选择图片:</s:file></td></tr>');
+}
+function forSubmit() {
+	document.forms[0].action = "oaEmp!updateMyInfo.html";
+	document.forms[0].submit();
+}
+</script>
 </head>
+
 <body>
-  <s:form action="oaEmp!updateMyInfo.html" id="register">
-    <ul>
-    <li>
-    <label for="passWord">用户ID:</label>
-    <s:textfield id="passWord"  name="oaEmployee.employeeId" readonly="true"/>
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">昵称:</label>
-    <s:textfield id="passWord"  name="oaEmployee.nick" />
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">用户名称:</label>
-    <s:textfield id="passWord"  name="oaEmployee.employeeName" />
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">生日:</label>
-    <s:textfield id="d121" name="birthday" readonly="true" onfocus="WdatePicker({isShowWeek:true})"/>
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">性别:</label>
-    <s:radio name="oaEmployee.sex" list="#{'0':'男','1':'女'}" value="0"/>
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">身份证号:</label>
-    <s:textfield id="passWord"  name="oaEmployee.idcardNumber" />
-    <span class="redStar">*</span>
-     <s:if test="infoMessage.idcardNumberMessage != null">
-      <span class="redStar"><s:property value="infoMessage.idcardNumberMessage" /></span>
-     </s:if>
-    </li>
-    <li>
-    <label for="passWord">学历:</label>
-    <s:select id="passWord" list="#{0:'高中',1:'大专',2:'本科',3:'研究生',4:'博士'}" name="oaEmployee.education" />
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">留学国家:</label>
-    <s:textfield id="passWord"  name="oaEmployee.foreignCountrie" />
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">毕业学校:</label>
-    <s:textfield id="passWord"  name="oaEmployee.graduateSchool" />
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">手机:</label>
-    <s:textfield id="passWord"  name="oaEmployee.phoneNumber" />
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">国家:</label>
-    <s:textfield id="passWord"  name="oaEmployee.countrie" />
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">省市:</label>
-    <s:textfield id="passWord"  name="oaEmployee.provinceAndCity" />
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">地址:</label>
-    <s:textfield id="passWord"  name="oaEmployee.address" />
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">邮编:</label>
-    <s:textfield id="passWord"  name="oaEmployee.zipCode" />
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">邮箱:</label>
-    <s:textfield id="passWord"  name="oaEmployee.email" />
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <label for="passWord">QQ:</label>
-    <s:textfield id="passWord"  name="oaEmployee.qq" />
-    <span class="redStar">*</span>
-    </li>
-    <li>
-    <s:hidden name="oaEmployee.id"></s:hidden>
-    <button type="submit" value="">保存</button>
-    <input type="button" value="返回" onclick="javascript:history.go(-1);"/>
-    </li>
-    </ul>
+	<s:form method="POST" enctype="multipart/form-data"  >
+	<s:actionmessage cssStyle="color: green;" />
+	<s:actionerror cssStyle="color: red;" />
+	<div align="center" class="easyui-tabs">
+	
+		<div title="课程基本信息">
+			<table cellpadding="10px" width="100%">
+				<tr>
+					<td>
+						<fieldset class="fieldset-self">
+							<legend>基本信息</legend>
+							<table align="left" width="100%" cellpadding="5px" border="0">
+								<tr>
+									
+								
+									<td align="right" width="100px">用户ID:</td>
+									<td><s:textfield name="oaEmployee.employeeId" /></td>
+									<td align="right" width="100px">昵称:</td>
+									<td >
+
+										<s:textfield name="oaEmployee.nick" />
+					    			</td>
+									<td align="right" width="100px">用户名称:</td>
+									<td>
+											<s:textfield name="oaEmployee.employeeName" />
+					    			</td>
+					    			<td align="right" width="100px">生日:</td>
+									<td>
+									  	<input id="dd1" style="width: 100px"
+											name="birthday" type="text"
+											class="easyui-datebox" />
+									</td>
+								</tr>
+								<tr>
+									<td align="right" width="100px">性别:</td>
+									<td>
+										<s:radio name="oaEmployee.sex" list="#{'0':'男','1':'女'}" value="0"/>
+									</td>
+									<td align="right" width="100px">身份证号:</td>
+									<td>
+										 <s:textfield id="passWord"  name="oaEmployee.idcardNumber" />
+									</td>
+									<td  align="right" width="100px">学历:</td>
+									<td>  <s:select id="passWord" list="#{0:'高中',1:'大专',2:'本科',3:'研究生',4:'博士'}" name="oaEmployee.education" /></td>
+									<td align="right" width="100px">留学国家:</td>
+									<td>
+											<s:textfield id="passWord"  name="oaEmployee.graduateSchool" />
+									</td>
+								</tr>	
+								<tr>
+									<td align="right" width="100px">手机:</td>
+									<td>
+										<s:textfield name="oaEmployee.phoneNumber" onkeyup="value=value.replace(/[^\d]/g,'')" />
+									</td>
+									<td align="right" width="100px">国家:</td>
+									<td><s:textfield name="oaEmployee.countrie" onkeyup="value=value.replace(/[^\d]/g,'')" /></td>
+									<td align="right" width="100px">省/市:</td>
+									<td><s:textfield name="oaEmployee.provinceAndCity"></s:textfield></td>
+								</tr>
+								<tr>
+									<td align="right" width="100px">邮箱:</td>	
+									<td><s:textfield  name="oaEmployee.email" /></td>		
+									<td align="right" width="100px" >QQ:</td>
+									<td><s:textfield name="oaEmployee.qq" /></td>
+									<td align="right" width="100px">邮编:</td>
+									<td><s:textfield name="oaEmployee.zipCode"></s:textfield></td>
+								</tr>
+								<tr>
+									<td align="right" width="100px">地址:</td>
+									<td colspan="7"><s:textarea  cols="100" rows="1"  name="product.address"/><s:actionerror/></td>
+						
+								</tr>					
+						</table>
+						</fieldset>
+					</td>
+				</tr>
+			</table>
+		</div>
+	
+	
+	</div>
+	
+	
+	<table cellpadding="10px" width="100%"
+		style="border-width: 0px 0px 0px 0px; border-spacing: 0; border-style: solid; border-color: #C1DAD7;">
+		<tr align="center">
+			<td>
+				<button type="button" onclick="return forSubmit()">
+						<img src="images/apply2.png" alt="保存" /> 保存
+					</button> &#160;&#160;&#160;
+				
+			</td>
+		</tr>
+	</table>
   </s:form>
 </body>
 </html>

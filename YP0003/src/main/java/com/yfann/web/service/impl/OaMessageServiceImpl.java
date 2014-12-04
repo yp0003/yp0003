@@ -11,6 +11,7 @@ import com.yfann.web.dao.MessageMapper;
 import com.yfann.web.pojo.Message;
 import com.yfann.web.pojo.MessageExample;
 import com.yfann.web.service.OaMessageService;
+import com.yfann.web.vo.PageInfo;
 
 @Service
 public class OaMessageServiceImpl implements OaMessageService {
@@ -35,10 +36,14 @@ public class OaMessageServiceImpl implements OaMessageService {
 	}
 
 	@Override
-	public List<Message> getAllMessage(int off, int lim) {
-		MessageExample example = new MessageExample();
-		example.setOrderByClause("send_time desc");
-		return messageMapper.selectByExample(example, new RowBounds(off, lim));
+	public List<Message> selectMessageList(Message message,PageInfo pageInfo) {
+
+		 if (null != pageInfo) {
+	            pageInfo.setCount(messageMapper.countByMessageParam(message));
+	            List<Message> list =messageMapper.selectByMessageParam(message, new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));            
+	            return   list;
+	            }
+		return messageMapper.selectByMessageParam(message);
 	}
 
 	@Override
