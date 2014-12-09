@@ -4,9 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.Cookie;
@@ -27,6 +31,7 @@ import com.yfann.web.common.OaCookieUtils;
 import com.yfann.web.common.OaUUIDCreate;
 import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.OaMenu;
+import com.yfann.web.pojo.OaRole;
 import com.yfann.web.service.OaEmployeeService;
 import com.yfann.web.service.OaMenuService;
 import com.yfann.web.vo.MailContext;
@@ -58,7 +63,29 @@ public class OaLoginAction extends CommonAction {
 	private String remPass;
 
 	public String getOaMenu() throws Exception {
-		List<OaMenu> list = oaMenuService.getAllOaMenu();
+		oaEmployee = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
+		oaEmployee = oaEmployeeService.getEmpById(oaEmployee.getId());
+		List<OaRole> oaRoleList = oaEmployee.getOaRoleList();
+		Set<OaMenu> oaMenuSet = new HashSet<OaMenu>();
+		List<String> url = new ArrayList<String>();
+		for (OaRole r : oaRoleList) {
+			oaMenuSet.addAll(r.getOaMenuList());
+		}
+		List<OaMenu> list = new ArrayList<OaMenu>(oaMenuSet);
+		List<OaMenu> listAll = oaMenuService.getAllOaMenu();
+		A: for(OaMenu mm:listAll){
+			if (!StringUtils.isNotEmpty(mm.getUrl()))
+				continue;
+			for (OaMenu m : list) {
+				if(mm.getUrl().equals(m.getUrl())){
+					continue A;
+				}
+			}
+			url.add(mm.getUrl());
+		}
+		//把该用户不能访问的URL放到session,待用
+		session.setAttribute("urls", url);
+		Collections.sort(list);
 		ActionContext.getContext().getValueStack().push(list);
 		return SUCCESS;
 
@@ -141,6 +168,7 @@ public class OaLoginAction extends CommonAction {
 			session.setAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION, oaEmployeeTemp);// 添加用户到session中
 			// 保存最后一次登录时间
 			oaEmployeeTemp.setLastLoginTime(new Date());
+			oaEmployee = oaEmployeeTemp;
 			oaEmployeeService.updateOaEmployee(oaEmployeeTemp);
 			return "loginSuccess";
 		}

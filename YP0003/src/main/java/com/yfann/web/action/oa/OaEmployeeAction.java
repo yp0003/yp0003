@@ -1,8 +1,14 @@
 package com.yfann.web.action.oa;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -53,7 +59,12 @@ public class OaEmployeeAction extends CommonAction {
 	private String birthday;
 	private String[] rids;
 	private String rid;
-	
+
+	/** Struts2下载(内存数据下载) */
+	public ByteArrayInputStream byteArrayInputStream;
+
+	private File fileupload; // 和JSP中input标记name同名
+	private String fileuploadFileName;
 
 	/*
 	 * // 转到新增页面 public String toAdd() { return "add"; }
@@ -268,20 +279,62 @@ public class OaEmployeeAction extends CommonAction {
 	}
 
 	/** 上传图片 */
-	@SuppressWarnings("unchecked")
 	public void updateImage() {
-		Enumeration<Object> att = request.getAttributeNames();
-		while (att.hasMoreElements()) {
-			String object = (String) att.nextElement();
-			System.out.println("att:" + object);
+		oaEmployee = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
+		OaEmployee temp = new OaEmployee();
+		temp.setId(oaEmployee.getId());
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+			// 检查上传的是否过大
+			if (fileupload.length()>(1024*1024)) {
+				out.print("<font color='red'>文件大小不能超过1M!</font>");
+				return;
+			}
+			String extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
+			// 检查上传的是否是图片
+			if (!checkIsImage(extName)) {
+				out.print("<font color='red'>请上传图片格式!</font>");
+				return;
+			}
+			FileInputStream fis = new FileInputStream(fileupload);
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			byte[] b = new byte[1024];
+			int n, m = 0;
+			while ((n = fis.read(b)) != -1) {
+				bos.write(b, 0, n);
+			}
+			temp.setHeadImg(bos.toByteArray());
+			fis.close();
+			bos.close();
+			// 检查上传的是否是图片
+			out.print("<font color='red'>" + fileuploadFileName + "上传成功!</font>");
+			oaEmployeeService.updateOaEmployee(temp);
+			oaEmployeeService.updateOaEmployee(temp);
+		} catch (Exception e) {
+			out.print("<font color='red'>上传失败,请联系管理员或稍候再试!</font>");
+			e.printStackTrace();
 		}
+	}
 
-		Enumeration<String> par = request.getParameterNames();
-		while (par.hasMoreElements()) {
-			String object = (String) par.nextElement();
-			System.out.println(object + ":" + request.getParameter(object));
+	/** 显示图片 */
+	public String showImage() throws Exception {
+		oaEmployee = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
+		OaEmployee temp = oaEmployeeService.getEmpById(oaEmployee.getId());
+		byteArrayInputStream = new ByteArrayInputStream(temp.getHeadImg());
+		return "showImage";
+	}
+
+	// 检查是否是图片格式
+	public static boolean checkIsImage(String imgStr) {
+		boolean flag = false;
+		if (imgStr != null) {
+			if (imgStr.equalsIgnoreCase(".gif") || imgStr.equalsIgnoreCase(".jpg")
+					|| imgStr.equalsIgnoreCase(".jpeg") || imgStr.equalsIgnoreCase(".png")) {
+				flag = true;
+			}
 		}
-		System.out.println(1);
+		return flag;
 	}
 
 	public OaEmployee getOaEmployee() {
@@ -375,8 +428,6 @@ public class OaEmployeeAction extends CommonAction {
 		this.rid = rid;
 	}
 
-	
-	
 	public List<Department> getDepartmentList() {
 		return departmentList;
 	}
@@ -385,5 +436,36 @@ public class OaEmployeeAction extends CommonAction {
 		this.departmentList = departmentList;
 	}
 
+	public OaRegisterMessage getOaRegisterMessage() {
+		return oaRegisterMessage;
+	}
+
+	public void setOaRegisterMessage(OaRegisterMessage oaRegisterMessage) {
+		this.oaRegisterMessage = oaRegisterMessage;
+	}
+
+	public File getFileupload() {
+		return fileupload;
+	}
+
+	public void setFileupload(File fileupload) {
+		this.fileupload = fileupload;
+	}
+
+	public String getFileuploadFileName() {
+		return fileuploadFileName;
+	}
+
+	public void setFileuploadFileName(String fileuploadFileName) {
+		this.fileuploadFileName = fileuploadFileName;
+	}
+
+	public ByteArrayInputStream getByteArrayInputStream() {
+		return byteArrayInputStream;
+	}
+
+	public void setByteArrayInputStream(ByteArrayInputStream byteArrayInputStream) {
+		this.byteArrayInputStream = byteArrayInputStream;
+	}
 
 }

@@ -3,7 +3,22 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="oalogin" namespace="/" extends="json-default,struts-default">
+	<package name="mypackage" extends="yfann-default" abstract="true">
+		<interceptors>
+			<interceptor name="loginCheck" class="com.yfann.web.interceptor.LoginInterceptor" />
+			<interceptor-stack name="mydefaultStack">
+				<interceptor-ref name="yfannDefaultStack"></interceptor-ref>
+				<interceptor-ref name="loginCheck"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefaultStack"></default-interceptor-ref>
+		<!-- 配置全局结果集,转向错误页面和拒绝页面 -->
+		<global-results>
+			<result name="toerror">/WEB-INF/pages/oa/login_oa.jsp</result>
+		</global-results>
+	</package>
+	
+	<package name="oalogin" namespace="/" extends="yfann-default">
 		<!-- OA登录 -->
 		<action name="oalogin!*" method="{1}" class="com.yfann.web.action.oa.OaLoginAction">
 			<!-- 跳转到登录 -->
@@ -22,7 +37,7 @@
 	</package>
 
 	<!-- 菜单 -->
-	<package name="oamenu" namespace="/" extends="yfann-default">
+	<package name="oamenu" namespace="/" extends="mypackage">
 		<action name="oaMenu!*" method="{1}" class="com.yfann.web.action.oa.OaMenuAction">
 			<result name="tolist">/WEB-INF/pages/oa/menu/menulist_oa.jsp</result>
 			<result name="add">/WEB-INF/pages/oa/menu/menuadd_oa.jsp</result>
@@ -31,7 +46,7 @@
 	</package>
 
 	<!-- 部门 -->
-	<package name="oadepart" namespace="/" extends="yfann-default">
+	<package name="oadepart" namespace="/" extends="mypackage">
 		<action name="oaDepart!*" method="{1}" class="com.yfann.web.action.oa.OaDepartmentAction">
 			<result name="tolist">/WEB-INF/pages/oa/depart/departlist_oa.jsp</result>
 			<result name="add">/WEB-INF/pages/oa/depart/departadd_oa.jsp</result>
@@ -40,7 +55,7 @@
 	</package>
 
 	<!-- 角色 -->
-	<package name="oarole" namespace="/" extends="yfann-default">
+	<package name="oarole" namespace="/" extends="mypackage">
 		<action name="oaRole!*" method="{1}" class="com.yfann.web.action.oa.OaRoleAction">
 			<result name="tolist">/WEB-INF/pages/oa/role/rolelist_oa.jsp</result>
 			<result name="add">/WEB-INF/pages/oa/role/roleadd_oa.jsp</result>
@@ -50,7 +65,7 @@
 	</package>
 
 	<!-- 用户 -->
-	<package name="oaemp" namespace="/" extends="yfann-default">
+	<package name="oaemp" namespace="/" extends="mypackage">
 		<action name="oaEmp!*" method="{1}" class="com.yfann.web.action.oa.OaEmployeeAction">
 			<result name="toEmpList">/WEB-INF/pages/oa/employee/employeelist_oa.jsp</result>
 			<result name="selectEmp">/WEB-INF/pages/oa/employee/employeelist_oa.jsp</result>
@@ -63,9 +78,15 @@
 			<result name="privilegeByEmp">/WEB-INF/pages/oa/employee/employeeprivilege_oa.jsp</result>
 			<result name="action2action" type="redirect">oaEmp!toEmpList.html</result>
 			<result name="logout" type="redirect">oalogin!logout.html</result>
-			
+
 			<result name="updateImage">/WEB-INF/pages/oa/employee/empupdateimage_oa.jsp</result>
-			
+
+			<result name="showImage" type="stream">
+				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
+				<param name="inputName">byteArrayInputStream</param>
+			</result>
+
+
 			<!-- 客户 -->
 			<result name="toUserList">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
 			<result name="selectUser">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
@@ -76,7 +97,7 @@
 	</package>
 
 	<!-- 公告 -->
-	<package name="oapm" namespace="/" extends="yfann-default">
+	<package name="oapm" namespace="/" extends="mypackage">
 		<action name="oaPublicMessage!*" method="{1}" class="com.yfann.web.action.oa.OaPublicMessageAction">
 			<result name="forwardPulbicMessageList">/WEB-INF/pages/oa/publicMessage/publicMessagelist_oa.jsp</result>
 			<result name="forwardPulbicMessageInfo">/WEB-INF/pages/oa/publicMessage/publicMessageadd_oa.jsp</result>
@@ -86,7 +107,7 @@
 	</package>
 
 	<!-- 产品 -->
-	<package name="oaProduct" namespace="/" extends="yfann-default">
+	<package name="oaProduct" namespace="/" extends="mypackage">
 		<action name="oaProduct!*" method="{1}" class="com.yfann.web.action.oa.OaProductAction">
 			<result name="forwardProductList">/WEB-INF/pages/oa/product/productlist_oa.jsp</result>
 			<result name="productInfo">/WEB-INF/pages/oa/product/productInfo_oa.jsp</result>
@@ -94,7 +115,7 @@
 	</package>
 
 	<!-- 消息 -->
-	<package name="oamessage" namespace="/" extends="yfann-default">
+	<package name="oamessage" namespace="/" extends="mypackage">
 		<action name="oaMessage!*" method="{1}" class="com.yfann.web.action.oa.OaMessageAction">
 			<result name="tolist">/WEB-INF/pages/oa/message/messagelist_oa.jsp</result>
 			<result name="add">/WEB-INF/pages/oa/message/messageadd_oa.jsp</result>
@@ -105,7 +126,7 @@
 	</package>
 
 	<!-- 消息 -->
-	<package name="oaapply" namespace="/" extends="yfann-default">
+	<package name="oaapply" namespace="/" extends="mypackage">
 		<action name="oaApply!*" method="{1}" class="com.yfann.web.action.oa.OaApplyAction">
 			<result name="applylist">/WEB-INF/pages/oa/apply/applylist_oa.jsp</result>
 			<result name="applyadd">/WEB-INF/pages/oa/apply/applyadd_oa.jsp</result>

@@ -19,9 +19,9 @@
 	<img src="${pageContext.request.contextPath}/images/img_logo2.png"/>
 	<img src="${pageContext.request.contextPath}/images/txt_oaZH.png" width="160" height="28" style="padding-bottom: 10px;padding-left: 10px" />
 	<div style="display:inline;float:right;margin-top: 20px;padding-right: 10px">
-		<a href="#">退出</a>
+		<a href="oalogin!logout.html" onclick="javascript:return p_exit()">退出</a>
 	</div>
-	<div style="display:inline;float:right;margin-top: 20px;padding-right: 20px">欢迎你</div>
+	<div style="display:inline;float:right;margin-top: 20px;padding-right: 20px"><s:property value="oaEmployee.employeeName"/>,欢迎你</div>
 </div>
 
 <!-- 左侧菜单 -->
@@ -127,4 +127,12 @@
 			$.fn.zTree.init($("#treeDemo"), setting, null);
 		});
 		
+		//退出
+		function p_exit() {
+			if (confirm("您真的确定要退出吗？\n\n请确认！")==true){
+			return true;
+			}else{
+			return false;
+			}
+		}
 	</script>
