@@ -146,7 +146,7 @@ public class OaApplyAction extends CommonAction {
 			return "forwardLogin";
 		}
 		applyMoney.setAuthorizeUserId(emp.getId());
-		applyMoney.setApplyId("008");
+		applyMoney.setApplyStatus("008");
 		
 		oaApplyService.updateApply(applyMoney);
 		return toAuthorizeList();
@@ -159,7 +159,7 @@ public class OaApplyAction extends CommonAction {
 			return "forwardLogin";
 		}
 		applyMoney.setAuthorizeUserId(emp.getId());
-		applyMoney.setApplyId("007");
+		applyMoney.setApplyStatus("007");
 		
 		oaApplyService.updateApply(applyMoney);
 		return toAuthorizeList();
@@ -167,10 +167,11 @@ public class OaApplyAction extends CommonAction {
 
 	/** 支付成功 */
 	public String PaySuccess() throws Exception {
+		applyMoney = oaApplyService.getApplyById(request.getParameter("id"));
 		applyMoney.setPayStatus("010");
 		
 		oaApplyService.updateApply(applyMoney);
-		return "applyupdate";
+		return toPayList();
 	}
 
 	public List<ApplyMoney> getApplylist() {
