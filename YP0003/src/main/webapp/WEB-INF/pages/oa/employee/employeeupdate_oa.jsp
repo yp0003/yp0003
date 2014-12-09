@@ -31,6 +31,10 @@
     <span class="redStar">*</span>
     </li>
     <li>
+    <label for="passWord">部门:</label>
+	<s:select list="departmentList" listKey="id" listValue="departName" name="oaEmployee.departId"/></td>
+    </li>
+    <li>
     <label for="passWord">生日:</label>
     <s:textfield id="d121" name="birthday" readonly="true" onfocus="WdatePicker({isShowWeek:true})"/>
     <span class="redStar">*</span>

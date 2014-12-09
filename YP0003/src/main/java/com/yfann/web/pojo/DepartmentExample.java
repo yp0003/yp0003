@@ -473,6 +473,136 @@ public class DepartmentExample {
             addCriterion("depart_id not between", value1, value2, "departId");
             return (Criteria) this;
         }
+
+        public Criteria andPdepartIdIsNull() {
+            addCriterion("pdepart_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdIsNotNull() {
+            addCriterion("pdepart_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdEqualTo(String value) {
+            addCriterion("pdepart_id =", value, "pdepartId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdNotEqualTo(String value) {
+            addCriterion("pdepart_id <>", value, "pdepartId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdGreaterThan(String value) {
+            addCriterion("pdepart_id >", value, "pdepartId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdGreaterThanOrEqualTo(String value) {
+            addCriterion("pdepart_id >=", value, "pdepartId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdLessThan(String value) {
+            addCriterion("pdepart_id <", value, "pdepartId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdLessThanOrEqualTo(String value) {
+            addCriterion("pdepart_id <=", value, "pdepartId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdLike(String value) {
+            addCriterion("pdepart_id like", value, "pdepartId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdNotLike(String value) {
+            addCriterion("pdepart_id not like", value, "pdepartId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdIn(List<String> values) {
+            addCriterion("pdepart_id in", values, "pdepartId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdNotIn(List<String> values) {
+            addCriterion("pdepart_id not in", values, "pdepartId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdBetween(String value1, String value2) {
+            addCriterion("pdepart_id between", value1, value2, "pdepartId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPdepartIdNotBetween(String value1, String value2) {
+            addCriterion("pdepart_id not between", value1, value2, "pdepartId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelIsNull() {
+            addCriterion("level is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelIsNotNull() {
+            addCriterion("level is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelEqualTo(Integer value) {
+            addCriterion("level =", value, "level");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelNotEqualTo(Integer value) {
+            addCriterion("level <>", value, "level");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelGreaterThan(Integer value) {
+            addCriterion("level >", value, "level");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelGreaterThanOrEqualTo(Integer value) {
+            addCriterion("level >=", value, "level");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelLessThan(Integer value) {
+            addCriterion("level <", value, "level");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelLessThanOrEqualTo(Integer value) {
+            addCriterion("level <=", value, "level");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelIn(List<Integer> values) {
+            addCriterion("level in", values, "level");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelNotIn(List<Integer> values) {
+            addCriterion("level not in", values, "level");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelBetween(Integer value1, Integer value2) {
+            addCriterion("level between", value1, value2, "level");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelNotBetween(Integer value1, Integer value2) {
+            addCriterion("level not between", value1, value2, "level");
+            return (Criteria) this;
+        }
     }
 
     /**

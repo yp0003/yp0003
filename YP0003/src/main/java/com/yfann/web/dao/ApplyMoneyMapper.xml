@@ -17,6 +17,29 @@
     <result column="money" property="money" jdbcType="DECIMAL" />
     <result column="target_kind" property="targetKind" jdbcType="VARCHAR" />
     <result column="expenditure_remark" property="expenditureRemark" jdbcType="VARCHAR" />
+    
+    <!-- 申请者 -->
+    <association column="apply_id" javaType="com.yfann.web.pojo.OaEmployee"
+	property="apply" select="com.yfann.web.dao.OaEmployeeMapper.selectByPrimaryKey" />
+    <!-- 批准者 -->
+    <association column="authorize_user_id" javaType="com.yfann.web.pojo.OaEmployee"
+	property="authorize" select="com.yfann.web.dao.OaEmployeeMapper.selectByPrimaryKey" />
+    <!-- 重要度 -->
+    <association column="importance" javaType="com.yfann.web.pojo.Dic"
+	property="importanceDic" select="com.yfann.web.dao.DicMapper.selectByPrimaryKey" />
+    <!-- 申请种别 -->
+    <association column="apply_kind" javaType="com.yfann.web.pojo.Dic"
+	property="applyKindDic" select="com.yfann.web.dao.DicMapper.selectByPrimaryKey" />
+    <!-- 申请状态 -->
+    <association column="apply_status" javaType="com.yfann.web.pojo.Dic"
+	property="applyStatusDic" select="com.yfann.web.dao.DicMapper.selectByPrimaryKey" />
+    <!-- 支付状态 -->
+    <association column="pay_status" javaType="com.yfann.web.pojo.Dic"
+	property="payStatusDic" select="com.yfann.web.dao.DicMapper.selectByPrimaryKey" />
+    <!-- 目标种别 -->
+    <association column="target_kind" javaType="com.yfann.web.pojo.Dic"
+	property="targetKindDic" select="com.yfann.web.dao.DicMapper.selectByPrimaryKey" />
+		
   </resultMap>
   <sql id="Example_Where_Clause" >
     <!--

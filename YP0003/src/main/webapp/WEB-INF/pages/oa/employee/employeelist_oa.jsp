@@ -29,9 +29,9 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>讲师账号</th>
-				<th>讲师昵称</th>
-				<th>讲师姓名</th>
+				<th>员工账号</th>
+				<th>员工昵称</th>
+				<th>员工姓名</th>
 				<th>操作</th>
 			</tr>
 		</thead>

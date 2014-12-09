@@ -71,7 +71,8 @@
 					$('#tt').tabs('add',{
 						title:treeNode.name+'',
 						content: '<iframe scrolling="auto" frameborder="0" id="'+treeNode.menuId+'" src="'+treeNode.url+'" style="width:100%;height:100%;overflow-x:hidden; overflow-y:hidden;" ></iframe>',
-						closable: true
+						closable: true,
+						loadingMessage : '加载中...'
 					});
 				}else{
 					$('#tt').tabs('select', treeNode.name+'');  
@@ -81,7 +82,8 @@
 						options:{
 						title:treeNode.name+'',
 						content: '<iframe scrolling="auto" frameborder="0" id="'+treeNode.menuId+'" src="'+treeNode.url+'" style="width:100%;height:100%;overflow-x:hidden; overflow-y:hidden;" ></iframe>',
-						closable: true
+						closable: true,
+						loadingMessage : '加载中...'
 						}
 					});
 				}

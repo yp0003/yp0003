@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.action.CommonAction;
 import com.yfann.web.common.OaApplicationValue;
+import com.yfann.web.pojo.Department;
 import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.OaRole;
 import com.yfann.web.pojo.User;
+import com.yfann.web.service.OaDepartmentService;
 import com.yfann.web.service.OaEmployeeService;
 import com.yfann.web.service.OaRoleService;
 import com.yfann.web.vo.OaRegisterMessage;
@@ -31,13 +33,17 @@ public class OaEmployeeAction extends CommonAction {
 	private OaEmployeeService oaEmployeeService;
 	@Autowired
 	private OaRoleService oaRoleService;
+	@Autowired
+	private OaDepartmentService oaDepartmentService;
 
 	/** 用户列表 */
-	public List<OaEmployee> empList;
+	private List<OaEmployee> empList;
 	/** 客户列表 */
-	public List<User> userList;
+	private List<User> userList;
 	/** 角色列表 */
-	public List<OaRole> roleList;
+	private List<OaRole> roleList;
+	/** 部门列表 */
+	private List<Department> departmentList;
 	/** 分页组件 */
 	private PageInfo pageInfo;
 
@@ -79,7 +85,7 @@ public class OaEmployeeAction extends CommonAction {
 	// 转到用户修改页面
 	public String toUpdate() {
 		oaEmployee = oaEmployeeService.getEmpById(request.getParameter("id"));
-
+		departmentList = oaDepartmentService.getAllDepartment();
 		if (oaEmployee.getBirthday() != null) {
 			birthday = (new SimpleDateFormat("yyyy-MM-dd")).format(oaEmployee.getBirthday());
 		}
@@ -255,24 +261,25 @@ public class OaEmployeeAction extends CommonAction {
 		oaEmployeeService.updateOaEmployee(emp);
 		return "logout";
 	}
-	
+
 	/** 转向图片上传页面 */
-	public String toUpdateImage(){
+	public String toUpdateImage() {
 		return "updateImage";
 	}
-	
-	/** 上传图片*/
-	public void updateImage(){
-		Enumeration att = request.getAttributeNames();
+
+	/** 上传图片 */
+	@SuppressWarnings("unchecked")
+	public void updateImage() {
+		Enumeration<Object> att = request.getAttributeNames();
 		while (att.hasMoreElements()) {
 			String object = (String) att.nextElement();
-			System.out.println("att:"+object);
+			System.out.println("att:" + object);
 		}
-		
-		Enumeration par = request.getParameterNames();
+
+		Enumeration<String> par = request.getParameterNames();
 		while (par.hasMoreElements()) {
 			String object = (String) par.nextElement();
-			System.out.println(object+":"+request.getParameter(object));
+			System.out.println(object + ":" + request.getParameter(object));
 		}
 		System.out.println(1);
 	}
@@ -366,6 +373,14 @@ public class OaEmployeeAction extends CommonAction {
 
 	public void setRid(String rid) {
 		this.rid = rid;
+	}
+
+	public List<Department> getDepartmentList() {
+		return departmentList;
+	}
+
+	public void setDepartmentList(List<Department> departmentList) {
+		this.departmentList = departmentList;
 	}
 
 	// public String getData() {

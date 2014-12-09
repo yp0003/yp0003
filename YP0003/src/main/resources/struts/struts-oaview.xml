@@ -30,6 +30,15 @@
 		</action>
 	</package>
 
+	<!-- 部门 -->
+	<package name="oadepart" namespace="/" extends="yfann-default">
+		<action name="oaDepart!*" method="{1}" class="com.yfann.web.action.oa.OaDepartmentAction">
+			<result name="tolist">/WEB-INF/pages/oa/depart/departlist_oa.jsp</result>
+			<result name="add">/WEB-INF/pages/oa/depart/departadd_oa.jsp</result>
+			<result name="update">/WEB-INF/pages/oa/depart/departupdate_oa.jsp</result>
+		</action>
+	</package>
+
 	<!-- 角色 -->
 	<package name="oarole" namespace="/" extends="yfann-default">
 		<action name="oaRole!*" method="{1}" class="com.yfann.web.action.oa.OaRoleAction">
@@ -91,6 +100,19 @@
 			<result name="add">/WEB-INF/pages/oa/message/messageadd_oa.jsp</result>
 			<result name="update">/WEB-INF/pages/oa/message/messageupdate_oa.jsp</result>
 			<result name="action2action" type="redirect">oaMessage!toList.html</result>
+			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
+		</action>
+	</package>
+
+	<!-- 消息 -->
+	<package name="oaapply" namespace="/" extends="yfann-default">
+		<action name="oaApply!*" method="{1}" class="com.yfann.web.action.oa.OaApplyAction">
+			<result name="applylist">/WEB-INF/pages/oa/apply/applylist_oa.jsp</result>
+			<result name="applyadd">/WEB-INF/pages/oa/apply/applyadd_oa.jsp</result>
+			<result name="applyview">/WEB-INF/pages/oa/apply/applyview_oa.jsp</result>
+			<result name="authorizelist">/WEB-INF/pages/oa/apply/authorizelist_oa.jsp</result>
+			<result name="authorizeupdate">/WEB-INF/pages/oa/apply/authorizeupdate_oa.jsp</result>
+			<result name="paylist">/WEB-INF/pages/oa/apply/paylist_oa.jsp</result>
 			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
 		</action>
 	</package>
