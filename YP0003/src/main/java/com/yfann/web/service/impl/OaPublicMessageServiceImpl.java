@@ -1,16 +1,19 @@
 package com.yfann.web.service.impl;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yfann.web.common.OaUUIDCreate;
 import com.yfann.web.dao.PublicMessageMapper;
 import com.yfann.web.pojo.PublicMessage;
 import com.yfann.web.pojo.PublicMessageExample;
 import com.yfann.web.service.OaPublicMessageService;
+import com.yfann.web.vo.PageInfo;
 
 @Service
 public class OaPublicMessageServiceImpl implements OaPublicMessageService {
@@ -19,8 +22,12 @@ public class OaPublicMessageServiceImpl implements OaPublicMessageService {
 
 	@Override
 	public void savePublicMessage(PublicMessage publicMessage) throws Exception {
-		if (publicMessage != null) {
+		if(publicMessage.getId() == null ||"".equals(publicMessage.getId())){
+			publicMessage.setId(OaUUIDCreate.getUUID());
+			publicMessage.setSendTime(new Date());
 			publicMessageMapper.insert(publicMessage);
+		}else{
+			publicMessageMapper.updateByPrimaryKeySelective(publicMessage);
 		}
 	}
 
@@ -37,10 +44,13 @@ public class OaPublicMessageServiceImpl implements OaPublicMessageService {
 	}
 
 	@Override
-	public List<PublicMessage> getAllPublicMessage(int off, int lim) {
-		PublicMessageExample publicMessageExample = new PublicMessageExample();
-		publicMessageExample.setOrderByClause("send_time desc");
-		return publicMessageMapper.selectByExample(new PublicMessageExample(), new RowBounds(off, lim));
+	public List<PublicMessage> selectPublicMessageList(PublicMessage publicMessage,PageInfo pageInfo) {
+		if (null != pageInfo) {
+            pageInfo.setCount(publicMessageMapper.countByPublicMsgParam(publicMessage));
+            List<PublicMessage> list = publicMessageMapper.SelectListByPublicMsgParam(publicMessage,new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));            
+            return   list;
+            }
+     return publicMessageMapper.SelectListByPublicMsgParam(publicMessage);
 	}
 
 	@Override

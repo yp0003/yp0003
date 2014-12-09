@@ -53,6 +53,7 @@ public class OaEmployeeAction extends CommonAction {
 	private String birthday;
 	private String[] rids;
 	private String rid;
+	
 
 	/*
 	 * // 转到新增页面 public String toAdd() { return "add"; }
@@ -206,7 +207,6 @@ public class OaEmployeeAction extends CommonAction {
 
 	// 转向修改密码页面
 	public String updatePasswordUI() {
-		oaEmployee = null;
 		return "updatePasswordUI";
 	}
 
@@ -375,6 +375,8 @@ public class OaEmployeeAction extends CommonAction {
 		this.rid = rid;
 	}
 
+	
+	
 	public List<Department> getDepartmentList() {
 		return departmentList;
 	}
@@ -383,32 +385,5 @@ public class OaEmployeeAction extends CommonAction {
 		this.departmentList = departmentList;
 	}
 
-	// public String getData() {
-	// try {
-	// int page = Integer.parseInt(request.getParameter("page"));
-	// int row = Integer.parseInt(request.getParameter("rows"));// 接受参数page和rows
-	// System.out.println(page+":"+row);
-	// } catch (NumberFormatException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// this.total = oaRoleService.getAllOaRole().size();
-	// this.rows = new ArrayList<Object>();
-	// List<OaEmployee> list = oaEmployeeService.getAllEmp(0, 2);//
-	// 分页，将数据保存到list中
-	//
-	// for(OaEmployee emp : list){
-	// Map<String, String> map = new HashMap<String, String>();
-	// map.put("id", emp.getId());
-	// map.put("empid",emp.getEmployeeId());
-	// map.put("name", emp.getEmployeeName());
-	// map.put("opet", "<a href='#'>"+emp.getEmployeeName()+"</a>");
-	// this.rows.add(map); // 循环保存map到list对象this.rows中
-	// }
-	// // ActionContext.getContext().getValueStack().push(rows);
-	// System.out.println(request.getParameter("page"));
-	// System.out.println(request.getParameter("rows"));
-	// return SUCCESS;
-	// }
 
 }

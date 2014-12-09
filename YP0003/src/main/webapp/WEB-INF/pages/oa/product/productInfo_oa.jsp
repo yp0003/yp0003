@@ -68,7 +68,7 @@ function forSubmit() {
 							<table align="left" width="100%" cellpadding="5px" border="0">
 								<tr>
 									
-									</td>
+								
 									<td align="right" width="100px">产品名称：</td>
 									<td><s:textfield name="product.productName" /></td>
 									<td align="right" width="100px">上线时间：</td>

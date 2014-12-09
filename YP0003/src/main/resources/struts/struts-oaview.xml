@@ -77,9 +77,9 @@
 
 	<!-- 公告 -->
 	<package name="oapm" namespace="/" extends="yfann-default">
-		<action name="oaPM!*" method="{1}" class="com.yfann.web.action.oa.OaPublicMessageAction">
-			<result name="tolist">/WEB-INF/pages/oa/publicMessage/publicMessagelist_oa.jsp</result>
-			<result name="add">/WEB-INF/pages/oa/publicMessage/publicMessageadd_oa.jsp</result>
+		<action name="oaPublicMessage!*" method="{1}" class="com.yfann.web.action.oa.OaPublicMessageAction">
+			<result name="forwardPulbicMessageList">/WEB-INF/pages/oa/publicMessage/publicMessagelist_oa.jsp</result>
+			<result name="forwardPulbicMessageInfo">/WEB-INF/pages/oa/publicMessage/publicMessageadd_oa.jsp</result>
 			<result name="update">/WEB-INF/pages/oa/publicMessage/publicMessageupdate_oa.jsp</result>
 			<result name="action2action" type="redirect">oaPM!toList.html</result>
 		</action>

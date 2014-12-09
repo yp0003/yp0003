@@ -66,7 +66,8 @@ public class OaProductServiceImpl implements OaProductService {
 		byte[] picData = scan==null?null:fileToPicData(scan);
 		product.setProductSamllPic(picData);
 		if(null == product.getId() ||"".equals(product.getId())){//id为空是说明是新增						
-			product.setId(UUIDCreate.getUUID());				
+			product.setId(UUIDCreate.getUUID());	
+			product.setProductStatus("000");//默认为审核状态
 			productMapper.insert(product);
 			
 		}else{
