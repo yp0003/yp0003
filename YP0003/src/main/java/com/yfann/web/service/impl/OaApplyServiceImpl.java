@@ -12,10 +12,12 @@ import com.yfann.web.dao.ApplyMoneyMapper;
 import com.yfann.web.dao.DicMapper;
 import com.yfann.web.pojo.ApplyMoney;
 import com.yfann.web.pojo.ApplyMoneyExample;
+import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ApplyMoneyExample.Criteria;
 import com.yfann.web.pojo.Dic;
 import com.yfann.web.pojo.DicExample;
 import com.yfann.web.service.OaApplyService;
+import com.yfann.web.vo.PageInfo;
 
 @Service
 public class OaApplyServiceImpl implements OaApplyService {
@@ -26,8 +28,10 @@ public class OaApplyServiceImpl implements OaApplyService {
 
 	@Override
 	public void saveApply(ApplyMoney applyMoney) throws Exception {
-		if (applyMoney != null) {
+		if (applyMoney != null && (null == applyMoney.getId()||"".equals(applyMoney.getId()))) {
 			applyMoneyMapper.insert(applyMoney);
+		}else if(applyMoney != null && null != applyMoney.getId() && !"".equals(applyMoney.getId())){
+			applyMoneyMapper.updateByPrimaryKeySelective(applyMoney);
 		}
 	}
 
@@ -44,22 +48,14 @@ public class OaApplyServiceImpl implements OaApplyService {
 	}
 
 	@Override
-	public List<ApplyMoney> getApplyByField(String uid, List<String> applyStatus, List<String> payStatus,
-			int offset, int limit) {
-		ApplyMoneyExample example = new ApplyMoneyExample();
-		example.setOrderByClause("apply_status asc");
-		Criteria criteria = example.createCriteria();
-		if (StringUtils.isNotEmpty(uid)) {
-			criteria.andApplyIdEqualTo(uid);
-		}
-		if (applyStatus != null && applyStatus.size() > 0) {
-			criteria.andApplyStatusIn(applyStatus);
-		}
-		if (payStatus != null && payStatus.size() > 0) {
-			criteria.andPayStatusIn(payStatus);
-		}
-		example.or(criteria);
-		return applyMoneyMapper.selectByExample(example, new RowBounds(offset, limit));
+	public List<ApplyMoney> getApplyByField(ApplyMoney applyMoney,PageInfo pageInfo) {
+		
+		 if (null != pageInfo) {
+	            pageInfo.setCount(applyMoneyMapper.selectCountByApply(applyMoney));
+	            List<ApplyMoney> list =applyMoneyMapper.selectListByApply(applyMoney, new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));            
+	            return   list;
+	            }
+	    return applyMoneyMapper.selectListByApply(applyMoney);
 	}
 
 	@Override

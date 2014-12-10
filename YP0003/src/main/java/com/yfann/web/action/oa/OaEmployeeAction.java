@@ -1,5 +1,7 @@
 package com.yfann.web.action.oa;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
@@ -55,17 +57,20 @@ public class OaEmployeeAction extends CommonAction {
 	private String rid;
 	
 
-	/*
-	 * // 转到新增页面 public String toAdd() { return "add"; }
-	 * 
-	 * // 超级管理员新增用户 public String add() throws Exception { if (birthday != null
-	 * && !"".equals(birthday)) { Date bir = (new
-	 * SimpleDateFormat("yyyy-MM-dd")).parse(birthday);
-	 * oaEmployee.setBirthday(bir); }
-	 * 
-	 * oaEmployeeService.saveOaEmployee(oaEmployee); return "action2action"; }
-	 */
+	//上传图片
+	private File scan;
+	//上传图片文件类型
+	private String scanContentType;
+	//上传图片文件名称
+	private String scanFileName;
+	
+	/** 头像 */
+	private ByteArrayInputStream inputStreamCre;
 
+	private String empId;
+	
+	private OaEmployee emp;
+	
 	// 用户列表显示
 	public String toEmpList() {
 		roleList = oaRoleService.getAllOaRole();
@@ -218,7 +223,7 @@ public class OaEmployeeAction extends CommonAction {
 			// oaRegisterMessage.setPasswordMessage("当前密码不能为空！");
 			return updatePasswordUI();
 		}
-		OaEmployee emp = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
+		emp = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
 		if (emp == null) {
 			return "forwardLogin";
 		}
@@ -263,27 +268,55 @@ public class OaEmployeeAction extends CommonAction {
 	}
 
 	/** 转向图片上传页面 */
+	@SuppressWarnings("unchecked")
 	public String toUpdateImage() {
+		oaEmployee = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
 		return "updateImage";
 	}
 
 	/** 上传图片 */
 	@SuppressWarnings("unchecked")
-	public void updateImage() {
-		Enumeration<Object> att = request.getAttributeNames();
-		while (att.hasMoreElements()) {
-			String object = (String) att.nextElement();
-			System.out.println("att:" + object);
+	public String updateImage() {
+		if (ifScanContentType()) {
+			oaEmployeeService.updateHeadImg(oaEmployee,scan);
 		}
-
-		Enumeration<String> par = request.getParameterNames();
-		while (par.hasMoreElements()) {
-			String object = (String) par.nextElement();
-			System.out.println(object + ":" + request.getParameter(object));
-		}
-		System.out.println(1);
+		return toUpdateImage();
 	}
 
+	/** 头像展示 */
+	public String headImage() {
+		if (null != empId ) {
+			OaEmployee emp = oaEmployeeService.getEmpById(empId);
+			if (null != emp) {
+				inputStreamCre = new ByteArrayInputStream(
+						emp.getHeadImg());
+			}
+			return "headImage";
+		}
+		return null;
+	}
+	
+	
+	/**
+	 * 判断上传图片的类型
+	 * @return
+	 */
+	private boolean ifScanContentType() {
+		if(scan == null){
+			addActionMessage("请选择扫描件图片");
+			return false;
+		}
+		if ("image/png".equals(scanContentType)
+				|| "image/gif".equals(scanContentType)
+				|| "image/jpg".equals(scanContentType)
+				|| "image/jpeg".equals(scanContentType)
+				|| "image/bmp".equals(scanContentType)) {
+				return true;
+		}
+		addActionMessage("请不要上传非图片文件");
+		return false;
+	}
+	
 	public OaEmployee getOaEmployee() {
 		return oaEmployee;
 	}
@@ -383,6 +416,54 @@ public class OaEmployeeAction extends CommonAction {
 
 	public void setDepartmentList(List<Department> departmentList) {
 		this.departmentList = departmentList;
+	}
+
+	public File getScan() {
+		return scan;
+	}
+
+	public void setScan(File scan) {
+		this.scan = scan;
+	}
+
+	public String getScanContentType() {
+		return scanContentType;
+	}
+
+	public void setScanContentType(String scanContentType) {
+		this.scanContentType = scanContentType;
+	}
+
+	public String getScanFileName() {
+		return scanFileName;
+	}
+
+	public void setScanFileName(String scanFileName) {
+		this.scanFileName = scanFileName;
+	}
+
+	public ByteArrayInputStream getInputStreamCre() {
+		return inputStreamCre;
+	}
+
+	public void setInputStreamCre(ByteArrayInputStream inputStreamCre) {
+		this.inputStreamCre = inputStreamCre;
+	}
+
+	public String getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(String empId) {
+		this.empId = empId;
+	}
+
+	public OaEmployee getEmp() {
+		return emp;
+	}
+
+	public void setEmp(OaEmployee emp) {
+		this.emp = emp;
 	}
 
 

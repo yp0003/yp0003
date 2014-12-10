@@ -897,4 +897,9 @@
       LOGIN_DATE = #{loginDate,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
+  <update id="updateHeadImg"  parameterType="com.yfann.web.pojo.OaEmployee">
+  	update t_oa_employee
+   	 set HEAD_IMG = #{headImg,jdbcType=LONGVARBINARY}
+   	where ID = #{id,jdbcType=VARCHAR}
+  </update>
 </mapper>

@@ -11,6 +11,11 @@ import org.apache.ibatis.session.RowBounds;
 
 public interface OaEmployeeMapper {
 	/**
+	 * 更新头像
+	 * @param record
+	 */
+	void updateHeadImg(OaEmployee record);
+	/**
 	 * 根据字段查询用户
 	 * 
 	 * @param map

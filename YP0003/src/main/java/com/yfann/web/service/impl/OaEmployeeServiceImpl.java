@@ -1,5 +1,6 @@
 package com.yfann.web.service.impl;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -7,12 +8,15 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
 import com.yfann.web.common.ApplicationValue;
+import com.yfann.web.common.FileUtil;
 import com.yfann.web.dao.OaEmpRoleMapper;
 import com.yfann.web.dao.OaEmployeeMapper;
 import com.yfann.web.dao.OaRoleMapper;
@@ -215,4 +219,14 @@ public class OaEmployeeServiceImpl implements OaEmployeeService {
 	public User getUserById(String id) {
 		return userMapper.selectByPrimaryKey(id);
 	}
+
+	@Override
+	public void updateHeadImg(OaEmployee oaEmployee,File image) {
+		//转换产品的缩略图
+		byte[] picData = image==null?null:FileUtil.fileToPicData(image,logger);
+		oaEmployee.setHeadImg(picData);
+		oaEmployeeMapper.updateHeadImg(oaEmployee);
+	}
+	
+	final Logger logger = LoggerFactory.getLogger(OaEmployeeServiceImpl.class);
 }

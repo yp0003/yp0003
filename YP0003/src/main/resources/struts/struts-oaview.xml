@@ -66,6 +66,12 @@
 			
 			<result name="updateImage">/WEB-INF/pages/oa/employee/empupdateimage_oa.jsp</result>
 			
+			<!-- 头像-->
+			<result name="headImage" type="stream">
+				<param name="contentType">image/png</param>
+				<param name="inputName">inputStreamCre</param>
+			</result>
+			
 			<!-- 客户 -->
 			<result name="toUserList">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
 			<result name="selectUser">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
@@ -108,8 +114,8 @@
 	<package name="oaapply" namespace="/" extends="yfann-default">
 		<action name="oaApply!*" method="{1}" class="com.yfann.web.action.oa.OaApplyAction">
 			<result name="applylist">/WEB-INF/pages/oa/apply/applylist_oa.jsp</result>
-			<result name="applyadd">/WEB-INF/pages/oa/apply/applyadd_oa.jsp</result>
-			<result name="applyview">/WEB-INF/pages/oa/apply/applyview_oa.jsp</result>
+			<result name="applyadd">/WEB-INF/pages/oa/apply/applyInfo_oa.jsp</result>
+			<result name="applyview">/WEB-INF/pages/oa/apply/applyInfo_oa.jsp</result>
 			<result name="authorizelist">/WEB-INF/pages/oa/apply/authorizelist_oa.jsp</result>
 			<result name="authorizeupdate">/WEB-INF/pages/oa/apply/authorizeupdate_oa.jsp</result>
 			<result name="paylist">/WEB-INF/pages/oa/apply/paylist_oa.jsp</result>

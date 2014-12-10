@@ -386,4 +386,49 @@
       expenditure_remark = #{expenditureRemark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="selectListByApply" parameterType="com.yfann.web.pojo.ApplyMoney" resultMap="BaseResultMap">
+  	select 
+  	  <include refid="Base_Column_List" />
+  	 from t_apply_money
+  	where 1=1
+  	 <include refid="where_condition"/>
+  </select>
+  
+  <select id="selectCountByApply"  parameterType="com.yfann.web.pojo.ApplyMoney"  resultType="java.lang.Integer">
+  	select count(1) from t_apply_money
+  	where 1=1
+  	 <include refid="where_condition"/>
+  </select>
+  <sql id="where_condition">
+  		 <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=VARCHAR}
+      </if>
+      <if test="applyUserId != null" >
+        apply_user_id = #{applyUserId,jdbcType=VARCHAR}
+      </if>
+      <if test="authorizeUserId != null" >
+        authorize_user_id = #{authorizeUserId,jdbcType=VARCHAR}
+      </if>
+      <if test="importance != null" >
+        importance = #{importance,jdbcType=VARCHAR}
+      </if>
+      <if test="applyKind != null" >
+        apply_kind = #{applyKind,jdbcType=VARCHAR}
+      </if>
+      <if test="applyStatus != null" >
+        apply_status = #{applyStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="payStatus != null" >
+        pay_status = #{payStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL}
+      </if>
+      <if test="targetKind != null" >
+        target_kind = #{targetKind,jdbcType=VARCHAR}
+      </if>
+      <if test="expenditureRemark != null" >
+        expenditure_remark = #{expenditureRemark,jdbcType=VARCHAR}
+      </if>
+  </sql>
 </mapper>

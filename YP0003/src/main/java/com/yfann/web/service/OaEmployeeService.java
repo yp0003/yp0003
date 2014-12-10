@@ -1,5 +1,6 @@
 package com.yfann.web.service;
 
+import java.io.File;
 import java.util.List;
 
 import com.yfann.web.pojo.OaEmployee;
@@ -7,6 +8,11 @@ import com.yfann.web.pojo.User;
 import com.yfann.web.vo.MailContext;
 
 public interface OaEmployeeService {
+	/**
+	 * 更新用户头像
+	 * @param oaEmployee
+	 */
+	public void updateHeadImg(OaEmployee oaEmployee,File image);
 	/**
 	 * 存储员工
 	 * 

@@ -9,7 +9,14 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface ApplyMoneyMapper {
-
+	/**
+	 * 根据传入参数查询相应的申请记录
+	 * @param applyMoney
+	 * @return
+	 */
+	int selectCountByApply(ApplyMoney applyMoney);
+	List<ApplyMoney> selectListByApply(ApplyMoney applyMoney);
+	List<ApplyMoney> selectListByApply(ApplyMoney applyMoney, RowBounds rowBounds);
 	/**
 	 * 分页获取
 	 * 

@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yfann.web.common.FileUtil;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.dao.DicMapper;
 import com.yfann.web.dao.ProductImageMapper;
@@ -23,7 +24,6 @@ import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ProductExample;
 import com.yfann.web.pojo.ProductImage;
 import com.yfann.web.pojo.ProductKind;
-import com.yfann.web.pojo.User;
 import com.yfann.web.service.OaProductService;
 import com.yfann.web.vo.PageInfo;
 
@@ -40,30 +40,12 @@ public class OaProductServiceImpl implements OaProductService {
 	
 	
 	
-	private byte[] fileToPicData(File file){
-		InputStream is = null;
-		byte[] picData = new byte[(int) file.length()];
-		try {
-			is = new FileInputStream(file);
-			is.read(picData);
-
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		} finally{
-			try {
-				if(is != null)
-					is.close();
-			} catch (IOException e) {
-				logger.error(e.getMessage());
-			}
-		}
-		return picData;
-	}
+	
 	
 	@Override
 	public void saveProduct(Product product,File scan,File[] images) {
 		//转换产品的缩略图
-		byte[] picData = scan==null?null:fileToPicData(scan);
+		byte[] picData = scan==null?null:FileUtil.fileToPicData(scan,logger);
 		product.setProductSamllPic(picData);
 		if(null == product.getId() ||"".equals(product.getId())){//id为空是说明是新增						
 			product.setId(UUIDCreate.getUUID());	
@@ -76,7 +58,7 @@ public class OaProductServiceImpl implements OaProductService {
 		//保存课程精彩截图
 		if(images!=null){
 			for(File image:images){
-				byte[] imgData = image==null?null:fileToPicData(image);
+				byte[] imgData = image==null?null:FileUtil.fileToPicData(image,logger);
 				if(null != imgData){
 					ProductImage proImg = new ProductImage();
 					proImg.setId(UUIDCreate.getUUID());
@@ -128,7 +110,7 @@ public class OaProductServiceImpl implements OaProductService {
 	public Product getProductById(String id) {
 		return productMapper.selectByPrimaryKey(id);
 	}
-	final Logger logger = LoggerFactory.getLogger(OaProductServiceImpl.class);
+
 
 
 
@@ -146,4 +128,5 @@ public class OaProductServiceImpl implements OaProductService {
 	public List<ProductKind> selectProductKindList() {
 		return productKindMapper.selectAllProductKindList();
 	}
+	final Logger logger = LoggerFactory.getLogger(OaProductServiceImpl.class);
 }

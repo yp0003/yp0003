@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.yfann.web.pojo.ApplyMoney;
 import com.yfann.web.pojo.Dic;
+import com.yfann.web.vo.PageInfo;
 
 public interface OaApplyService {
 	/**
@@ -45,8 +46,7 @@ public interface OaApplyService {
 	 *            最大显示多少条
 	 * @return
 	 */
-	public List<ApplyMoney> getApplyByField(String uid, List<String> applyStatus, List<String> payStatus,
-			int offset, int limit);
+	public List<ApplyMoney> getApplyByField(ApplyMoney applyMoney,PageInfo pageInfo);
 
 	/**
 	 * 根据条件获取申请数量

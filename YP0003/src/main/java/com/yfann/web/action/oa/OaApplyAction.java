@@ -13,6 +13,7 @@ import com.yfann.web.pojo.Dic;
 import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.service.OaApplyService;
 import com.yfann.web.service.OaEmployeeService;
+import com.yfann.web.vo.PageInfo;
 
 /**
  * OA系统功能
@@ -42,6 +43,11 @@ public class OaApplyAction extends CommonAction {
 	private OaApplyService oaApplyService;
 	@Autowired
 	private OaEmployeeService oaEmployeeService;
+	
+	/** 分页 */
+	private PageInfo pageInfo;
+	
+	private ApplyMoney apply;
 
 	/** 申请列表 */
 	public String toApplyList() {
@@ -49,7 +55,9 @@ public class OaApplyAction extends CommonAction {
 		if (emp == null) {
 			return "forwardLogin";
 		}
-		applylist = oaApplyService.getApplyByField(emp.getId(), null, null, 0, Integer.MAX_VALUE);
+		if(null == apply)
+			apply = new ApplyMoney();
+		applylist = oaApplyService.getApplyByField(apply,pageInfo);
 		return "applylist";
 	}
 
@@ -62,7 +70,7 @@ public class OaApplyAction extends CommonAction {
 		// 显示所有待申请
 		List<String> applyStatus = new ArrayList<String>();
 		applyStatus.add("006");
-		applylist = oaApplyService.getApplyByField(null, applyStatus, null, 0, Integer.MAX_VALUE);
+	//	applylist = oaApplyService.getApplyByField(null, applyStatus, null, 0, Integer.MAX_VALUE);
 		return "authorizelist";
 	}
 
@@ -77,7 +85,7 @@ public class OaApplyAction extends CommonAction {
 		applyStatus.add("008");
 		List<String> payStatus = new ArrayList<String>();
 		payStatus.add("009");
-		applylist = oaApplyService.getApplyByField(null, applyStatus, payStatus, 0, Integer.MAX_VALUE);
+	//	applylist = oaApplyService.getApplyByField(null, applyStatus, payStatus, 0, Integer.MAX_VALUE);
 
 		return "paylist";
 	}
@@ -114,13 +122,16 @@ public class OaApplyAction extends CommonAction {
 
 	/** 取消申请 */
 	public String removeApply() throws Exception {
-		oaApplyService.deleteApplyById(request.getParameter("id"));
+		oaApplyService.deleteApplyById(apply.getId());
 		return toApplyList();
 	}
 	
 	/** 查看申请 */
 	public String viewApply() throws Exception {
-		applyMoney = oaApplyService.getApplyById(request.getParameter("id"));
+		importanceList = oaApplyService.getDicByType("DIC_IMPORTANCE");
+		kindList = oaApplyService.getDicByType("DIC_KIND");
+		tagerList = oaApplyService.getDicByType("DIC_TARGET");
+		applyMoney = oaApplyService.getApplyById(apply.getId());
 		return "applyview";
 	}
 
@@ -227,6 +238,22 @@ public class OaApplyAction extends CommonAction {
 
 	public void setTagerList(List<Dic> tagerList) {
 		this.tagerList = tagerList;
+	}
+
+	public PageInfo getPageInfo() {
+		return pageInfo;
+	}
+
+	public void setPageInfo(PageInfo pageInfo) {
+		this.pageInfo = pageInfo;
+	}
+
+	public ApplyMoney getApply() {
+		return apply;
+	}
+
+	public void setApply(ApplyMoney apply) {
+		this.apply = apply;
 	}
 
 }
