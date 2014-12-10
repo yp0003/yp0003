@@ -47,6 +47,7 @@ public class MyCenterAction extends CommonAction {
 	@Autowired
 	private ProductService productService;
 	
+	private int myMessageCount;
 	/**
 	 * 消息列表
 	 * @return
@@ -110,6 +111,7 @@ public class MyCenterAction extends CommonAction {
 		}
 		myProductList = myCenterService.findMyProductList(currentUserInfo(),
 				myProduct, pageInfo);
+		
 		return "forwardMyProductList";
 	}
 
@@ -212,6 +214,7 @@ public class MyCenterAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String forwardMyOrderList() {
+		//myMessageCount = orderService.
 		if (order == null) {
 			order = new Order();
 		}
@@ -317,6 +320,14 @@ public class MyCenterAction extends CommonAction {
 
 	public void setMessage(Message message) {
 		this.message = message;
+	}
+
+	public int getMyMessageCount() {
+		return myMessageCount;
+	}
+
+	public void setMyMessageCount(int myMessageCount) {
+		this.myMessageCount = myMessageCount;
 	}
 
 }

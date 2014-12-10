@@ -100,4 +100,10 @@ public class MyCenterServiceImpl implements MyCenterService{
 		msg.setId(UUIDCreate.getUUID());
 		messageMapper.insert(msg);
 	}
+	@Override
+	public int getUnReadMessage(User user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

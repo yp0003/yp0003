@@ -14,6 +14,12 @@ import com.yfann.web.vo.PageInfo;
  */
 public interface MyCenterService {
 	/**
+	 * 读取未阅读信息
+	 * @param user
+	 * @return
+	 */
+	public int getUnReadMessage(User user);
+	/**
 	 * 回复消息
 	 * @param msg
 	 */
