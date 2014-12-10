@@ -53,7 +53,7 @@ public class MyCenterAction extends CommonAction {
 	 * @return
 	 */
 	public String messageList(){
-		
+		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		return "messageList";
 	}
 
@@ -63,6 +63,7 @@ public class MyCenterAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String forwardCommitSmartCode(){
+		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		try{
 		myProduct = productService.findMyProductByMyProductId(myProduct.getId());
 		}
@@ -106,6 +107,7 @@ public class MyCenterAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String forwardMyProductList() {
+		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		if (myProduct == null) {
 			myProduct = new MyProduct();
 		}
@@ -124,6 +126,7 @@ public class MyCenterAction extends CommonAction {
 		if(message == null){
 			message = new Message();
 		}			
+		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		myMessageList = myCenterService.findMyMessageList(currentUserInfo(), message, pageInfo);
 		return "forwardMyMessageList";
 	}
@@ -142,11 +145,13 @@ public class MyCenterAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String messageDetail(){
+		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		message = myCenterService.msgDetail(message.getId());
 		return "messageDetail";
 	}
 	@UserSessionCheck
 	public String forwardReplyMsg(){
+		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		message = myCenterService.msgDetail(message.getId());
 		Message replyMsg = new Message();
 		replyMsg.setSendUserId(currentUserInfo().getId());
@@ -169,6 +174,7 @@ public class MyCenterAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String forwardUpdateInfo() {
+		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		user = myCenterService.findUserInfoById(currentUserInfo());
 		return "forwardUpdateInfo";
 	}
@@ -214,7 +220,7 @@ public class MyCenterAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String forwardMyOrderList() {
-		//myMessageCount = orderService.
+		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		if (order == null) {
 			order = new Order();
 		}

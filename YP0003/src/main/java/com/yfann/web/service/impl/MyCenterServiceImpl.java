@@ -91,7 +91,11 @@ public class MyCenterServiceImpl implements MyCenterService{
 		messageMapper.deleteByPrimaryKey(messageId);
 	}
 	@Override
-	public Message msgDetail(String messageId) {		
+	public Message msgDetail(String messageId) {
+		Message message = new Message();
+		message.setId(messageId);
+		message.setMessStatus("001");
+		messageMapper.updateByPrimaryKeySelective(message);
 		return messageMapper.selectByPrimaryKey(messageId);
 	}
 	@Override
@@ -102,7 +106,10 @@ public class MyCenterServiceImpl implements MyCenterService{
 	}
 	@Override
 	public int getUnReadMessage(User user) {
-		// TODO Auto-generated method stub
+		Message message = new Message();
+		message.setReceiveUserId(user.getId());
+		message.setMessStatus("000");
+		messageMapper.selectByMessageParam(message);
 		return 0;
 	}
 

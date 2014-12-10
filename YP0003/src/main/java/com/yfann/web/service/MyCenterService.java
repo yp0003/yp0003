@@ -14,7 +14,7 @@ import com.yfann.web.vo.PageInfo;
  */
 public interface MyCenterService {
 	/**
-	 * 读取未阅读信息
+	 * 读取未阅读信息数
 	 * @param user
 	 * @return
 	 */
