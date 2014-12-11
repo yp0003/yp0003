@@ -62,7 +62,7 @@
 							href="${pageContext.request.contextPath}/system!forwardFindPassword.html">忘记密码</a>
 							<div class="clear"></div></li>
 						<li>
-							<button id="btn_passwd" type="submit" value=""></button>
+							<button id="btn_passwd" type="submit" value="">登陆</button>
 							<div class="clear"></div>
 						</li>
 					</ul>

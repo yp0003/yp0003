@@ -1,6 +1,7 @@
 package com.yfann.web.action;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -121,11 +122,18 @@ public class ProductAction extends CommonAction {
 	public String forwardProductList() throws Exception {
 		Product productInfo = ifEmptyProduct(product);
 		productKindList = productService.findAllProductKindList();
+		List<ProductKind>  temp = new ArrayList<ProductKind>();
+		ProductKind kindtemp = new ProductKind();
+		kindtemp.setId("");
+		kindtemp.setProductKind("全部");
+		temp.add(kindtemp);
+		temp.addAll(productKindList);
+		productKindList = temp;
 		if(pkind==null&&productKindList!=null&&productKindList.size()>0){
 			productKindList.get(0).setSelected(true);
 			productInfo.setProductKindId(productKindList.get(0).getId());
 		}
-
+		
 		else if(pkind!=null&&productKindList!=null&&productKindList.size()>0){
 			for(ProductKind kind:productKindList){
 				if(kind.getId().equals(pkind.getId())){

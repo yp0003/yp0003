@@ -400,35 +400,35 @@
   	 <include refid="where_condition"/>
   </select>
   <sql id="where_condition">
-  		 <if test="applyId != null" >
-        apply_id = #{applyId,jdbcType=VARCHAR}
+  	 <if test="applyId != null" >
+        and apply_id = #{applyId,jdbcType=VARCHAR}
       </if>
       <if test="applyUserId != null" >
-        apply_user_id = #{applyUserId,jdbcType=VARCHAR}
+        and  apply_user_id = #{applyUserId,jdbcType=VARCHAR}
       </if>
       <if test="authorizeUserId != null" >
-        authorize_user_id = #{authorizeUserId,jdbcType=VARCHAR}
+         and authorize_user_id = #{authorizeUserId,jdbcType=VARCHAR}
       </if>
       <if test="importance != null" >
-        importance = #{importance,jdbcType=VARCHAR}
+         and importance = #{importance,jdbcType=VARCHAR}
       </if>
       <if test="applyKind != null" >
-        apply_kind = #{applyKind,jdbcType=VARCHAR}
+         and apply_kind = #{applyKind,jdbcType=VARCHAR}
       </if>
       <if test="applyStatus != null" >
-        apply_status = #{applyStatus,jdbcType=VARCHAR}
+         and apply_status = #{applyStatus,jdbcType=VARCHAR}
       </if>
       <if test="payStatus != null" >
-        pay_status = #{payStatus,jdbcType=VARCHAR}
+         and pay_status = #{payStatus,jdbcType=VARCHAR}
       </if>
       <if test="money != null" >
-        money = #{money,jdbcType=DECIMAL}
+        and  money = #{money,jdbcType=DECIMAL}
       </if>
       <if test="targetKind != null" >
         target_kind = #{targetKind,jdbcType=VARCHAR}
       </if>
       <if test="expenditureRemark != null" >
-        expenditure_remark = #{expenditureRemark,jdbcType=VARCHAR}
+         and expenditure_remark = #{expenditureRemark,jdbcType=VARCHAR}
       </if>
   </sql>
 </mapper>

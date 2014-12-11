@@ -22,7 +22,8 @@
 	rel="stylesheet" />
 <link href="http://static.bootcss.com/www/assets/css/site.min.css?v3"
 	rel="stylesheet" />
-
+	
+<link href="${pageContext.request.contextPath}/bootstarp/css/docs.css" rel="stylesheet" />
 <!-- Favicons -->
 <link rel="apple-touch-icon-precomposed"
 	href="http://static.bootcss.com/www/assets/ico/apple-touch-icon-precomposed.png" />
@@ -45,6 +46,7 @@
 	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/toc.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/site.min.js"></script>
+
 
 <script>
 	var _hmt = _hmt || [];

@@ -70,7 +70,10 @@ public class OaApplyAction extends CommonAction {
 		// 显示所有待申请
 		List<String> applyStatus = new ArrayList<String>();
 		applyStatus.add("006");
-	//	applylist = oaApplyService.getApplyByField(null, applyStatus, null, 0, Integer.MAX_VALUE);
+		if(null == apply)
+			apply = new ApplyMoney();
+		apply.setApplyStatus("006");
+		applylist = oaApplyService.getApplyByField(apply,pageInfo);
 		return "authorizelist";
 	}
 
@@ -85,8 +88,12 @@ public class OaApplyAction extends CommonAction {
 		applyStatus.add("008");
 		List<String> payStatus = new ArrayList<String>();
 		payStatus.add("009");
-	//	applylist = oaApplyService.getApplyByField(null, applyStatus, payStatus, 0, Integer.MAX_VALUE);
-
+		if(null == apply)
+			apply = new ApplyMoney();
+		apply.setApplyStatus("008");
+		apply.setPayStatus("009");
+		applylist = oaApplyService.getApplyByField(apply,pageInfo);
+		
 		return "paylist";
 	}
 
@@ -141,7 +148,7 @@ public class OaApplyAction extends CommonAction {
 		if (emp == null) {
 			return "forwardLogin";
 		}
-		applyMoney = oaApplyService.getApplyById(request.getParameter("id"));
+		applyMoney = oaApplyService.getApplyById(apply.getId());
 		applyMoney.setAuthorizeUserId(emp.getId());
 		applyMoney.setAuthorize(emp);
 		importanceList = oaApplyService.getDicByType("DIC_IMPORTANCE");
@@ -178,7 +185,7 @@ public class OaApplyAction extends CommonAction {
 
 	/** 支付成功 */
 	public String PaySuccess() throws Exception {
-		applyMoney = oaApplyService.getApplyById(request.getParameter("id"));
+		applyMoney = oaApplyService.getApplyById(apply.getId());
 		applyMoney.setPayStatus("010");
 		
 		oaApplyService.updateApply(applyMoney);

@@ -2,12 +2,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<footer class="footer ">
+
+<footer class="footer">
 		<div class="container">
 			<div class="row footer-top">
 				<div class="col-sm-6 col-lg-6">
 					<h4>
-						<img src="./Bootstrap中文网_files/logo.png">
+						<img src="./Bootstrap中文网_files/logo.png"/>
 					</h4>
 					<p>
 						本网站所列开源项目的中文版文档全部由<a href="./Bootstrap中文网_files/Bootstrap中文网.htm">Bootstrap中文网</a>成员翻译整理，并全部遵循

@@ -181,18 +181,19 @@
 
 			</div>
 			<div class="col-lg-8">
-				<div class="row"></div>
+				</br>
 				<div class="row">
 					<s:iterator value="productList" id="pl">
 						<div class="col-lg-4">
 							<div class="thumbnail">
 								<a
 									href="${pageContext.request.contextPath}/product!forwardProductDetail.html?product.id=${pl.id}"
-									title="${pl.productName}"><img class="lazy"
-									src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"
-									width="300" height="150"
+									title="${pl.productName}">
+									<img class="lazy" width="300" height="150"
+									src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"									
 									data-src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"
-									alt=""></a>
+									alt=""/>
+								</a>
 								<div class="caption">
 									<h3>
 										<a
