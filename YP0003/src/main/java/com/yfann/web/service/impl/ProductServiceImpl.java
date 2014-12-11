@@ -92,9 +92,18 @@ public class ProductServiceImpl implements ProductService{
 	}
 	@Override
 	public List<Product> findProductList(Product product, PageInfo pageInfo) {
-		Map<String, Object> paramer = getProductParamer(product);
-		pageInfo.setCount(productMapper.selectProductCountByParamer(paramer));
-		return productMapper.selectProductByParamer(paramer, new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
+		List<Product> list;
+		if(pageInfo!=null){
+			String pName = product.getProductName();
+			if(null != pName && !"".equals(pName)){
+				product.setProductName("%"+pName+"%");
+			}
+			pageInfo.setCount(productMapper.selectProductCountByParamer(product));
+			list = productMapper.selectProductByParamer(product, new RowBounds(pageInfo.getOffset(), pageInfo.getPageSize()));
+			product.setProductName(pName);
+			return list;
+		}
+		return productMapper.selectProductByParamer(product);
 	}
 
 	private Map<String,Object> getProductParamer(Product product){
@@ -121,5 +130,18 @@ public class ProductServiceImpl implements ProductService{
 			productSmallImg = new ByteArrayInputStream(proLists.get(0).getProductSamllPic());
 		}
 		return productSmallImg;
+	}
+
+	@Override
+	public List<Product> findPerfectProductList() {
+		
+		Map<String, Object> parames = new HashMap<String, Object>();
+	
+		return productMapper.selectPerfectListByProductParam(parames);
+	
+	}
+	@Override
+	public List<Dic> selectProductLevelDicList() {
+		return dicMapper.selectDicListByDicType("PRODUCT_LEVEL");
 	}
 }

@@ -43,6 +43,9 @@ public class ProductAction extends CommonAction {
 	private ProductService productService;
 	/** Struts2下载(内存数据下载) */
 	public ByteArrayInputStream byteArrayInputStream;
+	
+	private List<Dic> productLevelList;//课程难度字典列表
+	
 
 	/**
 	 * 课程详情截图
@@ -145,6 +148,7 @@ public class ProductAction extends CommonAction {
 			}
 		}
 		productList = productService.findProductList(productInfo, pageInfo);
+		productLevelList = productService.selectProductLevelDicList();
 		return "forwardProductList";
 	}
 
@@ -249,6 +253,14 @@ public class ProductAction extends CommonAction {
 
 	public void setPkind(ProductKind pkind) {
 		this.pkind = pkind;
+	}
+
+	public List<Dic> getProductLevelList() {
+		return productLevelList;
+	}
+
+	public void setProductLevelList(List<Dic> productLevelList) {
+		this.productLevelList = productLevelList;
 	}
 
 	

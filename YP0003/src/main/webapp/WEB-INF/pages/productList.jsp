@@ -181,7 +181,7 @@
 
 			</div>
 			<div class="col-lg-8">
-				</br>
+				<br/>
 				<div class="row">
 					<s:iterator value="productList" id="pl">
 						<div class="col-lg-4">

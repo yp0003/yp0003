@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -16,11 +17,13 @@ import org.springframework.stereotype.Service;
 import com.yfann.web.common.FileUtil;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.dao.DicMapper;
+import com.yfann.web.dao.ProductDetailMapper;
 import com.yfann.web.dao.ProductImageMapper;
 import com.yfann.web.dao.ProductKindMapper;
 import com.yfann.web.dao.ProductMapper;
 import com.yfann.web.pojo.Dic;
 import com.yfann.web.pojo.Product;
+import com.yfann.web.pojo.ProductDetail;
 import com.yfann.web.pojo.ProductExample;
 import com.yfann.web.pojo.ProductImage;
 import com.yfann.web.pojo.ProductKind;
@@ -37,6 +40,8 @@ public class OaProductServiceImpl implements OaProductService {
 	private ProductKindMapper productKindMapper;
 	@Autowired
 	private DicMapper dicMapper;
+	@Autowired
+	private ProductDetailMapper productDetailMapper;
 	
 	
 	
@@ -50,9 +55,12 @@ public class OaProductServiceImpl implements OaProductService {
 		if(null == product.getId() ||"".equals(product.getId())){//id为空是说明是新增						
 			product.setId(UUIDCreate.getUUID());	
 			product.setProductStatus("000");//默认为审核状态
+			product.setUpdateTime(new Date());
 			productMapper.insert(product);
+
 			
 		}else{
+			product.setUpdateTime(new Date());
 			productMapper.updateByPrimaryKeySelective(product);
 		}
 		//保存课程精彩截图
@@ -66,6 +74,22 @@ public class OaProductServiceImpl implements OaProductService {
 					proImg.setProductImage(imgData);
 					productImageMapper.insert(proImg);
 				}					
+			}
+		}
+		//保存课程细节
+		if(null !=product.getProductDetailList() && !product.getProductDetailList().isEmpty()){
+			for(ProductDetail detail:product.getProductDetailList()){
+				if(detail!=null && !detail.isEmpty()){
+					if(detail.getId()==null||"".equals(detail.getId())){//新课程信息
+						detail.setProductId(product.getId());
+						detail.setCreateTime(new Date());
+						detail.setId(UUIDCreate.getUUID());
+						productDetailMapper.insert(detail);
+					}else{//更新的新课程信息
+						productDetailMapper.updateByPrimaryKeySelective(detail);
+					}
+
+				}
 			}
 		}
 		

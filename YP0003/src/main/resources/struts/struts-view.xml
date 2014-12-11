@@ -65,7 +65,7 @@
 		<action name="product!*" method="{1}"
 			class="com.yfann.web.action.ProductAction">
 			<!-- 跳转到课程列表 -->
-			<result name="forwardProductList">/WEB-INF/pages/productList.jsp</result>
+			<result name="forwardProductList">/WEB-INF/pages/web/productList.jsp</result>
 			<!-- 下载缩略图 -->
 			<result name="showProductSmallImg" type="stream">
 				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
@@ -89,7 +89,7 @@
 				<param name="inputName">byteArrayInputStream</param>
 			</result>
 			<!-- 课程详情 -->
-			<result name="forwardProductDetail">/WEB-INF/pages/productDetails.jsp</result>
+			<result name="forwardProductDetail">/WEB-INF/pages/web/productDetail.jsp</result>
 		</action>
 	</package>
 

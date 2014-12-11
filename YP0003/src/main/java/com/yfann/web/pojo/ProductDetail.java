@@ -226,4 +226,13 @@ public class ProductDetail {
     public void setCloudPanCode(String cloudPanCode) {
         this.cloudPanCode = cloudPanCode == null ? null : cloudPanCode.trim();
     }
+    public boolean isEmpty(){
+    	if((this.getVideoName()==null||"".equals(this.getVideoName()))
+    			&&(this.getVideoUrl()==null||"".equals(this.getVideoUrl()))
+    			&&(this.getAttachmentFileName()==null||"".equals(this.getAttachmentFileName()))
+    			&&(this.getCloudPanCode()==null||"".equals(this.getCloudPanCode()))
+    	  )
+			return true;
+    	return false;
+    }
 }

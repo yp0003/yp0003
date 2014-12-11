@@ -43,9 +43,28 @@
 	//
 </script>
 <script type="text/javascript">
+
+var index = 0;
+$(function(){
+	index = $("#detailCount").val();
+});
 function addFileInput(){
  	$("#imagesTable").append('<tr><td width="30%"><s:file name="images">选择图片:</s:file></td></tr>');
 }
+function addDetail(){
+	$("#detailTable").append('<tr>'+
+			'<td align="right" width="100px">视频名称：</td>'+
+			'<td><s:textfield name="product.productDetailList['+index+'].videoName"/></td>'+
+			'<td align="right" width="100px">视频URL：</td>'+
+			'<td><s:textfield name="product.productDetailList['+index+'].videoUrl"/></td>'+
+			'<td align="right" width="100px">附件文件名称：</td>'+
+			'<td><s:textfield name="product.productDetailList['+index+'].attachmentFileName"/></td>'+
+			'<td align="right" width="100px">网盘提取码：</td>'+
+			'<td><s:textfield name="product.productDetailList['+index+'].cloudPanCode"/></td>'+
+			'</tr>');
+	index++;
+}
+
 function forSubmit() {
 	document.forms[0].action = "oaProduct!saveProductInfo.html";
 	document.forms[0].submit();
@@ -111,32 +130,39 @@ function forSubmit() {
 									<td><s:textfield name="product.updateMatter" onkeyup="value=value.replace(/[^\d]/g,'')" /></td>
 									<td align="right" width="100px"></td>
 								</tr>
+
 								<tr>
 									<td align="right" width="100px">课程须知：</td>
-									<td colspan="7"><s:textarea  cols="100" rows="3"  name="product.productKnows"/><s:actionerror/></td>
+									<td  colspan="7"><s:textarea  cols="100" rows="2"  name="product.productKnows"/><s:actionerror/></td>
 								</tr>
 								<tr>
 								<td align="right" width="100px">产品描述：</td>
-								<td colspan="7"><s:textarea  cols="100" rows="3"  name="product.productDesc"/><s:actionerror/></td>
+								<td colspan="7"><s:textarea  cols="100" rows="2"  name="product.productDesc"/><s:actionerror/></td>
 								</tr>					
 						</table>
+						</fieldset>
+						<br />
+						<fieldset class="fieldset-self">
+							<legend>产品缩略图信息</legend>
+							<table align="left" width="100%" cellpadding="5px" border="0" >
+								<tr>
+									<td><s:file name="scan">选择图片:</s:file></td>
+								</tr>
+								<s:if test="product.productSamllPic!=null">
+									<tr>
+										<td>
+											<img src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=<s:property value="product.id"/>" alt="" />
+										</td>
+									</tr>
+								</s:if>
+
+							</table>
 						</fieldset>
 					</td>
 				</tr>
 			</table>
 		</div>
-		<div title="课程详情">
-			<fieldset class="fieldset-self">
-					<legend>产品缩略图信息</legend>
-					<table align="left" width="100%" cellpadding="5px" border="0" >
-						<tr>
-							<td><s:file name="scan">选择图片:</s:file></td>
-						</tr>
-					</table>
-					
-			</fieldset>
-			
-		</div>
+
 		<div title="课程精彩截图">
 				<fieldset class="fieldset-self">
 					<legend>截图信息</legend>
@@ -147,6 +173,41 @@ function forSubmit() {
 						</tr>
 					</table>
 			</fieldset>
+		</div>
+		<div title="课程详情">
+			<fieldset class="fieldset-self">
+					<legend>视频详情</legend>
+					<s:if test="product.productDetailList==null">
+						<input type="hidden" id="detailCount" value="0"/>
+					</s:if>
+					<s:else>
+						<input type="hidden" id="detailCount" value="<s:property value="product.productDetailList.size"/>"/>
+					</s:else>
+	
+					<table align="left" width="100%" cellpadding="5px" border="0" id="detailTable">
+						<tr>
+							<td><input type="button" value="添加视频" onclick="addDetail()"></input></td>
+						</tr>
+						<s:iterator value="product.productDetailList" id="detail" status="status">
+							<tr>
+							<td align="right" width="100px">视频名称：</td>
+							<td>
+								<s:hidden name="product.productDetailList[#status.index].id"></s:hidden>
+								<s:textfield name="product.productDetailList[#status.index].videoName"/>
+							</td>
+							<td align="right" width="100px">视频URL：</td>
+							<td><s:textfield name="product.productDetailList[#status.index].videoUrl"/></td>
+							<td align="right" width="100px">附件文件名称：</td>
+							<td><s:textfield name="product.productDetailList[#status.index].attachmentFileName"/></td>
+							<td align="right" width="100px">网盘提取码：</td>
+							<td><s:textfield name="product.productDetailList[#status.index].cloudPanCode"/></td>
+						</tr>
+						</s:iterator>
+
+					</table>
+					
+			</fieldset>
+			
 		</div>
 	</div>
 	

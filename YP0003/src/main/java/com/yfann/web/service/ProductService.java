@@ -16,6 +16,8 @@ import com.yfann.web.vo.PageInfo;
  *
  */
 public interface ProductService {
+	List<Dic> selectProductLevelDicList();
+	List<Product> findPerfectProductList();
 	/**
 	 * 根据我的课程Id查询我的课程
 	 * @param myProductId

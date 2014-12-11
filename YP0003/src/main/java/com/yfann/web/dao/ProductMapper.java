@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface ProductMapper {
+	
+	List <Product> selectPerfectListByProductParam(Map<String, Object> paramer);
 	int selectCountByProductParam(Product product);
 	List<Product> selectListByProductParam(Product product);
 	List<Product> selectListByProductParam(Product product, RowBounds rowBounds);
@@ -45,8 +47,8 @@ public interface ProductMapper {
 	 * @param rowBounds
 	 * @return
 	 */
-	List<Product> selectProductByParamer(Map<String, Object> paramer, RowBounds rowBounds);
-
+	List<Product> selectProductByParamer(Product product, RowBounds rowBounds);
+	List<Product> selectProductByParamer(Product product);
 	/**
 	 * 根据条件返回产品总数
 	 * 
@@ -54,7 +56,7 @@ public interface ProductMapper {
 	 * 
 	 * @return
 	 */
-	int selectProductCountByParamer(Map<String, Object> paramer);
+	int selectProductCountByParamer(Product product);
 
 	/**
 	 * 根据课程ID查询缩略图

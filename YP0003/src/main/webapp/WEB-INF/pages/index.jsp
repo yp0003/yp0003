@@ -3,153 +3,124 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="com.yfann.web.page" prefix="p"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<!-- 程序包含开始 -->
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>365IT教育学院中文网</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="index,follow" />
-<meta name="application-name" content="bootcss.com" />
-<meta property="qc:admins" content="1603466166416277433363757477167" />
-
-<!-- Site CSS -->
-<link
-	href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css"
-	rel="stylesheet" />
-
-<link
-	href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css"
-	rel="stylesheet" />
-<link href="http://static.bootcss.com/www/assets/css/site.min.css?v3"
-	rel="stylesheet" />
-	
-<link href="${pageContext.request.contextPath}/bootstarp/css/docs.css" rel="stylesheet" />
-<!-- Favicons -->
-<link rel="apple-touch-icon-precomposed"
-	href="http://static.bootcss.com/www/assets/ico/apple-touch-icon-precomposed.png" />
-<link rel="shortcut icon"
-	href="http://static.bootcss.com/www/assets/ico/favicon.png" />
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>365ITEDU网</title>
+<!-- link css -->
+<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/css/base.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet"/>
 
 
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/jquery.min.js"></script>
+<!-- link script -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+<![endif]-->
 
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" />
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstrap.min.js"></script>
-<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js" />
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/jquery.unveil.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/jquery.scrollUp.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/toc.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/site.min.js"></script>
-
-
-<script>
-	var _hmt = _hmt || [];
-</script>
-<title>365ITEDU</title>
-<script type="text/javascript">
-	$(document).ready(function() {
-
-	});
-	function reImg() {
-		$("#vertImg").attr(
-				"src",
-				"${pageContext.request.contextPath}/system!validateCode.html?time="
-						+ new Date());
-	}
-</script>
+<!-- Le fav and touch icons -->
 </head>
+<!-- Navbar
+    ================================================== -->
 <body>
-
-	<!-- 头部 -->
-	<%@ include file="common/common.jsp"%>
-	<div class="bc-social">
-		<div class="container">
-			<ul class="bc-social-buttons">
-				<li class="social-qq"><i class="fa fa-qq"></i>
-					365IT教育学院技术交流群：378248068</li>
-				<li class="social-forum"><a class=""
-					href="http://wenda.bootcss.com/" title="Bootstrap问答社区"
-					target="_blank"> <i class="fa fa-comments"></i> 365IT教育学院问答社区
-				</a></li>
+<%@ include file="common/commonHeader.jsp"%>
+<!-- 程序包含结束 -->
+<div class="bs-docs-social">
+	<div class="container">
+		<ul class="bs-docs-social-buttons">
+			<li class="follow-btn">
+				<a href="#" class="twitter-follow-button" data-link-color="#0069D6"
+					data-show-count="true">365IT学院技术交流群：378248068</a>
+			</li>
+			<li class="tweet-btn">
+				<a href="http://wenda.bootcss.com/" class="twitter-share-button" data-url="#"
+					data-count="horizontal" data-via="twbootstrap"
+					data-related="mdo:Creator of Twitter Bootstrap" title="Bootstrap问答社区">365IT学院问答社区</a>
+			</li>
 				<li class="social-weibo"><a href="http://weibo.com/bootcss"
 					title="365IT教育学院官方微博" target="_blank" se_prerender_url="complete"><i
-						class="fa fa-weibo"></i> 新浪微博：@365IT教育学院</a></li>
-			</ul>
-		</div>
+						class="fa fa-weibo"></i> 新浪微博：@365IT学院</a></li>
+		</ul>
 	</div>
+</div>
+
+<div class="container">
+
+  <div class="marketing">
+
+    <h1>优质课程推荐</h1>
+    <p class="marketing-byline">让您的课余生活更加丰富，让您的知识更加完整</p>
+
+    <div class="row-fluid">
+<%--       <s:if test="productList.size > 0"> --%>
+      	 	      
+<%--       </s:if> --%>
+      
+ 		  <div class="span4">
+	       <a href="list.html"> <img class="marketing-img" src="image/53e4ba4c0001f2d206000338-590-330.jpg"/></a>
+	        <h2>PDO—数据库抽象层</h2>
+	        <p>PDO扩展为PHP访问数据库定义了一个轻量级的、一致性的接口，PDO解决了数据库连接不统一的问题，本课程以MySQL数据库为例，讲解了PDO的安装和配置方法，以及操作数据的函数，此外还介绍了PDO的事务处理相关知识，最后通过实战演练深入剖析PDO以加深理解。</p>
+	      </div>
+	      
+	      <div class="span4">
+	       <a href="list.html"><img class="marketing-img" src="image/542376b20001374c06000338-590-330.jpg"/></a>
+	        <h2>文件传输基础——Java IO流</h2>
+	        <p>本门课程主要为您带来Java中的输入输出流的内容，包括文件编码、使用File类对文件和目录进行管理、字节流和字符流的基本操作，以及对象的序列化和反序列化的内容。</p>
+	      </div>
+	      
+	      <div class="span4">
+	       <a href="list.html"> <img class="marketing-img" src="image/53ec5a590001d85606000338-590-330.jpg"/></a>
+	        <h2>Java 眼中的 XML</h2>
+	        <p>文件的形态是千变万化的，在 Internet 中，我们通常使用一种叫做 XML 的文件来传输或者存储数据。本次课程中，@Jessica Jiang 将会带领小伙伴们把这种 XML 文件应用与 Java 程序结合起来，教你如何应用 Java“解析 XML ”和“生成 XML ”。</p>
+	      </div>
+      
+          
+    </div>
+      
+<!--      <hr class="soften"/> -->
+    
+<!--     <h1>经典课程推荐</h1> -->
+<%--     <p class="marketing-byline">经典课程重温基础</p> --%>
+<!--     <div class="row-fluid"> -->
+<!--       <ul class="thumbnails example-sites"> -->
+<!--         <li class="span3"> -->
+<!--           <a class="thumbnail" href="list.html" target="_blank"> -->
+<!--             <img src="image/543f682600012d1406000338-590-330.jpg" alt=""/> -->
+<!--           </a> -->
+<!--         </li> -->
+<!--         <li class="span3"> -->
+<!--           <a class="thumbnail" href="list.html" target="_blank"> -->
+<!--             <img src="image/5444a3280001f1fe06000338-590-330.jpg" alt=""/> -->
+<!--           </a> -->
+<!--         </li> -->
+<!--         <li class="span3"> -->
+<!--           <a class="thumbnail" href="list.html" target="_blank"> -->
+<!--             <img src="image/54125edc0001ce6306000338-590-330.jpg" alt=""/> -->
+<!--           </a> -->
+<!--         </li> -->
+<!--         <li class="span3"> -->
+<!--           <a class="thumbnail" href="list.html" target="_blank"> -->
+<!--             <img src="image/541943720001c89206000338-590-330.jpg" alt=""/> -->
+<!--           </a> -->
+<!--         </li> -->
+<!--       </ul> -->
+<!--      </div> -->
+
+  </div>
+
+</div>
 
 
 
-
-	<div class="container projects">
-		<div class="projects-header page-header">
-			<h2>优质课程推荐</h2>
-			<p>让您的课余生活更加丰富，让您的知识更加完整</p>
-		</div>
-
-		<div class="row">
-
-			<div class="col-sm-6 col-md-4 col-lg-4 ">
-				<div class="thumbnail">
-					<a href="http://codeguide.bootcss.com/" title="Bootstrap 编码规范"><img
-						class="lazy" src="${pageContext.request.contextPath}/bootstarp/image/codeguide.png" width="300"
-						height="150"
-						data-src="http://static.bootcss.com/www/assets/img/codeguide.png"
-						alt="Headroom.js"></a>
-					<div class="caption">
-						<h3>
-							<a href="http://codeguide.bootcss.com/"
-								title="Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。">Bootstrap
-								编码规范<br><small>by @mdo</small>
-							</a>
-						</h3>
-						<p>Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-6 col-md-4 col-lg-4 ">
-				<div class="thumbnail">
-					<a href="http://job.bootcss.com/"
-						title="Bootstrap中文网携手猎聘网共同为码农打造的高薪工作直达频道。好工作都在这里啦！"><img
-						class="lazy" src="${pageContext.request.contextPath}/bootstarp/image/bootstrap-jobs.png"
-						width="300" height="150"
-						data-src="http://static.bootcss.com/www/assets/img/bootstrap-jobs.png"
-						alt="招聘求职"></a>
-					<div class="caption">
-						<h3>
-							<a href="http://job.bootcss.com/"
-								title="Bootstrap中文网携手猎聘网共同为码农打造的高薪工作直达频道。好工作都在这里啦">招聘求职<br><small>高薪工作</small></a>
-						</h3>
-						<p>Bootstrap中文网携手猎聘网共同为码农打造的高薪工作直达频道。好工作都在这里啦！</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-6 col-md-4 col-lg-4 ">
-				<div class="thumbnail">
-					<a href="http://www.bootcdn.cn/" title="PDO—数据库抽象层"><img
-						class="lazy" src="${pageContext.request.contextPath}/bootstarp/image/opencdn.png" width="300"
-						height="150"
-						data-src="http://static.bootcss.com/www/assets/img/opencdn.png"
-						alt="Open CDN"></a>
-					<div class="caption">
-						<h3>
-							<a href="http://www.bootcdn.cn/" title="PDO—数据库抽象层">Open CDN<br><small>PDO—数据库抽象层</small></a>
-						</h3>
-						<p>PDO扩展为PHP访问数据库定义了一个轻量级的、一致性的接口</p>
-					</div>
-				</div>
-			</div>	
-		
-		<!-- /.container -->
-	<!-- 头部 -->
-	<%@ include file="common/commonFooter.jsp"%>
+<!-- Footer -->
+<%@ include file="common/commonFooter.jsp"%>
 </body>
 </html>

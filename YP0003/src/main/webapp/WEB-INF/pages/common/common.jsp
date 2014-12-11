@@ -5,15 +5,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <!-- Site CSS -->
-<link
-	href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css"
-	rel="stylesheet" />
+<!-- <link -->
+<!-- 	href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css" -->
+<!-- 	rel="stylesheet" /> -->
 
-<link
-	href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css"
-	rel="stylesheet" />
-<link href="http://static.bootcss.com/www/assets/css/site.min.css?v3"
-	rel="stylesheet" />
+<!-- <link -->
+<!-- 	href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" -->
+<!-- 	rel="stylesheet" /> -->
+<!-- <link href="http://static.bootcss.com/www/assets/css/site.min.css?v3" -->
+<!-- 	rel="stylesheet" /> -->
+
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
+<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
+<link href="bootstrap/css/docs.css" rel="stylesheet"/>
+<link href="css/base.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
 
 <!-- Favicons -->
 <link rel="apple-touch-icon-precomposed"
@@ -69,7 +75,7 @@
 			<div class="navbar-collapse collapse" role="navigation">
 				<ul class="nav navbar-nav">
 					<li><a href="javascript:void(0)">课程</a></li>
-					<li><a href="javascript:void(0)">问答</a>
+					<li><a href="javascript:void(0)">问答</a></li>
 						<li><a href="http://www.bootcss.com/p/lesscss/">求课</a></li>
 				</ul>
 				<c:if test="${sessionScope.userInfo == null}">

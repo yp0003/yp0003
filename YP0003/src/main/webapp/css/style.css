@@ -1326,9 +1326,9 @@ h3.chapter_catalog {
 }
 
 .outline {
-/* 	width: 679px; */
+	width: 679px;
 	float: left;
-/* 	border-right: 1px solid #ddd; */
+	border-right: 1px solid #ddd;
 	padding: 0 20px;
 	min-height: 800px
 }
@@ -1939,7 +1939,7 @@ body#admin{background:#d6dee0;}
 #login #btn_login{display:inline-block; float:left; margin-top:5px; margin-left:75px; border:none; width:260px; height:44px; background:url(../image/login/btn_login2.png) left top no-repeat;}
 #login #btn_login:hover{background-image:url(../image/login/btn_login2_active.png); cursor:pointer;}
 #login a.chgForm{display:inline-block;  float:left; margin-top:20px; margin-left:10px;  font-family:"微软雅黑"; font-size:14px; color:#ff6c00;}
-
+#login span.redStar{padding-left:5px; color:#e02222;}
 /*后台注册*/
 #register{margin-top:10px;}
 #register ul li{margin-bottom:8px;}

@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -21,7 +23,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.common.CookieUtils;
 import com.yfann.web.common.UUIDCreate;
+import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.User;
+import com.yfann.web.service.ProductService;
 import com.yfann.web.service.SystemService;
 import com.yfann.web.vo.LoginMessage;
 import com.yfann.web.vo.MailContext;
@@ -46,6 +50,10 @@ public class SystemAction extends CommonAction {
 	/** 注册页面验证码 */
 	private String validateCode;
 	private String remPass;
+	@Autowired
+	private ProductService productService;
+	
+	private List<Product> productList;
 	
 	
 	public String forwardTest() {
@@ -128,6 +136,17 @@ public class SystemAction extends CommonAction {
 				return forwardIndex();
 			}
 		}
+		productList = productService.findPerfectProductList();
+		if(null ==productList)
+			productList = new ArrayList<Product>();
+		else{
+			if(productList.size()<3)
+				while(productList.size()==3){
+					Product ptemp = new Product();
+					ptemp.setProductDesc("暂无描述");
+					productList.add(ptemp);
+				}
+		}
 		return "forwardLogin";
 
 	}
@@ -170,7 +189,8 @@ public class SystemAction extends CommonAction {
 				systemService.saveUser(user);
 			}
 		}
-		return "forwardIndex";
+		//return "forwardIndex";
+		return login();
 	}
 
 	public void validateCode() throws Exception {
@@ -282,4 +302,14 @@ public class SystemAction extends CommonAction {
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
+
+	public List<Product> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(List<Product> productList) {
+		this.productList = productList;
+	}
+	
+	
 }
