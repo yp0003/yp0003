@@ -71,7 +71,7 @@
 			<result name="selectEmp">/WEB-INF/pages/oa/employee/employeelist_oa.jsp</result>
 			<!-- <result type="json"></result> -->
 			<!-- <result name="add">/WEB-INF/pages/oa/employee/employeeadd_oa.jsp</result> -->
-			<result name="update">/WEB-INF/pages/oa/employee/employeeupdate_oa.jsp</result>
+			<result name="update">/WEB-INF/pages/oa/employee/empupdate_oa.jsp</result>
 			<result name="myinfo">/WEB-INF/pages/oa/employee/myinfoupdate_oa.jsp</result>
 			<result name="updatePasswordUI">/WEB-INF/pages/oa/employee/updatePassword_oa.jsp</result>
 			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
@@ -97,7 +97,7 @@
 			<!-- 客户 -->
 			<result name="toUserList">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
 			<result name="selectUser">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
-			<result name="updateUser">/WEB-INF/pages/oa/employee/userupdate_oa.jsp</result>
+			<result name="updateUser">/WEB-INF/pages/oa/employee/uupdate_oa.jsp</result>
 			<result name="privilegeByUser">/WEB-INF/pages/oa/employee/userprivilege_oa.jsp</result>
 			<result name="action2actionUser" type="redirect">oaEmp!toUserList.html</result>
 		</action>
@@ -132,12 +132,12 @@
 		</action>
 	</package>
 
-	<!-- 消息 -->
+	<!-- 审批 -->
 	<package name="oaapply" namespace="/" extends="mypackage">
 		<action name="oaApply!*" method="{1}" class="com.yfann.web.action.oa.OaApplyAction">
 			<result name="applylist">/WEB-INF/pages/oa/apply/applylist_oa.jsp</result>
 			<result name="applyadd">/WEB-INF/pages/oa/apply/applyInfo_oa.jsp</result>
-			<result name="applyview">/WEB-INF/pages/oa/apply/applyInfo_oa.jsp</result>
+			<result name="applyview">/WEB-INF/pages/oa/apply/applyview_oa.jsp</result>
 			<result name="authorizelist">/WEB-INF/pages/oa/apply/authorizelist_oa.jsp</result>
 			<result name="authorizeupdate">/WEB-INF/pages/oa/apply/authorizeupdate_oa.jsp</result>
 			<result name="paylist">/WEB-INF/pages/oa/apply/paylist_oa.jsp</result>

@@ -11,45 +11,52 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/easyui/themes/demo.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyui/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyui/jquery.easyui.min.js"></script>
+
+<link href="${pageContext.request.contextPath}/oa_css/style.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
-<div align="center">
- <s:form action="oaEmp!selectUser.html" id="register">
-    <label for="passWord">客户账号:</label>
-    <s:textfield id="passWord"  name="user.userId" />
-    <label for="passWord">客户名称:</label>
-    <s:textfield id="passWord"  name="user.userName" />
-    <label for="passWord">角色:</label>
-    <s:select list="roleList" cssClass="SelectStyle1" listKey="roleId" listValue="name" headerKey="" headerValue="" name="rid"/>
-    <button type="submit" value="">查询</button>
-  </s:form>
-</div>
-
-<div class="col-lg-10" align="center">
-	<table class="table table-striped">
+	<div>
+		<fieldset class="fieldset-self">
+			<legend>客户查询</legend>
+			<table align="center" width="100%" border="0">
+			 <s:form action="oaEmp!selectUser.html" id="register">
+			    <label for="passWord">&nbsp;&nbsp;&nbsp;&nbsp;客户账号:</label>
+			    <s:textfield id="passWord"  name="user.userId" />
+			    <label for="passWord">&nbsp;&nbsp;&nbsp;&nbsp;客户名称:</label>
+			    <s:textfield id="passWord"  name="user.userName" />
+			    <label for="passWord">&nbsp;&nbsp;&nbsp;&nbsp;角色:</label>
+			    <s:select list="roleList" cssClass="SelectStyle1" listKey="roleId" listValue="name" headerKey="" headerValue="" name="rid"/>
+			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" value="">查询</button>
+			  </s:form>
+			</table>
+		</fieldset>
+		<br>
+		<table id="stupidtable" width="100%" align="center" class="table">
+		<caption>
+			员工列表
+		</caption>
 		<thead>
 			<tr>
-				<th>客户账号</th>
-				<th>客户昵称</th>
-				<th>客户姓名</th>
+				<th data-sort="string">客户账号</th>
+				<th data-sort="string">客户昵称</th>
+				<th data-sort="string">客户姓名</th>
 				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
 			<s:iterator value="userList" id="user1">
 				<tr>
-					<td>${user1.userId}</td>
-					<td>${user1.nick}</td>
-					<td>${user1.userName}</td>
-					<td>
+					<td align="center">${user1.userId}</td>
+					<td align="center">${user1.nick}</td>
+					<td align="center">${user1.userName}</td>
+					<td align="center">
 						<a href="oaEmp!toUserUpdate.html?id=${user1.id}">修改</a>&nbsp;&nbsp;
-						<a href="oaEmp!toUpdatePU.html?id=${user1.id}">分配角色</a>
 					</td>
 				</tr>
 			</s:iterator>
 		</tbody>
 	</table>
-	<s:debug></s:debug>
 </div>
 </body>
 </html>

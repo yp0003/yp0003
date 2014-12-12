@@ -10,28 +10,42 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/easyui/themes/icon.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyui/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyui/jquery.easyui.min.js"></script>
+
+<link href="${pageContext.request.contextPath}/oa_css/style.css" rel="stylesheet" type="text/css" />
+
 </head>
-<body class="easyui-layout">
-<br>
+<body>
 	<div>
-		<table  width="80%" border="0" align="center" cellpadding="0" cellspacing="1" >
-			<thead>
+		<fieldset class="fieldset-self">
+			<legend>新增角色</legend>
+			<table align="center" width="100%" border="0">
 				<tr >
-					<td colspan="6" style="border: 0px;padding-right: 210px;height: 50px" align="right">
+					<td colspan="6" style="border: 0px;padding-right: 210px;height: 20px" align="right">
 						<input type="button" value=" 新增角色" onclick="window.location.href='oaRole!toAdd.html'" />
 					</td>
 				</tr>
+			</table>
+		</fieldset>
+		<br>
+		<table id="stupidtable" width="100%" align="center" class="table">
+		<caption>
+			角色列表
+		</caption>
+			<thead>
 				<tr>
-					<th height="30px">角色名称</th>
-					<th>状态</th>
-					<th>说明</th>
+					<th data-sort="int">序号</th>
+					<th data-sort="string">角色名称</th>
+					<th data-sort="string">状态</th>
+					<th data-sort="string">说明</th>
 					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
-				<s:iterator value="roleList" id="oaRole">
-					<tr>
-						<td height="30px" align="center">${oaRole.name}</td>
+				<s:iterator value="roleList" id="oaRole" status="status" >
+					<tr onmouseover="this.bgColor='#EAF2FF'"
+					onmouseout="this.bgColor='#FFFFFF'" align="center">
+						<th><s:property	value="#status.index+1"/></th>
+						<td align="center">${oaRole.name}</td>
 						<td align="center">${oaRole.status}</td>
 						<td align="center">${oaRole.remark}</td>
 						<td align="center">

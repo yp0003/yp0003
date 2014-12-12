@@ -55,9 +55,9 @@
 
 	
 <!-- 底部内容 -->
-<div data-options="region:'south',border:false" style="height:50px;background:#B9FACD;padding:10px;" align="center">
-365ITEDU 版权所有
-</div>
+<!-- <div data-options="region:'south',border:false" style="height:50px;background:#B9FACD;padding:10px;" align="center"> -->
+<!-- 365ITEDU 版权所有 -->
+<!-- </div> -->
 
 </body>
 </html>

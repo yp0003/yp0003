@@ -39,24 +39,11 @@
 </script>
 </head>
 <body>
-	<s:form >
-		<fieldset class="fieldset-self">
-			<legend>查询条件</legend>
-			<table align="center" width="100%" border="0">
-				<tr>														
-					<td  style="border: 0px;padding-right: 210px;height: 50px" align="right">
-<!-- 						<input type="button" value=" 新增申请" onclick="window.location.href='oaApply!toApplyAdd.html'" /> -->
-					</td>
-				</tr>
-			</table>
-		</fieldset>
-	</s:form>
 	<s:actionmessage cssStyle="color: green" />
 	<s:actionerror cssStyle="color: red" />
-	<br />
 	<table id="stupidtable" width="100%" align="center" class="table">
 		<caption>
-			费用申请
+			费用支付
 		</caption>
 		<thead>
 			<tr>

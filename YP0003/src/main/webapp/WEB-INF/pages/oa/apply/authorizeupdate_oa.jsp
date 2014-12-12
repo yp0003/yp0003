@@ -62,7 +62,7 @@ function submit1(){
 	<s:hidden name="applyMoney.id"/> 
 	<div align="center" class="easyui-tabs">
 	
-		<div title="申请基本信息">
+		<div title="费用审批基本信息">
 			<table cellpadding="10px" width="100%">
 				<tr>
 					<td>

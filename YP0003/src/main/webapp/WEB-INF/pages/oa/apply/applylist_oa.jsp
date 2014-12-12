@@ -41,7 +41,7 @@
 <body>
 	<s:form >
 		<fieldset class="fieldset-self">
-			<legend>查询条件</legend>
+			<legend>申请</legend>
 			<table align="center" width="100%" border="0">
 				<tr>														
 					<td  style="border: 0px;padding-right: 210px;height: 50px" align="right">
@@ -89,8 +89,10 @@
 						<td align="center"><s:property value="#apply.authorize.employeeName"></s:property></td>
 						
 						<td align="center">
-						<a href="oaApply!viewApply.html?apply.id=<s:property value="#apply.id"></s:property>">修改</a>&nbsp;&nbsp;
+						<a href="oaApply!viewApply.html?apply.id=<s:property value="#apply.id"></s:property>">查看</a>&nbsp;&nbsp;
+						<s:if test="%{#apply.applyStatus!='008'}">
 						<a href="oaApply!removeApply.html?apply.id=<s:property value="#apply.id"></s:property>">删除</a>
+						</s:if>
 						</td>
 					</tr>
 				</s:iterator>

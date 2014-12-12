@@ -28,11 +28,13 @@ public class OaApplyServiceImpl implements OaApplyService {
 
 	@Override
 	public void saveApply(ApplyMoney applyMoney) throws Exception {
-		if (applyMoney != null && (null == applyMoney.getId()||"".equals(applyMoney.getId()))) {
+		if(applyMoney!=null)
 			applyMoneyMapper.insert(applyMoney);
-		}else if(applyMoney != null && null != applyMoney.getId() && !"".equals(applyMoney.getId())){
-			applyMoneyMapper.updateByPrimaryKeySelective(applyMoney);
-		}
+//		if (applyMoney != null && (null == applyMoney.getId()||"".equals(applyMoney.getId()))) {
+//			applyMoneyMapper.insert(applyMoney);
+//		}else if(applyMoney != null && null != applyMoney.getId() && !"".equals(applyMoney.getId())){
+//			applyMoneyMapper.updateByPrimaryKeySelective(applyMoney);
+//		}
 	}
 
 	@Override

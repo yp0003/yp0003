@@ -62,7 +62,7 @@ function forSubmit() {
 		<s:hidden name="applyMoney.payStatus"/> 
 	<div align="center" class="easyui-tabs">
 		
-		<div title="课程基本信息">
+		<div title="费用申请基本信息">
 			<table cellpadding="10px" width="100%">
 				<tr>
 					<td>

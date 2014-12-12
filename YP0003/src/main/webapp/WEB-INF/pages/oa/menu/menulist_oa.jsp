@@ -10,30 +10,38 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/easyui/themes/icon.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyui/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyui/jquery.easyui.min.js"></script>
+
+<link href="${pageContext.request.contextPath}/oa_css/style.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body class="easyui-layout">
-<br>
 	<div>
-		<table  width="80%" border="0" align="center" cellpadding="0" cellspacing="1" >
+<!-- 		<fieldset class="fieldset-self"> -->
+<!-- 			<legend>新增菜单</legend> -->
+<!-- 			<table align="center" width="100%" border="0"> -->
+<!-- 				<tr > -->
+<!-- 					<td colspan="6" style="border: 0px;padding-right: 210px;height: 10px" align="right"> -->
+<!-- 						<input type="button" value=" 新增菜单" onclick="window.location.href='oaMenu!toAdd.html'" /> -->
+<!-- 					</td> -->
+<!-- 				</tr> -->
+<!-- 			</table> -->
+<!-- 		</fieldset> -->
+<!-- 		<br> -->
+		<table id="stupidtable" width="100%" align="center" class="table">
 			<thead>
-				<tr >
-					<td colspan="6" style="border: 0px;padding-right: 210px;height: 50px" align="right">
-						<input type="button" value=" 新增菜单" onclick="window.location.href='oaMenu!toAdd.html'" />
-					</td>
-				</tr>
 				<tr>
-					<th height="30px">ID</th>
-					<th>菜单名称</th>
-					<th>说明</th>
-					<th>URL</th>
-					<th>父ID</th>
+					<th data-sort="int">ID</th>
+					<th data-sort="string">菜单名称</th>
+					<th data-sort="string">说明</th>
+					<th data-sort="string">URL</th>
+					<th data-sort="string">父ID</th>
 					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
 				<s:iterator value="menuList" id="menu">
 					<tr>
-						<td height="30px" align="center">${menu.menuId}</td>
+						<td height="10" align="center">${menu.menuId}</td>
 						<td align="center">${menu.name}</td>
 						<td align="center">${menu.des}</td>
 						<td align="center">${menu.url}</td>

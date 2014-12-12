@@ -10,23 +10,34 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/easyui/themes/icon.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyui/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyui/jquery.easyui.min.js"></script>
+
+<link href="${pageContext.request.contextPath}/oa_css/style.css" rel="stylesheet" type="text/css" />
+
 </head>
-<body class="easyui-layout">
-<br>
+<body>
 	<div>
-		<table  width="80%" border="0" align="center" cellpadding="0" cellspacing="1" >
-			<thead>
+		<fieldset class="fieldset-self">
+			<legend>新增部门</legend>
+			<table align="center" width="100%" border="0">
 				<tr >
-					<td colspan="6" style="border: 0px;padding-right: 210px;height: 50px" align="right">
-						<input type="button" value=" 新增菜单" onclick="window.location.href='oaDepart!toAdd.html'" />
+					<td colspan="6" style="border: 0px;padding-right: 210px;height: 20px" align="right">
+						<input type="button" value=" 新增部门" onclick="window.location.href='oaDepart!toAdd.html'" />
 					</td>
 				</tr>
+			</table>
+		</fieldset>
+		<br>
+		<table id="stupidtable" width="100%" align="center" class="table">
+		<caption>
+			部门列表
+		</caption>
+			<thead>
 				<tr>
-					<th height="30px">序号</th>
-					<th>名称</th>
-					<th>说明</th>
-					<th>层级</th>
-					<th>操作</th>
+					<th data-sort="int">序号</th>
+					<th data-sort="string">名称</th>
+					<th data-sort="string">说明</th>
+					<th data-sort="string">层级</th>
+					<th data-sort="string">操作</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -37,7 +48,7 @@
 						<s:iterator begin="1" end="#depart.level">&nbsp;&nbsp;&nbsp;</s:iterator>
 						${depart.departName}</td>
 						<td align="center">${depart.remark}</td>
-						<td height="30px" align="center">${depart.level}</td>
+						<td align="center">${depart.level}</td>
 						<td align="center">
 						<a href="oaDepart!toUpdate.html?id=${depart.id}">修改</a>&nbsp;&nbsp;
 						<a href="oaDepart!del.html?id=${depart.id}">删除</a>
