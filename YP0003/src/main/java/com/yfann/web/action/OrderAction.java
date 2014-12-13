@@ -13,10 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.yfann.web.annotation.UserSessionCheck;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pojo.BuyCar;
+import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.Order;
 import com.yfann.web.pojo.OrderDetail;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.service.OrderService;
+import com.yfann.web.service.ProductService;
 import com.yfann.web.vo.PageInfo;
 /**
  * 订单动作类
@@ -40,7 +42,9 @@ public class OrderAction extends CommonAction {
 	/** Struts2下载(内存数据下载) */
 	public ByteArrayInputStream byteArrayInputStream;
 	private InputStream jsonInputStream;
-	
+	@Autowired
+	private ProductService productService;
+	private OaEmployee employee;
 	/**
 	 * 订单详情
 	 * @return
@@ -95,7 +99,9 @@ public class OrderAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String forwardSureOrder(){
-		buyCarList = orderService.findBuyCarByIds(buyCarIds);
+		//buyCarList = orderService.findBuyCarByIds(buyCarIds);
+		product = productService.findProductById(product.getId());
+		employee = productService.findTeacher(product.getTeacherId());
 		return "forwardSureOrder";
 	}
 

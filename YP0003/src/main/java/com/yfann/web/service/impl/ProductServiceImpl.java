@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.yfann.web.common.DicValue;
 import com.yfann.web.dao.DicMapper;
 import com.yfann.web.dao.MyProductMapper;
+import com.yfann.web.dao.OaEmployeeMapper;
 import com.yfann.web.dao.ProductAppraiseMapper;
 import com.yfann.web.dao.ProductDetailAvatarMapper;
 import com.yfann.web.dao.ProductDetailImageMapper;
@@ -21,6 +22,7 @@ import com.yfann.web.dao.ProductKindMapper;
 import com.yfann.web.dao.ProductMapper;
 import com.yfann.web.pojo.Dic;
 import com.yfann.web.pojo.MyProduct;
+import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ProductAppraise;
 import com.yfann.web.pojo.ProductImage;
@@ -47,6 +49,8 @@ public class ProductServiceImpl implements ProductService{
 	private ProductDetailAvatarMapper productDetailAvatarMapper;
 	@Autowired
 	private MyProductMapper myProductMapper;
+	@Autowired
+	private OaEmployeeMapper oaEmployeeMapper;
 	
 	@Override
 	public MyProduct findMyProductByMyProductId(String myProductId) {
@@ -136,12 +140,22 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> findPerfectProductList() {
 		
 		Map<String, Object> parames = new HashMap<String, Object>();
-	
 		return productMapper.selectPerfectListByProductParam(parames);
 	
 	}
 	@Override
 	public List<Dic> selectProductLevelDicList() {
 		return dicMapper.selectDicListByDicType("PRODUCT_LEVEL");
+	}
+	
+	@Override
+	public ByteArrayInputStream findEmpHeadImgById(
+			String id) {
+		return new ByteArrayInputStream(
+				oaEmployeeMapper.selectByPrimaryKey(id).getHeadImg());
+	}
+	@Override
+	public OaEmployee findTeacher(String id){
+		return oaEmployeeMapper.selectByPrimaryKey(id);
 	}
 }

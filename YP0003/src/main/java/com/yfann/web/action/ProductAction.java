@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.pojo.Dic;
+import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ProductAppraise;
 import com.yfann.web.pojo.ProductDetailAvatar;
@@ -46,7 +47,20 @@ public class ProductAction extends CommonAction {
 	
 	private List<Dic> productLevelList;//课程难度字典列表
 	
-
+	private OaEmployee employee;
+	/**
+	 * 讲师图片
+	 */
+	public String showEmpHeader() {
+		// 填充内存流(课程缩略图)
+		try {
+			setByteArrayInputStream(productService
+					.findEmpHeadImgById(employee.getId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "showEmpHeader";
+	} 
 	/**
 	 * 课程详情截图
 	 * 
@@ -110,6 +124,7 @@ public class ProductAction extends CommonAction {
 				// 课程评论满意度字典
 				productAppraiseDicList = productService
 						.findProductAppraiseDicList();
+				employee = productService.findTeacher(product.getTeacherId());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -261,6 +276,12 @@ public class ProductAction extends CommonAction {
 
 	public void setProductLevelList(List<Dic> productLevelList) {
 		this.productLevelList = productLevelList;
+	}
+	public OaEmployee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(OaEmployee employee) {
+		this.employee = employee;
 	}
 
 	

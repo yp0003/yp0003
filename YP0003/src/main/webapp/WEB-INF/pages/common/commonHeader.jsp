@@ -28,9 +28,9 @@
 				<ul class="nav">
 					<li><a class="brand"
 					href="./Bootstrap中文网_files/Bootstrap中文网.htm">365IT学院</a></li>
-					<li><a href="javascript:void(0)">课程</a></li>
+					<li><a href="${pageContext.request.contextPath}/product!forwardProductList.html">课程</a></li>
 					<li><a href="javascript:void(0)">问答</a></li>
-						<li><a href="http://www.bootcss.com/p/lesscss/">求课</a></li>
+					<li><a href="http://www.bootcss.com/p/lesscss/">求课</a></li>
 				</ul>
 			</div>
 		</div>

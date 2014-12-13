@@ -10,6 +10,7 @@ import com.yfann.web.pojo.User;
 import com.yfann.web.vo.PageInfo;
 
 public interface OaProductService {
+	public void updateStatus(String id,String status);
 	/**
 	 * 获取课程分类列表
 	 * @return
@@ -29,9 +30,11 @@ public interface OaProductService {
 	 * 新增产品
 	 * 
 	 * @param product
-	 * @throws Exception
+	 * @param scan 课程缩略图
+	 * @param images 课程精彩截图
+	 * @param detailImags课程细节图片
 	 */
-	public void saveProduct(Product product,File scan,File[] images);
+	public void saveProduct(Product product,File scan,File[] images,File[] detailImags);
 
 	/**
 	 * 根据id下线产品

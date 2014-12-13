@@ -48,6 +48,9 @@ var index = 0;
 $(function(){
 	index = $("#detailCount").val();
 });
+function addDetailInput(){
+	$("#productDetailImgTable").append('<tr><td width="30%"><s:file name="productDetailimages">选择图片:</s:file></td></tr>');
+}
 function addFileInput(){
  	$("#imagesTable").append('<tr><td width="30%"><s:file name="images">选择图片:</s:file></td></tr>');
 }
@@ -162,7 +165,17 @@ function forSubmit() {
 				</tr>
 			</table>
 		</div>
-
+		<div title="课程详情">
+			<fieldset class="fieldset-self">
+					<legend>课程图片信息</legend>
+					<table align="left" width="100%" cellpadding="5px" border="0" id="productDetailImgTable">
+						<tr>
+							<td width="30%"><s:file name="productDetailimages">选择图片:</s:file></td>	
+							<td><input type="button" value="增加" onclick="addDetailInput()"></input></td>					
+						</tr>
+					</table>
+			</fieldset>
+		</div>
 		<div title="课程精彩截图">
 				<fieldset class="fieldset-self">
 					<legend>截图信息</legend>
@@ -174,7 +187,7 @@ function forSubmit() {
 					</table>
 			</fieldset>
 		</div>
-		<div title="课程详情">
+		<div title="课程视频详情">
 			<fieldset class="fieldset-self">
 					<legend>视频详情</legend>
 					<s:if test="product.productDetailList==null">

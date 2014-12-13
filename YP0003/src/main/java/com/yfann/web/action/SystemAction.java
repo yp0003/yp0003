@@ -157,6 +157,7 @@ public class SystemAction extends CommonAction {
 	 * @return
 	 */
 	public String forwardIndex() {
+		productList = productService.findPerfectProductList();
 		return "forwardIndex";
 	}
 

@@ -142,8 +142,8 @@
 								</div>
 						</a>
 							<div class="shop">
-								<span><a href="trolley.html"><button class="btn">加入购物车</button></a></span> 
-                                <span><a href="order.html"><button class="btn" type="button">立即购买</button>
+<!-- 								<span><a href="trolley.html"><button class="btn">加入购物车</button></a></span>  -->
+                                <span><a href="order.html"><button class="btn" type="button">立即开课</button>
 										</a></span>
 							</div></li>
 						</s:iterator>

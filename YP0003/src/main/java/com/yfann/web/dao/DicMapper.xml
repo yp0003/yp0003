@@ -352,5 +352,11 @@
 		<include refid="Base_Column_List2" />
 		from t_sys_dic t where t.dic_type = 'MSG_STATUS' and t.dic_code = #{dicCode,jdbcType=VARCHAR}
 	</select>
-	
+	<!-- 查询对应的产品状态-->
+	<select id="selectProductStatusDic"
+		parameterType="java.lang.String" resultMap="BaseResultMap2">
+		select
+		<include refid="Base_Column_List2" />
+		from t_sys_dic t where t.dic_type = 'PRODUCT_SATTUS' and t.dic_code = #{dicCode,jdbcType=VARCHAR}
+	</select>
 </mapper>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.yfann.web.pojo.Dic;
 import com.yfann.web.pojo.MyProduct;
+import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ProductAppraise;
 import com.yfann.web.pojo.ProductKind;
@@ -16,7 +17,28 @@ import com.yfann.web.vo.PageInfo;
  *
  */
 public interface ProductService {
+	/**
+	 * 查找老师信息
+	 * @param id
+	 * @return
+	 */
+	public OaEmployee findTeacher(String id);
+	/**
+	 * 查找教师头像
+	 * @param id
+	 * @return
+	 */
+	public ByteArrayInputStream findEmpHeadImgById(
+			String id);
+	/**
+	 * 得到课程级别列表
+	 * @return
+	 */
 	List<Dic> selectProductLevelDicList();
+	/**
+	 * 查找优秀课程
+	 * @return
+	 */
 	List<Product> findPerfectProductList();
 	/**
 	 * 根据我的课程Id查询我的课程

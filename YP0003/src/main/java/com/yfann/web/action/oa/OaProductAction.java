@@ -1,12 +1,14 @@
 package com.yfann.web.action.oa;
 
 import java.io.File;
-
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.action.CommonAction;
+import com.yfann.web.common.OaApplicationValue;
 import com.yfann.web.pojo.Dic;
+import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ProductKind;
 import com.yfann.web.service.OaProductService;
@@ -44,6 +46,10 @@ public class OaProductAction extends CommonAction {
 	private String[] imagesFileName; //文件名称
 	private String[] imagesContentType; //文件类型
 	
+	private File[] productDetailimages;
+	private String[] productDetailimagesFileName;
+	private String[] productDetailimagesContentType; 	
+	
 	private List<Dic> productStatusList;//课程状态字典列表
 	private List<Dic> productLevelList;//课程难度字典列表
 	
@@ -69,7 +75,17 @@ public class OaProductAction extends CommonAction {
 		addActionMessage(fileType+"上传非图片文件");
 		return false;
 	}
-	
+	public String  forwardCheckProduct(){
+
+			try{
+				oaProductService.updateStatus(product.getId(), "001");
+				addActionMessage("操作成功！");
+			}catch(Exception e){
+				addActionError("操作失败");
+				e.printStackTrace();
+			}
+		return forwardProductList();
+	}
 	/**
 	 * 保存课程信息
 	 * @return
@@ -77,7 +93,9 @@ public class OaProductAction extends CommonAction {
 	public String saveProductInfo() {
 		if (ifScanContentType(scan,"产品缩略图",true)) {
 			try{
-				oaProductService.saveProduct(product, scan,images);
+				OaEmployee oaEmployee = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
+				product.setTeacherId(oaEmployee.getId());
+				oaProductService.saveProduct(product, scan,images,productDetailimages);
 				addActionMessage("操作成功！");
 			}catch(Exception e){
 				addActionError("操作失败");
@@ -113,6 +131,7 @@ public class OaProductAction extends CommonAction {
 	public String delProduct(){
 		try{
 			oaProductService.deleteProductById(product.getId());
+			product.setId(null);
 			addActionMessage("操作成功");
 		}catch(Exception e){
 			addActionError("操作失败");
@@ -230,6 +249,25 @@ public class OaProductAction extends CommonAction {
 
 	public void setProductKindList(List<ProductKind> productKindList) {
 		this.productKindList = productKindList;
+	}
+	public File[] getProductDetailimages() {
+		return productDetailimages;
+	}
+	public void setProductDetailimages(File[] productDetailimages) {
+		this.productDetailimages = productDetailimages;
+	}
+	public String[] getProductDetailimagesFileName() {
+		return productDetailimagesFileName;
+	}
+	public void setProductDetailimagesFileName(String[] productDetailimagesFileName) {
+		this.productDetailimagesFileName = productDetailimagesFileName;
+	}
+	public String[] getProductDetailimagesContentType() {
+		return productDetailimagesContentType;
+	}
+	public void setProductDetailimagesContentType(
+			String[] productDetailimagesContentType) {
+		this.productDetailimagesContentType = productDetailimagesContentType;
 	}
 
 	

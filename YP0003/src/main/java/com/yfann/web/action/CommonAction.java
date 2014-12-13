@@ -42,4 +42,5 @@ public class CommonAction extends ActionSupport{
 		User userInfo = (User) userObj;
 		return userInfo;
 	}
+	
 }

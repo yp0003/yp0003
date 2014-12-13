@@ -3,7 +3,7 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="sys" namespace="/" extends="yfann-default">
+	 <package name="sys" namespace="/" extends="yfann-default">
 		<!-- 系统 -->
 		<action name="system!*" method="{1}"
 			class="com.yfann.web.action.SystemAction">
@@ -11,6 +11,7 @@
 			<result name="forwardRegister">/WEB-INF/pages/register.jsp</result>
 			<!-- 系统主页 -->
 			<result name="forwardIndex">/WEB-INF/pages/index.jsp</result>
+<!-- 			<result name="forwardIndex">/WEB-INF/web/index.jsp</result> -->
 			<!-- 跳转到召回密码页面 -->
 			<result name="forwardFindPassword">/WEB-INF/pages/findPassword.jsp</result>
 			<result name="forwardTest">/WEB-INF/pages/common/commonNew.jsp</result>
@@ -47,11 +48,12 @@
 				<param name="inputName">jsonInputStream</param>
 			</result>
 			<!-- 跳转到确认订单页面 -->
-			<result name="forwardSureOrder">/WEB-INF/pages/sureOrder.jsp</result>
+<!-- 			<result name="forwardSureOrder">/WEB-INF/pages/oa/employee/temp.jsp</result> -->
+			<result name="forwardSureOrder">/WEB-INF/pages/web/sureOrder.jsp</result>
 			<!-- 创建订单 -->
 			<result name="createOrder">/WEB-INF/pages/payOrder.jsp</result>
 			<!-- 直接结算 -->
-			<result name="payProductOnlyOne">/WEB-INF/pages/payOrder.jsp</result>
+			<result name="payProductOnlyOne">/WEB-INF/pages/web/payOrder.jsp</result>
 			<!-- 取消订单 -->
 			<result name="cancelOrder" type="redirectAction">mycenter!myOrderList.html
 			</result>
@@ -66,6 +68,7 @@
 			class="com.yfann.web.action.ProductAction">
 			<!-- 跳转到课程列表 -->
 			<result name="forwardProductList">/WEB-INF/pages/web/productList.jsp</result>
+<!-- 			<result name="forwardProductList">/WEB-INF/web/classList.jsp</result> -->
 			<!-- 下载缩略图 -->
 			<result name="showProductSmallImg" type="stream">
 				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
@@ -85,6 +88,11 @@
 
 			<!-- 课程截图 -->
 			<result name="showProductDetailAvatar" type="stream">
+				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
+				<param name="inputName">byteArrayInputStream</param>
+			</result>
+			<!-- 课程截图 -->
+			<result name="showEmpHeader" type="stream">
 				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
 				<param name="inputName">byteArrayInputStream</param>
 			</result>
@@ -125,4 +133,6 @@
 			<result name="replyMsg">/WEB-INF/pages/replyMessage.jsp</result>
 		</action>
 	</package>
+	
+	
 </struts>

@@ -28,6 +28,8 @@
 			jdbcType="VARCHAR" />
 		<result column="product_knows" property="productKnows"
 			jdbcType="VARCHAR" />
+		<association property="productStatusDic" javaType="com.yfann.web.pojo.Dic"
+				column="product_status" select="com.yfann.web.dao.DicMapper.selectProductStatusDic"/>
 	</resultMap>
 	<resultMap id="ResultMapWithBLOBs" type="com.yfann.web.pojo.Product"
 		extends="BaseResultMap2">
@@ -699,6 +701,7 @@
 		    ofType="com.yfann.web.pojo.ProductDetail"
 			property="productDetailList"
 			select="com.yfann.web.dao.ProductDetailMapper.selectProductDetailByProductId" />
+		
 	</resultMap>
 
 	<resultMap id="ResultMapWithProductSmallPicBLOBs" type="com.yfann.web.pojo.Product"
@@ -846,6 +849,6 @@
 		from t_product t
 		where 1=1
 		<include refid="selectListCondiction"/>
-		limit 3
+		limit 7
 	</select>
 </mapper>

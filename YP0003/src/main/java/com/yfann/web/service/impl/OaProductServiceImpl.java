@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import com.yfann.web.common.FileUtil;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.dao.DicMapper;
+import com.yfann.web.dao.ProductDetailAvatarMapper;
+import com.yfann.web.dao.ProductDetailImageMapper;
 import com.yfann.web.dao.ProductDetailMapper;
 import com.yfann.web.dao.ProductImageMapper;
 import com.yfann.web.dao.ProductKindMapper;
@@ -24,6 +26,8 @@ import com.yfann.web.dao.ProductMapper;
 import com.yfann.web.pojo.Dic;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ProductDetail;
+import com.yfann.web.pojo.ProductDetailAvatar;
+import com.yfann.web.pojo.ProductDetailImage;
 import com.yfann.web.pojo.ProductExample;
 import com.yfann.web.pojo.ProductImage;
 import com.yfann.web.pojo.ProductKind;
@@ -42,13 +46,15 @@ public class OaProductServiceImpl implements OaProductService {
 	private DicMapper dicMapper;
 	@Autowired
 	private ProductDetailMapper productDetailMapper;
-	
-	
+	@Autowired
+	private ProductDetailAvatarMapper productDetailAvatarMapper;
+	@Autowired
+	private ProductDetailImageMapper productDetailImageMapper;
 	
 	
 	
 	@Override
-	public void saveProduct(Product product,File scan,File[] images) {
+	public void saveProduct(Product product,File scan,File[] images,File[] detailImags) {
 		//转换产品的缩略图
 		byte[] picData = scan==null?null:FileUtil.fileToPicData(scan,logger);
 		product.setProductSamllPic(picData);
@@ -68,11 +74,24 @@ public class OaProductServiceImpl implements OaProductService {
 			for(File image:images){
 				byte[] imgData = image==null?null:FileUtil.fileToPicData(image,logger);
 				if(null != imgData){
-					ProductImage proImg = new ProductImage();
+					ProductDetailAvatar proImg = new ProductDetailAvatar();
 					proImg.setId(UUIDCreate.getUUID());
 					proImg.setProductId(product.getId());
-					proImg.setProductImage(imgData);
-					productImageMapper.insert(proImg);
+					proImg.setAvatarImg(imgData);
+					productDetailAvatarMapper.insert(proImg);
+				}					
+			}
+		}
+		//保存课程细节图片
+		if(detailImags!=null){
+			for(File image:detailImags){
+				byte[] imgData = image==null?null:FileUtil.fileToPicData(image,logger);
+				if(null != imgData){
+					ProductDetailImage pi = new ProductDetailImage();
+					pi.setId(UUIDCreate.getUUID());
+					pi.setProductId(product.getId());
+					pi.setImage(imgData);
+					productDetailImageMapper.insert(pi);
 				}					
 			}
 		}
@@ -153,4 +172,16 @@ public class OaProductServiceImpl implements OaProductService {
 		return productKindMapper.selectAllProductKindList();
 	}
 	final Logger logger = LoggerFactory.getLogger(OaProductServiceImpl.class);
+
+
+
+
+
+	@Override
+	public void updateStatus(String id,String status) {
+		Product product = new Product();
+		product.setId(id);
+		product.setProductStatus(status);
+		productMapper.updateByPrimaryKeySelective(product);
+	}
 }
