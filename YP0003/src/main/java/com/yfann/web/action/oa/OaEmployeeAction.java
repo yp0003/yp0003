@@ -274,15 +274,12 @@ public class OaEmployeeAction extends CommonAction {
 	}
 
 	/** 转向图片上传页面 */
-	@SuppressWarnings("unchecked")
 	public String toUpdateImage() {
 		oaEmployee = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
 		return "updateImage";
 	}
 
 	/** 上传图片 */
-
-	@SuppressWarnings("unchecked")
 	public String updateImage() {
 		if (ifScanContentType()) {
 			oaEmployeeService.updateHeadImg(oaEmployee,scan);
