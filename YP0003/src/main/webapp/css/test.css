@@ -1,0 +1,168 @@
+.kc_tbl {
+    padding-left: 11px;
+    width: 897px;
+    min-height: 450px;
+    margin-top: -25px;
+    font-family: "Microsoft YaHei",STXihei,Arial,sans-serif;
+}
+.class_info {
+    width: auto;
+    background-color: rgb(234, 239, 246);
+    min-height: 188px;
+    font-family: "Microsoft YaHei",STXihei,Arial,sans-serif;
+	line-height: 1.2em;
+}
+.class_summary {
+    float: left;
+}
+.clearfix {
+    font-size: 1px;
+    line-height: 1px;
+    height: 1px;
+    overflow: hidden;
+    clear: both;
+    border: 0px none;
+    padding: 0px;
+    margin: 0px;
+    list-style: none outside none;
+    visibility: hidden;
+}
+.clearfix {
+}
+.class_des {
+    float: left;
+    margin-top: 41px;
+    margin-left: 24px;
+    width: 440px;
+}
+.class_img {
+    float: left;
+    display: inline;
+    margin-top: 33px;
+    background-color: white;
+    border: 1px solid rgb(192, 192, 192);
+    padding: 5px;
+    margin-left: 38px;
+}
+.title{
+    color: rgb(16, 113, 181);
+    text-decoration: none;
+}
+.class_tit {
+    font-size: 18px;
+    margin: 0px 0px 27px -3px;
+    padding: 0px;
+    font-weight: normal;
+    line-height: 1.2em;
+}
+ .row {
+    height: 24px;
+    margin: 0px 0px 27px -3px;
+	padding: 0px;
+    padding-top: 0px;
+    padding-right-value: 0px;
+    padding-bottom: 0px;
+    padding-left-value: 0px;
+    padding-left-ltr-source: physical;
+    padding-left-rtl-source: physical;
+    padding-right-ltr-source: physical;
+    padding-right-rtl-source: physical;
+color: rgb(102, 102, 102);
+}
+.class_info p {
+    padding: 5px 0px;
+    margin-bottom: 0px;
+}
+.class_img img {
+    width: 168px;
+    height: 106px;
+}
+.kc_tbl .price {
+    float: left;
+/*     margin-left: 48px; */
+    margin-top: 30px;
+    width: 100px;
+}
+.kc_tbl .row {
+    border-bottom: 1px solid rgb(232, 232, 232);
+    clear: both;
+    height: 125px;
+    padding-top: 25px;
+     width: 95%;
+}
+.kc_tbl .photo {
+    float: left;
+    border: 1px solid rgb(238, 238, 238);
+    padding: 4px;
+    margin-left: 5px;
+}
+.kc_tbl .photo {
+    float: left;
+    border: 1px solid rgb(238, 238, 238);
+    padding: 4px;
+    margin-left: 5px;
+}
+.kc_tbl .price .num {
+    color: rgb(255, 85, 0);
+    font-size: 15px;
+}
+.num {
+    font-family: Verdana,Geneva,sans-serif;
+}
+.kc_tbl .status {
+    float: left;
+    font-size: 14px;
+    line-height: 24px;
+    margin-left: 39px;
+    margin-top: 14px;
+    width: 100px;
+}
+.kc_tbl .row .title .name {
+    float: left;
+    font-size: 14px;
+}
+.kc_tbl .action {
+    float: left;
+    font-size: 14px;
+    line-height: 25px;
+    margin-left: 15px;
+    margin-right: -10px;
+    padding-top: 12px;
+    text-align: center;
+    width: 100px;
+}
+.kc_tbl .action .link_btn {
+    background-color: rgb(255, 115, 13);
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    font-size: 13px;
+    line-height: 1.2em;
+    margin-left: 8px;
+    margin-top: 9px;
+    padding: 7px 10px;
+}
+.kc_tbl .action a {
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(51, 51, 51);
+}
+.cancelOrder {
+    color: rgb(153, 153, 153) !important;
+    text-decoration: none;
+    font-size: 12px;
+    margin-right: 4px;
+    margin-left: 10px;
+    margin-top: 8px;
+}
+.kc_tbl .row .title {
+    float: left;
+    margin-left: 25px;
+/*     margin-top: 15px; */
+    width: 350px;
+}
+.kc_tbl .row .title .order {
+    float: left;
+    clear: left;
+    padding-top: 15px;
+    white-space: nowrap;
+}
