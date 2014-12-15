@@ -127,11 +127,11 @@
     font-size: 13px;
     padding-left: 2px;
 }
-.order_detail .zf_info .row {
+.order_detail .zf_info .row1 {
     margin-bottom: 10px;
     height: 16px;
 }
-.order_detail .zf_info .row .content1 {
+.order_detail .zf_info .row1 .content1 {
     float: right;
     margin-right: 39px;
 }
@@ -216,7 +216,7 @@ a:link, a:visited, a:active {
 }
 .order_detail .kc_info .tbody .count {
     float: left;
-    width: 100px;
+    width: 166px;
     font-size: 18px;
     color: rgb(51, 51, 51);
     padding-top: 13px;
@@ -239,4 +239,13 @@ a:link, a:visited, a:active {
 .order_detail .kc_info .tbody .base {
     float: left;
     width: 600px;
+}
+.course-content2{
+	width: 960px;
+    float: none;
+}
+.black{
+
+	float: left;
+width: 166px;
 }

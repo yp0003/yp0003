@@ -8,14 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.yfann.web.annotation.UserSessionCheck;
 import com.yfann.web.pojo.Message;
 import com.yfann.web.pojo.MyProduct;
+import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.Order;
 import com.yfann.web.pojo.OrderDetail;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ProductDetail;
 import com.yfann.web.pojo.User;
 import com.yfann.web.service.MyCenterService;
+import com.yfann.web.service.OaEmployeeService;
 import com.yfann.web.service.OrderService;
 import com.yfann.web.service.ProductService;
+import com.yfann.web.service.SystemService;
 import com.yfann.web.vo.PageInfo;
 
 public class MyCenterAction extends CommonAction {
@@ -46,6 +49,9 @@ public class MyCenterAction extends CommonAction {
 	private MyCenterService myCenterService;
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private OaEmployeeService oaEmployeeService;
+	private OaEmployee teacher;
 	
 	private int myMessageCount;
 	public String cancelOrder(){
@@ -239,6 +245,8 @@ public class MyCenterAction extends CommonAction {
 	}
 
 	public String forwardMyOrderDetail(){
+		order = orderService.findOrderByOrderId(order.getId());
+		teacher = oaEmployeeService.getEmpById(order.getOrderDetailList().get(0).getProduct().getTeacherId());
 		return "forwardMyOrderDetail";
 	}
 	
@@ -343,5 +351,12 @@ public class MyCenterAction extends CommonAction {
 	public void setMyMessageCount(int myMessageCount) {
 		this.myMessageCount = myMessageCount;
 	}
+	public OaEmployee getTeacher() {
+		return teacher;
+	}
+	public void setTeacher(OaEmployee teacher) {
+		this.teacher = teacher;
+	}
 
+	
 }

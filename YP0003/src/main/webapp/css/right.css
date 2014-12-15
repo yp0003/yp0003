@@ -1,0 +1,293 @@
+@CHARSET "UTF-8";
+
+.myspace-slider {
+    width: 220px;
+}
+.r {
+    float: left;
+}
+.myspace-bg {
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    box-shadow: 2px 2px 1px rgb(219, 221, 222);
+    padding-bottom: 20px;
+}
+img {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+}
+fieldset, img {
+    border: 0px none;
+}
+.myspace-data {
+    padding: 0px 20px;
+}
+.myname {
+    font-size: 22px;
+    color: rgb(54, 61, 64);
+    margin-top: 25px;
+    word-wrap: break-word;
+}
+.job-title {
+    line-height: 22px;
+    margin-top: 3px;
+}
+.mysignature {
+    font-size: 12px;
+    color: rgb(153, 161, 166);
+    line-height: 24px;
+    margin: 10px 0px;
+    position: relative;
+}
+.signWrap {
+    position: relative;
+}
+.signed {
+    visibility: visible;
+}
+.signed, .signing {
+    word-wrap: break-word;
+    word-break: break-all;
+    line-height: 20px;
+    font-size: 12px;
+    color: rgb(153, 161, 166);
+    width: 156px;
+    display: block;
+    margin: 30px 0px;
+}
+.mysignature em {
+    background: url("../img/mycourselisticon.png") no-repeat scroll 2px -104px transparent;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    bottom: 5px;
+    right: 0px;
+}
+.signing {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    resize: none;
+    display: none;
+    height: 40px;
+    margin: 0px;
+    border: 1px solid rgb(230, 232, 233);
+}
+.signed, .signing {
+    word-wrap: break-word;
+    word-break: break-all;
+    line-height: 20px;
+    font-size: 12px;
+    color: rgb(153, 161, 166);
+    width: 156px;
+    display: block;
+    margin: 30px 0px;
+}
+.rlf-tip-wrap {
+    color: red;
+}
+.mp-wrap {
+    border-top: 1px solid rgb(208, 214, 217);
+}
+.mp-item {
+    width: 100%;
+    position: relative;
+    padding-top: 8px;
+    text-align: center;
+}
+.space-item {
+    padding: 20px;
+}
+.bodybg {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 1px rgb(219, 221, 222);
+    margin-top: 20px;
+}
+.space-data li, .space-item li {
+    height: 28px;
+    line-height: 28px;
+    position: relative;
+    padding-left: 22px;
+    font-size: 12px;
+}
+.space-data .icon-time, .space-item .icon-time {
+    background-position: 0px 0px;
+}
+.space-data .icon, .space-item .icon {
+    position: absolute;
+    left: 0px;
+    top: 6px;
+}
+.space-course .icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("../img/space-newicon.png") no-repeat scroll 0% 0% transparent;
+}
+.bodybg {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 1px rgb(219, 221, 222);
+    margin-top: 20px;
+}
+.main-hd {
+    margin: 0px 20px;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid rgb(209, 214, 218);
+    color: rgb(96, 104, 107);
+    padding-top: 20px;
+}
+.main-bd {
+    margin-bottom: 30px;
+}
+.space-visitors {
+    padding: 10px 20px;
+}
+li.unvisitor {
+    background: url("../img/unlist.gif") no-repeat scroll 0px -407px transparent;
+    width: 40px;
+    height: 40px;
+    padding: 0px;
+    margin: 30px auto 0px;
+}
+.space-visitors li {
+    margin: 15px 0px 20px;
+    padding: 0px 0px 0px 50px;
+    height: 40px;
+    position: relative;
+}
+li.unvisitortex {
+    padding: 0px;
+    text-align: center;
+    color: rgb(208, 214, 217);
+}
+.space-visitors li {
+    margin: 15px 0px 20px;
+    padding: 0px 0px 0px 50px;
+    height: 40px;
+    position: relative;
+}
+.myspace-list {
+    width: 50px;
+    z-index: 99;
+}
+.l {
+    float: right;
+}
+.mymain-content {
+    position: relative;
+    width: 1010px;
+}
+.myspace-list .courseactive {
+    background: url("../img/myspace-newicon.png") no-repeat scroll -17px 17px rgb(101, 110, 115) !important;
+}
+.myspace-list .myspace-course {
+    background: url("../img/myspace-newicon.png") no-repeat scroll 17px 17px rgb(211, 220, 224);
+}
+.myspace-list a {
+    display: block;
+    clear: both;
+    width: 50px;
+    height: 50px;
+    background: none repeat scroll 0% 0% rgb(211, 220, 224);
+    margin-bottom: 1px;
+    position: relative;
+}
+.myspace-list a span {
+/*     display: none; */
+    width: 67px;
+    height: 29px;
+/*     color: rgb(255, 255, 255); */
+    position: absolute;
+/*     left: 60px; */
+    top: 4px;
+/*     background: url("../img/myspace-tip.png") repeat scroll 0% 0% transparent; */
+    text-indent: 21px;
+    line-height: 25px;
+    z-index: 99;
+}
+.myspace-list .myspace-plan {
+    background: url("../img/myspace-newicon.png") no-repeat scroll 17px -21px rgb(211, 220, 224);
+}
+.myspace-list .myspace-ques {
+    background: url("../img/myspace-newicon.png") no-repeat scroll 17px -59px rgb(211, 220, 224);
+}
+.myspace-list .myspace-note {
+    background: url("../img/myspace-newicon.png") no-repeat scroll 17px -95px rgb(211, 220, 224);
+}
+.myspace-list .myspace-code {
+    background: url("../img/myspace-newicon.png") no-repeat scroll 17px -129px rgb(211, 220, 224);
+}
+.myspace-courselist {
+    padding: 0px 20px;
+    width: 920px;
+    min-height: 1342px;
+    margin-bottom: 30px;
+}
+.main-bd {
+    margin-bottom: 30px;
+}
+.clearfix {
+}
+.space-tabs-menu {
+    overflow: hidden;
+    position: relative;
+    width: 870px;
+    margin: 0px auto;
+}
+.space-tabs-menu ul, .space-tabs-menu h2 {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid rgb(208, 214, 217);
+}
+.space-tabs-menu li {
+    float: left;
+    width: 100px;
+    height: 50px;
+    font-size: 12px;
+    position: relative;
+}
+.space-tabs-menu li a {
+    display: block;
+    text-align: center;
+    line-height: 50px;
+    padding-bottom: 5px;
+    color: rgb(180, 187, 191);
+    outline: medium none;
+}
+.space-tabs-menu li a.curr {
+    color: rgb(101, 110, 115);
+}
+
+.space-tabs-menu .dot-curr {
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    left: 0px;
+    bottom: 0px;
+    background: none repeat scroll 0% 0% rgb(126, 135, 140);
+}
+.uncourse, .unnote, .unquestion, .uncode, .unprogram {
+    color: rgb(208, 214, 217);
+    font-size: 14px;
+    text-align: center;
+/*     padding: 80px 0px 30px; */
+}
+.uncourse span {
+    background: url("../img/unlist.gif") no-repeat scroll 0% 0% transparent;
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 0px auto 30px;
+}
+.uncourse p, .unnote p, .unquestion p, .uncode p, .unprogram p {
+    text-align: center;
+}
+.course-content1 {
+    float: left;
+}
+.container {
+	width: 1250px;
+}

@@ -18,8 +18,9 @@
 				<c:if test="${sessionScope.userInfo != null}">
 					
 						<a class="brand" >尊敬的${sessionScope.userInfo.userId}您好</a>
-						<a class="brand" 
-							href="${pageContext.request.contextPath}/order!buyCarList.html">购物车</a>
+<!-- 						<a class="brand"  -->
+<%-- 							href="${pageContext.request.contextPath}/order!buyCarList.html">购物车</a> --%>
+						<a class="brand" href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">个人信息设置</a>
 						<a class="brand" 
 							href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">个人中心</a>
 					
@@ -32,6 +33,7 @@
 					<li><a href="javascript:void(0)">问答</a></li>
 					<li><a href="http://www.bootcss.com/p/lesscss/">求课</a></li>
 				</ul>
+					
 			</div>
 		</div>
 	</div>
