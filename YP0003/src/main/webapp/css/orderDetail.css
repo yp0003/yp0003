@@ -236,3 +236,7 @@ a:link, a:visited, a:active {
     font-weight: normal;
     line-height: 1.2em;
 }
+.order_detail .kc_info .tbody .base {
+    float: left;
+    width: 600px;
+}
