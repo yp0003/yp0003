@@ -201,9 +201,10 @@
                     
                   </li>
                 </ul>
+                <s:hidden name="order.id"></s:hidden>
                 <div style="padding-left:60px; color:#000">如果您选择的银行限额不足， 可选择<span style="color:#0066CC"> 银联在线支付 </span>或<span style="color:#0066CC"> 联系银行客服</span>。 </div>
                 <div class="order_sub">
-                	<a href="#pay" data-toggle="modal" ><button class="btn  btn-large btn-info" type="button" placeholder="nihao">确认付款 </button>
+                	<a href="pay!pay.html?id=${order.id}" data-toggle="modal"><button class="btn  btn-large btn-info" type="button" placeholder="nihao">确认付款 </button>
                 </a></div>
 			</div>
 			

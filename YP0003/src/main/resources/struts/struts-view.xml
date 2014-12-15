@@ -3,15 +3,14 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	 <package name="sys" namespace="/" extends="yfann-default">
+	<package name="sys" namespace="/" extends="yfann-default">
 		<!-- 系统 -->
-		<action name="system!*" method="{1}"
-			class="com.yfann.web.action.SystemAction">
+		<action name="system!*" method="{1}" class="com.yfann.web.action.SystemAction">
 			<!-- 跳转到注册 -->
 			<result name="forwardRegister">/WEB-INF/pages/register.jsp</result>
 			<!-- 系统主页 -->
 			<result name="forwardIndex">/WEB-INF/pages/index.jsp</result>
-<!-- 			<result name="forwardIndex">/WEB-INF/web/index.jsp</result> -->
+			<!-- <result name="forwardIndex">/WEB-INF/web/index.jsp</result> -->
 			<!-- 跳转到召回密码页面 -->
 			<result name="forwardFindPassword">/WEB-INF/pages/findPassword.jsp</result>
 			<result name="forwardTest">/WEB-INF/pages/common/commonNew.jsp</result>
@@ -22,8 +21,7 @@
 
 	<package name="buy" namespace="/" extends="yfann-default">
 		<!-- 订单 -->
-		<action name="order!*" method="{1}"
-			class="com.yfann.web.action.OrderAction">
+		<action name="order!*" method="{1}" class="com.yfann.web.action.OrderAction">
 			<!-- 添加到购物车 -->
 			<result name="addBuyCar" type="redirectAction">order!buyCarList.html</result>
 			<!-- 购物车列表 -->
@@ -48,7 +46,7 @@
 				<param name="inputName">jsonInputStream</param>
 			</result>
 			<!-- 跳转到确认订单页面 -->
-<!-- 			<result name="forwardSureOrder">/WEB-INF/pages/oa/employee/temp.jsp</result> -->
+			<!-- <result name="forwardSureOrder">/WEB-INF/pages/oa/employee/temp.jsp</result> -->
 			<result name="forwardSureOrder">/WEB-INF/pages/web/sureOrder.jsp</result>
 			<!-- 创建订单 -->
 			<result name="createOrder">/WEB-INF/pages/payOrder.jsp</result>
@@ -64,11 +62,10 @@
 		</action>
 
 		<!-- 课程 -->
-		<action name="product!*" method="{1}"
-			class="com.yfann.web.action.ProductAction">
+		<action name="product!*" method="{1}" class="com.yfann.web.action.ProductAction">
 			<!-- 跳转到课程列表 -->
 			<result name="forwardProductList">/WEB-INF/pages/web/productList.jsp</result>
-<!-- 			<result name="forwardProductList">/WEB-INF/web/classList.jsp</result> -->
+			<!-- <result name="forwardProductList">/WEB-INF/web/classList.jsp</result> -->
 			<!-- 下载缩略图 -->
 			<result name="showProductSmallImg" type="stream">
 				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
@@ -104,8 +101,7 @@
 
 	<package name="oa1" namespace="/" extends="yfann-default">
 		<!-- OA -->
-		<action name="oasystem!*" method="{1}"
-			class="com.yfann.web.action.OASystemAction">
+		<action name="oasystem!*" method="{1}" class="com.yfann.web.action.OASystemAction">
 			<!-- OA主页 -->
 			<result name="forwardOAIndex">/WEB-INF/pages/oa/oaIndex.jsp</result>
 		</action>
@@ -113,8 +109,7 @@
 
 	<package name="mycenter" namespace="/" extends="yfann-default">
 		<!-- OA -->
-		<action name="mycenter!*" method="{1}"
-			class="com.yfann.web.action.MyCenterAction">
+		<action name="mycenter!*" method="{1}" class="com.yfann.web.action.MyCenterAction">
 			<!-- 订单中心 -->
 			<result name="forwardMyOrderList">/WEB-INF/pages/web/myOrderList.jsp</result>
 			<!-- 跳转更新个人资料 -->
@@ -129,18 +124,20 @@
 			<result name="forwardMyMessageList">/WEB-INF/pages/messageList.jsp</result>
 			<!-- 消息明细 -->
 			<result name="messageDetail">/WEB-INF/pages/myMessageDetail.jsp</result>
-			<!-- 消息回复-->
+			<!-- 消息回复 -->
 			<result name="replyMsg">/WEB-INF/pages/replyMessage.jsp</result>
-			<!-- 订单详情-->
+			<!-- 订单详情 -->
 			<result name="forwardMyOrderDetail">/WEB-INF/pages/web/myOrderDetail.jsp</result>
 		</action>
 	</package>
-		
+
 	<package name="pay" namespace="/" extends="yfann-default">
-	<!-- 支付 -->
-	<action name="pay!*" method="{1}" class="com.yfann.web.action.MyCenterAction">
-	
-	</action>
+		<!-- 支付 -->
+		<action name="pay!*" method="{1}" class="com.yfann.web.action.AlipayAction">
+			<result name="forwardsuccess">/WEB-INF/pages/web/pay/paySuccess.jsp</result>
+			<result name="forwardfail">/WEB-INF/pages/web/pay/payFail.jsp</result>
+			<result name="forwardMyOrderList">/WEB-INF/pages/web/myOrderList.jsp</result>
+		</action>
 	</package>
-	
+
 </struts>

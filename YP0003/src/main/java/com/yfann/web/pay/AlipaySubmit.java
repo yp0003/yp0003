@@ -85,6 +85,7 @@ public class AlipaySubmit {
 
 		StringBuffer sbHtml = new StringBuffer();
 
+		sbHtml.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"><html></head>");
 		sbHtml.append("<form id=\"alipaysubmit\" name=\"alipaysubmit\" action=\"" + ALIPAY_GATEWAY_NEW
 				+ "_input_charset=" + AlipayConfig.input_charset + "\" method=\"" + strMethod + "\">");
 
@@ -97,12 +98,9 @@ public class AlipaySubmit {
 
 		// submit按钮控件请不要含有name属性
 		sbHtml.append("<input type=\"submit\" value=\"" + strButtonName
-				+ "\" style=\"display:none;\"></form>");
+				+ "\" style=\"display:none;\"></form><body></body></html>");
 		sbHtml.append("<script>document.forms['alipaysubmit'].submit();</script>");
 
-		String cl = AlipaySubmit.class.getResource("/").toString();
-		// String ro = cl.substring(0, cl.indexOf("/classes/")) + "/classes/";
-		System.out.println(cl);
 		return sbHtml.toString();
 	}
 
