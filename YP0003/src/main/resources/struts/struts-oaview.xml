@@ -15,6 +15,7 @@
 		<!-- 配置全局结果集,转向错误页面和拒绝页面 -->
 		<global-results>
 			<result name="toerror">/WEB-INF/pages/oa/login_oa.jsp</result>
+			<result name="login">/WEB-INF/pages/oa/tologin_oa.jsp</result>
 		</global-results>
 	</package>
 	

@@ -37,7 +37,7 @@
 	<a href="${pageContext.request.contextPath}/system!updateInfoUI.html">修改资料</a>
 	<br><br>
 	<p>OA</p>
-<%-- 	<a href="${pageContext.request.contextPath}/oalogin!forwardIndex.html">主页</a> --%>
+	<a href="${pageContext.request.contextPath}/oalogin!forwardIndex.html">主页</a>
 	<a href="${pageContext.request.contextPath}/oalogin!forwardLogin.html">登录</a>
 	<a href="${pageContext.request.contextPath}/oalogin!forwardRegister.html">注册</a>
 <%-- 	<a href="${pageContext.request.contextPath}/oalogin!forwardIndex.html">修改密码</a> --%>

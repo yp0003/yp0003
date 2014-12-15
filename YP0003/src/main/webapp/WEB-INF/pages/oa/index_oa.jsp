@@ -12,6 +12,13 @@
 <script type="text/javascript" src="easyui/jquery.min.js"></script>
 <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="easyui/jquery.ztree.core-3.5.js"></script>
+<script language=JavaScript>
+function pexit(){
+	window.location = "${pageContext.request.contextPath}/oalogin!logout.html";
+	window.location.history = "null";
+	return true;
+}
+</script>
 </head>
 <body class="easyui-layout">
 <!-- 顶部 -->
