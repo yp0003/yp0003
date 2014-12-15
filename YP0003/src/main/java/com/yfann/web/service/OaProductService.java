@@ -6,7 +6,6 @@ import java.util.List;
 import com.yfann.web.pojo.Dic;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ProductKind;
-import com.yfann.web.pojo.User;
 import com.yfann.web.vo.PageInfo;
 
 public interface OaProductService {
