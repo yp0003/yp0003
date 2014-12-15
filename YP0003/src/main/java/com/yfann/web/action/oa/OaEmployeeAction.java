@@ -80,7 +80,8 @@ public class OaEmployeeAction extends CommonAction {
 	// 用户列表显示
 	public String toEmpList() {
 		roleList = oaRoleService.getAllOaRole();
-		empList = oaEmployeeService.getAllEmp(0, Integer.MAX_VALUE);
+		pageInfo.setCount(oaEmployeeService.getAllEmpCount());
+		empList = oaEmployeeService.getAllEmp(pageInfo.getOffset(), pageInfo.getPageSize());
 		return "toEmpList";
 	}
 
@@ -137,8 +138,8 @@ public class OaEmployeeAction extends CommonAction {
 
 	// 客户列表显示
 	public String toUserList() {
-		roleList = oaRoleService.getAllOaRole();
-		userList = oaEmployeeService.getAllUser(0, Integer.MAX_VALUE);
+		pageInfo.setCount(oaEmployeeService.getAllUserCount());
+		userList = oaEmployeeService.getAllUser(pageInfo.getOffset(), pageInfo.getPageSize());
 		return "toUserList";
 	}
 

@@ -12,7 +12,6 @@ import com.yfann.web.dao.ApplyMoneyMapper;
 import com.yfann.web.dao.DicMapper;
 import com.yfann.web.pojo.ApplyMoney;
 import com.yfann.web.pojo.ApplyMoneyExample;
-import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.ApplyMoneyExample.Criteria;
 import com.yfann.web.pojo.Dic;
 import com.yfann.web.pojo.DicExample;

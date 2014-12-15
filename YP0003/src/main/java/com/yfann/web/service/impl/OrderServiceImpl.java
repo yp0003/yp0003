@@ -297,4 +297,9 @@ public class OrderServiceImpl implements OrderService {
 		}
 		return false;
 	}
+	
+	@Override
+	public void updateOrder(Order order){
+		orderMapper.updateByPrimaryKeySelective(order);
+	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="com.yfann.web.page" prefix="p"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
 <html>
 <head>
@@ -32,7 +33,7 @@
 			</table>
 		</fieldset>
 		<br>
-		<table id="stupidtable" width="100%" align="center" class="table">
+	<table id="stupidtable" width="100%" align="center" class="table">
 		<caption>
 			员工列表
 		</caption>
@@ -56,6 +57,19 @@
 				</tr>
 			</s:iterator>
 		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="10">
+ 					<s:if test="empList.size > 0"> 
+						<div align="right">
+							<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
+ 								pageSize="pageInfo.pageSize" count="pageInfo.count"
+							includes="" />
+						</div>
+					</s:if> 
+				</td>
+			</tr>
+		</tfoot>
 	</table>
 </div>
 </body>
