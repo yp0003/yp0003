@@ -1,9 +1,6 @@
 package com.yfann.web.service.impl;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -29,7 +26,6 @@ import com.yfann.web.pojo.ProductDetail;
 import com.yfann.web.pojo.ProductDetailAvatar;
 import com.yfann.web.pojo.ProductDetailImage;
 import com.yfann.web.pojo.ProductExample;
-import com.yfann.web.pojo.ProductImage;
 import com.yfann.web.pojo.ProductKind;
 import com.yfann.web.service.OaProductService;
 import com.yfann.web.vo.PageInfo;
