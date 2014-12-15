@@ -135,6 +135,12 @@
 			<result name="forwardMyOrderDetail">/WEB-INF/pages/web/myOrderDetail.jsp</result>
 		</action>
 	</package>
+		
+	<package name="pay" namespace="/" extends="yfann-default">
+	<!-- 支付 -->
+	<action name="pay!*" method="{1}" class="com.yfann.web.action.MyCenterAction">
 	
+	</action>
+	</package>
 	
 </struts>

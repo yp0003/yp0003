@@ -1,5 +1,8 @@
 package com.yfann.web.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -42,6 +45,13 @@ public class CommonAction extends ActionSupport{
 		User userInfo = (User) userObj;
 		return userInfo;
 	}
-	
 
+	public PrintWriter getOut(){
+		try {
+			return response.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
