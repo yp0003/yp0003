@@ -48,6 +48,10 @@ public class MyCenterAction extends CommonAction {
 	private ProductService productService;
 	
 	private int myMessageCount;
+	public String cancelOrder(){
+		orderService.cancelOrder(currentUserInfo(), order);
+		return "forwardMyOrderList";
+	}
 	/**
 	 * 消息列表
 	 * @return
@@ -234,6 +238,10 @@ public class MyCenterAction extends CommonAction {
 		return "forwardMyOrderList";
 	}
 
+	public String forwardMyOrderDetail(){
+		return "forwardMyOrderDetail";
+	}
+	
 	public String[] getOrderIds() {
 		return orderIds;
 	}

@@ -28,8 +28,9 @@
 			jdbcType="VARCHAR" />
 		<result column="product_knows" property="productKnows"
 			jdbcType="VARCHAR" />
+		<result column="level" property="level" jdbcType="VARCHAR" />
 		<association property="productStatusDic" javaType="com.yfann.web.pojo.Dic"
-				column="product_status" select="com.yfann.web.dao.DicMapper.selectProductStatusDic"/>
+				column="product_status" select="com.yfann.web.dao.DicMapper.selectProductStatusDic"/>				
 	</resultMap>
 	<resultMap id="ResultMapWithBLOBs" type="com.yfann.web.pojo.Product"
 		extends="BaseResultMap2">
@@ -673,6 +674,7 @@
 			jdbcType="VARCHAR" />
 		<result column="product_knows" property="productKnows"
 			jdbcType="VARCHAR" />
+		<result column="level" property="level" jdbcType="VARCHAR" />
 		<!-- 购物车对应项 -->
 		<association column="id" javaType="com.yfann.web.pojo.BuyCar"
 			property="buyCar" select="com.yfann.web.dao.BuyCarMapper.selectBuyCarByProductId" />

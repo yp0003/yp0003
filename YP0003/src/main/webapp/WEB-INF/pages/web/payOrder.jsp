@@ -34,15 +34,15 @@
    <div class="lineone"></div>
    <div class="ordercon">
       	<div class="ordercon_01">
-        	<span>订单编号：<span style="color:#EA5504">100388</span></span>
-            <span>下单时间：<span style="color:#2A8C01">2014-10-30 18：00</span></span>
-            <span>金额：<span style="color:#EA5504">￥12.00元</span></span>
+        	<span>订单编号：<span style="color:#EA5504">${order.orderId}</span></span>
+            <span>下单时间：<span style="color:#2A8C01"><s:date name="order.orderCreateTime" format="yyyy-MM-dd"/></span></span>
+            <span>金额：<span style="color:#EA5504">￥${order.countPrice}元</span></span>
         </div>
-        <div class="ordercon_01">
-        	<span>订单编号：<span style="color:#EA5504">100389</span></span>
-            <span>下单时间：<span style="color:#2A8C01">2014-10-29 8：00</span></span>
-            <span>金额：<span style="color:#EA5504">￥10.00元</span></span>
-        </div>
+<!--         <div class="ordercon_01"> -->
+<%--         	<span>订单编号：<span style="color:#EA5504">100389</span></span> --%>
+<%--             <span>下单时间：<span style="color:#2A8C01">2014-10-29 8：00</span></span> --%>
+<%--             <span>金额：<span style="color:#EA5504">￥10.00元</span></span> --%>
+<!--         </div> -->
         <div class="orderinfo">
         	<span class="orderinfo_01">尊敬的客户，由于您的商品属于不同商家，所以您的订单被拆分为多个子订单分开配送，给您带来的不便还请谅解。</span>
         	<span class="orderinfo_02">共<b style="color:#BE3948">2</b>种商品，应付总额<b  style="color:#BE3948; font-size:16px;">￥22.00元</b>			</span>
@@ -50,7 +50,7 @@
         
 	</div>
     <div class="order_mid">
-        	立即支付<span style="color:#BE3948"> ¥ 18.50 </span>元 ， 即可完成订单！请在<span style="color:#BE3948">2014-10-31 22:26</span>前完成支付， 订单超过<span style="color:#BE3948"> 24</span> 小时未支付将自动取消。
+        	立即支付<span style="color:#BE3948"> ¥ ${order.countPrice}</span>元 ， 即可完成订单！请在<span style="color:#BE3948">2014-10-31 22:26</span>前完成支付， 订单超过<span style="color:#BE3948"> 24</span> 小时未支付将自动取消。
     </div>
     <div class="taba">
 			<div class="title">
@@ -202,7 +202,9 @@
                   </li>
                 </ul>
                 <div style="padding-left:60px; color:#000">如果您选择的银行限额不足， 可选择<span style="color:#0066CC"> 银联在线支付 </span>或<span style="color:#0066CC"> 联系银行客服</span>。 </div>
-                <div class="order_sub"><a href="#"><button class="btn btn-large btn-danger" type="button">确认付款 》</button></a></div>
+                <div class="order_sub">
+                	<a href="#pay" data-toggle="modal" ><button class="btn  btn-large btn-info" type="button" placeholder="nihao">确认付款 </button>
+                </a></div>
 			</div>
 			
 		</div>
@@ -210,5 +212,8 @@
 
 
 		<%@ include file="../common/commonFooter.jsp"%>
+
+
+
 </body>
 </html>

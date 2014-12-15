@@ -116,11 +116,11 @@
 		<action name="mycenter!*" method="{1}"
 			class="com.yfann.web.action.MyCenterAction">
 			<!-- 订单中心 -->
-			<result name="forwardMyOrderList">/WEB-INF/pages/myOrderList.jsp</result>
+			<result name="forwardMyOrderList">/WEB-INF/pages/web/myOrderList.jsp</result>
 			<!-- 跳转更新个人资料 -->
 			<result name="forwardUpdateInfo">/WEB-INF/pages/updateInfo.jsp</result>
 			<!-- 个人课程列表 -->
-			<result name="forwardMyProductList">/WEB-INF/pages/myProductList.jsp</result>
+			<result name="forwardMyProductList">/WEB-INF/pages/web/myProductList.jsp</result>
 			<!-- 我的课程详情 -->
 			<result name="myProductDetail">/WEB-INF/pages/myProductDeatail.jsp</result>
 			<!-- 转向提交机器码页面 -->
@@ -131,6 +131,8 @@
 			<result name="messageDetail">/WEB-INF/pages/myMessageDetail.jsp</result>
 			<!-- 消息回复-->
 			<result name="replyMsg">/WEB-INF/pages/replyMessage.jsp</result>
+			<!-- 订单详情-->
+			<result name="forwardMyOrderDetail">/WEB-INF/pages/web/myOrderDetail.jsp</result>
 		</action>
 	</package>
 	

@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!-- 程序包含开始 -->
-
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,8 +142,12 @@
 								</div>
 						</a>
 							<div class="shop">
-<!-- 								<span><a href="trolley.html"><button class="btn">加入购物车</button></a></span>  -->
-                                <span><a href="order.html"><button class="btn" type="button">立即开课</button>
+								<span><a href="${pageContext.request.contextPath}/product!forwardProductDetail.html?product.id=${pl.id}">
+									<button class="btn" >查看课程详情</button>
+									</a>
+									</span> 
+                                <span><a href="${pageContext.request.contextPath}/order!forwardSureOrder.html?product.id=${pl.id}">
+                                	<button class="btn" type="button">立即购买</button>
 										</a></span>
 							</div></li>
 						</s:iterator>

@@ -295,6 +295,11 @@ public class OaEmployee {
      *
      * @mbggenerated
      */
+    
+
+	private String position;
+	
+	private String personalDesc;
     public String getId() {
         return id;
     }
@@ -1102,4 +1107,22 @@ public class OaEmployee {
     public void setHeadImg(byte[] headImg) {
         this.headImg = headImg;
     }
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public String getPersonalDesc() {
+		return personalDesc;
+	}
+
+	public void setPersonalDesc(String personalDesc) {
+		this.personalDesc = personalDesc;
+	}
+    
+    
 }

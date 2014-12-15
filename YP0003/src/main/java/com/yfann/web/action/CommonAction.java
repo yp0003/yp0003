@@ -43,4 +43,5 @@ public class CommonAction extends ActionSupport{
 		return userInfo;
 	}
 	
+
 }

@@ -70,7 +70,7 @@ public class OrderAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String payOnlyOneSureOrder(){
-		orderService.payProductOnlyOne(product, currentUserInfo());
+		order = orderService.payProductOnlyOne(product, currentUserInfo());
 		return "payOnlyOneSureOrder";
 	}
 	/**
@@ -317,6 +317,14 @@ public class OrderAction extends CommonAction {
 	}
 	public void setOrderDetailList(List<OrderDetail> orderDetailList) {
 		this.orderDetailList = orderDetailList;
+	}
+
+	public OaEmployee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(OaEmployee employee) {
+		this.employee = employee;
 	}
 
 }

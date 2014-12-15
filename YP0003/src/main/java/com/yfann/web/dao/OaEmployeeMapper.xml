@@ -86,7 +86,8 @@
     <result column="SELECTED_FLAG" property="selectedFlag" jdbcType="VARCHAR" />
     <result column="REMARK" property="remark" jdbcType="VARCHAR" />
     <result column="LOGIN_DATE" property="loginDate" jdbcType="TIMESTAMP" />
-    
+    <result column="position" property="position" jdbcType="VARCHAR" />
+	<result column="personal_desc" property="personalDesc" jdbcType="VARCHAR" />
 	<!-- 角色 -->
 	<collection property="oaRoleList" column="ID" javaType="java.util.ArrayList"
 	ofType="com.yfann.web.pojo.OaRole" select="com.yfann.web.dao.OaRoleMapper.selectByEmployee" />

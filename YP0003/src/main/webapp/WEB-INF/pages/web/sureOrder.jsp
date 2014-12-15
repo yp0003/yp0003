@@ -50,7 +50,7 @@
                                 <p class="row">时长：<span class="text">${product.productLang}</span></p>
                                 <p class="row">老师：<span class="text">${employee.employeeName}</span></p>
                                 <p class="row">
-                                 	   时间：<span class="text"><s:date name="#product.onlineTime" format="yyyy-MM-dd" />-<s:date name="#product.offlineTime" format="yyyy-MM-dd" /></span>
+                                 	   时间：<span class="text"><s:date name="product.onlineTime" format="yyyy-MM-dd" />至<s:date name="product.offlineTime" format="yyyy-MM-dd" /></span>
                                 </p>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                </ul>
            </div>
        <div class="clear"></div>
-		<div class="ordersub"><a href="${pageContext.request.contextPath}/order!payProductOnlyOne.html"><button class="btn  btn-large btn-info" type="button" placeholder="nihao">提交订单</button></a></div>
+		<div class="ordersub"><a href="${pageContext.request.contextPath}/order!payProductOnlyOne.html?product.id=${product.id}"><button class="btn  btn-large btn-info" type="button" placeholder="nihao">提交订单</button></a></div>
 </div>
 </div>
 </div>

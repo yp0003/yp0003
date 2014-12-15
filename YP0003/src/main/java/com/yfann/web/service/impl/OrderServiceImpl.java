@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yfann.web.common.CodeUtil;
 import com.yfann.web.common.DicValue;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.dao.BuyCarMapper;
@@ -64,7 +65,7 @@ public class OrderServiceImpl implements OrderService {
 			//设置订单ID 该字段也是销售码
 			order.setId(UUIDCreate.getUUID());
 			// TODO 该订单号生成有误后期需更改
-			order.setOrderId(UUIDCreate.getUUID());
+			order.setOrderId(CodeUtil.orderCode(product));
 			// 订单总价格
 			order.setCountPrice(productMapper.selectByPrimaryKey(
 					product.getId()).getProductPrice());
