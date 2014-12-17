@@ -1,5 +1,6 @@
 package com.yfann.web.service;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import com.yfann.web.pojo.Message;
@@ -13,6 +14,7 @@ import com.yfann.web.vo.PageInfo;
  *
  */
 public interface MyCenterService {
+	public ByteArrayInputStream findUserHeadImgById(String id);
 	/**
 	 * 读取未阅读信息数
 	 * @param user

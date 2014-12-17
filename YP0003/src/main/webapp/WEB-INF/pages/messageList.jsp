@@ -1,101 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="com.yfann.web.page" prefix="p"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>消息列表</title>
-<link
-	href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css"
-	rel="stylesheet" />
-
-<link
-	href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css"
-	rel="stylesheet" />
-<link href="http://static.bootcss.com/www/assets/css/site.min.css?v3"
-	rel="stylesheet" />
-
-<!-- Favicons -->
-<link rel="apple-touch-icon-precomposed"
-	href="http://static.bootcss.com/www/assets/ico/apple-touch-icon-precomposed.png" />
-<link rel="shortcut icon"
-	href="http://static.bootcss.com/www/assets/ico/favicon.png" />
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/jquery.min.js"></script>
-
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstrap.min.js"></script>
-<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/jquery.unveil.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/jquery.scrollUp.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/toc.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/site.min.js"></script>
+<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/base.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/test.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/right.css" rel="stylesheet">
+<!-- link script -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 
 <script>
 	var _hmt = _hmt || [];
 </script>
+<title>订单管理</title>
 </head>
 <body>
 	<!-- 头部 -->
-	<%@ include file="common/common.jsp"%>
+	<%@ include file="/common/commonHeader.jsp"%>
+
+<br/>
+<div class="container">
 
 
-
-	<div class="container-fluid" style="width: 80%; margin-top: 50px;">
-		<ol class="breadcrumb">
-			<li><a href="#">主页</a></li>
-			<li><a href="#">个人中心</a></li>
-			<li class="active">订单管理</li>
-		</ol>
-		<div class="row">
-			<div class="col-lg-2">
-				<%@ include file="common/mypageCommon.jsp"%>
-			</div>
-			<div class="col-lg-10">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>消息标题</th>
-							<th>发送人</th>						
-							<th>消息发送时间</th>
-<!-- 							<th>消息标题</th> -->
-							<th>消息状态</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					<tbody>
-						<s:iterator value="myMessageList" id="msg">
-							<tr>
-								<td>${msg.messTitle}</td>
-								<td>${msg.sendUser.userName}</td>
-								<td><s:date name="#msg.sendTime"
-										format="yyyy-MM-dd hh:mm:ss" /></td>
-								<td>${msg.msgStatusDic.dicCn}</td>
-								<td><a
-									href="${pageContext.request.contextPath}/mycenter!messageDetail.html?message.id=${msg.id}">消息详情</a>&nbsp;&nbsp;<a
-									href="${pageContext.request.contextPath}/mycenter!delMessage.html?message.id=${msg.id}">删除</a>&nbsp;&nbsp;<a
-									href="${pageContext.request.contextPath}/mycenter!forwardReplyMsg.html?message.id=${msg.id}">回复</a></td>
-							</tr>
-						</s:iterator>
-					</tbody>
-				</table>
+ </div>
 
 
-				<p:pages pageNo="pageInfo.pageNo" total="pageInfo.total"
-					pageSize="pageInfo.pageSize" count="pageInfo.count" includes="" />
-			</div>
-
-		</div>
-	</div>
-
-
-	<!-- 底部 -->
-	<%@ include file="common/commonFooter.jsp"%>
+	<%@ include file="/common/commonFooter.jsp"%>
 </body>
 </html>

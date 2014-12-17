@@ -20,7 +20,7 @@
 						<a class="brand" >尊敬的${sessionScope.userInfo.userId}您好</a>
 <!-- 						<a class="brand"  -->
 <%-- 							href="${pageContext.request.contextPath}/order!buyCarList.html">购物车</a> --%>
-						<a class="brand" href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">个人信息设置</a>
+						<a class="brand" href="${pageContext.request.contextPath}/mycenter!forwardMySetting.html">个人信息设置</a>
 						<a class="brand" 
 							href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">个人中心</a>
 					
@@ -54,7 +54,7 @@
 </div>
 
 
-
+<s:if test="sessionScope.userInfo == null">
 <!-- regist -->
 <div id="register" class="modal hide fade" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
@@ -136,4 +136,4 @@
 		
 	</div>
 </div>
-
+</s:if>

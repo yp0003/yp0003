@@ -1,5 +1,6 @@
 package com.yfann.web.action;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -18,7 +19,6 @@ import com.yfann.web.service.MyCenterService;
 import com.yfann.web.service.OaEmployeeService;
 import com.yfann.web.service.OrderService;
 import com.yfann.web.service.ProductService;
-import com.yfann.web.service.SystemService;
 import com.yfann.web.vo.PageInfo;
 
 public class MyCenterAction extends CommonAction {
@@ -54,6 +54,29 @@ public class MyCenterAction extends CommonAction {
 	private OaEmployee teacher;
 	
 	private int myMessageCount;
+	
+	/** Struts2下载(内存数据下载) */
+	private ByteArrayInputStream byteArrayInputStream;
+	
+	/**
+	 * 用户头像图片
+	 */
+	public String showUserHeader() {
+		// 填充内存流(课程缩略图)
+		try {
+			setByteArrayInputStream(myCenterService
+					.findUserHeadImgById(user.getId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "showUserHeader";
+	}
+	
+	public String forwardMySetting(){
+		user = myCenterService.findUserInfoById(this.currentUserInfo());
+		return "forwardMySetting";
+	} 
+	
 	public String cancelOrder(){
 		orderService.cancelOrder(currentUserInfo(), order);
 		return "forwardMyOrderList";
@@ -200,7 +223,7 @@ public class MyCenterAction extends CommonAction {
 		if (!flag) {
 			addActionError("更新失败");
 		}
-		return forwardUpdateInfo();
+		return forwardMySetting();
 	}
 
 	/**
@@ -217,13 +240,16 @@ public class MyCenterAction extends CommonAction {
 				myCenterService.updatePassword(user);
 			}
 		}
-		return "modifyPassword";
+		return forwardModifyPassword();
 	}
 
 	public String forwardModifyPassword() {
 		return "forwardModifyPassword";
 	}
 
+	public String forwardUploadHander() {
+		return "forwardUploadHander";
+	}
 	/**
 	 * 跳转到我的订单页面
 	 * @return
@@ -356,6 +382,14 @@ public class MyCenterAction extends CommonAction {
 	}
 	public void setTeacher(OaEmployee teacher) {
 		this.teacher = teacher;
+	}
+
+	public ByteArrayInputStream getByteArrayInputStream() {
+		return byteArrayInputStream;
+	}
+
+	public void setByteArrayInputStream(ByteArrayInputStream byteArrayInputStream) {
+		this.byteArrayInputStream = byteArrayInputStream;
 	}
 
 	

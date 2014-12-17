@@ -96,11 +96,9 @@
 
  <div class="mymain-content l ">
         <div class="myspace-list l ">
-           <a href="/space/index" class="myspace-course "><span>课程</span></a>
-           <a href="/space/program" class="myspace-plan "><span>计划</span></a>
-           <a href="/space/question" class="myspace-ques "><span>问答</span></a>
-           <a href="/space/note" class="myspace-note "><span>笔记</span></a>
-           <a href="/space/code" class="myspace-code codeactive"><span>代码</span></a>
+            <a href="${pageContext.request.contextPath}/mycenter!forwardMyMessage.html" class="myspace-course"><span>订单</span></a>
+           <a href="${pageContext.request.contextPath}/mycenter!forwardMyProductList.html" class="myspace-plan courseactive"><span>课程</span></a>
+           <a href="${pageContext.request.contextPath}/mycenter!forwardMyMessage.html" class="myspace-ques "><span>消息</span></a>
         </div>
         
 		<div class="myspace-courselist myspace-bg r"> 
@@ -108,9 +106,9 @@
 			  <div class="main-bd "><!-- clearfix -->
 					    <div class="space-tabs-menu">
 					                        <ul>
-					    <li><a href="" class="curr">我的课程</a></li>
-<!-- 					    <li><a href="" class="curr">代码</a></li> -->
-					  	</ul>
+					    <li><a href="" class="curr">我的课程</a></li>	
+					    </ul>
+					    
 							<div style="left:0px" class="dot-curr"></div>
 					    </div>
 				      <div class="uncode">

@@ -96,9 +96,9 @@
 
  <div class="mymain-content l ">
         <div class="myspace-list l ">
-           <a href="#" class="myspace-course courseactive"><span>订单</span></a>
-           <a href="#" class="myspace-plan "><span>课程</span></a>
-           <a href="#" class="myspace-ques "><span>消息</span></a>
+           <a href="${pageContext.request.contextPath}/mycenter!forwardMyMessage.html" class="myspace-course courseactive"><span>订单</span></a>
+           <a href="${pageContext.request.contextPath}/mycenter!forwardMyProductList.html" class="myspace-plan"><span>课程</span></a>
+           <a href="${pageContext.request.contextPath}/mycenter!forwardMyMessage.html" class="myspace-ques "><span>消息</span></a>
 <%--            <a href="#" class="myspace-note "><span>设置</span></a> --%>
         </div>
         

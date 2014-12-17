@@ -1,5 +1,6 @@
 package com.yfann.web.service.impl;
 
+import java.io.ByteArrayInputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -111,6 +112,12 @@ public class MyCenterServiceImpl implements MyCenterService{
 		message.setMessStatus("000");
 		messageMapper.selectByMessageParam(message);
 		return 0;
+	}
+	@Override
+	public ByteArrayInputStream findUserHeadImgById(
+			String id) {
+		return new ByteArrayInputStream(
+				userMapper.selectByPrimaryKey(id).getHeadImg());
 	}
 
 }

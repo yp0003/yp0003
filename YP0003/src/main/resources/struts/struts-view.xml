@@ -14,6 +14,7 @@
 			<!-- 跳转到召回密码页面 -->
 			<result name="forwardFindPassword">/WEB-INF/pages/findPassword.jsp</result>
 			<result name="forwardTest">/WEB-INF/pages/common/commonNew.jsp</result>
+
 		</action>
 	</package>
 
@@ -121,13 +122,23 @@
 			<!-- 转向提交机器码页面 -->
 			<result name="forwardCommitSmartCode">/WEB-INF/pages/commitSmartCode.jsp</result>
 			<!-- 转向我的消息页面 -->
-			<result name="forwardMyMessageList">/WEB-INF/pages/messageList.jsp</result>
+			<result name="forwardMyMessageList">/WEB-INF/pages/web/myMsgList.jsp</result>
 			<!-- 消息明细 -->
 			<result name="messageDetail">/WEB-INF/pages/myMessageDetail.jsp</result>
 			<!-- 消息回复 -->
 			<result name="replyMsg">/WEB-INF/pages/replyMessage.jsp</result>
 			<!-- 订单详情 -->
 			<result name="forwardMyOrderDetail">/WEB-INF/pages/web/myOrderDetail.jsp</result>
+			<!-- 我的设置 -->
+			<result name="forwardMySetting">/WEB-INF/pages/web/mySetting.jsp</result>
+			<!-- 修改密码-->
+			<result name="forwardModifyPassword">/WEB-INF/pages/web/changePwd.jsp</result>
+			<!-- 上传头像-->
+			<result name="forwardUploadHander">/WEB-INF/pages/web/uploadHander.jsp</result>
+			<result name="showUserHeader" type="stream">
+				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
+				<param name="inputName">byteArrayInputStream</param>
+			</result>
 		</action>
 	</package>
 
