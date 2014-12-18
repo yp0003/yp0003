@@ -30,15 +30,12 @@ import com.yfann.web.action.OrderAction;
  */
 
 public class AlipayConfig {
-	/** 支付宝账户 */
+
 	public static String account;
 	/** 合作身份者ID */
 	public static String partner;
 	/** 商户的私钥 */
 	public static String key;
-
-	/** 用户网址 */
-	public static String url;
 
 	/** 调试用，创建TXT日志文件夹路径 */
 	public static String log_path;
@@ -49,9 +46,8 @@ public class AlipayConfig {
 	/** 签名方式 不需修改 */
 	public static String sign_type;
 
-	public AlipayConfig() {
+	static {
 		String path = OrderAction.class.getResource("/").getPath() + "pay.properties";
-		System.out.println(path);
 		Properties properties = new Properties();
 		try {
 			properties.load(new FileInputStream(new File(path)));
@@ -65,8 +61,6 @@ public class AlipayConfig {
 		key = properties.getProperty("key");
 		input_charset = properties.getProperty("input_charset");
 		sign_type = properties.getProperty("sign_type");
-		url = properties.getProperty("url");
-
+		// log_path = properties.getProperty("log_path");
 	}
-
 }

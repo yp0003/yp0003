@@ -32,17 +32,14 @@ import com.yfann.web.service.OrderService;
  */
 public class AlipayAction extends CommonAction {
 	private static final long serialVersionUID = -7310817509443505181L;
-
-	private AlipayConfig ac = new AlipayConfig();
 	private PrintWriter out = getOut();
-
-	/** 订单 */
-	private Order order;
 
 	@Autowired
 	private OrderService orderService;
 
-	@SuppressWarnings("static-access")
+	/** 订单 */
+	private Order order;
+
 	public void pay() {
 		// 支付类型
 		String payment_type = "1";
@@ -55,7 +52,7 @@ public class AlipayAction extends CommonAction {
 		// 需http://格式的完整路径，不能加?id=123这类自定义参数
 		String return_url = getBasePath() + "/pay!return_url.html";
 		// 卖家支付宝帐户
-		String seller_email = ac.account;
+		String seller_email = AlipayConfig.account;
 		// 必填 //商户订单号
 		String out_trade_no = request.getParameter("id");
 		// 商户网站订单系统中唯一订单号，必填 //订单名称
@@ -79,8 +76,8 @@ public class AlipayAction extends CommonAction {
 		// 把请求参数打包成数组
 		Map<String, String> sParaTemp = new HashMap<String, String>();
 		sParaTemp.put("service", "create_direct_pay_by_user");
-		sParaTemp.put("partner", ac.partner);
-		sParaTemp.put("_input_charset", ac.input_charset);
+		sParaTemp.put("partner", AlipayConfig.partner);
+		sParaTemp.put("_input_charset", AlipayConfig.input_charset);
 		sParaTemp.put("payment_type", payment_type);
 		sParaTemp.put("notify_url", notify_url);
 		sParaTemp.put("return_url", return_url);
