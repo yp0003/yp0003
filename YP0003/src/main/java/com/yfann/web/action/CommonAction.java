@@ -45,13 +45,4 @@ public class CommonAction extends ActionSupport{
 		User userInfo = (User) userObj;
 		return userInfo;
 	}
-
-	public PrintWriter getOut(){
-		try {
-			return response.getWriter();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 }

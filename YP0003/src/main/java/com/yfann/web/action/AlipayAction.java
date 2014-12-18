@@ -10,6 +10,7 @@
  */
 package com.yfann.web.action;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -244,6 +245,15 @@ public class AlipayAction extends CommonAction {
 
 	public void setOrder(Order order) {
 		this.order = order;
+	}
+
+	private PrintWriter getOut() {
+		try {
+			return response.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
