@@ -9,7 +9,7 @@
 
 				<c:if test="${sessionScope.userInfo == null}">
 					
-						<a class="brand" href="#login" class="hid"
+						<a class="brand" href="${pageContext.request.contextPath}/system!forwardLogin.html" class="hid"
 							data-toggle="modal">登录</a>
 						<a class="brand" href="${pageContext.request.contextPath}/system!forwardRegister.html" class="hid"
 							data-toggle="modal">注册</a>

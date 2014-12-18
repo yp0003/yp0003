@@ -68,7 +68,7 @@
 <!--        		<textarea rows="7" class="text" ></textarea> -->
 <!--        </div> -->
        <div class="cart_total">
-           <div class="cart_left"><a href="trolley" href="${pageContext.request.contextPath}/product!forwardProductList.html"><< 重新选课</a></div>
+           <div class="cart_left"><a href="${pageContext.request.contextPath}/product!forwardProductList.html"><< 重新选课</a></div>
            <div class="cart_right">
                <ul>
                    <li style="text-align: right">

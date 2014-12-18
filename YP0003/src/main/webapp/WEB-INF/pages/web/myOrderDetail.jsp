@@ -65,10 +65,10 @@
                         </div>
                         <div class="action">
                             <s:if test="order.orderStatusDic.dicCode==0"><!-- 未支付 -->
-                              <a class="link_btn" target="_blank" href="/OrderSure/c144281/">立即支付</a>
+                              <a class="link_btn" target="_blank" href="/pay!pay.html?id=<s:property value="order.id"/>">立即支付</a>
                             </s:if>
                           	<s:elseif test="order.orderStatusDic.dicCode==2">
-                          	 <a class="link_btn" target="_blank" href="/OrderSure/c144281/">再次购买</a>
+                          	 <a class="link_btn" target="_blank" href="${pageContext.request.contextPath}/mycenter!forwardMyOrderDetail.html?order.id=<s:property value="order.id"/>">再次购买</a>
                           	</s:elseif>
                             <s:else>
                             	<span class="label1">交易成功</span>

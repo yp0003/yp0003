@@ -1,6 +1,7 @@
 package com.yfann.web.action;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -55,6 +56,12 @@ public class MyCenterAction extends CommonAction {
 	
 	private int myMessageCount;
 	
+	//扫描件
+		private File scan;	
+		//扫描件文件类型
+		private String scanContentType;
+		private String scanFileName;
+	
 	/** Struts2下载(内存数据下载) */
 	private ByteArrayInputStream byteArrayInputStream;
 	
@@ -79,7 +86,7 @@ public class MyCenterAction extends CommonAction {
 	
 	public String cancelOrder(){
 		orderService.cancelOrder(currentUserInfo(), order);
-		return "forwardMyOrderList";
+		return forwardMyOrderList();
 	}
 	/**
 	 * 消息列表
@@ -390,6 +397,30 @@ public class MyCenterAction extends CommonAction {
 
 	public void setByteArrayInputStream(ByteArrayInputStream byteArrayInputStream) {
 		this.byteArrayInputStream = byteArrayInputStream;
+	}
+
+	public File getScan() {
+		return scan;
+	}
+
+	public void setScan(File scan) {
+		this.scan = scan;
+	}
+
+	public String getScanContentType() {
+		return scanContentType;
+	}
+
+	public void setScanContentType(String scanContentType) {
+		this.scanContentType = scanContentType;
+	}
+
+	public String getScanFileName() {
+		return scanFileName;
+	}
+
+	public void setScanFileName(String scanFileName) {
+		this.scanFileName = scanFileName;
 	}
 
 	
