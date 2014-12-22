@@ -1,0 +1,187 @@
+@CHARSET "UTF-8";
+.wenda-list {
+    padding: 0px 10px;
+    min-height: 1130px;
+}
+.wenda-listcon {
+    padding: 10px 0px;
+    border-bottom: 1px solid rgb(227, 229, 229);
+    overflow: hidden;
+}
+.newpost {
+    height: 50px;
+    border-bottom: 1px solid rgb(227, 229, 229);
+    line-height: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.wenda-listcon .headslider {
+    width: 96px;
+    overflow: hidden;
+    text-align: center;
+}
+.fl {
+    float: left;
+}
+fieldset, img {
+    border: 0px none;
+}
+.wenda-head {
+    margin: 0px auto 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: none repeat scroll 0% 0% rgb(204, 204, 204);
+}
+.wenda-listcon .headslider .wenda-head, .wenda-listcon .headslider .wenda-nickname {
+    text-align: center;
+    line-height: 16px;
+    color: rgb(153, 161, 166);
+    font-size: 12px;
+}
+.wenda-listcon .headslider .wenda-nickname {
+    padding: 0px 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.wenda-listcon .headslider .wenda-head, .wenda-listcon .headslider .wenda-nickname {
+    display: block;
+    text-align: center;
+    line-height: 16px;
+    color: rgb(153, 161, 166);
+    font-size: 12px;
+    vertical-align: middle;
+}
+.wendaslider .replynumber {
+    font-size: 12px;
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    height: 51px;
+    color: rgb(153, 161, 166);
+}
+.ys, .browsenum {
+    float: left;
+    width: 44px;
+    height: 31px;
+    margin: 10px 0px;
+}
+.ys {
+    border-right: 1px solid rgb(237, 240, 242);
+}
+.hasanswernum .ys .number {
+    color: rgb(65, 188, 85);
+}
+.wendaslider .replynumber .padAjust {
+    padding: 0px;
+}
+.wendaslider .replynumber .number {
+    line-height: 12px;
+    height: 12px;
+    text-align: center;
+    padding: 7px 0px 0px;
+}
+.wendaslider .replynumber .numShow {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.wendaslider .replynumber .number {
+    line-height: 12px;
+    text-align: center;
+}
+.wendaslider .wendaquetitle {
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(54, 61, 64);
+    position: relative;
+    height: 30px;
+}
+.wendaslider .wendaquetitle .nofinish {
+    background: url("../img/wendanew.png") no-repeat scroll 0px -24px transparent;
+}
+.wendaslider .wendaquetitle .isfinish, .wendaslider .wendaquetitle .nofinish, .wendaslider .wendaquetitle .issport, .wendaslider .wendaquetitle .isflag {
+    font-style: normal;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    top: 2px;
+    left: 0px;
+}
+.wendaslider .wendaquetitle .wendatitlecon {
+    padding-left: 28px;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-align: left;
+}
+.wendaslider .wendaquetitle .wendatitle {
+    color: rgb(102, 102, 102);
+    font-weight: bold;
+}
+.replycont {
+    margin-top: 6px;
+    position: relative;
+}
+.replydes {
+    color: rgb(153, 161, 166);
+    font-size: 12px;
+    line-height: 24px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+.replydes {
+    margin-left: 26px;
+    line-height: 20px;
+}
+.replydes .replysign {
+    font-size: 12px;
+    line-height: 20px;
+}
+.praise {
+    color: rgb(153, 161, 166);
+}
+.replydes .replyuserhead {
+    border-radius: 10px;
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+}
+.wendaslider .replymegfooter {
+    padding-left: 27px;
+    margin-top: 4px;
+    color: rgb(208, 214, 217);
+    width: 605px;
+    font-size: 12px;
+}
+.wenda-time, .keyword-list {
+    float: left;
+}
+.wendaslider .replymegfooter em {
+    font-style: normal;
+    display: inline-block;
+    width: 145px;
+}
+.wenda-time, .keyword-list {
+    float: left;
+}
+.keyword-list .list-tag {
+    border: 1px solid rgb(237, 240, 242);
+    border-radius: 15px;
+    background: none repeat scroll 0% 0% rgb(237, 240, 242);
+    color: rgb(153, 161, 166);
+    font-size: 10px;
+    height: 18px;
+    line-height: 18px;
+    padding: 0px 8px;
+    margin-right: 1px;
+    display: inline-block;
+}
