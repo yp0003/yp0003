@@ -91,6 +91,9 @@ public class OrderDetail implements Serializable{
      *
      * @mbggenerated
      */
+    
+    private String saleCode;
+    
     public String getId() {
         return id;
     }
@@ -307,5 +310,14 @@ public class OrderDetail implements Serializable{
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-    
+
+	public String getSaleCode() {
+		return saleCode;
+	}
+
+	public void setSaleCode(String saleCode) {
+		this.saleCode = saleCode;
+	}
+   
+	
 }
