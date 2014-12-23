@@ -146,4 +146,16 @@
 		</action>
 	</package>
 
+	<!-- 销售 -->
+	<package name="oasales" namespace="/" extends="mypackage">
+		<action name="oaSales!*" method="{1}" class="com.yfann.web.action.oa.OaSalesAction">
+			<result name="oasaleslist">/WEB-INF/pages/oa/apply/applylist_oa.jsp</result>
+			<result name="oasalesadd">/WEB-INF/pages/oa/apply/applyInfo_oa.jsp</result>
+			<result name="oasalesupload">/WEB-INF/pages/oa/apply/applyview_oa.jsp</result>
+			
+			<!-- 跳转到登陆页面 -->
+			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
+		</action>
+	</package>
+
 </struts>
