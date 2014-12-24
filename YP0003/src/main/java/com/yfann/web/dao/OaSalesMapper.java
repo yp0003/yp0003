@@ -1,14 +1,23 @@
 package com.yfann.web.dao;
 
-import com.yfann.web.pojo.OaSales;
-import com.yfann.web.pojo.OaSalesExample;
-
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
+import com.yfann.web.pojo.OaSales;
+import com.yfann.web.pojo.OaSalesExample;
+import com.yfann.web.vo.SalesCount;
+
 public interface OaSalesMapper {
+	/**
+	 * 根据条件统计销售信息
+	 * 
+	 * @param date
+	 * @return
+	 */
+	List<SalesCount> selectCount(String date);
+
 	/**
 	 * 分页查询
 	 * 

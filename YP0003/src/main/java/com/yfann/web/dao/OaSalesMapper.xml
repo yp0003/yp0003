@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yfann.web.dao.OaSalesMapper" >
+
+  <select id="selectCount" resultMap="salesCountMap" parameterType="java.lang.String" >
+  	SELECT employee_id empid,
+  		   sum(price) total,
+  		   ROUND(0.01*sum(price)*(SELECT scale from t_oa_royalties WHERE <![CDATA[upper_limit>sum(price) and lower_limit<sum(price)]]>),2) money
+	FROM t_oa_sales WHERE DATE_FORMAT(create_time, '%Y-%m') LIKE #{date,jdbcType=VARCHAR}
+	group by employee_id order by total desc
+  </select>
+
+  <resultMap id="salesCountMap" type="com.yfann.web.vo.SalesCount" >
+    <id column="EMPID" property="empid" jdbcType="VARCHAR" />
+    <result column="TOTAL" property="total" jdbcType="DECIMAL" />
+    <result column="MONEY" property="money" jdbcType="DECIMAL" />
+  </resultMap>
+
   <resultMap id="BaseResultMap" type="com.yfann.web.pojo.OaSales" >
     <!--
       WARNING - @mbggenerated

@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.yfann.web.dao.OaEmployeeMapper;
 import com.yfann.web.dao.OaMenuMapper;
 import com.yfann.web.dao.OaRoleMapper;
+import com.yfann.web.dao.OaSalesMapper;
 import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.OaEmployeeExample;
 import com.yfann.web.pojo.OaMenu;
@@ -39,6 +40,8 @@ public class OaMenuTest {
 	private OaRoleMapper oaRoleMapper;
 	@Autowired
 	private OaSalesService oaSalesService;
+	@Autowired
+	private OaSalesMapper oaSalesMapper;
 
 	@Test
 	public void getAllTest() throws Exception {
@@ -92,6 +95,16 @@ public class OaMenuTest {
 	@Test
 	public void clearPic(){
 		oaSalesService.delClearPic();
+	}
+	
+	@Test
+	public void getCount(){
+		List<SalesCount> list = oaSalesMapper.selectCount("2014-12"+"%");
+		
+		list.get(0).setMoney(list.get(0).getMoney().add(new BigDecimal(100000)).setScale(2));
+		for(SalesCount sc : list){
+			System.out.println(sc);
+		}
 	}
 	
 }

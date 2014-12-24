@@ -1,6 +1,7 @@
 package com.yfann.web.service.impl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yfann.web.common.UUIDCreate;
+import com.yfann.web.dao.OaSalesChampionMapper;
 import com.yfann.web.dao.OaSalesMapper;
 import com.yfann.web.dao.OaSalesPicMapper;
 import com.yfann.web.dao.OrderDetailMapper;
@@ -20,6 +22,7 @@ import com.yfann.web.pojo.OaSalesPic;
 import com.yfann.web.pojo.OaSalesPicExample;
 import com.yfann.web.pojo.OrderDetail;
 import com.yfann.web.service.OaSalesService;
+import com.yfann.web.vo.SalesCount;
 
 @Service
 public class OaSalesServiceImpl implements OaSalesService {
@@ -29,6 +32,8 @@ public class OaSalesServiceImpl implements OaSalesService {
 	private OaSalesPicMapper oaSalesPicMapper;
 	@Autowired
 	private OrderDetailMapper orderDetailMapper;
+	@Autowired
+	private OaSalesChampionMapper oaSalesChampionMapper;
 
 	@Override
 	public void saveOaSales(OaSales oaSales) throws Exception {
@@ -115,14 +120,14 @@ public class OaSalesServiceImpl implements OaSalesService {
 
 	@Override
 	public void updateOaSales(OaSales oaSales) throws Exception {
-		if(oaSales!=null){
+		if (oaSales != null) {
 			oaSalesMapper.updateByPrimaryKeySelective(oaSales);
 		}
 	}
 
 	@Override
 	public void updateOaSales(OaSalesPic oaSalesPic) {
-		if(oaSalesPic!=null){
+		if (oaSalesPic != null) {
 			oaSalesPic.setFlag(1);
 			oaSalesPicMapper.updateByPrimaryKeySelective(oaSalesPic);
 		}
@@ -130,16 +135,44 @@ public class OaSalesServiceImpl implements OaSalesService {
 
 	@Override
 	public void delClearPic() {
-		//获取当前日期的前两天
+		// 获取当前日期的前两天
 		Date date = new Date();
-        Calendar calendar = Calendar.getInstance();  
-        calendar.setTime(date);  
-        calendar.add(Calendar.DAY_OF_MONTH, -2);  
-        date = calendar.getTime(); 
-        
-        OaSalesPicExample example = new OaSalesPicExample();
-        example.or().andFlagEqualTo(2).andCreateTimeLessThan(date);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.DAY_OF_MONTH, -2);
+		date = calendar.getTime();
+
+		OaSalesPicExample example = new OaSalesPicExample();
+		example.or().andFlagEqualTo(2).andCreateTimeLessThan(date);
 		oaSalesPicMapper.deleteByExample(example);
+	}
+
+	@Override
+	public List<Object> getSalesCountAll(String date, int offset, int limit) {
+		List<SalesCount> list = oaSalesMapper.selectCount(date + "%");
+		if (list.size() < 1) {
+			return null;
+		}
+		BigDecimal scale = oaSalesChampionMapper.selectByPrimaryKey("1").getScale();
+		int c = 0;
+		BigDecimal cc = list.get(0).getTotal();
+		for (SalesCount sc : list) {
+			if (cc.compareTo(sc.getTotal()) == 0) {
+				c++;
+			}
+		}
+		cc = new BigDecimal(cc.doubleValue() / c * scale.doubleValue() / 100);
+		for (int i = 0; i < c; i++) {
+			list.get(i).setMoney(list.get(i).getMoney().add(cc));
+		}
+		List<SalesCount> ll = new ArrayList<SalesCount>();
+		for (int i = 0; i < (list.size() >= limit ? limit : list.size()); i++) {
+			ll.add(list.get(i));
+		}
+		List<Object> o = new ArrayList<Object>();
+		o.add(list.size());
+		o.add(ll);
+		return o;
 	}
 
 }

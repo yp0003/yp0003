@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.yfann.web.pojo.OaSales;
 import com.yfann.web.pojo.OaSalesPic;
+import com.yfann.web.vo.SalesCount;
 
 public interface OaSalesService {
 	/**
@@ -110,5 +111,12 @@ public interface OaSalesService {
 	 * 清除无用的销售图片
 	 */
 	public void delClearPic();
+	
+	/**
+	 * 根据日期查询销售信息
+	 * @param date
+	 * @return
+	 */
+	public List<Object> getSalesCountAll(String date, int offset, int limit);
 
 }

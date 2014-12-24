@@ -4,9 +4,11 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.action.CommonAction;
@@ -19,6 +21,7 @@ import com.yfann.web.pojo.User;
 import com.yfann.web.service.OaSalesService;
 import com.yfann.web.service.SystemService;
 import com.yfann.web.vo.PageInfo;
+import com.yfann.web.vo.SalesCount;
 
 /**
  * OA系统功能
@@ -33,6 +36,10 @@ public class OaSalesAction extends CommonAction {
 	private List<OaSales> oaSaleslist;
 	/** 销售图片列表 */
 	private List<OaSalesPic> oaSalesPicList;
+	/** 销售额统计 */
+	private List<SalesCount> salesCountList;
+	/** 统计的月份 */
+	private String date;
 
 	@Autowired
 	private SystemService systemService;
@@ -62,9 +69,21 @@ public class OaSalesAction extends CommonAction {
 		pageInfo.setCount(oaSalesService.getOaSalesAllCountById(emp.getEmployeeId()));
 		oaSaleslist = oaSalesService.getOaSalesAllById(emp.getEmployeeId(), pageInfo.getOffset(),
 				pageInfo.getPageSize());
-		//清楚无用的销售图片
+		// 清楚无用的销售图片
 		oaSalesService.delClearPic();
 		return "oasaleslist";
+	}
+
+	/** 根据月份获取所有的销售的销售额 */
+	@SuppressWarnings("unchecked")
+	public String salesCountList() {
+		if (StringUtils.isEmpty(date)) {
+			date = (new SimpleDateFormat("yyyy-MM")).format(new Date());
+		}
+		List<Object> oo = oaSalesService.getSalesCountAll(date, pageInfo.getOffset(), pageInfo.getPageSize());
+		pageInfo.setCount((Integer) oo.get(0));
+		salesCountList = (List<SalesCount>) oo.get(1);
+		return "salesCountList";
 	}
 
 	public String toAdd() {
@@ -124,11 +143,11 @@ public class OaSalesAction extends CommonAction {
 		oaSales.setCreateTime(new Date());
 		oaSales.setPrice(oaSalesService.getPriceBySalesCode(oaSales.getSalesCode()));
 		oaSalesService.saveOaSales(oaSales);
-		//把销售码和销售码图片关联
+		// 把销售码和销售码图片关联
 		String[] picIds = picid.split(",");
 		OaSalesPic oaSalesPic = new OaSalesPic();
 		oaSalesPic.setSalesId(oaSales.getId());
-		for(String id:picIds){
+		for (String id : picIds) {
 			oaSalesPic.setId(id.trim());
 			oaSalesService.updateOaSales(oaSalesService.getPicById(id.trim()));
 		}
@@ -272,6 +291,22 @@ public class OaSalesAction extends CommonAction {
 
 	public void setPicid(String picid) {
 		this.picid = picid;
+	}
+
+	public List<SalesCount> getSalesCountList() {
+		return salesCountList;
+	}
+
+	public void setSalesCountList(List<SalesCount> salesCountList) {
+		this.salesCountList = salesCountList;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 }
