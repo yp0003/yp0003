@@ -151,7 +151,7 @@ public class OaEmployeeServiceImpl implements OaEmployeeService {
 	}
 
 	@Override
-	public Integer getEmpCountByField(String empId, String name, String roleId, int off, int lim) {
+	public Integer getEmpCountByField(String empId, String name, String roleId) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (StringUtils.isNotEmpty(empId))
 			map.put("empId", "%" + empId + "%");
@@ -159,13 +159,13 @@ public class OaEmployeeServiceImpl implements OaEmployeeService {
 			map.put("name", "%" + name + "%");
 		if (StringUtils.isNotEmpty(roleId))
 			map.put("roleId", roleId);
-		map.put("off", off);
-		map.put("lim", lim);
+		map.put("off", 0);
+		map.put("lim", Integer.MAX_VALUE);
 		return oaEmployeeMapper.selectEmpCountByField(map);
 	}
 
 	@Override
-	public Integer getUserCountByField(String userId, String name, String roleId, int off, int lim) {
+	public Integer getUserCountByField(String userId, String name, String roleId) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (StringUtils.isNotEmpty(userId))
 			map.put("empId", "%" + userId + "%");
@@ -173,11 +173,10 @@ public class OaEmployeeServiceImpl implements OaEmployeeService {
 			map.put("name", "%" + name + "%");
 		if (StringUtils.isNotEmpty(roleId))
 			map.put("roleId", roleId);
-		map.put("off", off);
-		map.put("lim", lim);
+		map.put("off", 0);
+		map.put("lim", Integer.MAX_VALUE);
 		return userMapper.selectUserCountByField(map);
 	}
-	
 
 	@Override
 	public void sendMail(String toEmail, MailContext mailContext) {
@@ -221,12 +220,12 @@ public class OaEmployeeServiceImpl implements OaEmployeeService {
 	}
 
 	@Override
-	public void updateHeadImg(OaEmployee oaEmployee,File image) {
-		//转换产品的缩略图
-		byte[] picData = image==null?null:FileUtil.fileToPicData(image,logger);
+	public void updateHeadImg(OaEmployee oaEmployee, File image) {
+		// 转换产品的缩略图
+		byte[] picData = image == null ? null : FileUtil.fileToPicData(image, logger);
 		oaEmployee.setHeadImg(picData);
 		oaEmployeeMapper.updateHeadImg(oaEmployee);
 	}
-	
+
 	final Logger logger = LoggerFactory.getLogger(OaEmployeeServiceImpl.class);
 }

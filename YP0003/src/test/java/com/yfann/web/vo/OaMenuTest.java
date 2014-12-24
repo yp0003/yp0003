@@ -1,5 +1,6 @@
 package com.yfann.web.vo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.junit.Test;
@@ -17,6 +18,7 @@ import com.yfann.web.pojo.OaMenu;
 import com.yfann.web.pojo.OaRole;
 import com.yfann.web.service.OaEmployeeService;
 import com.yfann.web.service.OaMenuService;
+import com.yfann.web.service.OaSalesService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -35,6 +37,8 @@ public class OaMenuTest {
 	private OaMenuMapper oaMenuMapper;
 	@Autowired
 	private OaRoleMapper oaRoleMapper;
+	@Autowired
+	private OaSalesService oaSalesService;
 
 	@Test
 	public void getAllTest() throws Exception {
@@ -73,6 +77,21 @@ public class OaMenuTest {
 	public void getpro(){
 		OaRole oaRole = oaRoleMapper.selectByPrimaryKey("1");
 		System.out.println(oaRole.getOaMenuList().get(0).getName());
+	}
+	
+	@Test
+	public void iscode(){
+		boolean a = oaSalesService.SalesCodeUsed("123");
+		System.out.println(a);
+		boolean a1 = oaSalesService.SalesCodeUsed("333");
+		System.out.println(a1);
+		BigDecimal a2 = oaSalesService.getPriceBySalesCode("123");
+		System.out.println(a2);
+	}
+	
+	@Test
+	public void clearPic(){
+		oaSalesService.delClearPic();
 	}
 	
 }

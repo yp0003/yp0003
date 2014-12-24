@@ -302,4 +302,11 @@ public class OrderServiceImpl implements OrderService {
 	public void updateOrder(Order order){
 		orderMapper.updateByPrimaryKeySelective(order);
 	}
+
+	@Override
+	public void updateOrderDetail(OrderDetail orderDetail) {
+		if(orderDetail!=null){
+			orderDetailMapper.updateByPrimaryKeySelective(orderDetail);
+		}
+	}
 }

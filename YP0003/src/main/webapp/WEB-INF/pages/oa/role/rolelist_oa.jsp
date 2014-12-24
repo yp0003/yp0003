@@ -50,7 +50,7 @@
 						<td align="center">${oaRole.remark}</td>
 						<td align="center">
 						<a href="oaRole!toUpdate.html?id=${oaRole.roleId}">修改</a>&nbsp;&nbsp;
-						<a href="oaRole!del.html?id=${oaRole.roleId}">删除</a>
+						<a href="oaRole!del.html?id=${oaRole.roleId}" onclick="javascript:return p_del()">删除</a>
 						</td>
 					</tr>
 				</s:iterator>
@@ -59,3 +59,13 @@
 	</div>
 </body>
 </html>
+<script type="text/javascript">
+//删除确认
+function p_del() {
+	if (confirm("您真的确定要删除吗？\n\n请确认！")==true){
+	return true;
+	}else{
+	return false;
+	}
+}
+</script>

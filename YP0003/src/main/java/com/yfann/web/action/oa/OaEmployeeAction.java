@@ -63,20 +63,20 @@ public class OaEmployeeAction extends CommonAction {
 	private File fileupload; // 和JSP中input标记name同名
 	private String fileuploadFileName;
 
-	//上传图片
+	// 上传图片
 	private File scan;
-	//上传图片文件类型
+	// 上传图片文件类型
 	private String scanContentType;
-	//上传图片文件名称
+	// 上传图片文件名称
 	private String scanFileName;
-	
+
 	/** 头像 */
 	private ByteArrayInputStream inputStreamCre;
 
 	private String empId;
-	
+
 	private OaEmployee emp;
-	
+
 	// 用户列表显示
 	public String toEmpList() {
 		roleList = oaRoleService.getAllOaRole();
@@ -88,10 +88,10 @@ public class OaEmployeeAction extends CommonAction {
 	// 客户列表查找显示
 	public String selectEmp() {
 		roleList = oaRoleService.getAllOaRole();
+		pageInfo.setCount(oaEmployeeService.getEmpCountByField(oaEmployee.getEmployeeId(),
+				oaEmployee.getEmployeeName(), rid));
 		empList = oaEmployeeService.getEmpByField(oaEmployee.getEmployeeId(), oaEmployee.getEmployeeName(),
-				rid, 0, Integer.MAX_VALUE);
-		System.out.println(oaEmployeeService.getEmpByField(oaEmployee.getEmployeeId(),
-				oaEmployee.getEmployeeName(), rid, 0, Integer.MAX_VALUE));
+				rid, pageInfo.getOffset(), pageInfo.getPageSize());
 		return "selectEmp";
 	}
 
@@ -145,11 +145,9 @@ public class OaEmployeeAction extends CommonAction {
 
 	// 客户列表查找显示
 	public String selectUser() {
-		roleList = oaRoleService.getAllOaRole();
-		userList = oaEmployeeService.getUserByField(user.getUserId(), user.getUserName(), rid, 0,
-				Integer.MAX_VALUE);
-		System.out.println(oaEmployeeService.getUserCountByField(user.getUserId(), user.getUserName(), rid,
-				0, Integer.MAX_VALUE));
+		pageInfo.setCount(oaEmployeeService.getUserCountByField(user.getUserId(), user.getUserName(), rid));
+		userList = oaEmployeeService.getUserByField(user.getUserId(), user.getUserName(), rid,
+				pageInfo.getOffset(), pageInfo.getPageSize());
 		return "selectUser";
 	}
 
@@ -283,60 +281,62 @@ public class OaEmployeeAction extends CommonAction {
 	/** 上传图片 */
 	public String updateImage() {
 		if (ifScanContentType()) {
-			oaEmployeeService.updateHeadImg(oaEmployee,scan);
+			oaEmployeeService.updateHeadImg(oaEmployee, scan);
 		}
 		return toUpdateImage();
 	}
 
 	/** 头像展示 */
 	public String headImage() {
-		if (null != empId ) {
+		if (null != empId) {
 			OaEmployee emp = oaEmployeeService.getEmpById(empId);
 			if (null != emp) {
-				inputStreamCre = new ByteArrayInputStream(
-						emp.getHeadImg());
+				inputStreamCre = new ByteArrayInputStream(emp.getHeadImg());
 			}
-			
+
 		}
 		return "headImage";
 	}
-//	public void updateImage() {
-//		oaEmployee = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
-//		OaEmployee temp = new OaEmployee();
-//		temp.setId(oaEmployee.getId());
-//		PrintWriter out = null;
-//		try {
-//			out = response.getWriter();
-//			// 检查上传的是否过大
-//			if (fileupload.length()>(1024*1024)) {
-//				out.print("<font color='red'>文件大小不能超过1M!</font>");
-//				return;
-//			}
-//			String extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
-//			// 检查上传的是否是图片
-//			if (!checkIsImage(extName)) {
-//				out.print("<font color='red'>请上传图片格式!</font>");
-//				return;
-//			}
-//			FileInputStream fis = new FileInputStream(fileupload);
-//			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//			byte[] b = new byte[1024];
-//			int n, m = 0;
-//			while ((n = fis.read(b)) != -1) {
-//				bos.write(b, 0, n);
-//			}
-//			temp.setHeadImg(bos.toByteArray());
-//			fis.close();
-//			bos.close();
-//			// 检查上传的是否是图片
-//			out.print("<font color='red'>" + fileuploadFileName + "上传成功!</font>");
-//			oaEmployeeService.updateOaEmployee(temp);
-//			oaEmployeeService.updateOaEmployee(temp);
-//		} catch (Exception e) {
-//			out.print("<font color='red'>上传失败,请联系管理员或稍候再试!</font>");
-//			e.printStackTrace();
-//		}
-//	}
+
+	// public void updateImage() {
+	// oaEmployee = (OaEmployee)
+	// session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
+	// OaEmployee temp = new OaEmployee();
+	// temp.setId(oaEmployee.getId());
+	// PrintWriter out = null;
+	// try {
+	// out = response.getWriter();
+	// // 检查上传的是否过大
+	// if (fileupload.length()>(1024*1024)) {
+	// out.print("<font color='red'>文件大小不能超过1M!</font>");
+	// return;
+	// }
+	// String extName =
+	// fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
+	// // 检查上传的是否是图片
+	// if (!checkIsImage(extName)) {
+	// out.print("<font color='red'>请上传图片格式!</font>");
+	// return;
+	// }
+	// FileInputStream fis = new FileInputStream(fileupload);
+	// ByteArrayOutputStream bos = new ByteArrayOutputStream();
+	// byte[] b = new byte[1024];
+	// int n, m = 0;
+	// while ((n = fis.read(b)) != -1) {
+	// bos.write(b, 0, n);
+	// }
+	// temp.setHeadImg(bos.toByteArray());
+	// fis.close();
+	// bos.close();
+	// // 检查上传的是否是图片
+	// out.print("<font color='red'>" + fileuploadFileName + "上传成功!</font>");
+	// oaEmployeeService.updateOaEmployee(temp);
+	// oaEmployeeService.updateOaEmployee(temp);
+	// } catch (Exception e) {
+	// out.print("<font color='red'>上传失败,请联系管理员或稍候再试!</font>");
+	// e.printStackTrace();
+	// }
+	// }
 
 	/** 显示图片 */
 	public String showImage() throws Exception {
@@ -358,28 +358,26 @@ public class OaEmployeeAction extends CommonAction {
 		return flag;
 
 	}
-	
-	
+
 	/**
 	 * 判断上传图片的类型
+	 * 
 	 * @return
 	 */
 	private boolean ifScanContentType() {
-		if(scan == null){
+		if (scan == null) {
 			addActionMessage("请选择扫描件图片");
 			return false;
 		}
-		if ("image/png".equals(scanContentType)
-				|| "image/gif".equals(scanContentType)
-				|| "image/jpg".equals(scanContentType)
-				|| "image/jpeg".equals(scanContentType)
+		if ("image/png".equals(scanContentType) || "image/gif".equals(scanContentType)
+				|| "image/jpg".equals(scanContentType) || "image/jpeg".equals(scanContentType)
 				|| "image/bmp".equals(scanContentType)) {
-				return true;
+			return true;
 		}
 		addActionMessage("请不要上传非图片文件");
 		return false;
 	}
-	
+
 	public OaEmployee getOaEmployee() {
 		return oaEmployee;
 	}
@@ -479,7 +477,6 @@ public class OaEmployeeAction extends CommonAction {
 		this.departmentList = departmentList;
 	}
 
-
 	public File getScan() {
 		return scan;
 	}
@@ -559,6 +556,5 @@ public class OaEmployeeAction extends CommonAction {
 	public void setByteArrayInputStream(ByteArrayInputStream byteArrayInputStream) {
 		this.byteArrayInputStream = byteArrayInputStream;
 	}
-
 
 }

@@ -13,42 +13,57 @@
 
 <script type="text/javascript">
 function forSubmit() {
-	document.forms[0].action = "oaRole!update.html";
+	document.forms[0].action = "oaSales!add.html";
+	document.forms[0].submit();
+}
+
+function forSubmitu() {
+	document.forms[0].action = "oaSales!upLoad.html";
 	document.forms[0].submit();
 }
 </script>
 </head>
-<body >
+<body>
 	<s:form method="POST" enctype="multipart/form-data">
-		<s:hidden name="oaRole.roleId"></s:hidden>
+		<s:hidden name="oaSales.id"></s:hidden>
         <!-- 表单内容显示 -->
         <div align="center" class="easyui-tabs">
 		
-		<div title="部门基本信息">
+		<div title="销售信息信息">
 		<table align="center" cellpadding="10px" width="100%">
 		<tr>
 		<td>
 		<fieldset class="fieldset-self">
-		<legend>基本信息</legend>
+		<legend>销售信息</legend>
 		<table align="center" width="100%" cellpadding="5px" border="0">
-		    <tr ><td>角色名称：</td>
-				<td><s:textfield name="oaRole.name"/><s:actionerror/></td>
+		    <tr ><td>客户账号：</td>
+				<td><s:textfield name="oaSales.userId"/><s:actionerror/></td>
 			</tr>
-		    <tr><td>状态：</td>
-				<td><s:textfield name="oaRole.status"/><s:actionerror/></td>
+		    <tr><td>销售码：</td>
+				<td><s:textfield name="oaSales.salesCode"/><s:actionerror/></td>
 			</tr>
-		    <tr ><td>说明：</td>
-		    	<td><s:textfield name="oaRole.remark"/></td>
-			</tr>
-		    <tr ><td>菜单：</td>
-		    	<td><s:select list="#menuList" listKey="menuId" listValue="name" multiple="true" size="15" name="mids"/><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;按住Ctrl键可以对菜单进行复选</td>
+			<tr>
+				<td>上传销售图片：</td>
+				<td>  
+					<input type='file' id='pic' name='pic' /> 
+					<input  type="button" onclick="return forSubmitu()" value="上传"/>
+				</td>							
 			</tr>
                 </table>
+                <table align="center">
+                <s:iterator value="oaSalesPicList" id="pic">
+                	<input type="hidden" name="picid" value="${pic.id}"/>
+            		<tr>
+					<td><img src="oaSales!showImage.html?id=${pic.id}" width="320px" />
+					</td>	
+					</tr>
+				</s:iterator>
+				</table>
             </div>
         </div>
         <!-- 表单操作 -->
 <!--         <div id="InputDetailBar" align="center"> -->
-<%--             <s:submit cssClass="but_b" name="update" method="update" value="修改"></s:submit>&nbsp;&nbsp;&nbsp; --%>
+<%--             <s:submit cssClass="but_b" name="add" method="add" value="保存"></s:submit>&nbsp;&nbsp;&nbsp; --%>
 <!--             <input type="button" value="返回" onclick="javascript:history.go(-1);"/> -->
 <!--         </div> -->
         	<table cellpadding="10px" width="100%"

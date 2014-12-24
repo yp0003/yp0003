@@ -15,14 +15,17 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.pay.AlipayConfig;
 import com.yfann.web.pay.AlipayNotify;
 import com.yfann.web.pay.AlipaySubmit;
 import com.yfann.web.pojo.Order;
+import com.yfann.web.pojo.OrderDetail;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.service.OrderService;
 
@@ -151,6 +154,11 @@ public class AlipayAction extends CommonAction {
 			if (trade_status.equals("TRADE_FINISHED") || trade_status.equals("TRADE_SUCCESS")) {
 				order = orderService.findOrderByOrderId(out_trade_no);
 				order.setOrderStatus("010");
+				List<OrderDetail> orderDetailList = order.getOrderDetailList();
+				for(OrderDetail od : orderDetailList){
+					od.setSaleCode(UUIDCreate.getUUID());
+					orderService.updateOrderDetail(od);
+				}
 				orderService.updateOrder(order);
 			}
 

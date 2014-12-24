@@ -84,7 +84,7 @@
 						
 						<td align="center">
 						<a href="oaPublicMessage!forwardEditPulbicMessageInfo.html?publicMessage.id=<s:property value="#pm.id"></s:property>">修改</a>&nbsp;&nbsp;
-						<a href="oaPublicMessage!delPublicMessge.html?publicMessage.id=<s:property value="#pm.id"></s:property>">删除</a>
+						<a href="oaPublicMessage!delPublicMessge.html?publicMessage.id=<s:property value="#pm.id"></s:property>" onclick="javascript:return p_del()">删除</a>
 						</td>
 					</tr>
 				</s:iterator>
@@ -105,3 +105,13 @@
 	</table>
 </body>
 </html>
+<script type="text/javascript">
+//删除确认
+function p_del() {
+	if (confirm("您真的确定要删除吗？\n\n请确认！")==true){
+	return true;
+	}else{
+	return false;
+	}
+}
+</script>

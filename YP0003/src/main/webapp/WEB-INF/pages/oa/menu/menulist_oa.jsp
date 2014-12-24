@@ -48,7 +48,7 @@
 						<td align="center">${menu.pid}</td>
 						<td align="center">
 						<a href="oaMenu!toUpdate.html?id=${menu.menuId}">修改</a>&nbsp;&nbsp;
-						<a href="oaMenu!del.html?id=${menu.menuId}">删除</a>
+						<a href="oaMenu!del.html?id=${menu.menuId}" onclick="javascript:return p_del()">删除</a>
 						</td>
 					</tr>
 				</s:iterator>
@@ -58,3 +58,13 @@
 	
 </body>
 </html>
+<script type="text/javascript">
+//删除确认
+function p_del() {
+	if (confirm("您真的确定要删除吗？\n\n请确认！")==true){
+	return true;
+	}else{
+	return false;
+	}
+}
+</script>

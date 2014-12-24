@@ -91,7 +91,7 @@
 						<td align="center">
 						<a href="oaApply!viewApply.html?apply.id=<s:property value="#apply.id"></s:property>">查看</a>&nbsp;&nbsp;
 						<s:if test="%{#apply.applyStatus!='008'}">
-						<a href="oaApply!removeApply.html?apply.id=<s:property value="#apply.id"></s:property>">删除</a>
+						<a href="oaApply!removeApply.html?apply.id=<s:property value="#apply.id"></s:property>" onclick="javascript:return p_del()">删除</a>
 						</s:if>
 						</td>
 					</tr>
@@ -113,3 +113,13 @@
 	</table>
 </body>
 </html>
+<script type="text/javascript">
+//删除确认
+function p_del() {
+	if (confirm("您真的确定要删除吗？\n\n请确认！")==true){
+	return true;
+	}else{
+	return false;
+	}
+}
+</script>

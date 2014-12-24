@@ -51,7 +51,7 @@
 						<td align="center">${depart.level}</td>
 						<td align="center">
 						<a href="oaDepart!toUpdate.html?id=${depart.id}">修改</a>&nbsp;&nbsp;
-						<a href="oaDepart!del.html?id=${depart.id}">删除</a>
+						<a href="oaDepart!del.html?id=${depart.id}" onclick="javascript:return p_del()">删除</a>
 						</td>
 					</tr>
 				</s:iterator>
@@ -61,3 +61,13 @@
 	
 </body>
 </html>
+<script type="text/javascript">
+//删除确认
+function p_del() {
+	if (confirm("您真的确定要删除吗？\n\n请确认！")==true){
+	return true;
+	}else{
+	return false;
+	}
+}
+</script>

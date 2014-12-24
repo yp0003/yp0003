@@ -10,9 +10,11 @@ import com.yfann.web.vo.MailContext;
 public interface OaEmployeeService {
 	/**
 	 * 更新用户头像
+	 * 
 	 * @param oaEmployee
 	 */
-	public void updateHeadImg(OaEmployee oaEmployee,File image);
+	public void updateHeadImg(OaEmployee oaEmployee, File image);
+
 	/**
 	 * 存储员工
 	 * 
@@ -111,7 +113,7 @@ public interface OaEmployeeService {
 	 *            每次最多查询lim条
 	 * @return
 	 */
-	public Integer getEmpCountByField(String empId, String name, String roleId, int off, int lim);
+	public Integer getEmpCountByField(String empId, String name, String roleId);
 
 	/**
 	 * 根据字段查询客户
@@ -145,7 +147,7 @@ public interface OaEmployeeService {
 	 *            每次最多查询lim条
 	 * @return
 	 */
-	public Integer getUserCountByField(String userId, String name, String roleId, int off, int lim);
+	public Integer getUserCountByField(String userId, String name, String roleId);
 
 	/**
 	 * 分页查询员工

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.yfann.web.pojo.BuyCar;
 import com.yfann.web.pojo.Order;
+import com.yfann.web.pojo.OrderDetail;
 import com.yfann.web.pojo.Product;
 import com.yfann.web.pojo.User;
 import com.yfann.web.vo.PageInfo;
@@ -165,4 +166,9 @@ public interface OrderService {
 	 * @param order
 	 */
 	public void updateOrder(Order order);
+	
+	/**
+	 * @param orderDetail
+	 */
+	public void updateOrderDetail(OrderDetail orderDetail);
 }

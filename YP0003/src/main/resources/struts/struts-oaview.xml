@@ -18,7 +18,7 @@
 			<result name="login">/WEB-INF/pages/oa/tologin_oa.jsp</result>
 		</global-results>
 	</package>
-	
+
 	<package name="oalogin" namespace="/" extends="yfann-default">
 		<!-- OA登录 -->
 		<action name="oalogin!*" method="{1}" class="com.yfann.web.action.oa.OaLoginAction">
@@ -82,12 +82,12 @@
 
 			<result name="updateImage">/WEB-INF/pages/oa/employee/empupdateimage_oa.jsp</result>
 
-			<!-- 头像-->
+			<!-- 头像 -->
 			<result name="headImage" type="stream">
 				<param name="contentType">image/png</param>
 				<param name="inputName">inputStreamCre</param>
 			</result>
-			
+
 			<result name="showImage" type="stream">
 				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
 				<param name="inputName">byteArrayInputStream</param>
@@ -149,12 +149,29 @@
 	<!-- 销售 -->
 	<package name="oasales" namespace="/" extends="mypackage">
 		<action name="oaSales!*" method="{1}" class="com.yfann.web.action.oa.OaSalesAction">
-			<result name="oasaleslist">/WEB-INF/pages/oa/apply/applylist_oa.jsp</result>
-			<result name="oasalesadd">/WEB-INF/pages/oa/apply/applyInfo_oa.jsp</result>
+			<result name="oasaleslist">/WEB-INF/pages/oa/sales/saleslist_oa.jsp</result>
+			<result name="oasalesadd">/WEB-INF/pages/oa/sales/salesadd_oa.jsp</result>
+			<result name="view">/WEB-INF/pages/oa/sales/salesview_oa.jsp</result>
+			<result name="accountfail">/WEB-INF/pages/oa/sales/accountfail.jsp</result>
+			<result name="codefail">/WEB-INF/pages/oa/sales/codefail.jsp</result>
+			<result name="fail">/WEB-INF/pages/oa/sales/fail.jsp</result>
 			<result name="oasalesupload">/WEB-INF/pages/oa/apply/applyview_oa.jsp</result>
-			
+
 			<!-- 跳转到登陆页面 -->
 			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
+
+			<result name="showImage" type="stream">
+				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
+				<param name="inputName">byteArrayInputStream</param>
+			</result>
+		</action>
+	</package>
+	
+	<!-- 销售 -->
+	<package name="oaroy" namespace="/" extends="mypackage">
+		<action name="oaRoy!*" method="{1}" class="com.yfann.web.action.oa.OaRoyaltiesAction">
+			<result name="to">/WEB-INF/pages/oa/sales/salesroyalties_oa.jsp</result>
+			<result name="input">/WEB-INF/pages/oa/sales/input.jsp</result>
 		</action>
 	</package>
 
