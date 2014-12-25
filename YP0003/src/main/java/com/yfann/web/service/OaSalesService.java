@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.yfann.web.pojo.OaSales;
 import com.yfann.web.pojo.OaSalesPic;
-import com.yfann.web.vo.SalesCount;
 
 public interface OaSalesService {
 	/**

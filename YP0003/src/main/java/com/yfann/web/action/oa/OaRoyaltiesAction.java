@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.action.CommonAction;
 import com.yfann.web.pojo.OaRoyalties;
-import com.yfann.web.pojo.OaSalesChampion;
 import com.yfann.web.service.OaRoyaltiesService;
 
 /**
@@ -39,22 +38,28 @@ public class OaRoyaltiesAction extends CommonAction {
 		oaRoyaltiesService.updateChampion(champion);
 		list = oaRoyaltiesService.getAll();
 		OaRoyalties or = new OaRoyalties();
-		// 修改销售档位
 		for (int i = 0; i < list.size(); i++) {
+			// 校验销售档位是否符合逻辑
+			if (i > 0 && upper[i - 1] > upper[i]) {
+				if (lower[i - 1] > lower[i]) {
+					return "input";
+				}
+			}
+			// 修改销售档位
 			or = list.get(i);
-			if(i==0){
-				//第一档
+			if (i == 0) {
+				// 修改第一档
 				or.setUpperLimit(upper[0]);
 				or.setScale(scale[0]);
 				oaRoyaltiesService.updateOaRoyalties(or);
-			}else if(i==list.size()-1){
-				//最高档
-				or.setLowerLimit(lower[list.size()-2]);
-				or.setScale(scale[list.size()-1]);
+			} else if (i == list.size() - 1) {
+				// 修改最高档
+				or.setLowerLimit(lower[list.size() - 2]);
+				or.setScale(scale[list.size() - 1]);
 				oaRoyaltiesService.updateOaRoyalties(or);
-			}else{
+			} else {
 				or.setUpperLimit(upper[i]);
-				or.setLowerLimit(lower[i-1]);
+				or.setLowerLimit(lower[i - 1]);
 				or.setScale(scale[i]);
 				oaRoyaltiesService.updateOaRoyalties(or);
 			}

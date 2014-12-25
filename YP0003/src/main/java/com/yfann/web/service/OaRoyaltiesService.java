@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.yfann.web.pojo.OaRoyalties;
-import com.yfann.web.pojo.OaSalesChampion;
 
 public interface OaRoyaltiesService {
 	/**
