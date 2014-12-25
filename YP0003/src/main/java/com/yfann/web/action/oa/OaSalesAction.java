@@ -81,8 +81,10 @@ public class OaSalesAction extends CommonAction {
 			date = (new SimpleDateFormat("yyyy-MM")).format(new Date());
 		}
 		List<Object> oo = oaSalesService.getSalesCountAll(date, pageInfo.getOffset(), pageInfo.getPageSize());
-		pageInfo.setCount((Integer) oo.get(0));
-		salesCountList = (List<SalesCount>) oo.get(1);
+		if (oo != null) {
+			pageInfo.setCount((Integer) oo.get(0));
+			salesCountList = (List<SalesCount>) oo.get(1);
+		}
 		return "salesCountList";
 	}
 
@@ -144,12 +146,14 @@ public class OaSalesAction extends CommonAction {
 		oaSales.setPrice(oaSalesService.getPriceBySalesCode(oaSales.getSalesCode()));
 		oaSalesService.saveOaSales(oaSales);
 		// 把销售码和销售码图片关联
-		String[] picIds = picid.split(",");
-		OaSalesPic oaSalesPic = new OaSalesPic();
-		oaSalesPic.setSalesId(oaSales.getId());
-		for (String id : picIds) {
-			oaSalesPic.setId(id.trim());
-			oaSalesService.updateOaSales(oaSalesService.getPicById(id.trim()));
+		if (StringUtils.isNotEmpty(picid)) {
+			String[] picIds = picid.split(",");
+			OaSalesPic oaSalesPic = new OaSalesPic();
+			oaSalesPic.setSalesId(oaSales.getId());
+			for (String id : picIds) {
+				oaSalesPic.setId(id.trim());
+				oaSalesService.updateOaSales(oaSalesService.getPicById(id.trim()));
+			}
 		}
 		return toOaSalesList();
 	}

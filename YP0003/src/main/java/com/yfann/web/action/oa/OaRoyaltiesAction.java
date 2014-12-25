@@ -38,13 +38,13 @@ public class OaRoyaltiesAction extends CommonAction {
 		oaRoyaltiesService.updateChampion(champion);
 		list = oaRoyaltiesService.getAll();
 		OaRoyalties or = new OaRoyalties();
-		for (int i = 0; i < list.size(); i++) {
-			// 校验销售档位是否符合逻辑
-			if (i > 0 && upper[i - 1] > upper[i]) {
-				if (lower[i - 1] > lower[i]) {
-					return "input";
-				}
+		// 校验销售档位是否符合逻辑
+		for (int i = 1; i < list.size() - 1; i++) {
+			if (upper[i - 1] > upper[i] || lower[i - 1] > lower[i]) {
+				return "input";
 			}
+		}
+		for (int i = 0; i < list.size(); i++) {
 			// 修改销售档位
 			or = list.get(i);
 			if (i == 0) {
@@ -92,14 +92,15 @@ public class OaRoyaltiesAction extends CommonAction {
 	// 删除一档
 	public String reduce() {
 		list = oaRoyaltiesService.getAll();
-		// 最高档下限等于倒数第二档的上限
-		OaRoyalties maxor = list.get(list.size() - 1);
-		maxor.setLowerLimit(list.get(list.size() - 3).getUpperLimit());
-		oaRoyaltiesService.updateOaRoyalties(maxor);
-		// 删除倒数第二档
-		OaRoyalties or = list.get(list.size() - 2);
-		oaRoyaltiesService.delRoyalties(or.getId());
-
+		if (list.size() > 2) {
+			// 最高档下限等于倒数第二档的上限
+			OaRoyalties maxor = list.get(list.size() - 1);
+			maxor.setLowerLimit(list.get(list.size() - 3).getUpperLimit());
+			oaRoyaltiesService.updateOaRoyalties(maxor);
+			// 删除倒数第二档
+			OaRoyalties or = list.get(list.size() - 2);
+			oaRoyaltiesService.delRoyalties(or.getId());
+		}
 		return toUpdate();
 	}
 
