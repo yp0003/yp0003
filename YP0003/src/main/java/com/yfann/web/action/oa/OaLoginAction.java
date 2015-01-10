@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -29,6 +31,7 @@ import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.common.OaApplicationValue;
 import com.yfann.web.common.OaCookieUtils;
 import com.yfann.web.common.OaUUIDCreate;
+import com.yfann.web.pojo.BuyCar;
 import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.OaMenu;
 import com.yfann.web.pojo.OaRole;
@@ -61,6 +64,9 @@ public class OaLoginAction extends CommonAction {
 	/** 注册页面验证码 */
 	private String validateCode;
 	private String remPass;
+	
+	/** 文件输入流 */
+	private InputStream jsonInputStream;
 
 	public String getOaMenu() throws Exception {
 		oaEmployee = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
@@ -182,7 +188,10 @@ public class OaLoginAction extends CommonAction {
 
 	// 员工注册
 	public String register() throws Exception {
-		if (oaEmployee != null) {
+		oaRegisterMessage.setEmployeeIdMessage("用户名非法!");
+		setJsonInputStream(new ByteArrayInputStream(oaRegisterMessage.getEmployeeIdMessage().toString().getBytes("utf-8")));
+		return "registerError";
+		/*if (oaEmployee != null) {
 			// 验证用户ID
 			if (!(StringUtils.isNotBlank(oaEmployee.getEmployeeId()) && oaEmployee.getEmployeeId().length() > 5)) {
 				oaRegisterMessage.setEmployeeIdMessage("用户名非法!");
@@ -240,7 +249,8 @@ public class OaLoginAction extends CommonAction {
 			logger.error(e.getMessage());
 			throw new Exception(e.getMessage());
 		}
-		return forwardLogin();
+		//inputStream = toJsonInputStream(writeCardStatusList);
+		return "jsonInputStream";*/
 	}
 
 	// 转向找回密码页面
@@ -352,4 +362,15 @@ public class OaLoginAction extends CommonAction {
 	public void setRemPass(String remPass) {
 		this.remPass = remPass;
 	}
+
+	public InputStream getJsonInputStream() {
+		return jsonInputStream;
+	}
+
+	public void setJsonInputStream(InputStream jsonInputStream) {
+		this.jsonInputStream = jsonInputStream;
+	}
+
+	
+	
 }

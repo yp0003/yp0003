@@ -1,10 +1,16 @@
 package com.yfann.web.action;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.struts2.ServletActionContext;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,4 +48,6 @@ public class CommonAction extends ActionSupport{
 		User userInfo = (User) userObj;
 		return userInfo;
 	}
+	
+	
 }

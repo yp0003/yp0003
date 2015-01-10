@@ -11,23 +11,33 @@
 <link href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		
+		  $("#btn_register").click(function(){
+			 	$.post(
+			 			"${pageContext.request.contextPath}/oalogin!register.html", 
+			 			$("#register").serialize(), 
+			 			function(data){
+			 				alert("sucess");
+			 			});
+		  });
+		  
 	});
-	function formCommit() {
-		var flag = document.getElementById("remPass").checked;
-		if (flag) {
-			return true;
-		} else {
-			alert("接受协议才可注册");
-			return false;
-		}
-	}
+// 	function formCommit() {
+// 		var flag = document.getElementById("remPass").checked;
+// 		if (flag) {
+// 			return true;
+// 		} else {
+// 			alert("接受协议才可注册");
+// 			return false;
+// 		}
+// 	}
 	function reImg() {
 		$("#vertImg").attr(
 				"src",
 				"${pageContext.request.contextPath}/system!validateCode.html?time="
 						+ new Date());
 	}
+
 </script>
 </head>
 <body id="admin">
@@ -41,7 +51,7 @@
  <img src="${pageContext.request.contextPath}/images/hr_admin.png" alt="" />
  
  <!-- 表单 -->
-  <s:form action="oalogin!register.html" id="register">
+  <s:form action="" id="register">
     <ul>
     <li>
     <label for="memberID">会员ID:</label>
@@ -83,7 +93,7 @@
     </li>
    
     <li>
-    <button id="btn_register" type="submit" value=""></button>
+    <button id="btn_register" ></button>
     <a class="chgForm" href="${pageContext.request.contextPath}/oalogin!forwardLogin.html">登录</a>
     <div class="clear"></div>
     </li>
