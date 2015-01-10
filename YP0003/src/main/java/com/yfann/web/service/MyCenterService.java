@@ -1,6 +1,7 @@
 package com.yfann.web.service;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.util.List;
 
 import com.yfann.web.pojo.Message;
@@ -14,6 +15,18 @@ import com.yfann.web.vo.PageInfo;
  *
  */
 public interface MyCenterService {
+	/**
+	 * 保存头像
+	 * @param user
+	 * @param file
+	 */
+	public void saveHeaderImg(User user,File file);
+	
+	/**
+	 * 查找头像
+	 * @param id
+	 * @return
+	 */
 	public ByteArrayInputStream findUserHeadImgById(String id);
 	/**
 	 * 读取未阅读信息数

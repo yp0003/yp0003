@@ -7,7 +7,7 @@
 <meta name="Keywords" content="java培训,asp.net培训,php培训,C/C++培训,android培训，ios培训，iphone开发" />
 <meta name="Description" content="北风网-国内最全面、最实战的IT在线教育培训社区,拥有java培训,asp.net培训,php培训,C/C++培训,android培训，ios培训，iphone开发等精品课程,拥有自主知识产权课程超过500门,努力打造互联网IT教育第一品牌。" />
 
-<title>用户中心_北风网-IT在线教育java培训,asp.net培训,php培训,android培训,C/C++培训-中国IT网络教育第一品牌。</title>
+<title>用户中心_365-IT在线教育java培训,asp.net培训,php培训,android培训,C/C++培训-中国IT网络教育第一品牌。</title>
 
 <link href="http://www.ibeifeng.com/themes/default/css/n_main.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="http://www.ibeifeng.com/fancybox/jquery.fancybox-1.3.4.css" media="screen" />

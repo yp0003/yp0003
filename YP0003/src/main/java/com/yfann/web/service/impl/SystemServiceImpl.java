@@ -21,6 +21,10 @@ public class SystemServiceImpl implements SystemService {
 	private UserMapper userMapper;
 	@Autowired
 	private JavaMailSenderImpl javaMailSenderImpl;
+	@Override
+	public User findUserById(String id) {
+		return userMapper.selectByPrimaryKey(id);
+	}
 	
 	@Override
 	public User findUserByUserId(String userId) {

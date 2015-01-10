@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <div class="r myspace-slider">
         <div class="myspace-bg">
 <%--            <img src='${pageContext.request.contextPath}/mycenter!showUserHeader.html?user.id=${sessionScope.userInfo.id}' width='220' height='220' /> --%>
-          <img src='http://img.mukewang.com/user/54584f0b000124f802200220-220-220.jpg' width='220' height='220' />
-
+         	<s:if test="byteArrayInputStream != null">
+				<img src='${pageContext.request.contextPath}/mycenter!showUserHeader.html?user.id=${user.id}' width='220' height='220' />		
+			</s:if>
+			<s:else>
+				<img src='http://img.mukewang.com/user/54584f0b000124f802200220-220-220.jpg' width='220' height='220' />
+			</s:else>
             <div class="myspace-data">
               <h4 class="myname">${sessionScope.userInfo.userId}</h4>
               <p class="job-title"> 学生 </p>

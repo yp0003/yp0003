@@ -35,7 +35,7 @@
  <div id="admin_login_form">
  <div id="logo">
   <img id="logoImg" src="${pageContext.request.contextPath}/images/img_logo2.png" alt="" />
-  <img id="oaImg" src="${pageContext.request.contextPath}/images/img_oaTXT.png">
+  <img id="oaImg" src="${pageContext.request.contextPath}/images/img_oaTXT.png"/>
   <div class="clear"></div>
  </div>
  <img src="${pageContext.request.contextPath}/images/hr_admin.png" alt="" />

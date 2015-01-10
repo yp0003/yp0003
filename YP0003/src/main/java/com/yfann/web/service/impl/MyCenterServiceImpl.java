@@ -1,6 +1,7 @@
 package com.yfann.web.service.impl;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -8,9 +9,12 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yfann.web.common.FileUtil;
 import com.yfann.web.common.UUIDCreate;
 import com.yfann.web.dao.MessageMapper;
 import com.yfann.web.dao.MyProductMapper;
@@ -30,6 +34,14 @@ public class MyCenterServiceImpl implements MyCenterService{
 	private MyProductMapper myProductMapper;
 	@Autowired
 	private MessageMapper messageMapper; 
+	@Override
+	public void saveHeaderImg(User user,File file){
+		byte[] picData = file==null?null:FileUtil.fileToPicData(file,logger);
+		User temp = new User();
+		temp.setId(user.getId());
+		temp.setHeadImg(picData);
+		userMapper.updateByPrimaryKeySelective(temp);
+	}
 	@Override
 	public boolean commitSmartCode(MyProduct myProduct) {
 		int reslut = myProductMapper.updateByPrimaryKeySelective(myProduct);
@@ -119,5 +131,5 @@ public class MyCenterServiceImpl implements MyCenterService{
 		return new ByteArrayInputStream(
 				userMapper.selectByPrimaryKey(id).getHeadImg());
 	}
-
+	final Logger logger = LoggerFactory.getLogger(MyCenterServiceImpl.class);
 }

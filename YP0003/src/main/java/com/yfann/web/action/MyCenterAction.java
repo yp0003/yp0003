@@ -20,6 +20,7 @@ import com.yfann.web.service.MyCenterService;
 import com.yfann.web.service.OaEmployeeService;
 import com.yfann.web.service.OrderService;
 import com.yfann.web.service.ProductService;
+import com.yfann.web.service.SystemService;
 import com.yfann.web.vo.PageInfo;
 
 public class MyCenterAction extends CommonAction {
@@ -57,13 +58,16 @@ public class MyCenterAction extends CommonAction {
 	private int myMessageCount;
 	
 	//扫描件
-		private File scan;	
-		//扫描件文件类型
-		private String scanContentType;
-		private String scanFileName;
+	private File file;	
+	//扫描件文件类型
+	private String fileContentType;
+	private String fileFileName;
 	
 	/** Struts2下载(内存数据下载) */
 	private ByteArrayInputStream byteArrayInputStream;
+	
+	@Autowired
+	private SystemService systemService;
 	
 	/**
 	 * 用户头像图片
@@ -85,6 +89,7 @@ public class MyCenterAction extends CommonAction {
 	} 
 	
 	public String cancelOrder(){
+		
 		orderService.cancelOrder(currentUserInfo(), order);
 		return forwardMyOrderList();
 	}
@@ -147,6 +152,9 @@ public class MyCenterAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String forwardMyProductList() {
+		user = currentUserInfo();
+		setByteArrayInputStream(myCenterService
+				.findUserHeadImgById(currentUserInfo().getId()));
 		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		if (myProduct == null) {
 			myProduct = new MyProduct();
@@ -163,6 +171,9 @@ public class MyCenterAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String forwardMyMessage(){
+		user = currentUserInfo();
+		setByteArrayInputStream(myCenterService
+				.findUserHeadImgById(currentUserInfo().getId()));
 		if(message == null){
 			message = new Message();
 		}			
@@ -255,6 +266,13 @@ public class MyCenterAction extends CommonAction {
 	}
 
 	public String forwardUploadHander() {
+		if (null != user) {
+			user =  systemService.findUserById(user.getId());
+			if (null != user) {
+				byteArrayInputStream = user.getHeadImg()==null?null:new ByteArrayInputStream(user.getHeadImg());
+			}
+
+		}
 		return "forwardUploadHander";
 	}
 	/**
@@ -263,6 +281,9 @@ public class MyCenterAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String forwardMyOrderList() {
+		user = currentUserInfo();
+		setByteArrayInputStream(myCenterService
+				.findUserHeadImgById(currentUserInfo().getId()));
 		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		if (order == null) {
 			order = new Order();
@@ -276,8 +297,15 @@ public class MyCenterAction extends CommonAction {
 		}
 		return "forwardMyOrderList";
 	}
-
+	
+	@UserSessionCheck
+	public String saveHeadImg(){
+		myCenterService.saveHeaderImg(user, file);
+		return forwardUploadHander();
+	}
+	
 	public String forwardMyOrderDetail(){
+		user = currentUserInfo();
 		order = orderService.findOrderByOrderId(order.getId());
 		teacher = oaEmployeeService.getEmpById(order.getOrderDetailList().get(0).getProduct().getTeacherId());
 		return "forwardMyOrderDetail";
@@ -399,29 +427,30 @@ public class MyCenterAction extends CommonAction {
 		this.byteArrayInputStream = byteArrayInputStream;
 	}
 
-	public File getScan() {
-		return scan;
+	public File getFile() {
+		return file;
 	}
 
-	public void setScan(File scan) {
-		this.scan = scan;
+	public void setFile(File file) {
+		this.file = file;
 	}
 
-	public String getScanContentType() {
-		return scanContentType;
+	public String getFileContentType() {
+		return fileContentType;
 	}
 
-	public void setScanContentType(String scanContentType) {
-		this.scanContentType = scanContentType;
+	public void setFileContentType(String fileContentType) {
+		this.fileContentType = fileContentType;
 	}
 
-	public String getScanFileName() {
-		return scanFileName;
+	public String getFileFileName() {
+		return fileFileName;
 	}
 
-	public void setScanFileName(String scanFileName) {
-		this.scanFileName = scanFileName;
+	public void setFileFileName(String fileFileName) {
+		this.fileFileName = fileFileName;
 	}
 
+	
 	
 }

@@ -4,6 +4,12 @@ import com.yfann.web.pojo.User;
 import com.yfann.web.vo.MailContext;
 
 public interface SystemService {
+	/**
+	 * 根据用户ID超找用户
+	 * @param userId
+	 * @return
+	 */
+	public User findUserById(String id);
 	
 	/**
 	 * 根据用户ID超找用户

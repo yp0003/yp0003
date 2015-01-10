@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ taglib uri="com.yfann.web.page" prefix="p"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,6 +18,10 @@
 
 <script>
 	var _hmt = _hmt || [];
+	function onSubmit(){
+	//	document.forms[0].action = "mycenter!saveHeadImg.html";
+		document.forms[0].submit();
+	}
 </script>
 <title>订单管理</title>
 </head>
@@ -36,7 +39,7 @@
 				<a href="${pageContext.request.contextPath}/mycenter!forwardModifyPassword.html">修改密码</a>
 			</div>
 			<div class="course-sidebar-type lf-center">
-				<a href="${pageContext.request.contextPath}/mycenter!forwardUploadHander.html">上传头像</a>
+				<a href="${pageContext.request.contextPath}/mycenter!forwardUploadHander.html?user.id=${user.id}">上传头像</a>
 			</div>
 		</div>
 <!-- 		<div class="course-content"> -->
@@ -47,32 +50,31 @@
 		<div id="setting-avator" class="setting-wrap setting-avator clearfix">
 	<div class="avator-img l">
 		<div>
-<%-- 			<img src='${pageContext.request.contextPath}/mycenter!showUserHeader.html?employee.id=${user.id}' width='220' height='220' /> --%>
-			
-			<img src='http://img.mukewang.com/user/54584f0b000124f802200220-220-220.jpg' width='220' height='220' />
+			<s:if test="byteArrayInputStream != null">
+				<img src='${pageContext.request.contextPath}/mycenter!showUserHeader.html?user.id=${user.id}' width='220' height='220' />		
+			</s:if>
+			<s:else>
+				<img src='http://img.mukewang.com/user/54584f0b000124f802200220-220-220.jpg' width='220' height='220' />
+			</s:else>
+
 		
 			</div>
-<!-- 		<div><input type="button" hidefocus="true" value="换一换" class="js-avator-try avator-try"></div> -->
 	</div>
 	<div class="avator-btn-group">
 		<div id="avator-btns" class="avator-btn-inner">
 	         
 	        
 	        <div class="avator-btn-wrap">
-<%-- 	        	<s:form   action="postpic" method="post" enctype="multipart/form-data"> --%>
-<!-- 	        		<input type='file' id='scan' name='scan' />  -->
-<%-- 	        	</s:form> --%>
-				<form target="uploadtarget">
+
+				<form action="mycenter!saveHeadImg.html"  enctype="multipart/form-data" method="post" >
 		            <a href="javascript:void(0)" hidefocus="true" class="avator-btn-fake">上传头像</a>
-		            <input type="file" title="上传头像" name="scan" id="upload"  accept="image/*" />
-		            <input type="hidden" name="type" value="1" />
+		             <input type="file" name="file"  onchange="onSubmit()"/>
+		             <s:hidden name="user.id"></s:hidden>
 	            </form>
-                <iframe src="about:blank" id="uploadtarget" name="uploadtarget" frameborder="0" style="display:none;"></iframe>
+
 	        </div>
 		</div>
-		<div class="avator-upload-wrap" style="display:none;">
-			<span hidefocus="true"  id="avator-btn-save" aria-role="button" class="rlf-btn-green btn-block">保存</span> 
-		</div>
+
 	</div>
 
 </div>
@@ -83,9 +85,6 @@
     </div>
 <!--   </div> -->
 </div>
-	
- 
-
 
 	<%@ include file="../common/commonFooter.jsp"%>
 </body>

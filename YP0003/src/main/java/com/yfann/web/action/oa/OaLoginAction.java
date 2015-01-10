@@ -187,6 +187,9 @@ public class OaLoginAction extends CommonAction {
 			if (!(StringUtils.isNotBlank(oaEmployee.getEmployeeId()) && oaEmployee.getEmployeeId().length() > 5)) {
 				oaRegisterMessage.setEmployeeIdMessage("用户名非法!");
 			}
+			if(oaEmployeeService.validateOaEmployee(oaEmployee.getEmployeeId())!=null){
+				oaRegisterMessage.setEmployeeIdMessage("用户名已经注册，请重新选择用户名!");
+			}
 			// 验证密码
 			if (!(StringUtils.isNotBlank(oaEmployee.getNowPassword()))) {
 				oaRegisterMessage.setPasswordMessage("密码为空!");
