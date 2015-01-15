@@ -86,7 +86,7 @@
 						           <i class="nofinish"></i>
 						                                    
 						        <div class="wendatitlecon">
-						             <a href="/wenda/detail/240196" target="_blank" class="wendatitle"><s:property value="#msg.messTitle"/></a>
+						             <a href="" target="_blank" class="wendatitle"><s:property value="#msg.messTitle"/></a>
 						        </div>
 						      </h2>
 						      

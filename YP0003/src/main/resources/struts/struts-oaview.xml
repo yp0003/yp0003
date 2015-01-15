@@ -34,6 +34,10 @@
 			<result name="welcome">/WEB-INF/pages/oa/welcome_oa.jsp</result>
 			<!-- 找回密码 -->
 			<result name="tofindpassword">/WEB-INF/pages/oa/employee/findPassword.jsp</result>
+			<result name="registerError" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">jsonInputStream</param>
+			</result>
 		</action>
 	</package>
 

@@ -25,7 +25,7 @@
 </head>
 <body>
 	<!-- 头部 -->
-	<%@ include file="../common/commonHeader.jsp"%>
+<%-- 	<%@ include file="../common/commonHeader.jsp"%> --%>
 
 <br/>
 <div class="container">
@@ -155,6 +155,6 @@
 	</div>
 
 
-	<%@ include file="../common/commonFooter.jsp"%>
+<%-- 	<%@ include file="../common/commonFooter.jsp"%> --%>
 </body>
 </html>

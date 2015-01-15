@@ -14,7 +14,7 @@
 			<!-- 跳转到召回密码页面 -->
 			<result name="forwardFindPassword">/WEB-INF/pages/findPassword.jsp</result>
 			<result name="forwardTest">/WEB-INF/pages/common/commonNew.jsp</result>
-
+			<result name="forwardLogin">/WEB-INF/pages/login.jsp</result>
 		</action>
 	</package>
 

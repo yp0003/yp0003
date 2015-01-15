@@ -12,14 +12,14 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		  $("#btn_register").click(function(){
-			 	$.post(
-			 			"${pageContext.request.contextPath}/oalogin!register.html", 
-			 			$("#register").serialize(), 
-			 			function(data){
-			 				alert("sucess");
-			 			});
-		  });
+// 		  $("#btn_register").click(function(){
+// 			 	$.post(
+// 			 			"${pageContext.request.contextPath}/oalogin!register.html", 
+// 			 			$("#register").serialize(), 
+// 			 			function(data){
+// 			 				alert("sucess");
+// 			 			});
+// 		  });
 		  
 	});
 // 	function formCommit() {
@@ -51,7 +51,7 @@
  <img src="${pageContext.request.contextPath}/images/hr_admin.png" alt="" />
  
  <!-- 表单 -->
-  <s:form action="" id="register">
+  <s:form action="/oalogin!register.html" id="register">
     <ul>
     <li>
     <label for="memberID">会员ID:</label>
@@ -93,7 +93,7 @@
     </li>
    
     <li>
-    <button id="btn_register" ></button>
+    <button id="btn_register" type="submit"></button>
     <a class="chgForm" href="${pageContext.request.contextPath}/oalogin!forwardLogin.html">登录</a>
     <div class="clear"></div>
     </li>

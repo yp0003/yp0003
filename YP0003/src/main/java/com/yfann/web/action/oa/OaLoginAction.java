@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -188,10 +189,8 @@ public class OaLoginAction extends CommonAction {
 
 	// 员工注册
 	public String register() throws Exception {
-		oaRegisterMessage.setEmployeeIdMessage("用户名非法!");
-		setJsonInputStream(new ByteArrayInputStream(oaRegisterMessage.getEmployeeIdMessage().toString().getBytes("utf-8")));
-		return "registerError";
-		/*if (oaEmployee != null) {
+	
+		if (oaEmployee != null) {
 			// 验证用户ID
 			if (!(StringUtils.isNotBlank(oaEmployee.getEmployeeId()) && oaEmployee.getEmployeeId().length() > 5)) {
 				oaRegisterMessage.setEmployeeIdMessage("用户名非法!");
@@ -249,8 +248,8 @@ public class OaLoginAction extends CommonAction {
 			logger.error(e.getMessage());
 			throw new Exception(e.getMessage());
 		}
-		//inputStream = toJsonInputStream(writeCardStatusList);
-		return "jsonInputStream";*/
+		
+		return "loginSuccess";
 	}
 
 	// 转向找回密码页面
