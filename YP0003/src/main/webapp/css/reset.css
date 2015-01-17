@@ -1,0 +1,25 @@
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea, th, td, form,span,img{ margin: 0; padding:0;}
+fieldset,img {border:0 none;}
+table{ border-collapse: collapse; }
+body{font: 12px/1.6 Verdana,"\5B8B\4F53", sans-serif;color:#000000;outline: 0 }
+input, select{ vertical-align:middle; outline: none}
+ul, ol { list-style: none outside none;}
+h1,h2,h3,h4,h5,h6{ font-size:12px; font-weight:normal;}
+a{ text-decoration:none;color:#000;outline: none}
+a:hover{ color:#d50000; text-decoration:none;}
+.fl{ float:left; display:inline;}
+.fr{ float:right; display:inline;}
+.fix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+.fix { display: inline-block;}
+html[xmlns] .fix { display: block;}
+* html .fix { height: 1%;}
+.clear{ clear:both; height:0; overflow:hidden;}
+.mr0{ margin-right:0px !important;}
+.mt10{ margin-top:10px !important;}
+.mt10{ margin-top:10px !important;}
+.mt15{ margin-top:15px !important;}
+.mt20{ margin-top:20px !important;}
+.mt30{ margin-top:30px !important;}
+.mt40{ margin-top:40px !important;}
+

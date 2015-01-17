@@ -1,0 +1,53 @@
+.bg-gray {
+    background-color: #f4f4f4;
+}
+
+.am-titlebar-customer{
+    position:relative;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+    padding-left:10px;
+    color:#555;
+    font-size:18px;
+    line-height:41px
+}
+
+.am-titlebar-customer a{
+    color:#555
+}
+
+.am-titlebar-customer .am-titlebar-title{
+    color:#0e90d2;
+    margin-right:15px;
+    border-bottom:2px solid #0e90d2;
+    font-weight:700
+}
+
+.am-titlebar-customer .am-titlebar-title a{
+    color:#0e90d2
+}
+
+.am-titlebar-customer .am-titlebar-nav{
+    -webkit-box-flex:1;
+    -webkit-flex:1;
+    -ms-flex:1;
+    flex:1
+}
+
+.am-titlebar-customer .am-titlebar-nav a{
+    display:inline-block;
+    margin-right:15px;
+    line-height:41px;
+    border-bottom:2px solid transparent
+}
+
+.am-titlebar-customer .am-titlebar-nav a:hover{
+    color:#3c3c3c;
+    border-bottom-color:#0e90d2
+}
+
+.am-titlebar-customer .am-titlebar-nav a:last-child{
+    margin-right:10px
+}

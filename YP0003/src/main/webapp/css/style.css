@@ -26,7 +26,7 @@ body {
 
 .container {
 	width: 1200px;
-	color: #656e73;
+	color: #FFF;
 }
 
 .fixed {
@@ -1090,7 +1090,7 @@ input:-webkit-autofill,textarea:-webkit-autofill {
 /** info **/
 /*course_intrduce*/
 body {
-	background: #EEEFF1
+	background: #FCFCFC
 }
 
 .course_info {
@@ -2000,7 +2000,7 @@ div#footer_OA{height:50px; line-height:50px; background:#146eb3; color:#ffffff; 
 
 
 /*前台——登录*/
-body{background:url("../image/login/bg_body1.png") left top;  font-family:"宋体"; font-size:12px; }
+/* body{background:url("../image/login/bg_body1.png") left top;  font-family:"宋体"; font-size:12px; } */
 
 
 div#headerT_wrap{background-color:#4f6481; height:45px; line-height:45px; border-bottom:5px solid #c1d7e4;color:#ffffff;}

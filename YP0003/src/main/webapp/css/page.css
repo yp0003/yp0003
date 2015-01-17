@@ -1,0 +1,334 @@
+.top {
+	background-color: #165389;
+	height: 37px;
+	width: 100%;
+	line-height: 37px;
+	color: #FFF;
+	font-size: 12px;
+}
+.w {
+	width: 980px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.top .denglu {
+	float: right;
+}
+.denglu a {
+	color: #FFF;
+}
+.denglu a:hover {
+	color: #8cc63f;
+}
+.logo {
+	background-image: url(../image/logo.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 106px;
+	width: 100%;
+}
+
+
+/* banner css */
+	.fullSlide{
+	width: 100%;
+	position: relative;
+	height: 565px;
+}
+	.fullSlide .bd{ margin:0 auto; position:relative; z-index:0; overflow:hidden;  }
+	.fullSlide .bd ul{ width:100% !important;  }
+	.fullSlide .bd li{
+	width: 100% !important;
+	height: 565px;
+	overflow: hidden;
+	text-align: center;
+	min-width: 980px;
+}
+	.fullSlide .bd li a{ display:block; height:565px; }
+
+	.fullSlide .hd{
+	width: 490px;
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	height: 30px;
+	line-height: 30px;
+	margin-right: auto;
+	margin-left: auto;
+	left: 50%;
+	}
+	.fullSlide .hd ul{
+	text-align: right;
+	padding-top: 5px;
+	float: right;
+}
+	.fullSlide .hd ul li{
+	cursor: pointer;
+	display: inline-block;
+*display:inline; 	zoom: 1;
+	width: 53px;
+	height: 9px;
+	margin: 5px;
+	overflow: hidden;
+	line-height: 9999px;
+	background-image: url(../image/banner_hd_on.png);
+	background-repeat: no-repeat;
+	}
+	.fullSlide .hd ul .on{
+	background-image: url(../image/banner_hd.png);
+}
+
+
+/* 理由css */
+	.tabBar{ width:100%; font-family:"Microsoft YaHei"; }
+	.tabBar .hd {
+	width:100%;
+	background-color: #FFF;
+}
+	.tabBar .hd ul{
+	z-index: 5;
+	position: relative;
+	zoom: 1;
+	background-color: #FFF;
+	width: 980px;
+	margin-right: auto;
+	margin-left: auto;
+	height: 300px;
+	
+}
+	.tabBar .hd li{
+		margin-top: 5px;
+	float: left;
+	height: 290px;
+	line-height: 24px;
+	color: #333333;
+	cursor: pointer;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border-right-width: 1px;
+	border-right-style: dashed;
+	border-right-color: #999999;
+}
+	.tabBar .hd li.on{  border-top:2px solid #004ea2; margin-top: 3px; }
+	
+	.tabBar .bd{
+	clear: both;
+	position: relative;
+	height: 635px;
+	overflow: hidden;
+	background-color: #f3f3f3;
+	width: 100%;
+	
+}
+	.tabBar .bd .conWrap{
+	width: 980px;
+	height: 635px;
+	margin-right: auto;
+	margin-left: auto;
+}
+	.tabBar .bd .conWrap .con{
+	height: 635px;
+	width: 980px;
+	margin-right: auto;
+	margin-left: auto;
+}
+	.tabBar .bd .liyou {
+	height: 635px;
+	width: 980px;
+	margin-right: auto;
+	margin-left: auto;
+	overflow: hidden;
+}
+.liyou10 {
+	background-color: #FFF;
+	width: 100%;
+}
+.liyou10 .liyoutitle {
+	height: 170px;
+	width: 980px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.liyou10 .liyoulist {
+	width: 980px;
+	margin-top: 30px;
+	margin-right: auto;
+	margin-bottom: 60px;
+	margin-left: auto;
+	padding-bottom: 50px;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #999;
+}
+.liyou10 .liyoulist .left {
+	float: left;
+}
+.liyou10 .liyoulist .right {
+	float: right;
+}
+.liyou10 .liyoulist p {
+	font-family: "Microsoft YaHei";
+	font-size: 13px;
+	line-height: 22px;
+	color: #414141;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.liyou10 .L {
+	background-position: left top;
+}
+.liyou10 .R {
+	background-position: right top;
+}
+.img_1 {
+	background-image: url(../image/1_img.gif);
+	background-repeat: no-repeat;
+	background-position: top;
+}
+.img_2 {
+	background-image: url(../image/2_img.gif);
+	background-repeat: no-repeat;
+	background-position: top;
+}
+.img_3 {
+	background-image: url(../image/3_img.gif);
+	background-repeat: no-repeat;
+	background-position: top;
+}
+.img_4 {
+	background-image: url(../image/4_img.gif);
+	background-repeat: no-repeat;
+	background-position: top;
+}
+.img_5 {
+	background-image: url(../image/5_img.gif);
+	background-repeat: no-repeat;
+	background-position: top;
+}
+.img_6 {
+	background-image: url(../image/6_img.gif);
+	background-repeat: no-repeat;
+	background-position: top;
+}
+.img_7 {
+	background-image: url(../image/7_img.gif);
+	background-repeat: no-repeat;
+	background-position: top;
+}
+.img_8 {
+	background-image: url(../image/8_img.gif);
+	background-repeat: no-repeat;
+	background-position: top;
+}.img_9 {
+	background-image: url(../image/9_img.gif);
+	background-repeat: no-repeat;
+	background-position: top;
+}
+.img_10 {
+	background-image: url(../image/10_img.gif);
+	background-repeat: no-repeat;
+	background-position: top;
+}
+.w480 {
+	width: 480px;
+}
+.liyou10 .liyoulist .coler {
+	font-size: 18px;
+	line-height: 25px;
+	font-weight: bolder;
+	color: #0b2945;
+}
+.liyou10 .liyoulist .dian {
+	background-image: url(../image/dian.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.liyou10 .liyoulist .p23 {
+	padding-left: 23px;
+}
+.h300 {
+	height: 300px;
+}
+.liyou10 .liyoulist p span {
+	color: #72b617;
+}
+.liyou10 .liyoulist .huangse {
+	font-size: 14px;
+	line-height: 25px;
+	font-weight: bolder;
+	color: #FFF;
+	background-image: url(../image/huangse.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+	text-align: center;
+	height: 25px;
+	width: 92px;
+	margin-bottom: 5px;
+	margin-top: 25px;
+}
+.liyou10 .liyoulist p samp {
+	font-size: 14px;
+	font-weight: bold;
+	color: #0b2945;
+}
+.liyou10 .liyoulist .qqkefu {
+	background-image: url(../image/qq.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 120px;
+	margin-left: 23px;
+	padding-left: 40px;
+	line-height: 40px;
+	font-size: 13px;
+	color: #414141;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+.liyou10 .liyoulist .qqkefu a {
+	color: #019ae5;
+	text-decoration: underline;
+}
+.liyou10 .liyoulist .qqkefu a:hover {
+	color: #8cc63f;
+	
+}.liyou10 .boderone {
+	border-bottom-width: 0px;
+	border-bottom-style: none;
+}
+.ganxiang {
+	background-color: #f0f0f0;
+	background-image: url(../image/ganzuo_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	height: 730px;
+	width: 100%;
+	text-align: center;
+}
+.xuexi {
+	background-color: #d5e7f2;
+	width: 100%;
+	padding-top: 60px;
+	padding-bottom: 60px;
+	text-align: center;
+}
+.footer {
+	background-color: #165389;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	width: 100%;
+	color: #FFF;
+}
+.footer a {
+	color: #FFF;
+}
+.kefu {
+	height: 68px;
+	width: 158px;
+	position: fixed;
+	right: 20px;
+	top: 200px;
+	z-index: 9999;
+}
+.footer .fenxiang {
+	float: right;
+}
