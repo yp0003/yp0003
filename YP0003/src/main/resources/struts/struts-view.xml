@@ -23,6 +23,7 @@
 	<package name="buy" namespace="/" extends="yfann-default">
 		<!-- 订单 -->
 		<action name="order!*" method="{1}" class="com.yfann.web.action.OrderAction">
+		<result name="forwardLogin">/WEB-INF/pages/login.jsp</result>
 			<!-- 添加到购物车 -->
 			<result name="addBuyCar" type="redirectAction">order!buyCarList.html</result>
 			<!-- 购物车列表 -->
@@ -64,6 +65,7 @@
 
 		<!-- 课程 -->
 		<action name="product!*" method="{1}" class="com.yfann.web.action.ProductAction">
+		<result name="forwardLogin">/WEB-INF/pages/login.jsp</result>
 			<!-- 跳转到课程列表 -->
 			<result name="forwardProductList">/WEB-INF/pages/web/productList.jsp</result>
 			<!-- <result name="forwardProductList">/WEB-INF/web/classList.jsp</result> -->

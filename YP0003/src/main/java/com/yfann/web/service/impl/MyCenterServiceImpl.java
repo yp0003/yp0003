@@ -128,8 +128,14 @@ public class MyCenterServiceImpl implements MyCenterService{
 	@Override
 	public ByteArrayInputStream findUserHeadImgById(
 			String id) {
-		return new ByteArrayInputStream(
-				userMapper.selectByPrimaryKey(id).getHeadImg());
+		User userTemp = userMapper.selectByPrimaryKey(id);
+		if(userTemp != null && userTemp.getHeadImg() != null && userTemp.getHeadImg().length > 0){
+			return new ByteArrayInputStream(
+					userMapper.selectByPrimaryKey(id).getHeadImg());
+		}else{
+			return null;
+		}
+
 	}
 	final Logger logger = LoggerFactory.getLogger(MyCenterServiceImpl.class);
 }

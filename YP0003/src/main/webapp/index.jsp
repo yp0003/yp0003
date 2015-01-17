@@ -25,7 +25,7 @@
 						href="${pageContext.request.contextPath}/system!forwardLogin.html">登录
 					</a> | <a
 						href="${pageContext.request.contextPath}/system!forwardRegister.html">注册
-					</a> | <a href="">课程 </a> | <a href="">求课</a>
+					</a> | <a href="${pageContext.request.contextPath}/product!forwardProductList.html">课程 </a> | <a href="">求课</a>
 				</div>
 				您好，欢迎来到365IT学院官网！
 			</div>
@@ -35,18 +35,15 @@
 
 			<div class="w">
 				<div class="denglu">
-					<a
-						href="${pageContext.request.contextPath}/system!forwardLogin.html">登录
-					</a> | <a
-						href="${pageContext.request.contextPath}/system!forwardRegister.html">注册
-					</a> | <a href="">课程 </a> | <a href="">求课</a>
+					<a>尊敬的${sessionScope.userInfo.userId}您好</a> | <a
+						href="${pageContext.request.contextPath}/mycenter!forwardMySetting.html">个人信息设置</a>
+					| <a
+						href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">个人中心</a>
 				</div>
 				您好，欢迎来到365IT学院官网！
 			</div>
 
-			<a>尊敬的${sessionScope.userInfo.userId}您好</a> | 
-			<a href="${pageContext.request.contextPath}/mycenter!forwardMySetting.html">个人信息设置</a> | 
-			<a href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">个人中心</a>
+
 
 		</c:if>
 
@@ -318,8 +315,9 @@
 			<img src="./image/jiandan.gif" alt="365IT学院，让学习变得更简单！" />
 		</p>
 		<p>
-			<a href="${pageContext.request.contextPath}/product!forwardProductList.html" target="_blank"><img src="./image/xuexi.gif"
-				alt="开始学习" /></a>
+			<a
+				href="${pageContext.request.contextPath}/product!forwardProductList.html"
+				target="_blank"><img src="./image/xuexi.gif" alt="开始学习" /></a>
 		</p>
 	</div>
 
