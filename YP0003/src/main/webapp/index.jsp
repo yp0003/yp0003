@@ -25,7 +25,9 @@
 						href="${pageContext.request.contextPath}/system!forwardLogin.html">登录
 					</a> | <a
 						href="${pageContext.request.contextPath}/system!forwardRegister.html">注册
-					</a> | <a href="${pageContext.request.contextPath}/product!forwardProductList.html">课程 </a> | <a href="">求课</a>
+					</a> | <a
+						href="${pageContext.request.contextPath}/product!forwardProductList.html">课程
+					</a> | <a href="">求课</a>
 				</div>
 				您好，欢迎来到365IT学院官网！
 			</div>
@@ -57,8 +59,7 @@
 		</div>
 	</div>
 
-
-	<div data-am-widget="slider" class="am-slider am-slider-a5"
+	<div data-am-widget="slider" class="am-slider am-slider-a3"
 		data-am-slider='{&quot;directionNav&quot;:false}'>
 		<ul class="am-slides">
 			<li><img src="./image/banner1.gif" /></li>
@@ -348,13 +349,13 @@
 	<!--footer end -->
 
 	<!--[if (gte IE 9)|!(IE)]><!-->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="http://cdn.amazeui.org/amazeui/2.0.0/js/amazeui.min.js"></script>
+	<script src="./js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="./js/jquery.index.js"></script>
-	<script type="text/javascript" src="./js/jquery.SuperSlide.2.1.1.js"></script>
+	<script src="http://cdn.amazeui.org/amazeui/2.0.0/js/amazeui.min.js"></script>
 	<script src="http://cdn.amazeui.org/amazeui/2.0.0/js/amazeui.legacy.js"></script>
 	<script
 		src="http://cdn.amazeui.org/amazeui/2.0.0/js/amazeui.widgets.helper.js"></script>
+			<script type="text/javascript" src="./js/jquery.SuperSlide.2.1.1.js"></script>
 	<!--<![endif]-->
 </body>
 </html>

@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -16,10 +17,12 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.common.CookieUtils;
 import com.yfann.web.common.UUIDCreate;
@@ -55,7 +58,6 @@ public class SystemAction extends CommonAction {
 	
 	private List<Product> productList;
 	
-
 	
 	public String forwardTest() {
 		return "forwardTest";
@@ -66,6 +68,7 @@ public class SystemAction extends CommonAction {
 	 * 
 	 * @return
 	 */
+	@SkipValidation
 	public String forwardFindPassword() {
 		return "forwardFindPassword";
 	}
@@ -75,6 +78,7 @@ public class SystemAction extends CommonAction {
 	 * 
 	 * @return
 	 */
+	@SkipValidation
 	public String findPassword() {
 		if (user != null) {
 			try{
@@ -94,10 +98,12 @@ public class SystemAction extends CommonAction {
 	}
 
 	/**
+	 * 
 	 * 跳转到注册页面
 	 * 
 	 * @return
 	 */
+	@SkipValidation
 	public String forwardRegister() {
 		return "forwardRegister";
 	}
@@ -107,6 +113,7 @@ public class SystemAction extends CommonAction {
 	 * 
 	 * @return
 	 */
+	@SkipValidation
 	public String logout() {
 		HttpSession session = request.getSession(false);
 		if (session != null)
@@ -122,6 +129,7 @@ public class SystemAction extends CommonAction {
 	 * 
 	 * @return
 	 */
+	@SkipValidation
 	public String login() throws Exception{
 		if (user != null) {
 			User userTemp = null;
@@ -157,6 +165,7 @@ public class SystemAction extends CommonAction {
 	 * 
 	 * @return
 	 */
+	@SkipValidation
 	public String forwardIndex() {
 		productList = productService.findPerfectProductList();
 		return "forwardIndex";
@@ -167,6 +176,7 @@ public class SystemAction extends CommonAction {
 	 *
 	 * @return
 	 */
+	@SkipValidation
 	public String forwardLogin() {
 		request = ServletActionContext.getRequest();
 		user = cookieUtils.getCookie(request);
@@ -184,17 +194,20 @@ public class SystemAction extends CommonAction {
 			@SuppressWarnings("deprecation")
 			Object valiCodeObj = session.getValue("valiCode");
 			String flagValiCode = valiCodeObj.toString();
+			
 			if (StringUtils.isNotBlank(flagValiCode)
-					&& flagValiCode.equals(validateCode)) {
+					&& flagValiCode.equals(validateCode) && systemService.findUserByUserId(user.getUserId()) == null) {
 				String[] passwordArray = user.getNowPassword().split(",");
 				user.setNowPassword(passwordArray[0]);
 				systemService.saveUser(user);
+			}else{
+				addActionMessage("验证码不正确或用户已存在");
 			}
 		}
-		//return "forwardIndex";
-		return login();
+		return "forwardRegister";
 	}
 
+	@SkipValidation
 	public void validateCode() throws Exception {
 		// 通知浏览器，图片不要缓存
 		response.setHeader("Expires", "-1");

@@ -1,28 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- link css -->
-<link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css"
-	rel="stylesheet">
+<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css"/>
 <link
 	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css"
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/bootstrap/css/docs.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/base.css"
+ <link href="${pageContext.request.contextPath}/css/base.css"
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/style.css"
 	rel="stylesheet">
 
 
 <!-- link script -->
-<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
+ <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <title>注册</title>
 <script type="text/javascript">
 	function reImg() {
@@ -34,9 +33,17 @@
 </script>
 </head>
 <body>
-	<!-- 头部 -->
-	<%-- <%@ include file="common/common.jsp"%> --%>
 
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="alert alert-danger " role="alert">
+					<div class="center-block"><s:fielderror/> </div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 	<!---网页内容 start-->
@@ -57,21 +64,23 @@
 					<form id="register" action="system!register.html" method="post">
 						<ul>
 							<li><label for="memberID">会员ID:</label> <input id="memberID"
-								type="text" placeHolder="请输入6个以上的字符作为密码" name="user.userId" /> <span
-								class="redStar">*</span></li>
+								type="text" placeHolder="请输入6个以上的字符作为密码" name="user.userId" />
+								<span class="redStar">*</span></li>
 							<li><label for="passWord">密码:</label> <input id="passWord"
 								type="password" placeHolder="英文、数字或字符，6-20位区分大小写"
 								name="user.nowPassword" /> <span class="redStar">*</span></li>
 							<li><label for="passWord">确认密码:</label> <input id="passWord"
-								type="password" name="user.nowPassword" /> <span class="redStar">*</span>
-							</li>
+								type="password" name="user.repassword" /> <span
+								class="redStar">*</span></li>
 							<li><label for="passWord">电子邮箱:</label> <input id="passWord"
 								type="password" placeHolder="请使用常用邮箱地址作为登录账号" name="user.email" />
 								<span class="redStar">*</span></li>
 							<li><label for="vertCode">验证码:</label> <input
-								id="registValidateCode" type="text" name="validateCode" style="width:70px;"/> <img id="vertImg"
+								id="registValidateCode" type="text" name="validateCode"
+								style="width: 70px;" /> <img id="vertImg"
 								src="${pageContext.request.contextPath}/system!validateCode.html" />
-								<a class="chgVertImg" href="javascript:void(0);"onclick="reImg();">看不清，换一张</a>
+								<a class="chgVertImg" href="javascript:void(0);"
+								onclick="reImg();">看不清，换一张</a>
 							<li>
 								<button id="btn_register" type="submit" value=""></button>
 
@@ -87,7 +96,8 @@
 				<div id="login_rightC">
 					<img id="img_right" src="image/login/img_register1.png" /> <span
 						class="lblImgInfo">已有学习账号？</span> <a class="linkImgAction"
-						href="${pageContext.request.contextPath}/system!forwardLogin.html">立即去登录 &gt;&gt;</a>
+						href="${pageContext.request.contextPath}/system!forwardLogin.html">立即去登录
+						&gt;&gt;</a>
 				</div>
 
 				<div class="clear"></div>
@@ -96,12 +106,6 @@
 		</div>
 
 	</div>
-
-
-
-
-	<!-- 底部 -->
-<%-- 	<%@ include file="common/commonFooter.jsp"%> --%>
 
 </body>
 </html>
