@@ -344,7 +344,7 @@
 		</div>
 	</div>
 	<div class="kefu">
-		<a href="#" target="_blank"><img src="./image/kefu.png" /></a>
+		<img  src="./image/kefu.png" style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=767175432&o=www.365itedu.com&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:767175432:3 alt="欢迎咨询">
 	</div>
 	<!--footer end -->
 
