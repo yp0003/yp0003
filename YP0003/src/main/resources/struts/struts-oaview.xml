@@ -179,5 +179,22 @@
 			<result name="input">/WEB-INF/pages/oa/sales/input.jsp</result>
 		</action>
 	</package>
+	
+	<!-- 播放码 -->
+	<package name="oaplaycode" namespace="/" extends="mypackage">
+		<action name="oaPlayCode!*" method="{1}" class="com.yfann.web.action.oa.OaMyProductAction">
+			<result name="tolist">/WEB-INF/pages/oa/playerCode/playerCodelist_oa.jsp</result>
+			<result name="update">/WEB-INF/pages/oa/playerCode/playerCodeupdate_oa.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 产品组合 -->
+	<package name="oagroupproduct" namespace="/" extends="mypackage">
+		<action name="oaGroupProduct!*" method="{1}" class="com.yfann.web.action.oa.OaGroupProductAction">
+			<result name="tolist">/WEB-INF/pages/oa/playerCode/playerCodelist_oa.jsp</result>
+			<result name="add">/WEB-INF/pages/oa/message/messageadd_oa.jsp</result>
+			<result name="update">/WEB-INF/pages/oa/playerCode/playerCodeupdate_oa.jsp</result>
+		</action>
+	</package>
 
 </struts>
