@@ -5,15 +5,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>365IT学院官网</title>
-<link rel="alternate icon" type="image/png" href="assets/i/favicon.png" />
-<link rel="stylesheet"
-	href="http://cdn.amazeui.org/amazeui/2.0.0/css/amazeui.css" />
+<link
+	href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css"
+	rel="stylesheet" />
 <link href="./css/reset.css" rel="stylesheet" type="text/css" />
+<link href="./css/mycustomer.css" rel="stylesheet" type="text/css" />
 <link href="./css/page.css" rel="stylesheet" type="text/css" />
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<title>365IT学院官网</title>
 </head>
 <body>
-	<header class="am-topbar am-topbar-fixed-top">
+	<header>
 	<div class="top">
 
 
@@ -51,24 +54,41 @@
 
 	</div>
 	</header>
-
-	<div class="am-g am-container">
-		<div class="am-u-lg-12">
-			<img src="./image/logo.gif" alt=""
-				style="box-sizing: border-box; max-width: 100%; height: 100px; vertical-align: middle; border: 0;" />
+	<!-- Carousel
+    ================================================== -->
+    
+    	<img src="./image/logo.gif" style="min-width: 100%;"/>
+    	
+    	
+    
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="./image/banner1.gif" alt="First slide" />
+			</div>
+			<div class="item">
+				<img src="./image/banner2.gif" alt="Second slide" />
+			</div>
 		</div>
+		<a class="left carousel-control" href="#myCarousel" role="button"
+			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
+			aria-hidden="true"></span> <span class="sr-only">Previous</span>
+		</a> <a class="right carousel-control" href="#myCarousel" role="button"
+			data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
 	</div>
-
-	<div data-am-widget="slider" class="am-slider am-slider-a3"
-		data-am-slider='{&quot;directionNav&quot;:false}'>
-		<ul class="am-slides">
-			<li><img src="./image/banner1.gif" /></li>
-			<li><img src="./image/banner2.gif" /></li>
-			<li><img src="./image/banner1.gif" /></li>
-		</ul>
-	</div>
-
-	<div class="tabBar" style="margin: 0 auto">
+	<!-- /.carousel -->
+	
+	
+	
+		<div class="tabBar" style="margin: 0 auto">
 		<div class="hd">
 			<ul>
 				<li><img src="./image/gouji_l.gif" alt="成为架构师的理由" /></li>
@@ -90,21 +110,10 @@
 					<div class="con">
 						<img src="./image/liyou1.gif" />
 					</div>
-
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-	<script type="text/javascript">
-		jQuery(".tabBar").slide({
-			mainCell : ".conWrap",
-			effect : "left",
-			trigger : "click",
-			pnLoop : false
-		});
-	</script>
 	<!--理由end-->
 	<!--10大理由 start-->
 	<div class="liyou10">
@@ -328,34 +337,39 @@
 			<div class="fenxiang">
 				<img src="./image/fenxiang.gif" usemap="#Map" border="0" />
 				<map name="Map" id="Map">
-					<area shape="rect" coords="6,4,41,37" href="#" />
-					<area shape="rect" coords="49,3,87,36" href="#" />
-					<area shape="rect" coords="95,4,131,41" href="#" />
-					<area shape="rect" coords="144,3,180,42" href="#" />
+					<area shape="rect" coords="6,4,41,37" href="http://www.weibo.com/u/5385197038/home?topnav=1&wvr=6" />
+					<area shape="rect" coords="49,3,87,36"  data-toggle="modal" data-target="#myModal" />
+					<area shape="rect" coords="95,4,131,41" data-toggle="modal" data-target="#myModal" />
+					<area shape="rect" coords="144,3,180,42" data-toggle="modal" data-target="#myModal" />
 				</map>
 			</div>
+			
+			
+			<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <img src="./image/weixin.gif"  class="img-rounded" width="200px" height="200px;"/>
+      </div>
+    </div>
+  </div>
+</div>
+			
+			
+			
 			<p>
 				<a href="#"> 关于我们 </a> | <a href="#"> 人才招聘 </a> | <a href="#">
 					讲师招募 </a> | <a href="#"> 联系我们 </a> | <a href="#"> 意见反馈 </a> | <a
 					href="#"> 友情链接</a>
 			</p>
 			<p>© 2013 365ITedu.com 京ICP备13046642号</p>
-
 		</div>
 	</div>
 	<div class="kefu">
-		<img  src="./image/kefu.png" style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=767175432&o=www.365itedu.com&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:767175432:3 alt="欢迎咨询">
+		<img src="./image/kefu.png" style="CURSOR: pointer"
+			onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=767175432&o=www.365itedu.com&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"
+			border="0" SRC=http://wpa.qq.com/pa?p=1:767175432:3 alt="欢迎咨询"/>
 	</div>
-	<!--footer end -->
-
-	<!--[if (gte IE 9)|!(IE)]><!-->
-	<script src="./js/jquery-1.4.2.min.js"></script>
-	<script type="text/javascript" src="./js/jquery.index.js"></script>
-	<script src="http://cdn.amazeui.org/amazeui/2.0.0/js/amazeui.min.js"></script>
-	<script src="http://cdn.amazeui.org/amazeui/2.0.0/js/amazeui.legacy.js"></script>
-	<script
-		src="http://cdn.amazeui.org/amazeui/2.0.0/js/amazeui.widgets.helper.js"></script>
-			<script type="text/javascript" src="./js/jquery.SuperSlide.2.1.1.js"></script>
-	<!--<![endif]-->
 </body>
 </html>

@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -22,7 +21,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.common.CookieUtils;
 import com.yfann.web.common.UUIDCreate;
@@ -200,6 +198,7 @@ public class SystemAction extends CommonAction {
 				String[] passwordArray = user.getNowPassword().split(",");
 				user.setNowPassword(passwordArray[0]);
 				systemService.saveUser(user);
+				return forwardLogin();
 			}else{
 				addActionMessage("验证码不正确或用户已存在");
 			}

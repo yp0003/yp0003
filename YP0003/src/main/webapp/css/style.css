@@ -1944,7 +1944,7 @@ body#admin{background:#d6dee0;}
 #register{margin-top:10px;}
 #register ul li{margin-bottom:8px;}
 #register span.redStar{padding-left:5px; color:#e02222;}
-#register label{display:inline-block; width:65px; padding-left:10px; font-size:14px;color:#616161;}
+#register label{display:inline-block; width:75px; padding-left:10px; font-size:14px;color:#616161;}
 #register input[type=text],#register input[type=password]{height:22px; line-height:22px; width:256px; text-indent:1em; background-color:#eeeeee; border:1px solid #cccbcb;}
 #register input#vertCode{width:85px;}
 #register #vertImg{display:inline-block;margin-top:-4px;vertical-align: middle; height:22px;}

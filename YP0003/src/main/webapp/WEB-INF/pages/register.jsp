@@ -63,24 +63,24 @@
 				<div id="login_form">
 					<form id="register" action="system!register.html" method="post">
 						<ul>
-							<li><label for="memberID">会员ID:</label> <input id="memberID"
-								type="text" placeHolder="请输入6个以上的字符作为密码" name="user.userId" />
+							<li><label for="memberID">用户名:</label> <input id="memberID"
+								type="text" placeHolder="请输入6个以上的字符作为用户名" name="user.userId" />
 								<span class="redStar">*</span></li>
 							<li><label for="passWord">密码:</label> <input id="passWord"
-								type="password" placeHolder="英文、数字或字符，6-20位区分大小写"
+								type="password" placeHolder="英文数字或字符,6-20位区分大小写"
 								name="user.nowPassword" /> <span class="redStar">*</span></li>
 							<li><label for="passWord">确认密码:</label> <input id="passWord"
 								type="password" name="user.repassword" /> <span
 								class="redStar">*</span></li>
 							<li><label for="passWord">电子邮箱:</label> <input id="passWord"
-								type="password" placeHolder="请使用常用邮箱地址作为登录账号" name="user.email" />
+								type="text" placeHolder="请输入邮箱" name="user.email" />
 								<span class="redStar">*</span></li>
 							<li><label for="vertCode">验证码:</label> <input
 								id="registValidateCode" type="text" name="validateCode"
 								style="width: 70px;" /> <img id="vertImg"
 								src="${pageContext.request.contextPath}/system!validateCode.html" />
 								<a class="chgVertImg" href="javascript:void(0);"
-								onclick="reImg();">看不清，换一张</a>
+								onclick="reImg();">看不清,换一张</a>
 							<li>
 								<button id="btn_register" type="submit" value=""></button>
 

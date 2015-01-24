@@ -8,6 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>365ITEDU网</title>
 <!-- link css -->
+<link href="${pageContext.request.contextPath}/css/mycustomer.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/bootstrap/css/docs.css" rel="stylesheet">
@@ -28,7 +29,7 @@
 </head>
 <!-- Navbar
     ================================================== -->
-<%@ include file="../common/commonHeader.jsp"%>
+ <%@ include file="../common/commonHeader.jsp"%>
 <!-- 程序包含结束 -->
 
 <div id="main" class="mt49">

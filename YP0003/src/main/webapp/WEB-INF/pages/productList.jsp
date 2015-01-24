@@ -8,9 +8,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>课程列表</title>
+<link href="./css/mycustomer.css" rel="stylesheet" type="text/css" />
 <!-- Site CSS -->
 <link
-	href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css"
+	href="${pageContext.request.contextPath}/http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet" />
 
 <link
@@ -33,14 +34,6 @@
 <script
 	src="${pageContext.request.contextPath}/bootstarp/js/bootstrap.min.js"></script>
 <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js" />
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/jquery.unveil.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/jquery.scrollUp.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/toc.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/bootstarp/js/bootstarp/js/site.min.js"></script>
 
 <script>
 	var _hmt = _hmt || [];
@@ -48,7 +41,30 @@
 </head>
 
 <body>
-	<%@ include file="common/common.jsp"%>
+	<%-- <%@ include file="common/common.jsp"%> --%>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="./image/banner1.gif" alt="First slide" />
+			</div>
+			<div class="item">
+				<img src="./image/banner2.gif" alt="Second slide" />
+			</div>
+		</div>
+		<a class="left carousel-control" href="#myCarousel" role="button"
+			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
+			aria-hidden="true"></span> <span class="sr-only">Previous</span>
+		</a> <a class="right carousel-control" href="#myCarousel" role="button"
+			data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
 	<div class="container-fluid" style="width: 1300px">
 		<div class="row">
 			<div class="col-lg-4">
