@@ -24,6 +24,22 @@
 		</field-validator>
 
 	</field>
+	
+	
+		<field name="user.email">
+		<field-validator type="requiredstring" short-circuit="true">
+
+			<param name="trim">true</param>
+
+			<message>邮箱不能为空</message>
+
+		</field-validator>
+
+		<field-validator type="email">
+			<message>邮箱格式不正确</message>
+		</field-validator>
+
+	</field>
 
 
 

@@ -23,24 +23,14 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
  <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <title>注册</title>
-<script type="text/javascript">
-	function reImg() {
-		$("#vertImg").attr(
-				"src",
-				"${pageContext.request.contextPath}/system!validateCode.html?time="
-						+ new Date());
-	}
-</script>
 </head>
 <body>
 
 
-	<div class="container">
-		<div class="row">
+	<div id="mainDiv" class="container">
+		<div class="row" style="text-align: center;">
 			<div class="col-lg-12">
-				<div class="alert alert-danger " role="alert">
-					<div class="center-block"><s:fielderror/> </div>
-				</div>
+				<div id="messageError" class="alert alert-danger " role="alert"><s:fielderror/></div>
 			</div>
 		</div>
 	</div>
@@ -106,6 +96,20 @@
 		</div>
 
 	</div>
-
+	
+<script type="text/javascript">
+	function reImg() {
+		$("#vertImg").attr(
+				"src",
+				"${pageContext.request.contextPath}/system!validateCode.html?time="
+						+ new Date());
+	}
+	
+	if($("#messageError").text().trim() != null){
+		$("#mainDiv").show();
+	}else{
+		$("#mainDiv").hide();
+	}
+</script>
 </body>
 </html>
