@@ -14,7 +14,7 @@
 <link href="${pageContext.request.contextPath}/oa_css/style.css" rel="stylesheet" type="text/css" />
 
 </head>
-<body class="easyui-layout">
+<body >
 	<div>
 <!-- 		<fieldset class="fieldset-self"> -->
 <!-- 			<legend>新增菜单</legend> -->
