@@ -12,7 +12,7 @@
 <body class="easyui-layout">
 
 	<div style="margin-top:20px;"> 
-		<h3>你好，欢迎来到权限管理系统</h3>  
+		<h3>你好，365ITEDU办公管理系统</h3>  
 	</div>  
 
 </body>

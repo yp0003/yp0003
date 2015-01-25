@@ -46,7 +46,12 @@ public class OaGroupProductServicImpl implements OaGroupProductService {
 
 	@Override
 	public void delGroupProduct(String id) {
+		String groupId = getGroupProductById(id).getGroupId();
 		groupProductMapper.deleteByPrimaryKey(id);
+		
+		ProductGroupRelationExample example = new ProductGroupRelationExample();
+		example.or().andGroupIdEqualTo(groupId);
+		productGroupRelationMapper.deleteByExample(example);
 	}
 
 	@Override
@@ -89,8 +94,9 @@ public class OaGroupProductServicImpl implements OaGroupProductService {
 
 	@Override
 	public String[] getProductIds(String id) {
+		String groupId = getGroupProductById(id).getGroupId();
 		ProductGroupRelationExample example = new ProductGroupRelationExample();
-		example.or().andGroupIdEqualTo(id);
+		example.or().andGroupIdEqualTo(groupId);
 		List<ProductGroupRelation> list = productGroupRelationMapper.selectByExample(example);
 		String[] s = new String[list.size()];
 		for (int i = 0; i < s.length; i++) {

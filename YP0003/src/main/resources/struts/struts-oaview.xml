@@ -191,9 +191,9 @@
 	<!-- 产品组合 -->
 	<package name="oagroupproduct" namespace="/" extends="mypackage">
 		<action name="oaGroupProduct!*" method="{1}" class="com.yfann.web.action.oa.OaGroupProductAction">
-			<result name="tolist">/WEB-INF/pages/oa/playerCode/playerCodelist_oa.jsp</result>
-			<result name="add">/WEB-INF/pages/oa/message/messageadd_oa.jsp</result>
-			<result name="update">/WEB-INF/pages/oa/playerCode/playerCodeupdate_oa.jsp</result>
+			<result name="tolist">/WEB-INF/pages/oa/groupProduct/groupProductlist_oa.jsp</result>
+			<result name="add">/WEB-INF/pages/oa/groupProduct/groupProductadd_oa.jsp</result>
+			<result name="update">/WEB-INF/pages/oa/groupProduct/groupProductupdate_oa.jsp</result>
 		</action>
 	</package>
 
