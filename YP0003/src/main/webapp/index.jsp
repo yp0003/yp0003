@@ -90,15 +90,14 @@
 	
 		<div class="tabBar" style="margin: 0 auto">
 		<div class="hd">
-			<ul>
-				<li><img src="./image/gouji_l.gif" alt="成为架构师的理由" /></li>
-				<li><img src="./image/xuanzhe_l.gif" alt="成为架构师的理由" /></li>
-				<li style="border-right: #FFF;"><img src="./image/jiaru.gif"
-					alt="成为架构师的理由" /></li>
+			<ul data-spy="affix" data-offset-top="125">
+				<li><a href="#makeliyou"><img src="./image/gouji_l.gif" alt="成为架构师的理由" /></a></li>
+				<li><a href="#xuanzeliyou"><img src="./image/xuanzhe_l.gif" alt="成为架构师的理由" /></a></li>
+				<li><a href="#kaishixuexi"><img src="./image/jiaru.gif" alt="成为架构师的理由" /></a></li>
 			</ul>
 		</div>
 		<div class="bd">
-			<div class="liyou">
+			<div class="liyou" id="makeliyou">
 				<div class="conWrap">
 
 					<div class="con">
@@ -121,7 +120,7 @@
 			<img src="./image/10daliyou.gif" alt="选择课程的10大理由" />
 		</div>
 		<!--1 -->
-		<div class="liyoulist img_1 L">
+		<div id="xuanzeliyou" class="liyoulist img_1 L">
 			<div class="w480 right">
 				<img src="./image/1_title.gif" alt="绝对干货，一针见血" />
 				<p>&nbsp;</p>
@@ -320,7 +319,7 @@
 		<img src="./image/ganzuo.gif" />
 	</div>
 	<!--敢想 end-->
-	<div class="xuexi">
+	<div class="xuexi" id="kaishixuexi">
 		<p>
 			<img src="./image/jiandan.gif" alt="365IT学院，让学习变得更简单！" />
 		</p>

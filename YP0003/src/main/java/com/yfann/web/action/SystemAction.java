@@ -56,9 +56,9 @@ public class SystemAction extends CommonAction {
 	
 	private List<Product> productList;
 	
-	
-	public String forwardTest() {
-		return "forwardTest";
+	@SkipValidation
+	public String test1() {
+		return "forwardRegisterSuccess";
 	}
 
 	/**
@@ -198,9 +198,11 @@ public class SystemAction extends CommonAction {
 				String[] passwordArray = user.getNowPassword().split(",");
 				user.setNowPassword(passwordArray[0]);
 				systemService.saveUser(user);
-				return forwardLogin();
+				session.setAttribute(ApplicationValue.USER_KEY_ON_SESSION,user);// 添加用户到session中
+				return "forwardRegisterSuccess";
 			}else{
 				addActionMessage("验证码不正确或用户已存在");
+				return "forwardRegister";
 			}
 		}
 		return "forwardRegister";
