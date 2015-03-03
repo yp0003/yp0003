@@ -69,6 +69,8 @@ public class MyCenterAction extends CommonAction {
 	@Autowired
 	private SystemService systemService;
 	
+	
+	
 	/**
 	 * 用户头像图片
 	 */

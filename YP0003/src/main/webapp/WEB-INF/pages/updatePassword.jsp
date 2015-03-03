@@ -17,34 +17,6 @@
 <body>
 	<!-- 头部 -->
 	<%@ include file="common/common.jsp"%>
-	<%-- 	<s:form action="system!updatePassword.html" id="register">
-		<ul>
-			<li><label for="passWord">当前密码:</label> <s:textfield
-					id="passWord" placeHolder="请输入当前密码" name="user.oldPassword" class="rlf-input rlf-input-email"/> <span
-				class="redStar">*</span> <s:if
-					test="registerMessage.oldPasswordMessage != null">
-					<span class="redStar"><s:property
-							value="registerMessage.oldPasswordMessage" /></span>
-				</s:if></li>
-			<li><label for="passWord">新密码:</label> <s:textfield
-					id="passWord" placeHolder="英文、数字或字符，6-20位区分大小写"
-					name="user.nowPassword" class="rlf-input rlf-input-email"/> <span class="redStar">*</span> <s:if
-					test="registerMessage.passwordMessage != null">
-					<span class="redStar"><s:property
-							value="registerMessage.passwordMessage" /></span>
-				</s:if></li>
-			<li><label for="passWord">确认新密码:</label> <s:textfield
-					id="passWord" type="password" placeHolder="重复新密码"
-					name="user.nowPassword" class="rlf-input rlf-input-email"/> <span class="redStar">*</span></li>
-
-
-			<li>
-			<s:hidden name="user.id"></s:hidden>
-				<button type="submit" value="">更新密码</button>
-				<div class="clear"></div>
-			</li>
-		</ul>
-	</s:form> --%>
 
 	<div class="container-fluid" style="width: 80%; margin-top: 50px;">
 		<ol class="breadcrumb">

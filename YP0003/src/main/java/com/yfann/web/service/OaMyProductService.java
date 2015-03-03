@@ -2,7 +2,6 @@ package com.yfann.web.service;
 
 import java.util.List;
 
-import com.yfann.web.pojo.Department;
 import com.yfann.web.pojo.MyProduct;
 
 public interface OaMyProductService {

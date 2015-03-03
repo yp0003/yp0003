@@ -31,11 +31,12 @@
 <div class="container">
 <%@ include file="common/commonRight.jsp"%>
 
- <div class="mymain-content l ">
-        <div class="myspace-list l ">
-            <a href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html" class="myspace-course"><span>订单</span></a>
-           <a href="${pageContext.request.contextPath}/mycenter!forwardMyProductList.html" class="myspace-plan courseactive"><span>课程</span></a>
+ <div class="mymain-content l " style="margin-left: 20px;">
+        <div class="myspace-list l " style="float: left;">
+           <a href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html" class="myspace-course"><span>订单</span></a>
+           <a href="${pageContext.request.contextPath}/mycenter!forwardMyProductList.html" class="myspace-plan"><span>课程</span></a>
            <a href="${pageContext.request.contextPath}/mycenter!forwardMyMessage.html" class="myspace-ques "><span>消息</span></a>
+<%--            <a href="#" class="myspace-note "><span>设置</span></a> --%>
         </div>
         
 		<div class="myspace-courselist myspace-bg r"> 

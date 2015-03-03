@@ -360,9 +360,9 @@
 			<p>
 				<a href="#"> 关于我们 </a> | <a href="#"> 人才招聘 </a> | <a href="#">
 					讲师招募 </a> | <a href="#"> 联系我们 </a> | <a href="#"> 意见反馈 </a> | <a
-					href="#"> 友情链接</a>
+					href="${pageContext.request.contextPath}/oalogin!forwardLogin.html"> 后台入口</a>
 			</p>
-			<p>© 2013 365ITedu.com 京ICP备13046642号</p>
+			<p>沪ICP备13043409号-1</p>
 		</div>
 	</div>
 	<div class="kefu">

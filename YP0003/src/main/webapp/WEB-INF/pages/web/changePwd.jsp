@@ -40,7 +40,8 @@
 				<a href="${pageContext.request.contextPath}/mycenter!forwardModifyPassword.html">修改密码</a>
 			</div>
 			<div class="course-sidebar-type lf-center">
-				<a href="${pageContext.request.contextPath}/mycenter!forwardUploadHander.html">上传头像</a>
+				<a href="#">上传头像</a>
+				<%-- <a href="${pageContext.request.contextPath}/mycenter!forwardUploadHander.html">上传头像</a> --%>
 			</div>
 		</div>
 <!-- 		<div class="course-content"> -->
