@@ -3,6 +3,9 @@ package com.yfann.web.pojo;
 import java.util.Date;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"oaRoleList"})
 public class OaEmployee {
 	/** 用户所关联的角色 */
 	private List<OaRole> oaRoleList;

@@ -5,7 +5,8 @@
 <struts>
 	<package name="mypackage" extends="yfann-default" abstract="true">
 		<interceptors>
-			<interceptor name="loginCheck" class="com.yfann.web.interceptor.LoginInterceptor" />
+			<interceptor name="loginCheck"
+				class="com.yfann.web.interceptor.LoginInterceptor" />
 			<interceptor-stack name="mydefaultStack">
 				<interceptor-ref name="yfannDefaultStack"></interceptor-ref>
 				<interceptor-ref name="loginCheck"></interceptor-ref>
@@ -21,7 +22,8 @@
 
 	<package name="oalogin" namespace="/" extends="yfann-default">
 		<!-- OA登录 -->
-		<action name="oalogin!*" method="{1}" class="com.yfann.web.action.oa.OaLoginAction">
+		<action name="oalogin!*" method="{1}"
+			class="com.yfann.web.action.oa.OaLoginAction">
 			<!-- 跳转到登录 -->
 			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
 			<!-- 跳转到注册 -->
@@ -33,7 +35,8 @@
 			<!-- 欢迎页面 -->
 			<result name="welcome">/WEB-INF/pages/oa/welcome_oa.jsp</result>
 			<!-- 找回密码 -->
-			<result name="tofindpassword">/WEB-INF/pages/oa/employee/findPassword.jsp</result>
+			<result name="tofindpassword">/WEB-INF/pages/oa/employee/findPassword.jsp
+			</result>
 			<result name="registerError" type="stream">
 				<param name="contentType">text/html</param>
 				<param name="inputName">jsonInputStream</param>
@@ -43,7 +46,8 @@
 
 	<!-- 菜单 -->
 	<package name="oamenu" namespace="/" extends="mypackage">
-		<action name="oaMenu!*" method="{1}" class="com.yfann.web.action.oa.OaMenuAction">
+		<action name="oaMenu!*" method="{1}"
+			class="com.yfann.web.action.oa.OaMenuAction">
 			<result name="tolist">/WEB-INF/pages/oa/menu/menulist_oa.jsp</result>
 			<result name="add">/WEB-INF/pages/oa/menu/menuadd_oa.jsp</result>
 			<result name="update">/WEB-INF/pages/oa/menu/menuupdate_oa.jsp</result>
@@ -52,16 +56,21 @@
 
 	<!-- 部门 -->
 	<package name="oadepart" namespace="/" extends="mypackage">
-		<action name="oaDepart!*" method="{1}" class="com.yfann.web.action.oa.OaDepartmentAction">
-			<result name="tolist">/WEB-INF/pages/oa/depart/departlist_oa.jsp</result>
-			<result name="add">/WEB-INF/pages/oa/depart/departadd_oa.jsp</result>
-			<result name="update">/WEB-INF/pages/oa/depart/departupdate_oa.jsp</result>
+		<action name="oaDepart!*" method="{1}"
+			class="com.yfann.web.action.oa.OaDepartmentAction">
+			<result name="tolist">/WEB-INF/pages/oa/depart/departlist_oa.jsp
+			</result>
+			<result name="add">/WEB-INF/pages/oa/depart/departadd_oa.jsp
+			</result>
+			<result name="update">/WEB-INF/pages/oa/depart/departupdate_oa.jsp
+			</result>
 		</action>
 	</package>
 
 	<!-- 角色 -->
 	<package name="oarole" namespace="/" extends="mypackage">
-		<action name="oaRole!*" method="{1}" class="com.yfann.web.action.oa.OaRoleAction">
+		<action name="oaRole!*" method="{1}"
+			class="com.yfann.web.action.oa.OaRoleAction">
 			<result name="tolist">/WEB-INF/pages/oa/role/rolelist_oa.jsp</result>
 			<result name="add">/WEB-INF/pages/oa/role/roleadd_oa.jsp</result>
 			<result name="update">/WEB-INF/pages/oa/role/roleupdate_oa.jsp</result>
@@ -71,20 +80,34 @@
 
 	<!-- 用户 -->
 	<package name="oaemp" namespace="/" extends="mypackage">
-		<action name="oaEmp!*" method="{1}" class="com.yfann.web.action.oa.OaEmployeeAction">
-			<result name="toEmpList">/WEB-INF/pages/oa/employee/employeelist_oa.jsp</result>
-			<result name="selectEmp">/WEB-INF/pages/oa/employee/employeelist_oa.jsp</result>
+		<action name="oaEmp!*" method="{1}"
+			class="com.yfann.web.action.oa.OaEmployeeAction">
+			<result name="toEmpList">/WEB-INF/pages/oa/employee/employeelist_oa.jsp
+			</result>
+			<result name="selectEmp">/WEB-INF/pages/oa/employee/employeelist_oa.jsp
+			</result>
 			<!-- <result type="json"></result> -->
 			<!-- <result name="add">/WEB-INF/pages/oa/employee/employeeadd_oa.jsp</result> -->
-			<result name="update">/WEB-INF/pages/oa/employee/empupdate_oa.jsp</result>
-			<result name="myinfo">/WEB-INF/pages/oa/employee/myinfoupdate_oa.jsp</result>
-			<result name="updatePasswordUI">/WEB-INF/pages/oa/employee/updatePassword_oa.jsp</result>
+			<result name="update">/WEB-INF/pages/oa/employee/empupdate_oa.jsp
+			</result>
+			<result name="myinfo">/WEB-INF/pages/oa/employee/myinfoupdate_oa.jsp
+			</result>
+			<result name="updatePasswordUI">/WEB-INF/pages/oa/employee/updatePassword_oa.jsp
+			</result>
 			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
-			<result name="privilegeByEmp">/WEB-INF/pages/oa/employee/employeeprivilege_oa.jsp</result>
-			<result name="action2action" type="redirect">oaEmp!toEmpList.html</result>
+			<result name="privilegeByEmp">/WEB-INF/pages/oa/employee/employeeprivilege_oa.jsp
+			</result>
+			<result name="action2action" type="redirect">oaEmp!toEmpList.html
+			</result>
 			<result name="logout" type="redirect">oalogin!logout.html</result>
 
-			<result name="updateImage">/WEB-INF/pages/oa/employee/empupdateimage_oa.jsp</result>
+			<result name="updateImage">/WEB-INF/pages/oa/employee/empupdateimage_oa.jsp
+			</result>
+			<!-- 用户列表json -->
+			<result name="employeesList" type="stream">
+				<param name="contentType">application/json</param>
+				<param name="inputName">jsonInputStream</param>
+			</result>
 
 			<!-- 头像 -->
 			<result name="headImage" type="stream">
@@ -100,51 +123,71 @@
 
 
 			<!-- 客户 -->
-			<result name="toUserList">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
-			<result name="selectUser">/WEB-INF/pages/oa/employee/userlist_oa.jsp</result>
-			<result name="updateUser">/WEB-INF/pages/oa/employee/uupdate_oa.jsp</result>
-			<result name="privilegeByUser">/WEB-INF/pages/oa/employee/userprivilege_oa.jsp</result>
-			<result name="action2actionUser" type="redirect">oaEmp!toUserList.html</result>
+			<result name="toUserList">/WEB-INF/pages/oa/employee/userlist_oa.jsp
+			</result>
+			<result name="selectUser">/WEB-INF/pages/oa/employee/userlist_oa.jsp
+			</result>
+			<result name="updateUser">/WEB-INF/pages/oa/employee/uupdate_oa.jsp
+			</result>
+			<result name="privilegeByUser">/WEB-INF/pages/oa/employee/userprivilege_oa.jsp
+			</result>
+			<result name="action2actionUser" type="redirect">oaEmp!toUserList.html
+			</result>
 		</action>
 	</package>
 
 	<!-- 公告 -->
 	<package name="oapm" namespace="/" extends="mypackage">
-		<action name="oaPublicMessage!*" method="{1}" class="com.yfann.web.action.oa.OaPublicMessageAction">
-			<result name="forwardPulbicMessageList">/WEB-INF/pages/oa/publicMessage/publicMessagelist_oa.jsp</result>
-			<result name="forwardPulbicMessageInfo">/WEB-INF/pages/oa/publicMessage/publicMessageadd_oa.jsp</result>
-			<result name="update">/WEB-INF/pages/oa/publicMessage/publicMessageupdate_oa.jsp</result>
+		<action name="oaPublicMessage!*" method="{1}"
+			class="com.yfann.web.action.oa.OaPublicMessageAction">
+			<result name="forwardPulbicMessageList">/WEB-INF/pages/oa/publicMessage/publicMessagelist_oa.jsp
+			</result>
+			<result name="forwardPulbicMessageInfo">/WEB-INF/pages/oa/publicMessage/publicMessageadd_oa.jsp
+			</result>
+			<result name="update">/WEB-INF/pages/oa/publicMessage/publicMessageupdate_oa.jsp
+			</result>
 			<result name="action2action" type="redirect">oaPM!toList.html</result>
 		</action>
 	</package>
 
 	<!-- 产品 -->
 	<package name="oaProduct" namespace="/" extends="mypackage">
-		<action name="oaProduct!*" method="{1}" class="com.yfann.web.action.oa.OaProductAction">
-			<result name="forwardProductList">/WEB-INF/pages/oa/product/productlist_oa.jsp</result>
-			<result name="productInfo">/WEB-INF/pages/oa/product/productInfo_oa.jsp</result>
+		<action name="oaProduct!*" method="{1}"
+			class="com.yfann.web.action.oa.OaProductAction">
+			<result name="forwardProductList">/WEB-INF/pages/oa/product/productlist_oa.jsp
+			</result>
+			<result name="productInfo">/WEB-INF/pages/oa/product/productInfo_oa.jsp
+			</result>
 		</action>
 	</package>
 
 	<!-- 消息 -->
 	<package name="oamessage" namespace="/" extends="mypackage">
-		<action name="oaMessage!*" method="{1}" class="com.yfann.web.action.oa.OaMessageAction">
-			<result name="tolist">/WEB-INF/pages/oa/message/messagelist_oa.jsp</result>
-			<result name="add">/WEB-INF/pages/oa/message/messageadd_oa.jsp</result>
-			<result name="update">/WEB-INF/pages/oa/message/messageupdate_oa.jsp</result>
-			<result name="action2action" type="redirect">oaMessage!toList.html</result>
+		<action name="oaMessage!*" method="{1}"
+			class="com.yfann.web.action.oa.OaMessageAction">
+			<result name="tolist">/WEB-INF/pages/oa/message/messagelist_oa.jsp
+			</result>
+			<result name="add">/WEB-INF/pages/oa/message/messageadd_oa.jsp
+			</result>
+			<result name="update">/WEB-INF/pages/oa/message/messageupdate_oa.jsp
+			</result>
+			<result name="action2action" type="redirect">oaMessage!toList.html
+			</result>
 			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
 		</action>
 	</package>
 
 	<!-- 审批 -->
 	<package name="oaapply" namespace="/" extends="mypackage">
-		<action name="oaApply!*" method="{1}" class="com.yfann.web.action.oa.OaApplyAction">
+		<action name="oaApply!*" method="{1}"
+			class="com.yfann.web.action.oa.OaApplyAction">
 			<result name="applylist">/WEB-INF/pages/oa/apply/applylist_oa.jsp</result>
 			<result name="applyadd">/WEB-INF/pages/oa/apply/applyInfo_oa.jsp</result>
 			<result name="applyview">/WEB-INF/pages/oa/apply/applyview_oa.jsp</result>
-			<result name="authorizelist">/WEB-INF/pages/oa/apply/authorizelist_oa.jsp</result>
-			<result name="authorizeupdate">/WEB-INF/pages/oa/apply/authorizeupdate_oa.jsp</result>
+			<result name="authorizelist">/WEB-INF/pages/oa/apply/authorizelist_oa.jsp
+			</result>
+			<result name="authorizeupdate">/WEB-INF/pages/oa/apply/authorizeupdate_oa.jsp
+			</result>
 			<result name="paylist">/WEB-INF/pages/oa/apply/paylist_oa.jsp</result>
 			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
 		</action>
@@ -152,7 +195,8 @@
 
 	<!-- 销售 -->
 	<package name="oasales" namespace="/" extends="mypackage">
-		<action name="oaSales!*" method="{1}" class="com.yfann.web.action.oa.OaSalesAction">
+		<action name="oaSales!*" method="{1}"
+			class="com.yfann.web.action.oa.OaSalesAction">
 			<result name="oasaleslist">/WEB-INF/pages/oa/sales/saleslist_oa.jsp</result>
 			<result name="oasalesadd">/WEB-INF/pages/oa/sales/salesadd_oa.jsp</result>
 			<result name="view">/WEB-INF/pages/oa/sales/salesview_oa.jsp</result>
@@ -160,7 +204,8 @@
 			<result name="codefail">/WEB-INF/pages/oa/sales/codefail.jsp</result>
 			<result name="fail">/WEB-INF/pages/oa/sales/fail.jsp</result>
 			<result name="oasalesupload">/WEB-INF/pages/oa/apply/applyview_oa.jsp</result>
-			<result name="salesCountList">/WEB-INF/pages/oa/sales/salesCountList_oa.jsp</result>
+			<result name="salesCountList">/WEB-INF/pages/oa/sales/salesCountList_oa.jsp
+			</result>
 
 			<!-- 跳转到登陆页面 -->
 			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
@@ -171,29 +216,38 @@
 			</result>
 		</action>
 	</package>
-	
+
 	<!-- 销售 -->
 	<package name="oaroy" namespace="/" extends="mypackage">
-		<action name="oaRoy!*" method="{1}" class="com.yfann.web.action.oa.OaRoyaltiesAction">
-			<result name="to">/WEB-INF/pages/oa/sales/salesroyalties_oa.jsp</result>
+		<action name="oaRoy!*" method="{1}"
+			class="com.yfann.web.action.oa.OaRoyaltiesAction">
+			<result name="to">/WEB-INF/pages/oa/sales/salesroyalties_oa.jsp
+			</result>
 			<result name="input">/WEB-INF/pages/oa/sales/input.jsp</result>
 		</action>
 	</package>
-	
+
 	<!-- 播放码 -->
 	<package name="oaplaycode" namespace="/" extends="mypackage">
-		<action name="oaPlayCode!*" method="{1}" class="com.yfann.web.action.oa.OaMyProductAction">
-			<result name="tolist">/WEB-INF/pages/oa/playerCode/playerCodelist_oa.jsp</result>
-			<result name="update">/WEB-INF/pages/oa/playerCode/playerCodeupdate_oa.jsp</result>
+		<action name="oaPlayCode!*" method="{1}"
+			class="com.yfann.web.action.oa.OaMyProductAction">
+			<result name="tolist">/WEB-INF/pages/oa/playerCode/playerCodelist_oa.jsp
+			</result>
+			<result name="update">/WEB-INF/pages/oa/playerCode/playerCodeupdate_oa.jsp
+			</result>
 		</action>
 	</package>
-	
+
 	<!-- 产品组合 -->
 	<package name="oagroupproduct" namespace="/" extends="mypackage">
-		<action name="oaGroupProduct!*" method="{1}" class="com.yfann.web.action.oa.OaGroupProductAction">
-			<result name="tolist">/WEB-INF/pages/oa/groupProduct/groupProductlist_oa.jsp</result>
-			<result name="add">/WEB-INF/pages/oa/groupProduct/groupProductadd_oa.jsp</result>
-			<result name="update">/WEB-INF/pages/oa/groupProduct/groupProductupdate_oa.jsp</result>
+		<action name="oaGroupProduct!*" method="{1}"
+			class="com.yfann.web.action.oa.OaGroupProductAction">
+			<result name="tolist">/WEB-INF/pages/oa/groupProduct/groupProductlist_oa.jsp
+			</result>
+			<result name="add">/WEB-INF/pages/oa/groupProduct/groupProductadd_oa.jsp
+			</result>
+			<result name="update">/WEB-INF/pages/oa/groupProduct/groupProductupdate_oa.jsp
+			</result>
 		</action>
 	</package>
 

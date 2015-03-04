@@ -41,7 +41,11 @@ public class PageInfo {
 	 * @return
 	 */
 	public int getOffset() {
-		return (pageNo - 1) * getPageSize();
+		if((pageNo - 1) * getPageSize() < 0){
+			return 0;
+		}else{
+			return (pageNo - 1) * getPageSize();
+		}
 	}
 	
 	public Integer getPageNo() {

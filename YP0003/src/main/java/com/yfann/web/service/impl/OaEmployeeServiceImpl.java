@@ -29,6 +29,7 @@ import com.yfann.web.pojo.User;
 import com.yfann.web.pojo.UserExample;
 import com.yfann.web.service.OaEmployeeService;
 import com.yfann.web.vo.MailContext;
+import com.yfann.web.vo.PageInfo;
 
 @Service
 public class OaEmployeeServiceImpl implements OaEmployeeService {
@@ -42,6 +43,36 @@ public class OaEmployeeServiceImpl implements OaEmployeeService {
 	private OaEmpRoleMapper oaEmpRoleMapper;
 	@Autowired
 	private JavaMailSenderImpl javaMailSenderImpl;
+	
+	@Override
+	public List<OaEmployee> employeeList(OaEmployee oaEmployee,
+			PageInfo pageInfo) {
+		Map<String,Object> oaEmployeeParamerMap = getOaEmployeeParamerMap(oaEmployee);
+		pageInfo.setCount(oaEmployeeMapper.selectEmployeeCountByParames(oaEmployeeParamerMap));
+		int offset = pageInfo.getOffset();
+		List<OaEmployee> employeeList = oaEmployeeMapper.selectEmployeeByParames(oaEmployeeParamerMap, new RowBounds(offset, pageInfo.getPageSize()));
+		return employeeList;
+	}
+	
+	/**
+	 * 生成员工map查询条件
+	 * @param oaEmployee
+	 * @return
+	 */
+	private Map<String,Object> getOaEmployeeParamerMap(OaEmployee oaEmployee){
+		Map<String,Object> oaEmployeeParamerMap = new HashMap<String, Object>();
+		if(oaEmployee != null){
+			//员工账号
+			if(StringUtils.isNotBlank(oaEmployee.getEmployeeId())){
+				oaEmployeeParamerMap.put("employeeId", oaEmployee.getEmployeeId());
+			}
+			//员工姓名
+			if(StringUtils.isNotBlank(oaEmployee.getEmployeeName())){
+				oaEmployeeParamerMap.put("employeeName", "%" + oaEmployee.getEmployeeName() + "%");
+			}
+		}
+		return oaEmployeeParamerMap;
+	}
 
 	@Override
 	public void saveOaEmployee(OaEmployee oaEmployee) throws Exception {

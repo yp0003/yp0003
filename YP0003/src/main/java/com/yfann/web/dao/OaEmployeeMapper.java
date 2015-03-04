@@ -11,6 +11,20 @@ import org.apache.ibatis.session.RowBounds;
 
 public interface OaEmployeeMapper {
 	/**
+	 * 根据条件查询员工信息 分页查询
+	 * @param parames
+	 * @param rowBounds
+	 * @return
+	 */
+	List<OaEmployee> selectEmployeeByParames(Map<String,Object> parames,RowBounds rowBounds);
+	/**
+	 * 根据条件查询员工数辆
+	 * @param parames
+	 * @param rowBounds
+	 * @return
+	 */
+	Integer selectEmployeeCountByParames(Map<String,Object> parames);
+	/**
 	 * 更新头像
 	 * @param record
 	 */

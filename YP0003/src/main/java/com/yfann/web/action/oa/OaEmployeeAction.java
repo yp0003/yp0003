@@ -1,14 +1,16 @@
 package com.yfann.web.action.oa;
 
 import java.io.ByteArrayInputStream;
-
 import java.io.File;
-
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.commons.lang3.StringUtils;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.action.CommonAction;
@@ -59,6 +61,8 @@ public class OaEmployeeAction extends CommonAction {
 
 	/** Struts2下载(内存数据下载) */
 	public ByteArrayInputStream byteArrayInputStream;
+	
+	private InputStream jsonInputStream;
 
 	private File fileupload; // 和JSP中input标记name同名
 	private String fileuploadFileName;
@@ -76,23 +80,34 @@ public class OaEmployeeAction extends CommonAction {
 	private String empId;
 
 	private OaEmployee emp;
+	//当前页码
+	private Integer page;
+	//分页数
+	private Integer rows;
 
-	// 用户列表显示
-	public String toEmpList() {
+	// 用户列表显示界面
+	public String toEmpList() throws Exception{
 		roleList = oaRoleService.getAllOaRole();
-		pageInfo.setCount(oaEmployeeService.getAllEmpCount());
-		empList = oaEmployeeService.getAllEmp(pageInfo.getOffset(), pageInfo.getPageSize());
 		return "toEmpList";
 	}
-
-	// 客户列表查找显示
-	public String selectEmp() {
+	
+	/**
+	 * 用户列表
+	 * @return
+	 * @throws Exception
+	 */
+	public void employeesList() throws Exception{
 		roleList = oaRoleService.getAllOaRole();
-		pageInfo.setCount(oaEmployeeService.getEmpCountByField(oaEmployee.getEmployeeId(),
-				oaEmployee.getEmployeeName(), rid));
-		empList = oaEmployeeService.getEmpByField(oaEmployee.getEmployeeId(), oaEmployee.getEmployeeName(),
-				rid, pageInfo.getOffset(), pageInfo.getPageSize());
-		return "selectEmp";
+		pageInfo = new PageInfo();
+		pageInfo.setPageNo(page);
+		pageInfo.setPageSize(rows);
+		empList = oaEmployeeService.employeeList(oaEmployee, pageInfo);
+		Map<String,Object> resultJsonMap = new TreeMap<String, Object>();
+		resultJsonMap.put("total",pageInfo.getCount());
+		resultJsonMap.put("rows", empList);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String json = objectMapper.writeValueAsString(resultJsonMap);
+		response.getOutputStream().write(json.getBytes("utf-8"));
 	}
 
 	// 转到用户修改页面
@@ -425,26 +440,6 @@ public class OaEmployeeAction extends CommonAction {
 	public void setRids(String[] rids) {
 		this.rids = rids;
 	}
-
-	private int total;
-	private List<Object> rows;
-
-	public int getTotal() {
-		return total;
-	}
-
-	public void setTotal(int total) {
-		this.total = total;
-	}
-
-	public List<Object> getRows() {
-		return rows;
-	}
-
-	public void setRows(List<Object> rows) {
-		this.rows = rows;
-	}
-
 	public PageInfo getPageInfo() {
 		return pageInfo;
 	}
@@ -555,6 +550,30 @@ public class OaEmployeeAction extends CommonAction {
 
 	public void setByteArrayInputStream(ByteArrayInputStream byteArrayInputStream) {
 		this.byteArrayInputStream = byteArrayInputStream;
+	}
+
+	public InputStream getJsonInputStream() {
+		return jsonInputStream;
+	}
+
+	public void setJsonInputStream(InputStream jsonInputStream) {
+		this.jsonInputStream = jsonInputStream;
+	}
+
+	public Integer getPage() {
+		return page;
+	}
+
+	public void setPage(Integer page) {
+		this.page = page;
+	}
+
+	public Integer getRows() {
+		return rows;
+	}
+
+	public void setRows(Integer rows) {
+		this.rows = rows;
 	}
 
 }

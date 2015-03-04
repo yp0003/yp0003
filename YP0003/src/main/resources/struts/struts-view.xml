@@ -19,8 +19,6 @@
 			<result name="forwardLogin">/WEB-INF/pages/login.jsp</result>
 			<result name="forwardRegisterSuccess">/WEB-INF/pages/registSuccess.jsp</result>
 		</action>
-
-
 		<action name="controllerSystem!*" method="{1}"
 			class="com.yfann.web.action.ControllerAction">
 			<result name="forwardTest">/WEB-INF/pages/common/commonNew.jsp</result>

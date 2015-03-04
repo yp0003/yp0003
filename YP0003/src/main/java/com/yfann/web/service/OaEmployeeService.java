@@ -6,8 +6,16 @@ import java.util.List;
 import com.yfann.web.pojo.OaEmployee;
 import com.yfann.web.pojo.User;
 import com.yfann.web.vo.MailContext;
+import com.yfann.web.vo.PageInfo;
 
 public interface OaEmployeeService {
+	/**
+	 * 获取员工列表
+	 * @param oaEmployee
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<OaEmployee> employeeList(OaEmployee oaEmployee,PageInfo pageInfo);
 	/**
 	 * 更新用户头像
 	 * 
