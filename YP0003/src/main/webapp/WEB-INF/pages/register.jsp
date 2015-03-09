@@ -28,20 +28,18 @@
 <title>注册</title>
 </head>
 <body>
-
-
-	<div id="mainDiv" class="container">
-		<div class="row" style="text-align: center;">
-			<div class="col-lg-12">
-				<div id="messageError" class="alert alert-danger " role="alert">
-					<s:actionmessage/>
-					<s:fielderror />
+	<s:if test="fieldErrors.size > 0 || actionErrors[0] != null">
+		<div id="mainDiv" class="container">
+			<div class="row" style="text-align: center;">
+				<div class="col-lg-12">
+					<div id="messageError" class="alert alert-danger " role="alert">
+						<s:fielderror />
+						<s:actionerror/>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-
+	</s:if>
 	<!---网页内容 start-->
 	<div id="content_wrap">
 		<div id="hr_content"></div>
@@ -78,7 +76,6 @@
 								onclick="reImg();">看不清,换一张</a>
 							<li>
 								<button id="btn_register" type="submit" value=""></button>
-
 							</li>
 						</ul>
 					</form>

@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -33,6 +32,7 @@ import com.yfann.web.vo.MailContext;
 import com.yfann.web.vo.RegisterMessage;
 
 /**
+ * 
  * @Description: 页面转向action
  * @author Tree
  * 
@@ -53,9 +53,13 @@ public class SystemAction extends CommonAction {
 	private String remPass;
 	@Autowired
 	private ProductService productService;
-	
+
 	private List<Product> productList;
-	
+	/*登陆标识**/
+	private Integer loginFlag;
+	/*注册标识**/
+	private Integer registFlag;
+
 	@SkipValidation
 	public String test1() {
 		return "forwardRegisterSuccess";
@@ -79,16 +83,18 @@ public class SystemAction extends CommonAction {
 	@SkipValidation
 	public String findPassword() {
 		if (user != null) {
-			try{
-			User userInfo = systemService.findUserByUserId(user.getUserId());
-			MailContext mailContext = new MailContext();
-			mailContext
-					.setMailSubject(ApplicationValue.MAIL_FIND_PASSWORD_SUBJECT);
-			mailContext.setTextContext("尊敬的" + user.getUserId() + "您好,您的密码为"
-					+ userInfo.getNowPassword() + "请妥善保存好您的密码.");
-			
-			systemService.sendMail(user.getEmail(), mailContext);
-			}catch(Exception e){
+			try {
+				User userInfo = systemService
+						.findUserByUserId(user.getUserId());
+				MailContext mailContext = new MailContext();
+				mailContext
+						.setMailSubject(ApplicationValue.MAIL_FIND_PASSWORD_SUBJECT);
+				mailContext.setTextContext("尊敬的" + user.getUserId()
+						+ "您好,您的密码为" + userInfo.getNowPassword()
+						+ "请妥善保存好您的密码.");
+
+				systemService.sendMail(user.getEmail(), mailContext);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -122,40 +128,37 @@ public class SystemAction extends CommonAction {
 		return "forwardLogin";
 	}
 
+	// TODO 带修正功能
 	/**
 	 * 登陆
 	 * 
 	 * @return
 	 */
 	@SkipValidation
-	public String login() throws Exception{
+	public String login() throws Exception {
 		if (user != null) {
 			User userTemp = null;
-			try{
-				userTemp = systemService.valiDateLogin(user);
-			}catch(Exception e){
-				logger.error(e.getMessage());
-				e.printStackTrace();
-			}
-			if (userTemp != null) {
-				session.setAttribute(ApplicationValue.USER_KEY_ON_SESSION,
-						userTemp);// 添加用户到session中
-				return forwardIndex();
-			}
-		}
-		productList = productService.findPerfectProductList();
-		if(null ==productList)
-			productList = new ArrayList<Product>();
-		else{
-			if(productList.size()<3)
-				while(productList.size()==3){
-					Product ptemp = new Product();
-					ptemp.setProductDesc("暂无描述");
-					productList.add(ptemp);
+			// 验证用户是否通过
+			if ((userTemp = systemService.valiDateLogin(user)) != null) {
+				@SuppressWarnings("deprecation")
+				Object valiCodeObj = session.getValue("valiCode");
+				// Session中的验证码
+				String flagValiCode = valiCodeObj.toString();
+				if (StringUtils.isBlank(validateCode)
+						|| !flagValiCode.equals(validateCode)) {
+					addActionError("验证码输入错误");
+					//有错误消息标识 控制前台css样式隐藏或展现
+					setLoginFlag(1);
+				} else {
+					session.setAttribute(ApplicationValue.USER_KEY_ON_SESSION,
+							userTemp);// 添加用户到session中
+					return forwardIndex();
 				}
+			} else {
+				addActionError("用户名或密码错误");
+			}
 		}
 		return "forwardLogin";
-
 	}
 
 	/**
@@ -192,16 +195,17 @@ public class SystemAction extends CommonAction {
 			@SuppressWarnings("deprecation")
 			Object valiCodeObj = session.getValue("valiCode");
 			String flagValiCode = valiCodeObj.toString();
-			
 			if (StringUtils.isNotBlank(flagValiCode)
-					&& flagValiCode.equals(validateCode) && systemService.findUserByUserId(user.getUserId()) == null) {
+					&& flagValiCode.equals(validateCode)
+					&& systemService.findUserByUserId(user.getUserId()) == null) {
 				String[] passwordArray = user.getNowPassword().split(",");
 				user.setNowPassword(passwordArray[0]);
 				systemService.saveUser(user);
-				session.setAttribute(ApplicationValue.USER_KEY_ON_SESSION,user);// 添加用户到session中
+				session.setAttribute(ApplicationValue.USER_KEY_ON_SESSION, user);// 添加用户到session中
 				return "forwardRegisterSuccess";
-			}else{
+			} else {
 				addActionMessage("验证码不正确或用户已存在");
+				setRegistFlag(1);
 				return "forwardRegister";
 			}
 		}
@@ -326,6 +330,21 @@ public class SystemAction extends CommonAction {
 	public void setProductList(List<Product> productList) {
 		this.productList = productList;
 	}
-	
-	
+
+	public Integer getLoginFlag() {
+		return loginFlag;
+	}
+
+	public void setLoginFlag(Integer loginFlag) {
+		this.loginFlag = loginFlag;
+	}
+
+	public Integer getRegistFlag() {
+		return registFlag;
+	}
+
+	public void setRegistFlag(Integer registFlag) {
+		this.registFlag = registFlag;
+	}
+
 }

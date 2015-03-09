@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,11 +35,17 @@
 </script>
 </head>
 <body>
-	<!-- 头部 -->
-	<%-- <%@ include file="common/common.jsp"%> --%>
-
-
-
+	 <s:if test="actionErrors[0] != null">
+		<div id="mainDiv" class="container">
+		<div class="row" style="text-align: center;">
+			<div class="col-lg-12">
+				<div id="messageError" class="alert alert-danger " role="alert">
+					<s:actionerror/>
+				</div>
+			</div>
+		</div>
+	</div>
+	</s:if>
 	<!---网页内容 start-->
 	<div id="content_wrap">
 		<div id="hr_content"></div>
@@ -55,27 +62,38 @@
 
 				<div id="login_form">
 					<form id="login" action="system!login.html" method="post">
-						<ul>
-							<li><label for="memberID">用户名:</label> <input id="memberID"
-							type="text" name="user.userId" /> <span
-								class="redStar">*</span></li>
-							<li><label for="passWord">密&nbsp;码:</label> <input
-							id="passWord" type="password" name="user.nowPassword" /> <span class="redStar">*</span></li>
-							
-							<li><label for="vertCode">验证码:</label> <input
-								id="registValidateCode" type="text" name="validateCode" style="width:70px;"/> <img id="vertImg"
-								src="${pageContext.request.contextPath}/system!validateCode.html" />
-								<a class="chgVertImg" href="javascript:void(0);"onclick="reImg();">看不清，换一张</a>
-							<li><input id="remPass" type="checkbox" /> <label
-							id="lblRemPass" for="remPass">记住密码，两周内自动登录</label> <a
-							id="forgetPW"
-							href="${pageContext.request.contextPath}/system!forwardFindPassword.html">忘记密码</a>
-							<div class="clear"></div></li>
-							<li>
-								<button id="btn_login" type="submit" value=""></button>
+						<table>
+							<!-- 用户名 -->
+							<tr>
+								<td><label for="memberID">用户名:</label></td>
+								<td><input id="memberID" type="text" name="user.userId" /></td>
+							</tr>
+							<!-- 密码 -->
+							<tr>
+								<td><label for="memberID">密码:</label></td>
+								<td><input id="passWord" type="password"
+									name="user.nowPassword" /></td>
+							</tr>
+							<!-- 验证码 -->
+							<tr>
+								<td><label for="memberID">验证码:</label></td>
+								<td><input id="registValidateCode" type="text"
+									name="validateCode" style="width: 70px;" />&nbsp;&nbsp;<img
+									id="vertImg"
+									src="${pageContext.request.contextPath}/system!validateCode.html" />
+									&nbsp;&nbsp;<a class="chgVertImg" href="javascript:void(0);"
+									onclick="reImg();">看不清，换一张</a></td>
+							</tr>
+						</table>
 
-							</li>
-						</ul>
+						<tr>
+							<td><input id="remPass" type="checkbox" /><label
+								id="lblRemPass" for="remPass">记住密码，两周内自动登录</label></td>
+							<td><a id="forgetPW"
+								href="${pageContext.request.contextPath}/system!forwardFindPassword.html">忘记密码</a></td>
+						</tr>
+						<br/>
+						<button id="btn_login" type="submit" value=""></button>
 					</form>
 
 				</div>
@@ -84,23 +102,17 @@
 					src="${pageContext.request.contextPath}/image/login/split_LR.png"
 					alt="" />
 				<div id="login_rightC">
-					<img id="img_right" src="${pageContext.request.contextPath}/image/login/img_loginC1.jpg" /> <span class="lblImgInfo">还没有学习账号？</span> <a class="linkImgAction"
-					href="${pageContext.request.contextPath}/system!forwardRegister.html">立即去免费注册
-					&gt;&gt;</a>
+					<img id="img_right"
+						src="${pageContext.request.contextPath}/image/login/img_loginC1.jpg" />
+					<span class="lblImgInfo">还没有学习账号？</span> <a class="linkImgAction"
+						href="${pageContext.request.contextPath}/system!forwardRegister.html">立即去免费注册
+						&gt;&gt;</a>
 				</div>
 
 				<div class="clear"></div>
 			</div>
 
 		</div>
-
 	</div>
-
-
-
-
-	<!-- 底部 -->
-<%-- 	<%@ include file="common/commonFooter.jsp"%> --%>
-
 </body>
 </html>

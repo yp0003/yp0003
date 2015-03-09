@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yfann.web.annotation.UserSessionCheck;
+import com.yfann.web.common.ApplicationValue;
 import com.yfann.web.pojo.Message;
 import com.yfann.web.pojo.MyProduct;
 import com.yfann.web.pojo.OaEmployee;
@@ -37,13 +38,13 @@ public class MyCenterAction extends CommonAction {
 	private MyProduct myProduct;
 	/** 我的课程列表 */
 	private List<MyProduct> myProductList;
-	/** 我的消息列表*/
+	/** 我的消息列表 */
 	private List<Message> myMessageList;
-	/** 我的消息*/
+	/** 我的消息 */
 	private Message message;
-	/**课程*/
+	/** 课程 */
 	private Product product;
-	/**课程详情*/
+	/** 课程详情 */
 	private ProductDetail productDetail;
 	@Autowired
 	private OrderService orderService;
@@ -54,102 +55,109 @@ public class MyCenterAction extends CommonAction {
 	@Autowired
 	private OaEmployeeService oaEmployeeService;
 	private OaEmployee teacher;
-	
+
 	private int myMessageCount;
-	
-	//扫描件
-	private File file;	
-	//扫描件文件类型
+
+	// 扫描件
+	private File file;
+	// 扫描件文件类型
 	private String fileContentType;
 	private String fileFileName;
-	
+
 	/** Struts2下载(内存数据下载) */
 	private ByteArrayInputStream byteArrayInputStream;
-	
+
 	@Autowired
 	private SystemService systemService;
-	
-	
-	
+
 	/**
 	 * 用户头像图片
 	 */
 	public String showUserHeader() {
 		// 填充内存流(课程缩略图)
 		try {
-			setByteArrayInputStream(myCenterService
-					.findUserHeadImgById(user.getId()));
+			setByteArrayInputStream(myCenterService.findUserHeadImgById(user
+					.getId()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "showUserHeader";
 	}
-	
-	public String forwardMySetting(){
+
+	public String forwardMySetting() {
 		user = myCenterService.findUserInfoById(this.currentUserInfo());
 		return "forwardMySetting";
-	} 
-	
-	public String cancelOrder(){
-		
+	}
+
+	public String cancelOrder() {
+
 		orderService.cancelOrder(currentUserInfo(), order);
 		return forwardMyOrderList();
 	}
+
 	/**
 	 * 消息列表
+	 * 
 	 * @return
 	 */
-	public String messageList(){
+	public String messageList() {
 		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		return "messageList";
 	}
 
 	/**
 	 * 跳转到提交机器码页面
+	 * 
 	 * @return
 	 */
 	@UserSessionCheck
-	public String forwardCommitSmartCode(){
+	public String forwardCommitSmartCode() {
 		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
-		try{
-		myProduct = productService.findMyProductByMyProductId(myProduct.getId());
-		}
-		catch(Exception e){
+		try {
+			myProduct = productService.findMyProductByMyProductId(myProduct
+					.getId());
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "forwardCommitSmartCode";
 	}
-	
+
 	/**
 	 * 提交机器码
+	 * 
 	 * @return
 	 */
 	@UserSessionCheck
-	public String commitSmartCode(){
-		if(myProduct !=null && product != null && StringUtils.isNotBlank(myProduct.getSmartCode())){
+	public String commitSmartCode() {
+		if (myProduct != null && product != null
+				&& StringUtils.isNotBlank(myProduct.getSmartCode())) {
 			boolean flag = myCenterService.commitSmartCode(myProduct);
-			if(flag){
+			if (flag) {
 				addActionMessage("申请已提交!");
-			}else{
+			} else {
 				addActionMessage("提交失败");
 			}
-		}
-		else{
+		} else {
 			addActionError("请填写完整信息");
 		}
 		return "commitSmartCode";
 	}
+
 	/**
 	 * 我的课程详情
+	 * 
 	 * @return
 	 */
 	@UserSessionCheck
-	public String myProductDetail(){
-		myProduct = productService.findMyProductByMyProductId(myProduct.getId());
+	public String myProductDetail() {
+		myProduct = productService
+				.findMyProductByMyProductId(myProduct.getId());
 		return "myProductDetail";
 	}
+
 	/**
 	 * 跳转到我的课程列表
+	 * 
 	 * @return
 	 */
 	@UserSessionCheck
@@ -163,47 +171,54 @@ public class MyCenterAction extends CommonAction {
 		}
 		myProductList = myCenterService.findMyProductList(currentUserInfo(),
 				myProduct, pageInfo);
-		
+
 		return "forwardMyProductList";
 	}
 
 	/**
 	 * 跳转到消息列表页面
+	 * 
 	 * @return
 	 */
 	@UserSessionCheck
-	public String forwardMyMessage(){
+	public String forwardMyMessage() {
 		user = currentUserInfo();
 		setByteArrayInputStream(myCenterService
 				.findUserHeadImgById(currentUserInfo().getId()));
-		if(message == null){
+		if (message == null) {
 			message = new Message();
-		}			
+		}
 		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
-		myMessageList = myCenterService.findMyMessageList(currentUserInfo(), message, pageInfo);
+		myMessageList = myCenterService.findMyMessageList(currentUserInfo(),
+				message, pageInfo);
 		return "forwardMyMessageList";
 	}
+
 	/**
 	 * 删除消息
+	 * 
 	 * @return
 	 */
 	@UserSessionCheck
-	public String delMessage(){
+	public String delMessage() {
 		myCenterService.delMessage(message.getId());
 		return forwardMyMessage();
 	}
+
 	/**
 	 * 跳转到消息明细页面
+	 * 
 	 * @return
 	 */
 	@UserSessionCheck
-	public String messageDetail(){
+	public String messageDetail() {
 		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		message = myCenterService.msgDetail(message.getId());
 		return "messageDetail";
 	}
+
 	@UserSessionCheck
-	public String forwardReplyMsg(){
+	public String forwardReplyMsg() {
 		myMessageCount = myCenterService.getUnReadMessage(currentUserInfo());
 		message = myCenterService.msgDetail(message.getId());
 		Message replyMsg = new Message();
@@ -214,12 +229,14 @@ public class MyCenterAction extends CommonAction {
 		message = replyMsg;
 		return "replyMsg";
 	}
+
 	@UserSessionCheck
-	public String replyMsg(){
+	public String replyMsg() {
 		myCenterService.replyMsg(message);
 		addActionMessage("发送成功");
 		return forwardMyMessage();
 	}
+
 	/**
 	 * 跳转到更新个人资料页面
 	 * 
@@ -253,12 +270,34 @@ public class MyCenterAction extends CommonAction {
 	 */
 	@UserSessionCheck
 	public String modifyPassword() {
+		User loginedUser = (User) session
+				.getAttribute(ApplicationValue.USER_KEY_ON_SESSION);
 		if (user != null) {
-			if (user.getNowPassword().split(",").length > 1
-					&& user.getNowPassword().split(",")[0].equals(user
-							.getNowPassword().split(",")[1])) {
-				myCenterService.updatePassword(user);
+			if (StringUtils.isNotBlank(user.getOldPassword())
+					&& StringUtils.isNoneBlank(user.getNowPassword())
+					&& StringUtils.isNoneBlank(user.getRepassword())) {
+				if(user.getOldPassword().equals(loginedUser.getNowPassword())){
+					if(user.getNowPassword().length() >= 6){
+						if(user.getNowPassword().equals(user.getRepassword())){
+							session.removeAttribute(ApplicationValue.USER_KEY_ON_SESSION);
+							user.setId(loginedUser.getId());
+							myCenterService.updatePassword(user);
+							return "modifyPassword";
+						}else{
+							addActionError("两次密码输入不正确");
+						}
+					}else{
+						addActionError("密码不得小于6位");
+					}
+				}else{
+					addActionError("请输入正确的旧密码");
+				}
+
+			}else{
+				addActionError("请输入完整信息");
 			}
+		} else {
+			addActionError("请输入用户名");
 		}
 		return forwardModifyPassword();
 	}
@@ -269,16 +308,19 @@ public class MyCenterAction extends CommonAction {
 
 	public String forwardUploadHander() {
 		if (null != user) {
-			user =  systemService.findUserById(user.getId());
+			user = systemService.findUserById(user.getId());
 			if (null != user) {
-				byteArrayInputStream = user.getHeadImg()==null?null:new ByteArrayInputStream(user.getHeadImg());
+				byteArrayInputStream = user.getHeadImg() == null ? null
+						: new ByteArrayInputStream(user.getHeadImg());
 			}
 
 		}
 		return "forwardUploadHander";
 	}
+
 	/**
 	 * 跳转到我的订单页面
+	 * 
 	 * @return
 	 */
 	@UserSessionCheck
@@ -299,20 +341,21 @@ public class MyCenterAction extends CommonAction {
 		}
 		return "forwardMyOrderList";
 	}
-	
+
 	@UserSessionCheck
-	public String saveHeadImg(){
+	public String saveHeadImg() {
 		myCenterService.saveHeaderImg(user, file);
 		return forwardUploadHander();
 	}
-	
-	public String forwardMyOrderDetail(){
+
+	public String forwardMyOrderDetail() {
 		user = currentUserInfo();
 		order = orderService.findOrderByOrderId(order.getId());
-		teacher = oaEmployeeService.getEmpById(order.getOrderDetailList().get(0).getProduct().getTeacherId());
+		teacher = oaEmployeeService.getEmpById(order.getOrderDetailList()
+				.get(0).getProduct().getTeacherId());
 		return "forwardMyOrderDetail";
 	}
-	
+
 	public String[] getOrderIds() {
 		return orderIds;
 	}
@@ -376,9 +419,11 @@ public class MyCenterAction extends CommonAction {
 	public void setMyProductList(List<MyProduct> myProductList) {
 		this.myProductList = myProductList;
 	}
+
 	public Product getProduct() {
 		return product;
 	}
+
 	public void setProduct(Product product) {
 		this.product = product;
 	}
@@ -414,9 +459,11 @@ public class MyCenterAction extends CommonAction {
 	public void setMyMessageCount(int myMessageCount) {
 		this.myMessageCount = myMessageCount;
 	}
+
 	public OaEmployee getTeacher() {
 		return teacher;
 	}
+
 	public void setTeacher(OaEmployee teacher) {
 		this.teacher = teacher;
 	}
@@ -425,7 +472,8 @@ public class MyCenterAction extends CommonAction {
 		return byteArrayInputStream;
 	}
 
-	public void setByteArrayInputStream(ByteArrayInputStream byteArrayInputStream) {
+	public void setByteArrayInputStream(
+			ByteArrayInputStream byteArrayInputStream) {
 		this.byteArrayInputStream = byteArrayInputStream;
 	}
 
@@ -453,6 +501,4 @@ public class MyCenterAction extends CommonAction {
 		this.fileFileName = fileFileName;
 	}
 
-	
-	
 }

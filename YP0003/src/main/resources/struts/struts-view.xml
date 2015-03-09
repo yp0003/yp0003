@@ -153,6 +153,8 @@
 				<param name="contentType">image/png,image/gif,image/jpg,image/jpeg,image/bmp</param>
 				<param name="inputName">byteArrayInputStream</param>
 			</result>
+			
+			<result name="modifyPassword" type="redirectAction">system!forwardLogin.html</result>
 		</action>
 	</package>
 

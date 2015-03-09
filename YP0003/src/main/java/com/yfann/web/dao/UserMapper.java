@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface UserMapper {
+	int updateUserPassword(String nowPassword);
 	/**
 	 * 根据字段查找客户
 	 * 
