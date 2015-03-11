@@ -5,9 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link
-    href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css"
-    rel="stylesheet" />
+<link href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
 <link href="./css/reset.css" rel="stylesheet" type="text/css" />
 <link href="./css/mycustomer.css" rel="stylesheet" type="text/css" />
 <link href="./css/page.css" rel="stylesheet" type="text/css" />
@@ -21,17 +19,13 @@
     <header>
     <div class="top">
 
-
         <c:if test="${sessionScope.userInfo == null}">
 
             <div class="w">
                 <div class="denglu">
-                    <a
-                        href="${pageContext.request.contextPath}/system!forwardLogin.html">登录
-                    </a> | <a
-                        href="${pageContext.request.contextPath}/system!forwardRegister.html">注册
-                    </a> | <a
-                        href="${pageContext.request.contextPath}/product!forwardProductList.html">课程
+                    <a href="${pageContext.request.contextPath}/system!forwardLogin.html">登录 </a> |
+                    <a href="${pageContext.request.contextPath}/system!forwardRegister.html">注册
+                    </a> | <a href="${pageContext.request.contextPath}/product!forwardProductList.html">课程
                     </a> | <a href="">求课</a>
                 </div>
                 您好，欢迎来到365IT学院官网！
@@ -44,24 +38,18 @@
                 <div class="denglu">
                     <a>尊敬的${sessionScope.userInfo.userId}您好</a> | <a
                         href="${pageContext.request.contextPath}/mycenter!forwardMySetting.html">个人信息设置</a>
-                    | <a
-                        href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">个人中心</a>
+                    | <a href="${pageContext.request.contextPath}/mycenter!forwardMyOrderList.html">个人中心</a>
                 </div>
                 您好，欢迎来到365IT学院官网！
             </div>
 
-
-
         </c:if>
-
     </div>
     </header>
     <!-- Carousel
     ================================================== -->
 
-        <img src="./image/logo.gif" style="min-width: 100%;"/>
-
-
+    <img src="./image/logo.gif" style="min-width: 100%;" />
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -77,20 +65,19 @@
                 <img src="./image/banner2.gif" alt="Second slide" />
             </div>
         </div>
-        <a class="left carousel-control" href="#myCarousel" role="button"
-            data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
-            aria-hidden="true"></span> <span class="sr-only">Previous</span>
-        </a> <a class="right carousel-control" href="#myCarousel" role="button"
-            data-slide="next"> <span
-            class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> <span
+            class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
+            class="sr-only">Previous</span>
+        </a> <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"> <span
+            class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
+            class="sr-only">Next</span>
         </a>
     </div>
     <!-- /.carousel -->
 
 
 
-        <div class="tabBar" style="margin: 0 auto">
+    <div class="tabBar" style="margin: 0 auto">
         <div class="hd">
             <ul data-spy="affix" data-offset-top="125">
                 <li><a href="#makeliyou"><img src="./image/gouji_l.gif" alt="成为架构师的理由" /></a></li>
@@ -127,10 +114,10 @@
                 <img src="./image/1_title.gif" alt="绝对干货，一针见血" />
                 <p>&nbsp;</p>
                 <p>
-                    1、学到最具有实用价值的知识和技巧体系。<br /> 2、学到的是综合技能，技术精要。<br />
-                    3、学到对重点，疑点，难点的解析。<br /> 4、学到本质：代码说明一切,可以畅游于大量的大中小实践案例和项目的真实环境<br />
-                    5、学以致用：以四两拨千斤，取得立竿见影的效果。<br /> 6、分享到：两位讲师近十年一线商业研发实战精华。<br />
-                    7、一次升华：社会优质资源再教育—工作了才知道自己欠缺太多，在校期间学的<br /> 很多都没用！本培训可以得到再次弥补的机会。<br />
+                    1、学到最具有实用价值的知识和技巧体系。<br /> 2、学到的是综合技能，技术精要。<br /> 3、学到对重点，疑点，难点的解析。<br />
+                    4、学到本质：代码说明一切,可以畅游于大量的大中小实践案例和项目的真实环境<br /> 5、学以致用：以四两拨千斤，取得立竿见影的效果。<br />
+                    6、分享到：两位讲师近十年一线商业研发实战精华。<br /> 7、一次升华：社会优质资源再教育—工作了才知道自己欠缺太多，在校期间学的<br />
+                    很多都没用！本培训可以得到再次弥补的机会。<br />
                     8、买的安心放心——作者利用了一切可以利用的时间，进一步研读大量国内外资料，提取出初步大纲后，又迚行反复推敲、提炼，验证和总结，不断优化，可谓字斟句酌，重点内容亦邀请同行切磋斟酌重点内容亦邀请同行与家来切磋斟酌。就这样，历时两年，产品终于问世。<br />
                     9、突破技术瓶颈—工作后一直盼望明师指引自己使技术有所突破，邁么机会来了<br />
                     10、避免成长弯路—也曾经寻找过架构师成长之路的培训课程，寻遍国内外都没有发现令人满意的课程。为此决定为大家做一款，如同西天取经，客服了各种困难也走过很多弯路。
@@ -297,17 +284,14 @@
                 <p>&nbsp;</p>
                 <p class="coler dian p23">QQ群组，轻松交流</p>
                 <div class="qqkefu">
-                    软件架构师QQ群1：<a href="#" target="_blank">197316935</a><br />
-
-                    软件架构师QQ群2：<a href="#" target="_blank">250270467</a><br />
-
-                    软件架构师QQ群3：<a href="#" target="_blank">289280630</a>
+                    软件架构师QQ群1：<a href="#" target="_blank">197316935</a><br /> 软件架构师QQ群2：<a href="#"
+                        target="_blank">250270467</a><br /> 软件架构师QQ群3：<a href="#" target="_blank">289280630</a>
                 </div>
                 <p class="coler dian p23">微信微博，最新动态抢先看</p>
                 <p class="p23">
-                    <a href="#" target="_blank"><img src="./image/xinlang.gif"
-                        class="left" /> </a><a href="#" target="_blank"><img
-                        src="./image/weixin.gif" class="left" /></a>
+                    <a href="http://www.weibo.com/u/5385197038/home?topnav=1&wvr=6" target="_blank"><img
+                        src="./image/xinlang.gif" class="left" /> </a><a href="#" target="_blank"><img
+                        src="./image/weixin.png" class="left" /></a>
                 </p>
                 <p class="p23">&nbsp;</p>
             </div>
@@ -326,8 +310,7 @@
             <img src="./image/jiandan.gif" alt="365IT学院，让学习变得更简单！" />
         </p>
         <p>
-            <a
-                href="${pageContext.request.contextPath}/product!forwardProductList.html"
+            <a href="${pageContext.request.contextPath}/product!forwardProductList.html"
                 target="_blank"><img src="./image/xuexi.gif" alt="开始学习" /></a>
         </p>
     </div>
@@ -335,7 +318,7 @@
     <!--footer start-->
     <div class="footer">
         <div class="w">
-            <div class="fenxiang">
+            <!--   <div class="fenxiang">
                 <img src="./image/fenxiang.gif" usemap="#Map" border="0" />
                 <map name="Map" id="Map">
                     <area shape="rect" coords="6,4,41,37" href="http://www.weibo.com/u/5385197038/home?topnav=1&wvr=6" />
@@ -344,39 +327,36 @@
                     <area shape="rect" coords="144,3,180,42" data-toggle="modal" data-target="#myModal" />
                 </map>
             </div>
-
+-->
 
             <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-      <img src="./image/weixin.gif"  class="img-rounded" width="200px" height="200px;"/>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <img src="./image/weixin.gif" class="img-rounded" width="200px"
+                                height="200px;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
             <p>
-                <a href="#"> 关于我们 </a> | <a href="#"> 人才招聘 </a> | <a href="#">
-                    讲师招募 </a> | <a href="#"> 联系我们 </a> | <a href="#"> 意见反馈 </a> | <a
+              <!--  --> <a href="#"> 关于我们 </a> | <a href="#"> 人才招聘 </a> | <a href="#"> 讲师招募 </a> | <a
+                    href="#"> 联系我们 </a> | <a href="#"> 意见反馈 </a> | <a
                     href="${pageContext.request.contextPath}/oalogin!forwardLogin.html"> 后台入口</a>
             </p>
             <p>沪ICP备13043409号-1</p>
         </div>
     </div>
 
-
-<div id='cs_box'>
-    <span class='cs_title'>在线咨询</span>
-    <span class='cs_close'>x</span>
-    <div class='cs_img'></div>
-    <span class='cs_info'>有什么可以帮到你</span>
-    <div class='cs_btn'>点击咨询</div>
-</div>
-<script>
+    <div id='cs_box'>
+        <span class='cs_title'>在线咨询</span> <span class='cs_close'>x</span>
+        <div class='cs_img'></div>
+        <span class='cs_info'>有什么可以帮到你</span>
+        <div class='cs_btn'>点击咨询</div>
+    </div>
+    <script>
     myEvent(window,'load',function(){
         cs_box.set({
             img_path : './image/kefu.png', //设置图片路径
@@ -384,7 +364,6 @@
         });
     });
 </script>
-
 
 </body>
 </html>
