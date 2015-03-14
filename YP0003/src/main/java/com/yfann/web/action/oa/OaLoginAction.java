@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,7 @@ public class OaLoginAction extends CommonAction {
 	/** 文件输入流 */
 	private InputStream jsonInputStream;
 
+	@SkipValidation
 	public String getOaMenu() throws Exception {
 		oaEmployee = (OaEmployee) session.getAttribute(OaApplicationValue.EMPLOYEE_KEY_ON_SESSION);
 		oaEmployee = oaEmployeeService.getEmpById(oaEmployee.getId());
@@ -96,16 +98,19 @@ public class OaLoginAction extends CommonAction {
 	}
 
 	// 跳转到欢迎页
+	@SkipValidation
 	public String welcome() {
 		return "welcome";
 	}
 
 	// 跳转到主页
+	@SkipValidation
 	public String forwardIndex() throws Exception {
 		return "forwardIndex";
 	}
 
 	// 用户退出
+	@SkipValidation
 	public String logout() {
 		HttpSession session = request.getSession(false);
 		if (session != null)
@@ -117,6 +122,7 @@ public class OaLoginAction extends CommonAction {
 	}
 
 	// 跳转到登录界面
+	@SkipValidation
 	public String forwardLogin() {
 		request = ServletActionContext.getRequest();
 		oaEmployee = oaCookieUtils.getEmpCookie(request);
@@ -124,6 +130,7 @@ public class OaLoginAction extends CommonAction {
 	}
 
 	// 验证登录信息
+	@SkipValidation
 	public String validateLoginInfo() throws Exception {
 		if ("".equals(oaEmployee.getEmployeeId())) {
 			// oaLoginMessage.setEmployeeIdMessage("用户名不能为空！");
@@ -147,10 +154,6 @@ public class OaLoginAction extends CommonAction {
 			addActionError("验证码不正确!");
 			return "forwardLogin";
 		}
-		// 有错误信息则返回登录
-		// if (oaLoginMessage.isNotEmpty()) {
-		// return "forwardLogin";
-		// }
 
 		OaEmployee oaEmployeeTemp = oaEmployeeService.validateOaEmployee(oaEmployee.getEmployeeId());
 		if (null == oaEmployeeTemp) { // 没有此用户
@@ -180,62 +183,27 @@ public class OaLoginAction extends CommonAction {
 	}
 
 	// 跳转到注册界面
+	@SkipValidation
 	public String forwardRegister() {
 		return "forwardRegister";
 	}
 
 	// 员工注册
 	public String register() throws Exception {
-	
 		if (oaEmployee != null) {
-			// 验证用户ID
-			if (!(StringUtils.isNotBlank(oaEmployee.getEmployeeId()) && oaEmployee.getEmployeeId().length() > 5)) {
-				oaRegisterMessage.setEmployeeIdMessage("用户名非法!");
-			}
-			if(oaEmployeeService.validateOaEmployee(oaEmployee.getEmployeeId())!=null){
-				oaRegisterMessage.setEmployeeIdMessage("用户名已经注册，请重新选择用户名!");
-			}
-			// 验证密码
-			if (!(StringUtils.isNotBlank(oaEmployee.getNowPassword()))) {
-				oaRegisterMessage.setPasswordMessage("密码为空!");
-			} else {
-				String[] passwords = oaEmployee.getNowPassword().split(",");
-				if (passwords.length != 2) {
-					oaRegisterMessage.setPasswordMessage("密码非法!");
-				} else if (passwords.length > 1) {
-					if (passwords[0].trim().length() < 5 && passwords[0].trim().length() > 20) {
-						oaRegisterMessage.setPasswordMessage("密码过长或过短!");
-					} else if (!passwords[0].trim().equals(passwords[1].trim())) {
-						oaRegisterMessage.setPasswordMessage("两次密码不一致!");
-					}
-				}
-			}
-			// 验证邮箱
-			if (!(StringUtils.isNotBlank(oaEmployee.getEmail()))) {
-				oaRegisterMessage.setEmailMessage("邮箱非法!");
-			}
 			// 对比验证码
 			if (StringUtils.isNotBlank(oaEmployee.getEmployeeId())) {
 				// 获取session中验证码
 				String valiCode = (String) session.getAttribute("valiCode").toString();
 				if (!valiCode.equals(validateCode)) {
-					oaRegisterMessage.setValiCodeMessage("验证码不正确!");
+					addActionError("验证码不正确!");
+					return forwardRegister();
 				}
-			} else if (StringUtils.isBlank(oaEmployee.getEmployeeId())) {
-				oaRegisterMessage.setValiCodeMessage("请填写验证码!");
 			}
-		}
-		if (oaRegisterMessage.isNotEmpty()) {
-			// 表单错误 转向注册页面并清除密码和验证码
-			oaEmployee.setNowPassword("");
-			validateCode = "";
-			return forwardRegister();
 		}
 		// 保存用户
 		try {
 			if (oaEmployee != null && StringUtils.isNotBlank(oaEmployee.getNowPassword())) {
-				// 两次去人输入的密码去掉一个
-				oaEmployee.setNowPassword(oaEmployee.getNowPassword().split(",")[0].trim());
 				// 设置主键
 				oaEmployee.setId(OaUUIDCreate.getUUID());
 			}
@@ -250,11 +218,13 @@ public class OaLoginAction extends CommonAction {
 	}
 
 	// 转向找回密码页面
+	@SkipValidation
 	public String toFindPassword() {
 		return "tofindpassword";
 	}
 
 	/** 找回密码 */
+	@SkipValidation
 	public String findPassword() {
 		if (oaEmployee != null) {
 			try {
@@ -274,6 +244,7 @@ public class OaLoginAction extends CommonAction {
 	}
 
 	// 绘制验证码图片
+	@SkipValidation
 	public void validateCode() throws Exception {
 		// 通知浏览器，图片不要缓存
 		HttpServletResponse response = ServletActionContext.getResponse();
@@ -319,50 +290,51 @@ public class OaLoginAction extends CommonAction {
 		ImageIO.write(image, "jpg", response.getOutputStream());
 	}
 
+	@SkipValidation
 	public OaRegisterMessage getOaRegisterMessage() {
 		return oaRegisterMessage;
 	}
-
+	@SkipValidation
 	public void setOaRegisterMessage(OaRegisterMessage oaRegisterMessage) {
 		this.oaRegisterMessage = oaRegisterMessage;
 	}
-
+	@SkipValidation
 	public OaLoginMessage getOaLoginMessage() {
 		return oaLoginMessage;
 	}
-
+	@SkipValidation
 	public void setOaLoginMessage(OaLoginMessage oaLoginMessage) {
 		this.oaLoginMessage = oaLoginMessage;
 	}
-
+	@SkipValidation
 	public OaEmployee getOaEmployee() {
 		return oaEmployee;
 	}
-
+	@SkipValidation
 	public void setOaEmployee(OaEmployee oaEmployee) {
 		this.oaEmployee = oaEmployee;
 	}
-
+	@SkipValidation
 	public String getValidateCode() {
 		return validateCode;
 	}
-
+	@SkipValidation
 	public void setValidateCode(String validateCode) {
 		this.validateCode = validateCode;
 	}
-
+	@SkipValidation
 	public String getRemPass() {
 		return remPass;
 	}
-
+	@SkipValidation
 	public void setRemPass(String remPass) {
 		this.remPass = remPass;
 	}
-
+	@SkipValidation
 	public InputStream getJsonInputStream() {
 		return jsonInputStream;
 	}
-
+	@SkipValidation
 	public void setJsonInputStream(InputStream jsonInputStream) {
 		this.jsonInputStream = jsonInputStream;
 	}

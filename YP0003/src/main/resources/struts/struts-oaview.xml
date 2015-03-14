@@ -24,6 +24,7 @@
 		<!-- OA登录 -->
 		<action name="oalogin!*" method="{1}"
 			class="com.yfann.web.action.oa.OaLoginAction">
+			<result name="input">/WEB-INF/pages/oa/register_oa.jsp</result>
 			<!-- 跳转到登录 -->
 			<result name="forwardLogin">/WEB-INF/pages/oa/login_oa.jsp</result>
 			<!-- 跳转到注册 -->

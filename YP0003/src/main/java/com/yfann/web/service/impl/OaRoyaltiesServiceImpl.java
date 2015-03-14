@@ -48,7 +48,10 @@ public class OaRoyaltiesServiceImpl implements OaRoyaltiesService {
 
 	@Override
 	public BigDecimal getChampion() {
-		return oaSalesChampionMapper.selectByPrimaryKey("1").getScale();
+		if(oaSalesChampionMapper.selectByPrimaryKey("1") != null){
+			return oaSalesChampionMapper.selectByPrimaryKey("1").getScale();
+		}
+		return null;
 	}
 
 	@Override
