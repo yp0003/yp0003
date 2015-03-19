@@ -131,7 +131,9 @@ public class ProductServiceImpl implements ProductService{
 		ByteArrayInputStream productSmallImg = null;
 		if(product != null && StringUtils.isNotBlank(product.getId())){
 			List<Product> proLists = productMapper.selectProductSmallImgById(product.getId());
-			productSmallImg = new ByteArrayInputStream(proLists.get(0).getProductSamllPic());
+			if(proLists != null && proLists.size() > 0 && proLists.get(0) != null && proLists.get(0).getProductSamllPic().length > 0){
+				productSmallImg = new ByteArrayInputStream(proLists.get(0).getProductSamllPic());
+			}
 		}
 		return productSmallImg;
 	}

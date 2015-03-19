@@ -85,10 +85,7 @@
 						    
 						  </div>
 					 <!-- 结束 -->
-						</s:iterator>
-						
-						
-							
+						</s:iterator>				
 					</div>
 					
 				</div>
