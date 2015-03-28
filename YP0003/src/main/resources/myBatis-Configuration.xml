@@ -30,6 +30,6 @@
 
 	<!-- Mapper.xml位置 -->
 	<mappers>
-		<package name="com.yfann.web.dao" />
+		<package name="com.yfann.web.dao"/>
 	</mappers>
 </configuration>

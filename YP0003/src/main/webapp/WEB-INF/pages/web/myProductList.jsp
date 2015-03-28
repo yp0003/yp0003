@@ -1,48 +1,97 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@ taglib uri="com.yfann.web.page" prefix="p"%>
-<%@ taglib uri="/struts-tags" prefix="s"%>
+         pageEncoding="utf-8" %>
+<%@ taglib uri="com.yfann.web.page" prefix="p" %>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/base.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/style.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/test.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/right.css"
-	rel="stylesheet">
-<!-- link script -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/custom.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet"
+          href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-<script>
-	var _hmt = _hmt || [];
-</script>
-<title>订单管理</title>
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet"
+          href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <title>我的课程</title>
 </head>
-<body>
-	<!-- 头部 -->
-	<%@ include file="../common/commonHeader.jsp"%>
+<body style="background-color: #EEEEEE">
+<!-- 头部 -->
+<%@ include file="../common/commonHeader.jsp" %>
+<div class="container-fluid" style="width: 80%;padding-top: 40px;">
+    <div class="row">
+        <div class="col-md-4" style="width: 20%">
+            <%@include file="../common/commonMyInfoRight.jsp"%>
+        </div>
 
-	<br />
-	<div class="container">
-		<%@ include file="common/commonRight.jsp"%>
 
+        <div class="col-md-8">
+            <%@include file="../common/commonMySet.jsp"%>
+
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <table class="table table-bordered" style="text-align: center">
+                        <thead>
+                        <tr>
+                            <th>课程名称</th>
+                            <th>授权状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>测试课程</td>
+                            <td>未授权</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-primary">提交机器码</button>
+                                &nbsp;
+                                <button type="button" class="btn btn-sm btn-danger">获取播放码</button>
+                            </td>
+                        </tr>
+
+                        </tbody>
+
+
+                        <tfoot>
+
+                        <tr>
+
+                            <td colspan="4">
+
+                                <nav>
+                                    <ul class="pagination">
+                                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
+                                        </li>
+                                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </nav>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<%--
 		<div class="mymain-content l " style="margin-left: 20px;">
 			<div class="myspace-list l " style="float: left;">
 				<a
@@ -52,7 +101,7 @@
 					class="myspace-plan"><span>课程</span></a> <a
 					href="${pageContext.request.contextPath}/mycenter!forwardMyMessage.html"
 					class="myspace-ques "><span>消息</span></a>
-				<%--            <a href="#" class="myspace-note "><span>设置</span></a> --%>
+				&lt;%&ndash;            <a href="#" class="myspace-note "><span>设置</span></a> &ndash;%&gt;
 			</div>
 
 			<div class="myspace-courselist myspace-bg r">
@@ -124,9 +173,15 @@
 		</div>
 
 
-	</div>
+	</div>--%>
 
 
-	<%@ include file="../common/commonFooter.jsp"%>
+<%@ include file="../common/commonFooter.jsp" %>
+<script type="text/javascript">
+    $(function() {
+        $('#order').removeClass("active");
+        $('#product').addClass("active");
+    });
+</script>
 </body>
 </html>

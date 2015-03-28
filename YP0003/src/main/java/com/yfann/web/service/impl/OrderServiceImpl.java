@@ -171,7 +171,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void addBuyCountByProductIdInBuyCar(Product product, User user) {
 		if (product != null && StringUtils.isNotBlank(product.getId())) {
-			Map<String, Object> parames = new HashMap<>();
+			Map<String, Object> parames = new HashMap<String, Object>();
 			parames.put("userId", user.getId());
 			parames.put("productId", product.getId());
 			buyCarMapper.updateAddBuyCountByProductId(parames);

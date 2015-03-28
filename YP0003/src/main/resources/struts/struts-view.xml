@@ -15,13 +15,13 @@
 			<!-- <result name="forwardIndex">/WEB-INF/web/index.jsp</result> -->
 			<!-- 跳转到召回密码页面 -->
 			<result name="forwardFindPassword">/WEB-INF/pages/findPassword.jsp</result>
-			<result name="forwardTest">/WEB-INF/pages/common/commonNew.jsp</result>
+			<result name="forwardTest">/WEB-INF/pages/common/commonMySet.jsp</result>
 			<result name="forwardLogin">/WEB-INF/pages/login.jsp</result>
 			<result name="forwardRegisterSuccess">/WEB-INF/pages/registSuccess.jsp</result>
 		</action>
 		<action name="controllerSystem!*" method="{1}"
 			class="com.yfann.web.action.ControllerAction">
-			<result name="forwardTest">/WEB-INF/pages/common/commonNew.jsp</result>
+			<result name="forwardTest">/WEB-INF/pages/common/commonMySet.jsp</result>
 			<result name="forwardLogin">/WEB-INF/pages/login.jsp</result>
 		</action>
 	</package>
