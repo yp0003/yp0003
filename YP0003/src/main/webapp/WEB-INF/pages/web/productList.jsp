@@ -8,31 +8,53 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>365ITEDU网</title>
 <!-- link css -->
-<link href="${pageContext.request.contextPath}/css/mycustomer.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css" rel="stylesheet">
+<%-- <link href="${pageContext.request.contextPath}/css/mycustomer.css" rel="stylesheet" type="text/css" /> --%>
+<%-- <link
+	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css"
+	rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/base.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 
 
 <!-- link script -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
   <script src="js/html5shiv.js"></script>
 <![endif]-->
 
-<!-- Le fav and touch icons -->
+<!-- Le fav and touch icons --> --%>
+
+
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <!-- Navbar
     ================================================== -->
- <%@ include file="../common/commonHeader.jsp"%>
+<%@ include file="../common/commonHeader.jsp"%>
 <!-- 程序包含结束 -->
 
-<div id="main" class="mt49">
+<%-- <div id="main" class="mt49">
 
 	<div class="container">
 		<div class="course-sidebar">
@@ -82,19 +104,6 @@
 					</ul>
 					<div style="clear: both"></div>
 				</div>
-<!-- 				<dl class="course-sidebar-level js-sidebar-level"> -->
-<!-- 					<dt>难度</dt> -->
-<!-- 						<dd> -->
-<!-- 								<a data-id="" class="curr" href="javascript:void(0)">全部</a> -->
-<!-- 						</dd> -->
-<%-- 						<s:iterator value="productLevelList" id="level"> --%>
-<!-- 							<dd> -->
-<%-- 								<a data-id="${level.id}"  --%>
-<%-- 									href="${pageContext.request.contextPath}/product!forwardProductList.html?product.id=${kind.id}">初级</a> --%>
-<!-- 							</dd> -->
-<%-- 						</s:iterator> --%>
-
-<!-- 				</dl> -->
 			</div>
 			<form action="${pageContext.request.contextPath}/product!forwardProductList.html" method="post">
 				<div class="control-group">
@@ -159,11 +168,164 @@
 		
 		</div>
 	</div>
+</div> --%>
+
+
+
+
+
+
+
+
+
+<div class="container" style="padding-top: 50px;">
+
+	<div class="row">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<div class="col-md-4">
+
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">课程分类</h3>
+						</div>
+						<div class="panel-body">
+							<div class="list-group">
+								<a href="#" class="list-group-item active">全部分类</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="col-md-8">
+
+			<div class="row">
+
+				<div class="col-md-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">课程列表</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<s:iterator value="productList" id="pl">
+									<div class="col-md-4">
+
+
+										<div class="thumbnail">
+											<img data-src="holder.js/100%x200" alt="100%x200"
+												style="height: 200px; width: 100%; display: block;"
+												src="${pageContext.request.contextPath}/product!showProductSmallImg.html?product.id=${pl.id}"
+												data-holder-rendered="true">
+											<div class="caption">
+												<h3 id="thumbnail-label">
+													${pl.productName}<a class="anchorjs-link"
+														href="#thumbnail-label"><span class="anchorjs-icon"></span></a>
+												</h3>
+
+
+												<p>${pl.productKnows}</p>
+
+
+												<p>
+													<a
+														href="${pageContext.request.contextPath}/product!forwardProductDetail.html?product.id=${pl.id}"
+														class="btn btn-default" role="button">查看详情</a> <a
+														href="${pageContext.request.contextPath}/order!forwardSureOrder.html?product.id=${pl.id}"
+														class="btn btn-primary" role="button">立即购买</a>
+												</p>
+											</div>
+										</div>
+
+									</div>
+
+								</s:iterator>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+
+
 </div>
+
+
+
+
+
+
+
+
+
+
 <!-- Footer -->
-<%@ include file="../common/commonFooter.jsp"%>
+<%-- <%@ include file="../common/commonFooter.jsp"%> --%>
 
 
-
-</body>
+<div id="footer">
+	<nav class="navbar navbar-default navbar-bottom">
+		<div class="navbar-inner navbar-content-center">
+			<p class="text-muted credit" style="padding: 10px;">
+			<div class="container">
+				<p>
+					<a href="#">365IT学院欢迎您的到来</a>
+				</p>
+				<ul class="footer-links">
+					<li class="muted"><a href="#">关于我们|</a></li>
+					<li><a href="#">广告合作|</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/oalogin!forwardLogin.html">后台入口|</a></li>
+					<li><a href="#" title="365IT学院官方微博" target="_blank">新浪微博|</a></li>
+					<li><a href="#">电子邮件|</a></li>
+				</ul>
+				<p>沪ICP备13043409号-1</p>
+			</div>
+			</p>
+		</div>
+	</nav>
+	</body>
 </html>

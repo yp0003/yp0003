@@ -6,121 +6,244 @@
 <!-- 程序包含开始 -->
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<title>365ITEDU网</title>
-<!-- link css -->
-<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/css/base.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet"/>
+<meta charset="utf-8" />
+<style>
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+body {
+	padding-bottom: 40px;
+	color: #5a5a5a;
+}
 
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
 
-<!-- link script -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
-<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-  <script src="js/html5shiv.js"></script>
-<![endif]-->
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 20;
+}
 
-<!-- Le fav and touch icons -->
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper>.container {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.navbar-wrapper .navbar {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.navbar-wrapper .navbar .container {
+	width: auto;
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+	height: 500px;
+	margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+	z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+	height: 500px;
+	background-color: #777;
+}
+
+.carousel-inner>.item>img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	height: 500px;
+}
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.marketing h2 {
+	font-weight: normal;
+}
+
+.marketing .col-lg-4 p {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+/* Featurettes
+------------------------- */
+.featurette-divider {
+	margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+	font-weight: 300;
+	line-height: 1;
+	letter-spacing: -1px;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+@media ( min-width : 768px) {
+	/* Navbar positioning foo */
+	.navbar-wrapper {
+		margin-top: 20px;
+	}
+	.navbar-wrapper .container {
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+	.navbar-wrapper .navbar {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	/* The navbar becomes detached from the top, so we round the corners */
+	.navbar-wrapper .navbar {
+		border-radius: 4px;
+	}
+
+	/* Bump up size of carousel content */
+	.carousel-caption p {
+		margin-bottom: 20px;
+		font-size: 21px;
+		line-height: 1.4;
+	}
+	.featurette-heading {
+		font-size: 50px;
+	}
+}
+
+@media ( min-width : 992px) {
+	.featurette-heading {
+		margin-top: 120px;
+	}
+}
+</style>
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+	<link rel="stylesheet"
+		href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script
+			src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<title>365IT学院</title>
 </head>
-<!-- Navbar
-    ================================================== -->
 <body>
-<%@ include file="common/commonHeader.jsp"%>
-<!-- 程序包含结束 -->
-<div class="bs-docs-social">
-	<div class="container">
-		<ul class="bs-docs-social-buttons">
-			<li class="follow-btn">
-				<a href="#" class="twitter-follow-button" data-link-color="#0069D6"
-					data-show-count="true">365IT学院技术交流群：378248068</a>
-			</li>
-			<li class="tweet-btn">
-				<a href="http://wenda.bootcss.com/" class="twitter-share-button" data-url="#"
-					data-count="horizontal" data-via="twbootstrap"
-					data-related="mdo:Creator of Twitter Bootstrap" title="Bootstrap问答社区">365IT学院问答社区</a>
-			</li>
-				<li class="social-weibo"><a href="http://weibo.com/bootcss"
-					title="365IT教育学院官方微博" target="_blank" se_prerender_url="complete"><i
-						class="fa fa-weibo"></i> 新浪微博：@365IT学院</a></li>
-		</ul>
-	</div>
-</div>
-
-<div class="container">
-
-  <div class="marketing">
-
-    <h1>优质课程推荐</h1>
-    <p class="marketing-byline">让您的课余生活更加丰富，让您的知识更加完整</p>
-
-    <div class="row-fluid">
-<%--       <s:if test="productList.size > 0"> --%>
-      	 	      
-<%--       </s:if> --%>
-      
- 		  <div class="span4">
-	       <a href="#"> <img class="marketing-img" src="image/53e4ba4c0001f2d206000338-590-330.jpg"/></a>
-	        <h2>PDO—数据库抽象层</h2>
-	        <p>PDO扩展为PHP访问数据库定义了一个轻量级的、一致性的接口，PDO解决了数据库连接不统一的问题，本课程以MySQL数据库为例，讲解了PDO的安装和配置方法，以及操作数据的函数，此外还介绍了PDO的事务处理相关知识，最后通过实战演练深入剖析PDO以加深理解。</p>
-	      </div>
-	      
-	      <div class="span4">
-	       <a href="#"><img class="marketing-img" src="image/542376b20001374c06000338-590-330.jpg"/></a>
-	        <h2>文件传输基础——Java IO流</h2>
-	        <p>本门课程主要为您带来Java中的输入输出流的内容，包括文件编码、使用File类对文件和目录进行管理、字节流和字符流的基本操作，以及对象的序列化和反序列化的内容。</p>
-	      </div>
-	      
-	      <div class="span4">
-	       <a href="#"> <img class="marketing-img" src="image/53ec5a590001d85606000338-590-330.jpg"/></a>
-	        <h2>Java 眼中的 XML</h2>
-	        <p>文件的形态是千变万化的，在 Internet 中，我们通常使用一种叫做 XML 的文件来传输或者存储数据。本次课程中，@Jessica Jiang 将会带领小伙伴们把这种 XML 文件应用与 Java 程序结合起来，教你如何应用 Java“解析 XML ”和“生成 XML ”。</p>
-	      </div>
-      
-          
-    </div>
-      
-<!--      <hr class="soften"/> -->
-    
-<!--     <h1>经典课程推荐</h1> -->
-<%--     <p class="marketing-byline">经典课程重温基础</p> --%>
-<!--     <div class="row-fluid"> -->
-<!--       <ul class="thumbnails example-sites"> -->
-<!--         <li class="span3"> -->
-<!--           <a class="thumbnail" href="list.html" target="_blank"> -->
-<!--             <img src="image/543f682600012d1406000338-590-330.jpg" alt=""/> -->
-<!--           </a> -->
-<!--         </li> -->
-<!--         <li class="span3"> -->
-<!--           <a class="thumbnail" href="list.html" target="_blank"> -->
-<!--             <img src="image/5444a3280001f1fe06000338-590-330.jpg" alt=""/> -->
-<!--           </a> -->
-<!--         </li> -->
-<!--         <li class="span3"> -->
-<!--           <a class="thumbnail" href="list.html" target="_blank"> -->
-<!--             <img src="image/54125edc0001ce6306000338-590-330.jpg" alt=""/> -->
-<!--           </a> -->
-<!--         </li> -->
-<!--         <li class="span3"> -->
-<!--           <a class="thumbnail" href="list.html" target="_blank"> -->
-<!--             <img src="image/541943720001c89206000338-590-330.jpg" alt=""/> -->
-<!--           </a> -->
-<!--         </li> -->
-<!--       </ul> -->
-<!--      </div> -->
-
-  </div>
-
-</div>
+	<%@ include file="common/commonHeader.jsp"%>
+	<!-- 程序包含结束 -->
 
 
 
-<!-- Footer -->
-<%@ include file="common/commonFooter.jsp"%>
+
+
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+
+
+
+	<!-- Footer -->
+	<%-- <%@ include file="common/commonFooter.jsp"%> --%>
 </body>
 </html>

@@ -6,155 +6,119 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/base.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/style.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/mySetting.css"
-	rel="stylesheet">
-<!-- link script -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/custom.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-<script>
-	var _hmt = _hmt || [];
-	function forSubmit() {
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
-		document.forms[0].submit();
-	}
-</script>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <title>订单管理</title>
 </head>
-<body>
+<body style="background-color: #EEEEEE">
 	<!-- 头部 -->
 	<%@ include file="../common/commonHeader.jsp"%>
+	<div class="container-fluid" style="width: 80%; padding-top: 40px;">
 
-	<br />
-	<div class="container" style="margin-top: 20px;">
-		<div class="course-sidebar">
-			<div class="course-sidebar-type lf-center lf-default">
-				<a
-					href="${pageContext.request.contextPath}/mycenter!forwardMySetting.html">个人信息</a>
-			</div>
-			<div class="course-sidebar-type lf-center">
-				<a
-					href="${pageContext.request.contextPath}/mycenter!forwardModifyPassword.html">修改密码</a>
-			</div>
-			<div class="course-sidebar-type lf-center">
-				<%-- <a href="${pageContext.request.contextPath}/mycenter!forwardUploadHander.html?user.id=${user.id}">上传头像</a> --%>
-				<a href="#">上传头像</a>
-			</div>
-		</div>
-		<!-- 		<div class="course-content"> -->
+		<div class="row">
+			<%@ include file="../common/mySetCommon.jsp"%>
+			<div class="col-md-8">
+				<div class="panel panel-default">
+					<div class="panel-body">
 
-		<div class="setting-right ">
-			<div class="setting-right-wrap wrap-boxes settings">
+						<form
+							action="${pageContext.request.contextPath}/mycenter!updateInfo.html"
+							class="form-horizontal" method="post">
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-2 control-label">用户名：</label>
+								<div class="col-md-4">
+									<s:textfield type="text" cssClass="form-control" id="userName"
+										name="user.userId" placeholder="请输入用户名"></s:textfield>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-2 control-label">昵称：</label>
+								<div class="col-md-4">
+									<s:textfield type="text" cssClass="form-control" id="userName"
+										name="user.nick" placeholder="请输入昵称"></s:textfield>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-2 control-label">姓名：</label>
+								<div class="col-md-4">
+									<s:textfield type="text" cssClass="form-control" id="userName"
+										name="user.userName" placeholder="请输入姓名"></s:textfield>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-2 control-label">姓别：</label>
+								<div class="col-md-4">
+									<label class="radio-inline"> <input type="radio"
+										name="inlineRadioOptions" id="inlineRadio1" value="option1">
+										男
+									</label> <label class="radio-inline"> <input type="radio"
+										name="inlineRadioOptions" id="inlineRadio2" value="option2">
+										女
+									</label>
+								</div>
+							</div>
 
 
-				<div id="setting-profile" class="setting-wrap setting-profile">
-					<s:form action="/mycenter!updateInfo.html">
-						<s:hidden name="user.id"></s:hidden>
-						<div class="wlfg-wrap">
-							<label class="label-name" for="nick">用户名：</label>
-							<div class="rlf-group">
-								<s:textfield disabled="true" name="user.userId" id="userId"
-									autocomplete="off" data-validate="nick"
-									class="rlf-input rlf-input-nick" placeholder="请输入昵称."></s:textfield>
-								<p class="rlf-tip-wrap"></p>
-							</div>
-						</div>
-						<div class="wlfg-wrap">
-							<label class="label-name" for="nick">昵称：</label>
-							<div class="rlf-group">
-								<s:textfield name="user.nick" id="nick" autocomplete="off"
-									data-validate="nick" class="rlf-input rlf-input-nick"
-									placeholder="请输入昵称."></s:textfield>
-								<%--                 <input  type="text" name="user.nick" id="nick"  autocomplete="off"  data-validate="nick"  class="rlf-input rlf-input-nick" value='<s:property value="user.nick"/>' placeholder="请输入昵称."/> --%>
-								<p class="rlf-tip-wrap"></p>
-							</div>
-						</div>
-						<div class="wlfg-wrap">
-							<label class="label-name" for="nick">姓名：</label>
-							<div class="rlf-group">
-								<s:textfield name="user.userName" id="userName"
-									autocomplete="off" data-validate="userName"
-									class="rlf-input rlf-input-nick" placeholder="请输入用户名."></s:textfield>
-								<p class="rlf-tip-wrap"></p>
-							</div>
-						</div>
-						<div class="wlfg-wrap">
-							<label class="label-name">性别：</label>
-							<div class="rlf-group rlf-radio-group">
-								<label><s:radio list="#{'男':'男','女':'女'}"
-										hidefocus="true" value="1" name="sex"></s:radio></label>
-							</div>
-							<p class="rlf-tip-wrap"></p>
-						</div>
-						<div class="wlfg-wrap">
-							<label class="label-name" for="job">职业</label>
-							<div class="rlf-group">
-								<select class="rlf-select" name="job" hidefocus="true" id="job">
-									<option value="">请选择职业</option>
-									<option value="1">在职人员</option>
 
-									<option value="13" selected="selected">学生</option>
-								</select>
-								<p class="rlf-tip-wrap"></p>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-2 control-label">职业：</label>
+								<div class="col-md-4">
+									<select class="form-control">
+										<option>老师</option>
+										<option>学生</option>
+									</select>
+								</div>
 							</div>
-						</div>
-						<div class="wlfg-wrap">
-							<label class="label-name" for="province-select">城市</label>
-							<div class="rlf-group">
-								<input type="text" name="user.provinceAndCity"
-									id="provinceAndCity" autocomplete="off"
-									data-validate="provinceAndCity"
-									class="rlf-input rlf-input-nick"
-									value='<s:property value="user.provinceAndCity"/>'
-									placeholder="请输入所在城市." />
-								<p class="rlf-tip-wrap"></p>
-							</div>
-						</div>
 
-						<div class="wlfg-wrap">
-							<label class="label-name" for="nick">QQ：</label>
-							<div class="rlf-group">
-								<s:textfield name="user.qq" id="qq" autocomplete="off"
-									data-validate="qq" class="rlf-input rlf-input-nick"
-									placeholder="请输入QQ."></s:textfield>
-								<%--                 <input  type="text" name="user.qq" id="userName"  autocomplete="off"  data-validate="userName"  class="rlf-input rlf-input-nick" value='<s:property value="user.qq"/>' placeholder="请输入用户名."/> --%>
-								<p class="rlf-tip-wrap"></p>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-2 control-label">城市：</label>
+								<div class="col-md-4">
+									<input type="email" class="form-control" id="userName"
+										placeholder="请输入您的所在城市">
+								</div>
 							</div>
-						</div>
 
-						<div class="wlfg-wrap">
-							<div class="rlf-group">
-								<span id="profile-submit" hidefocus="true" aria-role="button"
-									class="rlf-btn-green btn-block profile-btn"
-									onclick="forSubmit()">保存</span>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-2 control-label">QQ：</label>
+								<div class="col-md-4">
+									<s:textfield type="text" cssClass="form-control" id="userName"
+										name="user.qq" placeholder="请输入QQ号码"></s:textfield>
+								</div>
 							</div>
-						</div>
-					</s:form>
+							<div class="form-group">
+								<div class="col-md-4 col-md-offset-3">
+									<button type="submit" class="btn  btn-md btn-success">保存</button>
+								</div>
+							</div>
+							<s:hidden name="user.id"></s:hidden>
+							<form>
+					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 
 
+	<script>
+		var _hmt = _hmt || [];
+		function forSubmit() {
 
+			document.forms[0].submit();
+		}
+	</script>
 
-	<%@ include file="../common/commonFooter.jsp"%>
+	<%-- <%@ include file="../common/commonFooter.jsp"%> --%>
 </body>
 </html>

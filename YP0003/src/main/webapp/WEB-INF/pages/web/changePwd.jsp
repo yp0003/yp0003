@@ -6,116 +6,72 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/base.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/style.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/mySetting.css"
-	rel="stylesheet">
-<!-- link script -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/custom.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-<script>
-	var _hmt = _hmt || [];
-	function forSubmit() {
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
-		document.forms[0].submit();
-	}
-</script>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <title>订单管理</title>
 </head>
-<body>
+<body style="background-color: #EEEEEE">
 	<!-- 头部 -->
 	<%@ include file="../common/commonHeader.jsp"%>
-	<br />
-	<s:if test="actionErrors[0] != null">
-		<div id="mainDiv" class="container">
-			<div class="row" style="text-align: center;">
-				<div class="col-lg-12">
-					<div id="messageError" class="alert alert-danger " role="alert">
-						<s:actionerror />
+	<div class="container-fluid" style="width: 80%; padding-top: 40px;">
+
+		<div class="row">
+			<%@ include file="../common/mySetCommon.jsp"%>
+			<div class="col-md-8">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form
+							action="${pageContext.request.contextPath}/mycenter!modifyPassword.html"
+							class="form-horizontal">
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-2 control-label">旧密码：</label>
+								<div class="col-md-4">
+									<input type="email" class="form-control" id="userName"
+										name="user.oldPassword" placeholder="请输入旧密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-2 control-label">新密码：</label>
+								<div class="col-md-4">
+									<input type="email" class="form-control" id="userName"
+										name="user.nowPassword" placeholder="请输入新密码">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="inputEmail3" class="col-md-2 control-label">确认新密码：</label>
+								<div class="col-md-4">
+									<input type="email" class="form-control" id="userName"
+										name="user.repassword" placeholder="请确认新密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-4 col-md-offset-3">
+									<button type="submit" class="btn  btn-md btn-success">保存</button>
+								</div>
+							</div>
+							<form>
 					</div>
 				</div>
 			</div>
 		</div>
-	</s:if>
-	<div class="container" style="margin-top: 20px;">
-		<div class="course-sidebar">
-			<div class="course-sidebar-type lf-center">
-				<a
-					href="${pageContext.request.contextPath}/mycenter!forwardMySetting.html">个人信息</a>
-			</div>
-			<div class="course-sidebar-type lf-center lf-default">
-				<a
-					href="${pageContext.request.contextPath}/mycenter!forwardModifyPassword.html">修改密码</a>
-			</div>
-			<div class="course-sidebar-type lf-center">
-				<a href="#">上传头像</a>
-				<%-- <a href="${pageContext.request.contextPath}/mycenter!forwardUploadHander.html">上传头像</a> --%>
-			</div>
-		</div>
-		<!-- 		<div class="course-content"> -->
-
-		<div class="setting-right ">
-			<div class="setting-right-wrap wrap-boxes settings">
-				<div id="setting-profile" class="pwd-reset-wrap setting-resetpwd">
-					<s:form method="post" id="resetpwdform"
-						action="mycenter!modifyPassword.html">
-						<div class="wlfg-wrap">
-							<label class="label-name" for="">旧密码</label>
-							<div class="rlf-group">
-								<s:textfield type="password" name="user.oldPassword"
-									class="rlf-input rlf-input-pwd" placeholder="请输入当前密码"></s:textfield>
-								<p class="rlf-tip-wrap"></p>
-							</div>
-						</div>
-						<div class="wlfg-wrap">
-							<label class="label-name" for="newpass">新密码</label>
-							<div class="rlf-group">
-								<s:textfield type="password" data-validate="nowPassword"
-									name="user.nowPassword" id="newpass"
-									class="rlf-input rlf-input-pwd" placeholder="请输入密码"></s:textfield>
-								<p class="rlf-tip-wrap"></p>
-							</div>
-						</div>
-						<div class="wlfg-wrap">
-							<label class="label-name" for="confirm">确认新密码</label>
-							<div class="rlf-group">
-								<s:textfield type="password" name="user.repassword"
-									id="confirm" class="rlf-input rlf-input-pwd"
-									placeholder="请输入密码"></s:textfield>
-								<p class="rlf-tip-wrap"></p>
-							</div>
-						</div>
-						<div class="wlfg-wrap">
-							<label class="label-name" for=""></label>
-							<div class="rlf-group">
-								<button type="submit" id="resetpwd-btn-save" aria-role="button"
-									class="rlf-btn-green btn-block" style="width: 220px;">保存</button>
-							</div>
-						</div>
-					</s:form>
-				</div>
-			</div>
-		</div>
 	</div>
-
-
-
-
-	<%@ include file="../common/commonFooter.jsp"%>
+	<script>
+		$(function() {
+			$('#myInfo').removeClass("active");
+			$('#changePwd').addClass("active");
+		});
+	</script>
 </body>
 </html>
