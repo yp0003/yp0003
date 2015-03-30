@@ -120,10 +120,10 @@ public class OaProductAction extends CommonAction {
 	// TODO 待修改功能
 	public String forwardProductList() {
 		productStatusList = oaProductService.selectProductStatusDicList();
-		/*
-		 * if (null == product) product = new Product(); productList =
-		 * oaProductService.selectProductList(product, pageInfo);
-		 */
+
+		  if (null == product) product = new Product(); productList =
+		  oaProductService.selectProductList(product, pageInfo);
+
 		return "forwardProductList";
 	}
 

@@ -49,7 +49,7 @@
 	<s:actionmessage cssStyle="color: green" />
 	<s:actionerror cssStyle="color: red" />
 	<br />
-	<%-- 	<table id="stupidtable" width="100%" align="center" class="table">
+	 	<table id="stupidtable" width="100%" align="center" class="table">
 		<caption>全部查询</caption>
 		<thead>
 			<tr>
@@ -99,10 +99,10 @@
 					</s:if></td>
 			</tr>
 		</tfoot>
-	</table> --%>
+	</table>
 
 
-	<table id="dg" title="全部课程列表" style="width: 100%;">
+<%--	<table id="dg" title="全部课程列表" style="width: 100%;">
 		<thead>
 			<tr>
 				<th data-options="field:'productId',width:'33%',align:'center'">产品ID</th>
@@ -122,12 +122,12 @@
 			data-options="iconCls:'icon-edit',plain:true" onclick="modify();">修改</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton"
 			data-options="iconCls:'icon-search',plain:true" onclick="remove();">删除</a>
-	</div>
+	</div>--%>
 
 
 
 	<script type="text/javascript">
-		$(function() {
+/*		$(function() {
 			$('#dg')
 					.datagrid(
 							{
@@ -175,7 +175,7 @@
 			} else {
 				window.location.href = 'oaEmp!toUpdatePE.html?id=' + row.id;
 			}
-		}
+		}*/
 	</script>
 </body>
 </html>

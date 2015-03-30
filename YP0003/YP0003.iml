@@ -43,6 +43,7 @@
             <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-spring-plugin/2.3.16.3/struts2-spring-plugin-2.3.16.3.jar!/struts-plugin.xml</file>
             <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-json-plugin/2.3.16.3/struts2-json-plugin-2.3.16.3.jar!/struts-plugin.xml</file>
             <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-core/2.3.16.3/struts2-core-2.3.16.3.jar!/struts-default.xml</file>
+            <file>file://$MODULE_DIR$/src/main/resources/struts/struts-oaview.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
