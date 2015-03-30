@@ -3,39 +3,89 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 程序包含开始 -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/bootstrap3/bootstrap.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/bootstrap3/bootstrap-theme.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="${pageContext.request.contextPath}/bootstrap3/jquery-1.11.1.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="${pageContext.request.contextPath}/bootstrap3/bootstrap.js"></script>
+
+    <style>
+        /*
+         * Style tweaks
+         * --------------------------------------------------
+         */
+        html,
+        body {
+            overflow-x: hidden; /* Prevent scroll on narrow devices */
+        }
+        body {
+            padding-top: 70px;
+        }
+        footer {
+            padding: 30px 0;
+        }
+
+        /*
+         * Off Canvas
+         * --------------------------------------------------
+         */
+        @media screen and (max-width: 767px) {
+            .row-offcanvas {
+                position: relative;
+                -webkit-transition: all .25s ease-out;
+                -o-transition: all .25s ease-out;
+                transition: all .25s ease-out;
+            }
+
+            .row-offcanvas-right {
+                right: 0;
+            }
+
+            .row-offcanvas-left {
+                left: 0;
+            }
+
+            .row-offcanvas-right
+            .sidebar-offcanvas {
+                right: -50%; /* 6 columns */
+            }
+
+            .row-offcanvas-left
+            .sidebar-offcanvas {
+                left: -50%; /* 6 columns */
+            }
+
+            .row-offcanvas-right.active {
+                right: 50%; /* 6 columns */
+            }
+
+            .row-offcanvas-left.active {
+                left: 50%; /* 6 columns */
+            }
+
+            .sidebar-offcanvas {
+                position: absolute;
+                top: 0;
+                width: 50%; /* 6 columns */
+            }
+        }
+
+
+    </style>
 <title>365ITEDU网</title>
-<!-- link css -->
-<link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/bootstrap/css/docs.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/base.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/style.css"
-	rel="stylesheet">
 
 
-<!-- link script -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/custom.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
-<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-  <script src="js/html5shiv.js"></script>
-<![endif]-->
-
-<!-- Le fav and touch icons -->
 </head>
 <!-- Navbar
     ================================================== -->
@@ -43,6 +93,79 @@
 <!-- 程序包含结束 -->
 
 
+
+<div class="container">
+
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+            <p class="pull-right visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+            </p>
+            <div class="jumbotron">
+                <h1>测试课程</h1>
+                <p class="lead">课程简介课程简介课程简介课程简介课程简介课程简介</p>
+                <p><a class="btn btn-lg btn-success" href="#" role="button">立即购买</a></p></div>
+            <div class="row">
+                <div class="col-xs-6 col-lg-4">
+                    <h2>课程价格</h2>
+                    <p>￥44444.0</p>
+                </div><!--/.col-xs-6.col-lg-4-->
+                <div class="col-xs-6 col-lg-4">
+                    <h2>更新时间</h2>
+                    <p>2012-11-11</p>
+                </div><!--/.col-xs-6.col-lg-4-->
+                <div class="col-xs-6 col-lg-4">
+                    <h2>课程分类</h2>
+                    <p>初级</p>
+                </div><!--/.col-xs-6.col-lg-4-->
+                <div class="col-xs-6 col-lg-4">
+                    <h2>更新章节</h2>
+                    <p>1-1</p>
+                </div><!--/.col-xs-6.col-lg-4-->
+                <div class="col-xs-6 col-lg-4">
+                    <h2>课程须知</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                </div><!--/.col-xs-6.col-lg-4-->
+                <div class="col-xs-6 col-lg-4">
+                    <h2>更新时间</h2>
+                    <p>2012-11-11</p>
+                </div><!--/.col-xs-6.col-lg-4-->
+            </div><!--/row-->
+        </div><!--/.col-xs-12.col-sm-9-->
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+            <div class="list-group">
+                <a href="#" class="list-group-item active">课程概览</a>
+                <a href="#" class="list-group-item">名师简介</a>
+                <a href="#" class="list-group-item">课程评论</a>
+            </div>
+        </div><!--/.sidebar-offcanvas-->
+    </div><!--/row-->
+
+    <hr>
+
+
+    <h3>课程详情</h3>
+    <hr>
+
+
+
+    <hr>
+
+    <h3>课程精彩截图</h3>
+    <hr>
+
+
+
+    <hr>
+
+    <footer>
+        <p>&copy; Company 2014</p>
+    </footer>
+
+</div><!--/.container-->
+<%--
 <div id="main" class="mt49">
 	<!--  <a class="back-btn"> 课程类别>java</a> -->
 	<div class="container1000" id="course_intro">
@@ -96,7 +219,7 @@
 							<!--          			<td align="left"></td> -->
 							<td width="150px" align="left">下线时间：<s:date
 									name="product.offlineTime" format="yyyy-MM-dd" /></td>
-							<%--          			<td align="left"><s:date name="product.offlineTime" format="yyyy-MM-dd" /></td> --%>
+							&lt;%&ndash;          			<td align="left"><s:date name="product.offlineTime" format="yyyy-MM-dd" /></td> &ndash;%&gt;
 							<td width="150px" align="left">更新时间：<s:date
 									name="product.updateTime" format="yyyy-MM-dd" /></td>
 							<!--          			<td align="left"></td> -->
@@ -191,7 +314,7 @@
 		</div>
 	</div>
 
-</div>
+</div>--%>
 
 <!-- Footer -->
 <%@ include file="../common/commonFooter.jsp"%>
