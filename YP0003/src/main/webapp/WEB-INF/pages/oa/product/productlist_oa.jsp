@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title><s:text name="display.name" /></title>
+<title>产品列表</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/easyui/themes/default/easyui.css" />
 
@@ -100,82 +100,5 @@
 			</tr>
 		</tfoot>
 	</table>
-
-
-<%--	<table id="dg" title="全部课程列表" style="width: 100%;">
-		<thead>
-			<tr>
-				<th data-options="field:'productId',width:'33%',align:'center'">产品ID</th>
-				<th data-options="field:'productName',width:'33%',align:'center'">产品名称</th>
-				<th data-options="field:'teacherId',width:'33%',align:'center'">讲师ID</th>
-				<th data-options="field:'productPrice',width:'33%',align:'center'">产品价格</th>
-				<th data-options="field:'productSale',width:'33%',align:'center'">产品打折</th>
-				<th
-					data-options="field:'productStatusDic',width:'33%',align:'center'">产品状态</th>
-
-			</tr>
-		</thead>
-	</table>
-
-	<div id="tb" style="height: auto">
-		<a href="javascript:void(0)" class="easyui-linkbutton"
-			data-options="iconCls:'icon-edit',plain:true" onclick="modify();">修改</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton"
-			data-options="iconCls:'icon-search',plain:true" onclick="remove();">删除</a>
-	</div>--%>
-
-
-
-	<script type="text/javascript">
-/*		$(function() {
-			$('#dg')
-					.datagrid(
-							{
-								rownumbers : true,
-								toolbar : '#tb',
-								idField : 'id',
-								singleSelect : true,
-								pagination : true,
-								method : 'get',
-								url : '${pageContext.request.contextPath}/oaProduct!productList.html'
-							});
-			var pager = $('#dg').datagrid().datagrid('getPager');
-			//设置分页控件  
-			var p = $('#dg').datagrid('getPager');
-			$(p).pagination({
-				pageSize : 10,//每页显示的记录条数，默认为10  
-				pageList : [ 5, 10, 15 ],//可以设置每页记录条数的列表  
-				beforePageText : '第',//页数文本框前显示的汉字  
-				afterPageText : '页    共 {pages} 页',
-				displayMsg : '当前显示 {from} - {to} 条记录   共 {total} 条记录'
-			});
-		});
-
-		function doSearch() {
-			$('#dg').datagrid('load', {
-				'oaEmployee.employeeId' : $('#employeeId').val(),
-				'oaEmployee.employeeName' : $('#employeeName').val()
-			});
-		}
-
-		//修改
-		function modify() {
-			var row = $('#dg').datagrid('getSelected');
-			if (row == null) {
-				alert("请选中一行");
-			} else {
-				window.location.href = 'oaEmp!toUpdate.html?id=' + row.id;
-			}
-		}
-		//删除
-		function remove() {
-			var row = $('#dg').datagrid('getSelected');
-			if (row == null) {
-				alert("请选中一行");
-			} else {
-				window.location.href = 'oaEmp!toUpdatePE.html?id=' + row.id;
-			}
-		}*/
-	</script>
 </body>
 </html>

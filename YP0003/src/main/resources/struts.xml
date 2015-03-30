@@ -24,7 +24,8 @@
 		value="/services/*,/common/.*,/css/.*,/download/.*,/images/.*,/js/.*" />
 
 	<!-- UI标签默认主题 -->
-<!-- 	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.ui.theme" value="simple" />
+    <!--
 	<constant name="struts.ui.templateDir" value="template" />
 	<constant name="struts.ui.templateSuffix" value="ftl" /> -->
 	<!--使用spring工厂 -->

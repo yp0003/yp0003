@@ -30,7 +30,6 @@
 </script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/oa_js/jquery/jquery-easyui/locale/easyui-lang-zh_CN.js">
-	//
 </script>
 <link href="${pageContext.request.contextPath}/oa_css/style.css" rel="stylesheet" type="text/css" />
 
