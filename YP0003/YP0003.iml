@@ -117,6 +117,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="JGoodies Forms" level="project" />
     <orderEntry type="library" name="Maven: org.apache.struts:struts2-json-plugin:2.3.16.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.3.2" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />

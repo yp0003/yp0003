@@ -7,18 +7,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- 新 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet"
-	href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/bootstrap3/bootstrap.css">
 
-<!-- 可选的Bootstrap主题文件（一般不用引入） -->
-<link rel="stylesheet"
-	href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/bootstrap3/bootstrap-theme.css">
 
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="${pageContext.request.contextPath}/bootstrap3/jquery-1.11.1.min.js"></script>
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="${pageContext.request.contextPath}/bootstrap3/bootstrap.js"></script>
 <title>订单管理</title>
 </head>
 <body style="background-color: #EEEEEE">
