@@ -103,25 +103,32 @@
                 <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
             </p>
             <div class="jumbotron">
-                <h1>测试课程</h1>
-                <p class="lead">课程简介课程简介课程简介课程简介课程简介课程简介</p>
+                <h1><s:property value="product.productName"/></h1>
+                <p class="lead"><s:property value="product.productDesc"/></p>
                 <p><a class="btn btn-lg btn-success" href="#" role="button">立即购买</a></p></div>
             <div class="row">
                 <div class="col-xs-6 col-lg-4">
                     <h2>课程价格</h2>
-                    <p>￥44444.0</p>
+                    <p>￥<s:property value="product.productPrice"/></p>
                 </div><!--/.col-xs-6.col-lg-4-->
                 <div class="col-xs-6 col-lg-4">
                     <h2>更新时间</h2>
-                    <p>2012-11-11</p>
+                    <p><s:date name="product.updateTime"/></p>
                 </div><!--/.col-xs-6.col-lg-4-->
                 <div class="col-xs-6 col-lg-4">
                     <h2>课程分类</h2>
-                    <p>初级</p>
+                    <p>
+						<s:if test="product.productKind!=null">
+							<s:property value="product.productKind.productKind"/>
+						</s:if>
+						<s:else>
+							无
+						</s:else>
+					</p>
                 </div><!--/.col-xs-6.col-lg-4-->
                 <div class="col-xs-6 col-lg-4">
                     <h2>更新章节</h2>
-                    <p>1-1</p>
+                    <p><s:property value="product.updateBadge"/>-<s:property value="product.updateMatter"/></p>
                 </div><!--/.col-xs-6.col-lg-4-->
                 <div class="col-xs-6 col-lg-4">
                     <h2>课程须知</h2>
