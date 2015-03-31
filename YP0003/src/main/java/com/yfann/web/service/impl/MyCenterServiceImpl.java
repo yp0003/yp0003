@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.yfann.web.common.DicValue;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
@@ -44,6 +45,8 @@ public class MyCenterServiceImpl implements MyCenterService{
 	}
 	@Override
 	public boolean commitSmartCode(MyProduct myProduct) {
+        //提交申请
+        myProduct.setAccreditStatus(DicValue.PlayerCodeAccreditStatus.PALYER_CODE_ACCREDIT_STATUS_ACCREDITTING);
 		int reslut = myProductMapper.updateByPrimaryKeySelective(myProduct);
 		if(reslut > 0){
 			return true;

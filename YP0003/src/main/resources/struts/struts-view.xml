@@ -64,7 +64,7 @@
 			<!-- 直接结算 -->
 			<result name="payProductOnlyOne">/WEB-INF/pages/web/payOrder.jsp</result>
 			<!-- 取消订单 -->
-			<result name="cancelOrder" type="redirectAction">mycenter!myOrderList.html
+			<result name="cancelOrder" type="redirectAction">mycenter!forwardMyOrderList.html
 			</result>
 			<!-- 订单详情 -->
 			<result name="orderDetail">/WEB-INF/pages/orderDetail.jsp

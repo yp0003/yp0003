@@ -67,7 +67,7 @@
                                 <td><s:property value="#order.orderCreateTime"/></td>
                                 <td>
                                     <s:if test="#order.orderStatusDic.dicCode == 0">
-                                    <a href="#"><button type="button" class="btn btn-sm btn-primary">取消订单</button></a>
+                                    <a href="${pageContext.request.contextPath}/order!cancelOrder.html?order.id=<s:property value='#order.id'/>"><button type="button" class="btn btn-sm btn-primary">取消订单</button></a>
 
                                     &nbsp;
                                     <a href="#"><button type="button" class="btn btn-sm btn-danger">立即支付</button></a>

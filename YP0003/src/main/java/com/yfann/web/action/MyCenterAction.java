@@ -70,6 +70,18 @@ public class MyCenterAction extends CommonAction {
 	@Autowired
 	private SystemService systemService;
 
+    /**
+     * 获取播放信息
+     * @return
+     */
+    @UserSessionCheck
+    public String takePlayerInfo(){
+        //获取当前登录用户
+        User currentUser = getUser();
+
+        return "takePlayerInfo";
+    }
+
 	/**
 	 * 用户头像图片
 	 */

@@ -38,14 +38,9 @@
             <span>下单时间：<span style="color:#2A8C01"><s:date name="order.orderCreateTime" format="yyyy-MM-dd"/></span></span>
             <span>金额：<span style="color:#EA5504">￥${order.countPrice}元</span></span>
         </div>
-<!--         <div class="ordercon_01"> -->
-<%--         	<span>订单编号：<span style="color:#EA5504">100389</span></span> --%>
-<%--             <span>下单时间：<span style="color:#2A8C01">2014-10-29 8：00</span></span> --%>
-<%--             <span>金额：<span style="color:#EA5504">￥10.00元</span></span> --%>
-<!--         </div> -->
         <div class="orderinfo">
         	<span class="orderinfo_01">尊敬的客户，由于您的商品属于不同商家，所以您的订单被拆分为多个子订单分开配送，给您带来的不便还请谅解。</span>
-        	<span class="orderinfo_02">共<b style="color:#BE3948">2</b>种商品，应付总额<b  style="color:#BE3948; font-size:16px;">￥22.00元</b>			</span>
+        	<span class="orderinfo_02">共<b style="color:#BE3948">1</b>种商品，应付总额<b  style="color:#BE3948; font-size:16px;">￥${order.countPrice}元</b>			</span>
         </div>
         
 	</div>

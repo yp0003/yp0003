@@ -318,16 +318,6 @@
     <!--footer start-->
     <div class="footer">
         <div class="w">
-            <!--   <div class="fenxiang">
-                <img src="./image/fenxiang.gif" usemap="#Map" border="0" />
-                <map name="Map" id="Map">
-                    <area shape="rect" coords="6,4,41,37" href="http://www.weibo.com/u/5385197038/home?topnav=1&wvr=6" />
-                    <area shape="rect" coords="49,3,87,36"  data-toggle="modal" data-target="#myModal" />
-                    <area shape="rect" coords="95,4,131,41" data-toggle="modal" data-target="#myModal" />
-                    <area shape="rect" coords="144,3,180,42" data-toggle="modal" data-target="#myModal" />
-                </map>
-            </div>
--->
 
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
