@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.util.List;
 
+import com.yfann.web.vo.MailContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -75,11 +76,28 @@ public class MyCenterAction extends CommonAction {
      * @return
      */
     @UserSessionCheck
-    public String takePlayerInfo(){
+    public void takePlayerInfo() throws Exception{
         //获取当前登录用户
         User currentUser = getUser();
+        if (user != null) {
+            try {
+                MailContext mailContext = new MailContext();
+                mailContext
+                        .setMailSubject(ApplicationValue.MAIL_FIND_PASSWORD_SUBJECT);
+                Product productInfo = productService.findProductById(product.getId());
 
-        return "takePlayerInfo";
+
+                mailContext.setTextContext("尊敬的" + user.getUserId()
+                        + "您好,请在浏览器输入下列URL下载您所购买的课程" + "URL : " + productInfo.getProductDetailList().get(0).getVideoUrl() + " 网盘提取码为 ： "
+                        + productInfo.getProductDetailList().get(0).getCloudPanCode() + "请妥善保管您的课程信息,欢迎再次购买365IT学院其他课程,感谢您的支持！");
+
+                systemService.sendMail(user.getEmail(), mailContext);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        response.getWriter().write("下载地址已发送到您的邮箱,请注意查收");
     }
 
 	/**

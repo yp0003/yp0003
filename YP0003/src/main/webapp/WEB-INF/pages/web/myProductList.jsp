@@ -53,14 +53,15 @@
                             <td><s:property value="#myProduct.product.productName"></s:property></td>
                             <td><s:property value="#myProduct.accreditStatusDic.dicCn"></s:property></td>
                             <td>
-                                <s:if test="#myProduct.accreditStatusDic.dicCn == 0">
-                                    <button type="button" class="btn btn-sm btn-primary">提交机器码</button>
+                                <s:if test="#myProduct.accreditStatusDic.dicCode == 0">
+                                    <a href="#">
+                                    <button type="button" class="btn btn-sm btn-primary">提交机器码</button></a>
                                 </s:if>
 
-                                <s:if test="#myProduct.accreditStatusDic.dicCn == 2">
-                                    <button type="button" class="btn btn-sm btn-primary">提交机器码</button>
+                                <s:if test="#myProduct.accreditStatusDic.dicCode == 1">
+                                <a href="#"><button type="button" class="btn btn-sm btn-primary">提交机器码</button></a>
                                     &nbsp;
-                                    <button type="button" class="btn btn-sm btn-primary">提交机器码</button>
+                                <button type="button" class="btn btn-sm btn-primary" onclick="takeProductInfo();">获取播放码</button>
                                 </s:if>
                             </td>
                         </tr>
@@ -105,6 +106,13 @@
         $('#order').removeClass("active");
         $('#product').addClass("active");
     });
+
+
+
+
+    function takeProductInfo(){
+        $.post('${pageContext.request.contextPath}/mycenter!takePlayerInfo.html', {"product.id":<s:property value="#myProduct.product.id"/>}, function (text) { alert(text); });
+    }
 </script>
 </body>
 </html>

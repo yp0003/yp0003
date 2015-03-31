@@ -10,7 +10,7 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="col-md-12">
-            <img src="../../../images/ 54584f0b000124f802200220-220-220.jpg" alt="..."
+            <img src="../../../image/avata.jpg" alt="..."
                  style="width: 212px; height: 200px;"/>
         </div>
         <div class="col-md-12">

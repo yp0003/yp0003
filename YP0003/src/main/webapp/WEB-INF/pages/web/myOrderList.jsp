@@ -70,7 +70,7 @@
                                     <a href="${pageContext.request.contextPath}/order!cancelOrder.html?order.id=<s:property value='#order.id'/>"><button type="button" class="btn btn-sm btn-primary">取消订单</button></a>
 
                                     &nbsp;
-                                    <a href="#"><button type="button" class="btn btn-sm btn-danger">立即支付</button></a>
+                                    <a href="${pageContext.request.contextPath}/order!payProductOnlyOne.html?product.id=<s:property value='#order.orderDetailList[0].product.id'/>"><button type="button" class="btn btn-sm btn-danger">立即支付</button></a>
                                     </s:if>
                                 </td>
                             </tr>

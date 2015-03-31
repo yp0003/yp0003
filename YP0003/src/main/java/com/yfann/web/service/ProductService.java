@@ -17,6 +17,7 @@ import com.yfann.web.vo.PageInfo;
  *
  */
 public interface ProductService {
+
 	/**
 	 * 查找老师信息
 	 * @param id
