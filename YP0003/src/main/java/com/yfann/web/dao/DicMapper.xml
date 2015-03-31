@@ -326,7 +326,7 @@
 		resultMap="BaseResultMap2">
 		select
 		<include refid="Base_Column_List2" />
-		from t_sys_dic t where t.dic_type = 'PALYER_CODE_ACCREDIT_STATUS' and
+		from t_sys_dic t where t.dic_type = 'PALYER_CODE' and
 		t.dic_code = #{dicCode,jdbcType=VARCHAR}
 	</select>
 	<!-- 根据字典类型查询字典 -->
